@@ -1,0 +1,515 @@
+# Extracted from experimental/autoRealization/auto-realization-config-schema.json 
+# (and converted to YAML), currently only in branch task/ZEN-3884 of ModelSolv/RepreZen
+# github repo
+#
+# Copied here purely for convenience, should be removed when the schema is available
+# in a more permanent spot.
+---
+description: JSON Schema for top-level RAPID-Model, containing auto-realization model
+"$schema": http://json-schema.org/draft-04/schema
+allOf:
+- "$ref": "#/definitions/_Object"
+additionalProperties: false
+properties:
+  "$schema":
+    description: Included for compatibility with VSCode, which uses this to identify
+      the schema used for validation & content assist.
+  _type:
+    pattern: "^RAPIDModel$"
+  namespace:
+    type: string
+  name:
+    type: string
+  models:
+    type: array
+    items:
+      "$ref": "#/definitions/Model_Subtype"
+definitions:
+  _Object:
+    description: Abstract root for all objects. Contains the _type property as a discriminator
+      to identify the concrete subtype.
+    type: object
+    properties:
+      _type:
+        description: Type discriminator, which should be specified whenever the object
+          is a subtype of the object type specified in the schema. Each subtype should
+          assign a unique value to this, as a fixed property value.
+        type: string
+    required:
+    - _type
+  _Ref:
+    description: Abstract supertype for a typed reference. Subclasses will specify
+      a schema to which the referenced object is expected to conform.
+    type: object
+    properties:
+      "$ref":
+        description: JSON Reference to another object. Subtypes will specify, by naming
+          convention, documentation and/or other means, the schema to which the referenced
+          object is expected to conform.
+        type: string
+  Model:
+    description: Abstract superclass for RAPID-ML data models, APIs, and other models
+      contained within a top-level rapidModel
+    allOf:
+    - "$ref": "#/definitions/_Object"
+    properties:
+      name:
+        type: string
+  Model_Subtype:
+    description: An instance of one of the concrete Model subtypes.
+    oneOf:
+    - "$ref": "#/definitions/RealizationModel"
+  RealizationModel:
+    description: A collection of realizations. It's a top-level model, so it can have
+      visibiility to API and data models, but can be reused across APIs as needed.
+    additionalProperties: false
+    allOf:
+    - "$ref": "#/definitions/_Object"
+    properties:
+      name: {}
+      _type:
+        type: string
+        pattern: "^RealizationModel$"
+      realizations:
+        type: object
+        additionalProperties:
+          "$ref": "#/definitions/RealizationTemplate"
+  RealizationTemplate:
+    description: A realization rule, with a set of contexts in which the realization
+      applies.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^RealizationTemplate$"
+      appliesTo:
+        type: array
+        items:
+          "$ref": "#/definitions/RealizationContext"
+      realization:
+        "$ref": "#/definitions/ObjectRealizationStrategy_Subtype"
+  ObjectRealizationStrategy:
+    description: Abstract supertype for a realization of an object reference.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+  ObjectRealizationStrategy_Subtype:
+    description: One of the known subtypes of ReferenceRealizationSpec
+    oneOf:
+    - "$ref": "#/definitions/ObjectRealizationSpec"
+    - "$ref": "#/definitions/ObjectRealizationRef"
+    - "$ref": "#/definitions/ObjectRealizationFirstMatch"
+  ObjectRealizationSpec:
+    description: Specifies a realization of an object reference.
+    allOf:
+    - "$ref": "#/definitions/ObjectRealizationStrategy"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^ObjectRealizationSpec$"
+      propertySet:
+        "$ref": "#/definitions/PropertySet_Subtype"
+      links:
+        type: array
+        items:
+          "$ref": "#/definitions/LinkStrategy_Subtype"
+  ObjectRealizationRef:
+    description: Instruction to apply a specified realization template by reference.
+    allOf:
+    - "$ref": "#/definitions/ObjectRealizationStrategy"
+    - "$ref": "#/definitions/_Ref"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^ObjectRealizationRef$"
+      "$ref":
+        description: Reference to a RealizationTemplate
+  ObjectRealizationFirstMatch:
+    description: Instruction to apply the first match from a list of referenced Realization
+      Templates.
+    allOf:
+    - "$ref": "#/definitions/ObjectRealizationStrategy"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^ObjectRealizationFirstMatch$"
+      matchingFirstOf:
+        description: A list of references to Realization Templates. The first matching
+          template will be applied to the Object Reference.
+        type: array
+        items:
+          allOf:
+          - "$ref": "#/definitions/_Ref"
+          additionalProperties: false
+          properties:
+            "$ref": {}
+  PropertySetStrategy:
+    description: Abstract superclass for property set
+    allOf:
+    - "$ref": "#/definitions/_Object"
+  PropertySet_Subtype:
+    description: An instance of one of the concrete PropertySet subtypes.
+    oneOf:
+    - "$ref": "#/definitions/ExclusivePropertySet"
+    - "$ref": "#/definitions/InclusivePropertySet"
+    - "$ref": "#/definitions/PropertySetRef"
+  ExclusivePropertySet:
+    description: A property set that excludes all properties except those explicitly
+      included.
+    additionalProperties: false
+    allOf:
+    - "$ref": "#/definitions/PropertySetStrategy"
+    properties:
+      _type:
+        pattern: "^ExclusivePropertySet$"
+      includedProperties:
+        type: array
+        items:
+          "$ref": "#/definitions/PropertyRealization"
+  InclusivePropertySet:
+    description: A property set that excludes all properties except those explicitly
+      included.
+    additionalProperties: false
+    allOf:
+    - "$ref": "#/definitions/PropertySetStrategy"
+    properties:
+      _type:
+        pattern: "^InclusivePropertySet$"
+      includedProperties:
+        type: array
+        items:
+          "$ref": "#/definitions/PropertyRealization"
+      excludedProperties:
+        type: array
+        items:
+          "$ref": "#/definitions/PropertySelector"
+  PropertySetRef:
+    description: Instruction to apply the property set from a referenced Realization
+      Template.
+    allOf:
+    - "$ref": "#/definitions/PropertySetStrategy"
+    - "$ref": "#/definitions/_Ref"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^PropertySetRef$"
+      "$ref":
+        description: Reference to a Realization Template containing a PropertySet
+          specification.
+  AbstractPropertySelector:
+    description: Abstract supertype of a property selector, with a set of matching
+      criteria to select a subset of properties.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+    properties:
+      isKey:
+        type: boolean
+      readWritability:
+        "$ref": "#/definitions/ReadWriteSelector"
+      multiplicity:
+        "$ref": "#/definitions/MultiplicitySelector"
+      requiredness:
+        "$ref": "#/definitions/RequiredSelector"
+  PropertySelector:
+    description: Specifies matching criteria to select a subset of properties.
+    allOf:
+    - "$ref": "#/definitions/AbstractPropertySelector"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^PropertySelector$"
+      isKey: {}
+      readWritability: {}
+      multiplicity: {}
+      requiredness: {}
+      propertyType:
+        "$ref": "#/definitions/PropertyTypeSelector_Subtype"
+  AbstractPropertyTypeSelector:
+    description: Abstract supertype for primitive and reference property selectors.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+  PropertyTypeSelector_Subtype:
+    description: An instance of one of the concrete property type selectors.
+    oneOf:
+    - "$ref": "#/definitions/PrimitivePropertySelector"
+    - "$ref": "#/definitions/ReferencePropertySelector"
+  AbstractPrimitivePropertySelector:
+    description: Abstract supertype of a primitive property selector, with optional
+      matching criteria.
+    allOf:
+    - "$ref": "#/definitions/AbstractPropertyTypeSelector"
+  PrimitivePropertySelector:
+    description: Selects primitive properties, with optional matching criteria.
+    allOf:
+    - "$ref": "#/definitions/AbstractPrimitivePropertySelector"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^PrimitivePropertySelector$"
+  AbstractReferencePropertySelector:
+    description: Abstract supertype of reference property selector.
+    allOf:
+    - "$ref": "#/definitions/AbstractPropertyTypeSelector"
+    properties:
+      containment:
+        "$ref": "#/definitions/ContainmentSelector"
+      autoLinkObjectResourceAvailability:
+        type: boolean
+      autoLinkCollectionResourceAvailability:
+        type: boolean
+  ReferencePropertySelector:
+    description: Selects reference properties, with optional matching criteria.
+    allOf:
+    - "$ref": "#/definitions/AbstractReferencePropertySelector"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^ReferencePropertySelector$"
+      containment: {}
+      autoLinkObjectResourceAvailability: {}
+      autoLinkCollectionResourceAvailability: {}
+  RealizationContext:
+    description: A set of conditions to determine whether a realization should apply
+      to a given object reference.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^RealizationContext$"
+      hasKeys:
+        description: Limits scope to referenced data structures with or without key
+          properties.
+        type: boolean
+      autoLinkableToObjectResource:
+        description: Limits scope to referenced data structures with or without an
+          auto-link ('default') target objectResource.
+        type: boolean
+      autoLinkableToCollectionResource:
+        description: Limits scope to referenced data structures with or without an
+          auto-link ('default') target collectionResource.
+        type: boolean
+      resourceType:
+        "$ref": "#/definitions/ResourceTypeSelector"
+      definedIn:
+        "$ref": "#/definitions/DefinitionContext_Subtype"
+      level:
+        "$ref": "#/definitions/ReferenceLevelContext_Subtype"
+  DefinitionContext:
+    description: Abstract supertype for a definition context, which limits a realization
+      template to a resource-defined or message-defined realization.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+  DefinitionContext_Subtype:
+    description: Instance of a known DefinitionContext subtype
+    oneOf:
+    - "$ref": "#/definitions/ResourceDefinitionContext"
+    - "$ref": "#/definitions/MessageDefinitionContext"
+  ResourceDefinitionContext:
+    description: Limits a realization template to resource-defined realizations, i.e.
+      a realization defined implicitly or explicitly, directly at the resource level.
+    allOf:
+    - "$ref": "#/definitions/DefinitionContext"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^ResourceDefinitionContext$"
+  MessageDefinitionContext:
+    description: Limits a realization template to message-defined realizations, i.e.
+      a realization defined in a request or response message. May specify matching
+      criteria to select a subset of message-level realizations.
+    allOf:
+    - "$ref": "#/definitions/DefinitionContext"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^MessageDefinitionContext$"
+      methodType:
+        "$ref": "#/definitions/MethodTypeSelector"
+      messageType:
+        "$ref": "#/definitions/MessageTypeSelector"
+  ReferenceLevelContext:
+    description: Abstract supertype for a reference level context, which limits a
+      realization template to the root object in a realization, or to reference properties
+      occuring somewhere in the realization graph.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+  ReferenceLevelContext_Subtype:
+    description: Instance of a known ReferenceLevelContext subtype
+    oneOf:
+    - "$ref": "#/definitions/RootObjectContext"
+    - "$ref": "#/definitions/ReferencePropertyContext"
+  RootObjectContext:
+    description: Limits a realization template to a realization template to the root
+      object in a realization.
+    allOf:
+    - "$ref": "#/definitions/ReferenceLevelContext"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^RootObjectContext$"
+  ReferencePropertyContext:
+    description: Limits a realization template to reference properties occuring somewhere
+      in the realization graph. May specify matching criteria to select a subset of
+      reference properties.
+    allOf:
+    - "$ref": "#/definitions/ReferenceLevelContext"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^ReferencePropertyContext$"
+      multiplicity:
+        "$ref": "#/definitions/MultiplicitySelector"
+      readWritability:
+        "$ref": "#/definitions/ReadWriteSelector"
+      requiredness:
+        "$ref": "#/definitions/RequiredSelector"
+      containment:
+        "$ref": "#/definitions/ContainmentSelector"
+  MultiplicitySelector:
+    description: Limits scope to single-valued or multi-valued properties.
+    type: string
+    enum:
+    - SINGLE_VALUED
+    - MULTI_VALUED
+  RequiredSelector:
+    description: Limits scope to required or optional properties.
+    type: string
+    enum:
+    - REQUIRED
+    - OPTIONAL
+  ReadWriteSelector:
+    description: Limits scope based on readability and/or writability of the property.
+    type: string
+    enum:
+    - READABLE
+    - READ_ONLY
+    - WRITABLE
+    - WRITE_ONLY
+    - READ_WRITE
+  ContainmentSelector:
+    description: Limits scope to containing, container, or non-containment references.
+    type: string
+    enum:
+    - CONTAINING
+    - NON_CONTAINING
+    - CONTAINER
+    - NON_CONTAINER
+    - NON_CONTAINMENT
+  ResourceTypeSelector:
+    description: Limits scope to objectResource or collectionResource.
+    type: string
+    enum:
+    - OBJECT_RESOURCE
+    - COLLECTION_RESOURCE
+  MessageTypeSelector:
+    description: Limits scope to a specific kind of message.
+    type: string
+    enum:
+    - REQUEST
+    - RESPONSE
+    - INFORMATIONAL_1xx_RESPONSE
+    - SUCCESSFUL_2xx_RESPONSE
+    - REDIRECTION_3xx_RESPONSE
+    - CLIENT_ERROR_4xx_RESPONSE
+    - SERVER_ERROR_5XX_RESPONSE
+  MethodTypeSelector:
+    description: Limits scope to an individual method or method category.
+    type: string
+    enum:
+    - READ_METHOD
+    - WRITE_METHOD
+    - GET_METHOD
+    - POST_METHOD
+    - PUT_METHOD
+    - PATCH_METHOD
+    - DELETE_METHOD
+    - OPTIONS_METHOD
+    - HEAD_METHOD
+    - TRACE_METHOD
+    - CONNECT_METHOD
+  PropertyRealization:
+    description: An entry in a property set. Combines a property selector with an
+      optional realization spec.
+    allOf:
+    - "$ref": "#/definitions/AbstractPropertySelector"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^PropertyRealization$"
+      isKey: {}
+      readWritability: {}
+      multiplicity: {}
+      requiredness: {}
+      propertyType:
+        "$ref": "#/definitions/PropertyTypeRealization_Subtype"
+  PropertyTypeRealization:
+    description: Abstract supertype of a primitive of reference property realization.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+  PropertyTypeRealization_Subtype:
+    description: One of the known subtypes of PropertyTypeRealization
+    oneOf:
+    - "$ref": "#/definitions/PrimitivePropertyRealization"
+    - "$ref": "#/definitions/ReferencePropertyRealization"
+  PrimitivePropertyRealization:
+    description: Realization of a set of primitive properties.
+    allOf:
+    - "$ref": "#/definitions/AbstractPrimitivePropertySelector"
+    - "$ref": "#/definitions/PropertyTypeRealization"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^PrimitivePropertyRealization$"
+  ReferencePropertyRealization:
+    description: Realization of a set of reference properties.
+    allOf:
+    - "$ref": "#/definitions/AbstractReferencePropertySelector"
+    - "$ref": "#/definitions/PropertyTypeRealization"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^ReferencePropertyRealization$"
+      containment: {}
+      autoLinkObjectResourceAvailability: {}
+      autoLinkCollectionResourceAvailability: {}
+      realization:
+        "$ref": "#/definitions/ObjectRealizationStrategy"
+  LinkStrategy:
+    description: Abstract supertype for a Link or set of Links.
+    allOf:
+    - "$ref": "#/definitions/_Object"
+  LinkStrategy_Subtype:
+    description: One of the known LinkStrategy subtypes.
+    oneOf:
+    - "$ref": "#/definitions/LinkSpec"
+    - "$ref": "#/definitions/LinksRef"
+  LinkSpec:
+    allOf:
+    - "$ref": "#/definitions/LinkStrategy"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^LinkSpec$"
+      targetResourceType:
+        "$ref": "#/definitions/TargetResourceType"
+      linkRelation:
+        type: string
+  LinksRef:
+    description: Instruction to include the Links as specified in a referenced Realization
+      Template.
+    allOf:
+    - "$ref": "#/definitions/LinkStrategy"
+    - "$ref": "#/definitions/_Ref"
+    additionalProperties: false
+    properties:
+      _type:
+        pattern: "^LinksRef$"
+      "$ref":
+        description: Reference to a Realization Template containing Link specifications.
+  TargetResourceType:
+    type: string
+    enum:
+    - THIS_RESOURCE
+    - AUTO_LINK_OBJECT_RESOURCE
+    - AUTO_LINK_COLLECTION_RESOURCE

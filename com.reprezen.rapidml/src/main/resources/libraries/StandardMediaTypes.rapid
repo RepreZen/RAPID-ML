@@ -1,0 +1,184 @@
+rapidModel StandardMediaTypes
+	mediaTypesLibrary
+
+		mediaType "application/*"  
+			specURL "http://www.iana.org/assignments/media-types/application"
+
+		mediaType application/atom+xml
+			specURL "http://www.rfc-editor.org/rfc/rfc4287.txt"
+			derivedFrom (application/xml)
+
+		mediaType application/atomdeleted+xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc6721.txt"
+			derivedFrom (application/atom+xml)
+
+		mediaType application/atomcat+xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc5023.txt" 
+			derivedFrom (application/xml)
+
+		mediaType application/atomsvc+xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc5023.txt"
+			derivedFrom (application/xml)
+
+		mediaType application/auth-policy+xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc4745.txt"
+			derivedFrom (application/xml)
+
+		mediaType application/calendar+xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc6321.txt"
+			derivedFrom (application/xml)
+
+		// ECMAScript/JavaScript; (equivalent to application/javascript but with stricter processing rules)
+		mediaType application/ecmascript 
+			specURL "http://www.rfc-editor.org/rfc/rfc4329.txt" 
+
+		mediaType application/^example 
+			specURL "http://www.rfc-editor.org/rfc/rfc4735.txt"
+
+		// EDI X12 data; Defined in RFC 1767
+		mediaType application/EDI-X12 
+
+		// EDI EDIFACT data; Defined in RFC 1767
+		mediaType application/EDIFACT 
+
+		mediaType application/fastinfoset 
+			specURL "http://www.iana.org/assignments/media-types/application/fastinfoset"
+
+		//  Web Open Font Format; (candidate recommendation; use application/x-font-woff until standard is official)
+		mediaType application/font-woff 
+
+		mediaType application/gzip 
+			specURL "http://www.ietf.org/rfc/rfc6713.txt"
+
+		// ECMAScript/JavaScript; (equivalent to application/ecmascript but with looser processing rules) 
+		// It is not accepted in IE 8 or earlier - text/javascript is accepted but it is defined as obsolete 
+		// in RFC 4329. The "type" attribute of the <script> tag in HTML5 is optional. In practice, omitting 
+		// the media type of JavaScript programs is the most interoperable solution, since all browsers have 
+		// always assumed the correct default even before HTML5.
+		mediaType application/javascript 
+			specURL "http://www.rfc-editor.org/rfc/rfc4329.txt"
+
+		mediaType application/json 
+			specURL "http://www.ietf.org/rfc/rfc4627.txt" 
+			derivedFrom (application/ecmascript, application/javascript)
+
+		mediaType application/json-patch+json 
+			specURL "http://www.rfc-editor.org/rfc/rfc6902.txt"
+			derivedFrom (application/json)
+
+		mediaType application/mp4 
+			specURL "http://www.rfc-editor.org/rfc/rfc4337.txt"
+
+		// Arbitrary binary data.[10] Generally speaking this type identifies files that are not associated
+		// with a specific application. Contrary to past assumptions by software packages such as Apache this 
+		// is not a type that should be applied to unknown files. In such a case, a server or application 
+		// should not indicate a content type, as it may be incorrect, but rather, should omit the type in 
+		// order to allow the recipient to guess the type.[11]
+		mediaType application/octet-stream 
+			specURL "http://www.rfc-editor.org/rfc/rfc2045.txt"
+			derivedFrom (text/plain) 
+
+		mediaType application/ogg 
+			specURL "http://www.rfc-editor.org/rfc/rfc5334.txt" 
+
+		mediaType application/pdf 
+			specURL "http://www.rfc-editor.org/rfc/rfc3778.txt"
+
+		mediaType application/postscript
+			specURL "http://www.rfc-editor.org/rfc/rfc2046.txt" 
+
+		mediaType application/rdf+xml 
+			specURL "http://www.ietf.org/rfc/rfc3870.txt" 
+			derivedFrom (application/xml)
+
+		mediaType application/rss+xml
+			derivedFrom (application/xml)
+
+		mediaType application/soap+fastinfoset 
+			specURL "http://www.iana.org/assignments/media-types/application/soap+fastinfoset"
+			derivedFrom (application/fastinfoset)
+
+		mediaType application/soap+xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc3902.txt" 
+			derivedFrom (application/xml)
+
+		mediaType application/vnd.hal+json 
+			specURL "http://www.iana.org/assignments/media-types/application/vnd.hal+json"
+			derivedFrom (application/json)
+
+		mediaType application/vnd.hal+xml 
+			specURL "http://www.iana.org/assignments/media-types/application/vnd.hal+xml"
+			derivedFrom (application/xml)
+
+		mediaType application/vnd.osgi.bundle 
+			specURL "http://www.iana.org/assignments/media-types/application/vnd.osgi.bundle"
+			derivedFrom (application/zip)
+
+		mediaType application/vnd.xmi+xml 
+			specURL "http://www.iana.org/assignments/media-types/application/vnd.xmi+xml"
+			derivedFrom (application/xml)
+
+		mediaType application/x-www-form-urlencoded
+
+		mediaType application/xhtml+xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc3236.txt" 
+			derivedFrom (application/xml)
+
+		mediaType application/xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc3023.txt"
+
+		mediaType application/xml-dtd 
+			specURL "http://www.rfc-editor.org/rfc/rfc3023.txt"
+
+		mediaType application/xop+xml 
+			derivedFrom (application/xml)
+
+		mediaType application/zip 
+			specURL "http://www.iana.org/assignments/media-types/application/zip" 
+			derivedFrom (application/octet-stream)
+
+		mediaType multipart/form-data
+
+		mediaType text 
+			specURL "http://www.iana.org/assignments/media-types/text"
+
+		mediaType text/calendar 
+			specURL "http://www.rfc-editor.org/rfc/rfc5545.txt"
+			derivedFrom (text/plain)
+
+		// commands; subtype resident in Gecko browsers like Firefox 3.5
+		mediaType text/cmd 
+
+		mediaType text/css 
+			specURL "http://www.rfc-editor.org/rfc/rfc2318.txt"
+			derivedFrom (text) 
+
+		// Comma-separated values; Defined in RFC 4180
+		mediaType text/csv 
+
+		mediaType text/ecmascript 
+			specURL "http://www.rfc-editor.org/rfc/rfc4329.txt"
+			derivedFrom (text)
+
+		// HTML; Defined in RFC 2854
+		mediaType text/html 
+			specURL "http://www.iana.org/assignments/media-types/text/html"
+			derivedFrom (text/plain) 
+
+		// (Obsolete) JavaScript; Defined in and obsoleted by RFC 4329 in order to discourage its usage 
+		// in favor of application/javascript. However, text/javascript is allowed in HTML 4 and 5 and, 
+		// unlike application/javascript, has cross-browser support. The "type" attribute of the <script> 
+		// tag in HTML5 is optional and there is no need to use it at all since all browsers have always 
+		// assumed the correct default (even in HTML 4 where it was required by the specification).
+		mediaType text/javascript 
+
+		mediaType text/plain 
+			specURL "http://www.rfc-editor.org/rfc/rfc2046.txt"
+			derivedFrom (text) 
+
+		// vCard (contact information); Defined in RFC 6350
+		mediaType text/vcard 
+
+		mediaType text/xml 
+			specURL "http://www.rfc-editor.org/rfc/rfc3023.txt"
+			derivedFrom (text/plain)

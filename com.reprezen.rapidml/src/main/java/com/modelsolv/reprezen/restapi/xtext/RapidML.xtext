@@ -1,0 +1,858 @@
+grammar com.modelsolv.reprezen.restapi.xtext.RapidML with org.eclipse.xtext.common.Terminals
+	hidden(WS, ML_COMMENT, ML_COMMENT_NL, SL_COMMENT)
+	
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.modelsolv.com/reprezen/restapi/1.0" as restapi
+	
+ZenModel returns restapi::ZenModel:
+	{restapi::ZenModel}
+	(NL* 'namespace ' namespace = QualifiedName NL)?
+	(NL* imports += Import)*
+	(NL* documentation=ModelDocumentation)?
+	(NL? ('rapidModel'))
+	name=ID	
+	BEGIN
+	(NL+ ('with')? 'title' title=STRING)?
+	(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	(resourceAPIs+=ResourceAPI)*
+	(dataModels+=DataModel)*
+	(primitiveTypesLibrary=PrimitiveTypesLibrary)?
+	(mediaTypesLibrary=MediaTypesLibrary)?
+	(linkRelationsLibrary=LinkRelationsLibrary)?
+	(securitySchemesLibrary=SecuritySchemeLibrary)?
+	NL? END NL*
+;
+
+/* Grammar fragments are not supported by serialization which we use for RAPID-ML import
+ * It fails with an exception like: "Feature Method.responses holds 1 non-transient value(s), but exactly 0 are required."
+ * Which is caused by 0 returned by !child.getSemanticTypesToCheck().contains(ctx.getEObject().eClass()) 
+ * in AssignmentQuantityIntervalProvider.getMaxByParent()
+ * where child is "extensions*", its semanticTypesToCheck Extensible, and ctx.getEObject().eClass() is Method
+ */
+/* 
+fragment Extensions *:
+	NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	;
+*/
+
+Import returns restapi::ImportDeclaration:
+    'import' importedNamespace = QualifiedName 'from' importURI = STRING ('as' alias = ID)? NL
+;
+
+ResourceAPI returns restapi::ResourceAPI:
+	{restapi::ResourceAPI}
+	(documentation=Documentation)?
+	NL+ 'resourceAPI'
+	name=ID	
+	(('version' version=STRING)? &
+	('baseURI' baseURI=STRING)?)
+	(BEGIN
+	(NL+ ('with')? 'title' title=STRING)?
+	(NL 'secured' 'by'?
+		BEGIN
+		(securedBy += AuthenticationMethod)*
+		NL? END
+	)?
+	(
+		NL+ 'with' 'autoRealizations'
+		BEGIN 
+		(autoRealizations+=RealizationModelLocation)+
+		NL? END
+	)?
+	(ownedResourceDefinitions+=ResourceDefinition)*
+	(definedMediaTypes+=MediaType)*	
+	(definedLinkRelations+=LinkRelation)*	
+	(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+;
+
+ResourceDefinition returns restapi::ResourceDefinition:
+	CollectionResource | ObjectResource;
+
+CollectionResource returns restapi::CollectionResource:
+	{restapi::CollectionResource}
+	(documentation=Documentation)?
+	NL+ (default?='default')?
+	'collectionResource'
+	name=EString
+	(('bound' 'to'?)?'type' dataType=[restapi::Structure|QualifiedName])
+	(BEGIN
+	(NL 'URI' URI=URI)?
+	(NL 'secured' 'by'?
+		BEGIN
+		(securedBy += AuthenticationMethod)*
+		NL? END
+	)?
+	(
+		collectionParameters+=CollectionParameter |
+		inlineObjectRealization=IncludedProperties |
+		referenceTreatments+=ReferenceTreatment |
+		definedLinkDescriptors+=NamedLinkDescriptor |
+		(NL 'mediaTypes' BEGIN NL  mediaTypes+=[restapi::MediaType|MediaTypeQualifier] ((',' | NL) mediaTypes+=[restapi::MediaType|MediaTypeQualifier])* END) |
+		methods+=Method |
+		examples+=Example
+	)*
+	(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL?  END)?;
+	
+ObjectResource returns restapi::ObjectResource:
+	{restapi::ObjectResource}
+	(documentation=Documentation)?
+	NL+ (default?='default')?
+	'objectResource'
+	name=EString
+	(('bound' 'to'?)?'type' dataType=[restapi::Structure|QualifiedName])
+	(BEGIN
+	(NL 'URI' URI=URI)? 
+	(NL 'secured' 'by'?
+		BEGIN
+		(securedBy += AuthenticationMethod)*
+		NL? END
+	)?
+	(
+		inlineObjectRealization=IncludedProperties |
+		referenceTreatments+=ReferenceTreatment |
+		definedLinkDescriptors+=NamedLinkDescriptor |
+		(NL 'mediaTypes' BEGIN NL  mediaTypes+=[restapi::MediaType|MediaTypeQualifier] ((',' | NL) mediaTypes+=[restapi::MediaType|MediaTypeQualifier])* END) |
+		methods+=Method |
+		examples+=Example
+	)*
+		(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+;
+
+IncludedProperties returns restapi::ObjectRealization:
+	{restapi::ObjectRealization}
+	NL
+	(
+	('with'? 'only'? 'properties'
+		BEGIN NL exclusivePropertyList+=PropertyRealization ((',' | NL) exclusivePropertyList+=PropertyRealization)* NL? END
+	) |
+	// new rule - inclusivePropertyList: ['with'] 'all' 'properties' [['including'] includedProperties] [['excluding'] excludedProperties]
+	('with'? 'all' 'properties'
+		(NL? 'including'? 
+			BEGIN NL overriddenPropertyList+=PropertyRealization ((',' | NL) overriddenPropertyList+=PropertyRealization)* NL? END
+		)?
+		
+		(NL? 'excluding' 
+			BEGIN NL excludedProperties+=[restapi::Feature|FeatureName] ((',' | NL) excludedProperties+=[restapi::Feature|FeatureName])* NL? END
+		)?
+		
+	)) 
+;
+
+
+PropertyRealization returns restapi::PropertyRealization:
+	{restapi::PropertyRealization}
+	baseProperty=[restapi::Feature|FeatureName]
+	cardinality=CardinalityOverride?
+	(BEGIN
+		(constraints+=Constraint)*
+	NL? END)?
+;
+
+URI returns restapi::URI:
+	{restapi::URI}
+	("/")? segments+=(URISegment | URISegmentWithParameter) ("/" segments+=(URISegment | URISegmentWithParameter))*
+	(BEGIN (uriParameters+=URIParameter)* NL? END)?;
+
+URISegment returns restapi::URISegment: 
+	{restapi::URISegment}
+	name = URISegmentRule
+;
+
+URISegmentWithParameter returns restapi::URISegmentWithParameter: 
+	{restapi::URISegmentWithParameter}
+	'{' name = URISegmentRule '}'
+;
+
+/** From https://tools.ietf.org/html/rfc3986#page-50
+ *    segment       = *pchar
+   segment-nz    = 1*pchar
+   segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
+                 ; non-zero-length segment without any colon ":"
+   pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+   fragment      = *( pchar / "/" / "?" )
+   pct-encoded   = "%" HEXDIG HEXDIG
+   unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+   sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+                 / "*" / "+" / "," / ";" / "="
+ */
+URISegmentRule:
+	STRING | (SegmentSymbol | INT| ID)+
+;
+SegmentSymbol:
+	(Unreserved | PctEncoded | SubDelims | "@");
+Unreserved:
+	"-" | "." | "_" | "~";
+PctEncoded:
+	"%" INT (INT|ID) 
+	// Xtext processes terminals first:
+	// -  if we define our own DIGIT rule then it will never be achieved as the INT terminal will be recognized instead
+	// - defining a new terminal is tricky and can easily break existing functionality
+	;
+
+SubDelims:
+	"!" | "$" | "&" | "'" | "(" | ")" | "*" | "+" | "," | ";" | "=";
+                 
+	
+/* PARAMETERS */
+
+MessageParameter returns restapi::MessageParameter:
+	{restapi::MessageParameter}
+	(documentation=Documentation)?
+	NL+ (required?='required')?
+	'param'
+	name=EString
+	sourceReference=SourceReference
+	('located'? 'in' httpLocation=HttpMessageParameterLocation)?
+	(BEGIN NL
+	(('default' default=STRING)? &
+	('fixed' fixed=STRING)?)
+		(
+		// ZEN-3667 - make sure to make NL optional, or extensions won't work 
+		NL* 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+
+CollectionParameter returns restapi::CollectionParameter:
+	{restapi::CollectionParameter}
+	(documentation=Documentation)?
+	NL+ (required?='required')?
+	'collectionParam'	
+	name=EString
+	sourceReference=SourceReference
+	(BEGIN NL
+	(('default' default=STRING)? &
+	('fixed' fixed=STRING)?)
+		(
+		NL* 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+
+URIParameter returns restapi::URIParameter:
+	MatrixParameter | TemplateParameter
+;
+
+MatrixParameter returns restapi::MatrixParameter: 
+	{restapi::MatrixParameter}
+	(documentation=Documentation)?
+	NL+ (required?='required')?
+	'matrixParam'
+	name=EString
+	sourceReference=PropertyReference
+	(BEGIN NL
+	(('default' default=STRING)? &
+	('fixed' fixed=STRING)?)
+	(
+		NL* 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+	
+TemplateParameter returns restapi::TemplateParameter:
+	{restapi::TemplateParameter}
+	(documentation=Documentation)?
+	NL+ (required?='required')?
+	'templateParam'
+	uriSegment=[restapi::URISegmentWithParameter|EString]
+	sourceReference=SourceReference
+	(BEGIN NL
+	(('default' default=STRING)? &
+	('fixed' fixed=STRING)?)
+	(
+		NL* 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+
+SourceReference returns restapi::SourceReference:
+	PropertyReference|PrimitiveTypeSourceReference
+;
+	
+PropertyReference returns restapi::PropertyReference: 
+	{restapi::PropertyReference}
+	('bound' 'to'?)?
+	'property'
+	conceptualFeature=[restapi::PrimitiveProperty|FeatureName]
+;
+
+PrimitiveTypeSourceReference returns restapi::PrimitiveTypeSourceReference: 
+	{restapi::PrimitiveTypeSourceReference}
+	'of'? 'type'
+	simpleType=[restapi::PrimitiveType]
+;
+
+Method returns restapi::Method:
+	{restapi::Method}
+	(documentation=Documentation)?
+	NL+ 'method' 
+	httpMethod=HTTPMethods
+	(id=ID)?
+	(BEGIN
+		(NL 'secured' 'by'?
+			BEGIN
+			(securedBy += AuthenticationMethod)*
+			NL? END
+		)?
+		(request = TypedRequest)?
+		(responses+=TypedResponse)*
+			(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?;
+	
+enum HTTPMethods returns restapi::HTTPMethods:
+	PUT="PUT" | POST="POST" | DELETE="DELETE" | HEAD="HEAD" | GET="GET" | PATCH="PATCH" | TRACE = "TRACE" | CONNECT = "CONNECT" | OPTIONS = "OPTIONS";
+
+enum HttpMessageParameterLocation returns restapi::HttpMessageParameterLocation:
+	HEADER="header" | QUERY="query";
+	
+TypedRequest returns restapi::TypedRequest:
+	{restapi::TypedRequest}
+	(documentation=Documentation)?
+	NL+ 'request' 'with'? (useParentTypeReference?='this')?
+	(
+		(('resource'? resourceType=[restapi::ResourceDefinition|QualifiedName])
+		| ('type' dataType=[restapi::Structure|QualifiedName]))?
+	)?
+	(BEGIN
+		(
+			inlineObjectRealization=IncludedProperties |
+			referenceTreatments+=ReferenceTreatment |
+			(NL 'mediaTypes' BEGIN NL  mediaTypes+=[restapi::MediaType|MediaTypeQualifier] ((',' | NL) mediaTypes+=[restapi::MediaType|MediaTypeQualifier])* END) |
+			parameters+=MessageParameter |
+			examples+=Example
+		)*
+			(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?	
+;
+
+TypedResponse returns restapi::TypedResponse:
+	{restapi::TypedResponse}
+	(documentation=Documentation)?
+	NL+ 'response' 'with'? (useParentTypeReference?='this')?
+	(
+		(('resource'? resourceType=[restapi::ResourceDefinition|QualifiedName])
+		| ('type' dataType=[restapi::Structure|QualifiedName]))?
+	)?
+	('statusCode'statusCode=EInt)?
+	(BEGIN
+		(
+			inlineObjectRealization=IncludedProperties |
+			referenceTreatments+=ReferenceTreatment |
+			(NL 'mediaTypes' BEGIN NL  mediaTypes+=[restapi::MediaType|MediaTypeQualifier] ((',' | NL) mediaTypes+=[restapi::MediaType|MediaTypeQualifier])* END) |
+			parameters+=MessageParameter |
+			examples+=Example
+		)*
+			(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?	
+;
+
+Example returns restapi::Example: 
+	InlineExample|ExternalExample
+;
+
+InlineExample returns restapi::InlineExample: 
+	{restapi::InlineExample}
+	NL+ 'example' body=RICH_TEXT
+;
+
+ExternalExample returns restapi::ExternalExample: 
+	{restapi::ExternalExample}
+	NL+ 'externalExample' path=EString
+;
+	
+/* LINKED RESOURCES  */	
+
+ReferenceTreatment returns restapi::ReferenceTreatment:
+	ReferenceEmbed|ReferenceLink
+;
+
+ReferenceEmbed returns restapi::ReferenceEmbed:
+	{restapi::ReferenceEmbed}
+	NL+ 'referenceEmbed' 
+	'>' + referenceElement = [restapi::ReferenceElement|FeatureName]
+	(BEGIN
+	ownedReferenceRealization = ReferenceEmbedRealization
+	(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+
+ReferenceEmbedRealization returns restapi::ReferenceRealization:
+	{restapi::ReferenceRealization}
+	(inlineObjectRealization=AnonimousLinkDescriptor)?
+	(referenceTreatments+=ReferenceTreatment)*
+	;	
+	
+ReferenceLink returns restapi::ReferenceLink:
+	{restapi::ReferenceLink}
+	NL+ 'referenceLink' 
+	'>' referenceElement = [restapi::ReferenceElement|FeatureName]
+	(BEGIN
+	ownedReferenceRealization = ReferenceLinkRealization
+	(NL 'linkRelation' linkRelation=[restapi::LinkRelation|EString])?
+		(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?;
+	
+ReferenceLinkRealization returns restapi::ReferenceRealization:
+	{restapi::ReferenceRealization}
+	(NL 'targetResource' targetResource=[restapi::ResourceDefinition|QualifiedName])
+	(((inlineObjectRealization=AnonimousLinkDescriptor)|(NL 'linkDescriptor' properties=[restapi::NamedLinkDescriptor|QualifiedName])))?
+	;	
+	
+AnonimousLinkDescriptor returns restapi::ObjectRealization:
+	{restapi::ObjectRealization}
+	NL+ 'targetProperties' 
+	(BEGIN NL exclusivePropertyList+=PropertyRealization (=>(','|NL) exclusivePropertyList+=PropertyRealization)* NL? END)?
+;
+
+NamedLinkDescriptor returns restapi::NamedLinkDescriptor:
+	{restapi::NamedLinkDescriptor}
+	NL+ (default?='default')?
+	'linkDescriptor'
+	name = EString 
+    (BEGIN NL exclusivePropertyList+=PropertyRealization (=>(','|NL) exclusivePropertyList+=PropertyRealization)* NL? END)?
+;
+		
+/* SERVICE DATA MODEL PACKAGE*/
+	
+DataModel returns restapi::DataModel:
+	{restapi::DataModel}
+	(documentation=Documentation)?
+	NL+ 'dataModel'
+	name=ID	
+	BEGIN
+	(NL+ ('with')? 'title' title=STRING)?
+	(ownedDataTypes+=DataType)*
+	NL? END
+	;
+	
+Structure returns restapi::Structure:
+	{restapi::Structure}
+	(documentation=Documentation)?
+	NL+ 'structure'
+	name=EString 
+	('extends' supertypes+=[restapi::Inheritable|QualifiedName] (',' 'and'? supertypes+=[restapi::Inheritable|QualifiedName])* )?
+	(BEGIN
+	(ownedFeatures+=Feature)*
+	(ownedOperations+=Operation)*
+	(dataExamples+=DataExample)*
+		(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?;
+
+DataType returns restapi::DataType:
+	Structure | SingleValueType
+;	   
+
+Inheritable returns restapi::Inheritable: 
+	Structure
+;	   
+
+DataExample returns restapi::DataExample: 
+	InlineDataExample
+;
+
+InlineDataExample returns restapi::InlineDataExample: 
+	{restapi::InlineDataExample}
+	NL+ 'dataExample' body=RICH_TEXT
+;
+	
+Feature returns restapi::Feature:
+	ReferenceProperty | PrimitiveProperty;
+			
+ReferenceProperty returns restapi::ReferenceProperty:
+	(documentation=Documentation)?
+	NL+ (restriction?='restrict')? name=FeatureName
+	':' ('as')?
+	((((containment?='containing')|(container?='container')) ('reference'('to')?)?) | ('reference'('to')?))
+	type=[restapi::Structure|QualifiedName]
+	cardinality=Cardinality?
+	('inverse'inverse=[restapi::ReferenceProperty|FeatureName])?
+	(BEGIN
+			(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+
+PrimitiveProperty returns restapi::PrimitiveProperty:
+	{restapi::PrimitiveProperty}
+	(documentation=Documentation)?
+	NL+ (restriction?='restrict')? name=FeatureName
+	':' ('to'|'as')? (readOnly?='readOnly')? (key?='key')?
+	type=[restapi::SingleValueType|QualifiedName]
+	cardinality=Cardinality?
+	(BEGIN
+		(constraints+=Constraint)*
+			(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+	
+SingleValueType returns restapi::SingleValueType: 
+	Enumeration | UserDefinedType 
+	;
+	
+// enum string Suit {SUIT_CLUBS:"clubs", SUIT_SPADES:"spades”}
+// enum int Record{ ONE:1, TWO:2 } 
+Enumeration returns restapi::Enumeration:
+	{restapi::Enumeration}
+	(documentation=Documentation)?
+	NL+ 'enum'
+	baseType=[restapi::PrimitiveType|EString]
+	name=ID 
+	BEGIN
+		(enumConstants+=EnumConstant)*
+			(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END;
+
+EnumConstant returns restapi::EnumConstant:
+	{restapi::EnumConstant}
+	(documentation=Documentation)?
+	NL+ name=EString
+	(':'(integerValue=EInt|literalValue=STRING))?
+	;
+		
+SimpleType returns restapi::SimpleType: 
+	 PrimitiveType // |UserDefinedType
+	;
+
+UserDefinedType returns restapi::UserDefinedType:
+	{restapi::UserDefinedType}
+	(documentation=Documentation)?
+	NL+ 'simpleType' name=EString 'defined'? 'as' baseType=[restapi::SimpleType|QualifiedName]
+	(BEGIN
+		(constraints+=Constraint)*
+			(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?;
+	
+Constraint returns restapi::Constraint: LengthConstraint | ValueRangeConstraint | RegExConstraint;
+
+RegExConstraint returns restapi::RegExConstraint:
+	{restapi::RegExConstraint}
+	NL 'matching'? 'regex' pattern=StringLiteral;
+	
+LengthConstraint returns restapi::LengthConstraint:
+	{restapi::LengthConstraint}
+	NL 'of'? 'length' (('from' 'minimum'? minLength=EInt)? ('up'? 'to' 'maximum'? maxLength=EInt)? | length=EInt);
+
+ValueRangeConstraint returns restapi::ValueRangeConstraint:
+	{restapi::ValueRangeConstraint}
+	NL 'with'? 'valueRange'
+	('from' 'minimum'? minValue=NumericValue ('inclusive' | minValueExclusive?='exclusive')?)?
+	('up'? 'to' 'maximum'? maxValue=NumericValue ('inclusive' | maxValueExclusive?='exclusive')?)?;
+
+PrimitiveTypesLibrary returns restapi::PrimitiveTypesLibrary:
+	{restapi::PrimitiveTypesLibrary}
+	NL+ 'primitiveTypesLibrary'
+	name=ID 
+	BEGIN
+	(primitiveTypes+=PrimitiveType)*
+	NL? END;
+		
+PrimitiveType returns restapi::PrimitiveType:
+	{restapi::PrimitiveType}
+	NL 'primitiveType'
+	name=ID;
+
+	
+Cardinality returns restapi::Cardinality:
+	('!' | '?' | '*' | '+') |
+	('[' INT '..' (INT | '*') ']');
+	
+CardinalityOverride returns restapi::CardinalityOverride:
+	('!' | '?' | '*' | '+') |
+	('[' INT '..' (INT | '*') ']');
+
+Operation returns restapi::Operation:
+	{restapi::Operation}
+	(documentation=Documentation)?
+	NL+ 'operation'
+	name=EString;
+
+/* MEDIA TYPES AND LINK RELATIONS*/	
+
+MediaTypesLibrary returns restapi::MediaTypesLibrary:
+	{restapi::MediaTypesLibrary}
+	NL+ 'MediaTypesLibrary'
+	BEGIN
+	(mediaTypes+=MediaType)*
+	NL? END
+	;
+	
+MediaType returns restapi::MediaType:
+	{restapi::MediaType}
+	(documentation=Documentation)?
+	NL+ 'mediaType'
+	name=MediaTypeQualifier
+	(BEGIN
+	(NL 'specURL' specURL=STRING)?
+	(NL 'derivedFrom' '(' (derivedFrom+=[restapi::MediaType|MediaTypeQualifier]) (',' derivedFrom+=[restapi::MediaType|MediaTypeQualifier])* ')' )?
+		(
+		NL+ 'extensions'
+		BEGIN (extensions+=Extension)+
+		NL? END
+	)?
+	NL? END)?
+	;
+	
+	
+LinkRelationsLibrary returns restapi::LinkRelationsLibrary:
+	{restapi::LinkRelationsLibrary}
+	NL+ 'linkRelationsLibrary'
+	(name=ID)?
+	(BEGIN
+		(definedLinkRelations+=LinkRelation)*
+	NL? END)?
+	;
+	
+LinkRelation returns restapi::LinkRelation:
+	{restapi::LinkRelation}
+	(documentation=Documentation)?
+	NL+ 'linkRelation'
+	name=LinkRelationName
+	('specURL' specURL=STRING)?
+	;
+	
+LinkRelationName:
+	(ID ( '-' ID )* )
+;
+
+/* AutoRealization */
+
+RealizationModelLocation returns restapi::RealizationModelLocation:
+	{restapi::RealizationModelLocation}
+	NL+ uri=STRING
+;
+
+/* Authentication support */
+
+SecuritySchemeLibrary returns restapi::SecuritySchemeLibrary: 
+	{restapi::SecuritySchemeLibrary}
+	(documentation=Documentation)?
+	NL+ 'securitySchemesLibrary'
+	name=ID
+	BEGIN
+	(securitySchemes+=SecurityScheme)*
+	NL? END
+;
+
+AuthenticationMethod returns restapi::AuthenticationMethod:
+	{restapi::AuthenticationMethod}
+	NL+ scheme=[restapi::SecurityScheme|QualifiedName]
+	(BEGIN
+	NL+ ('authorized' 'for'?)? 'scopes'
+		(BEGIN NL+ scopes+=[restapi::SecurityScope|QualifiedName] (=>(','|NL) scopes+=[restapi::SecurityScope|QualifiedName])* NL? END)?
+	NL? END)?
+;
+
+enum AuthenticationFlows returns restapi::AuthenticationFlows:
+	IMPLICIT="IMPLICIT" | PASSWORD="PASSWORD" | APPLICATION="APPLICATION" | ACCESS_CODE="ACCESS_CODE";
+
+
+SecurityScheme returns restapi::SecurityScheme:
+	{restapi::SecurityScheme}
+	(documentation=Documentation)?
+	NL+ 'securityScheme' name=ID
+	BEGIN
+		NL 'type' type=AuthenticationType
+		NL 'methodInvocation'
+		BEGIN
+			NL 'requires'? 'authorization'
+			BEGIN
+				(parameters += AuthParameter)*
+			NL? END
+			(errorResponses += TypedErrorResponse)*
+		NL? END
+		(NL 'defines'? 'scopes'
+			BEGIN
+				(scopes+=SecurityScope)+
+			NL? END
+		)?
+		(NL+ 'uses'? 'flow' flow=AuthenticationFlows)?
+		(NL 'settings'
+			BEGIN
+				(settings+=SecuritySchemeParameter)+
+			NL? END
+		)?
+		(
+			NL+ 'extensions'
+			BEGIN (extensions+=Extension)+
+			NL? END
+		)?		
+		NL? END
+;
+
+SecurityScope returns restapi::SecurityScope:
+	{restapi::SecurityScope}
+	(documentation=Documentation)?
+	NL+ name=QualifiedName
+;
+
+SecuritySchemeParameter returns restapi::SecuritySchemeParameter:
+	{restapi::SecuritySchemeParameter}
+	(documentation=Documentation)?
+	NL+ name=ID ':' value= EString
+;
+
+AuthParameter returns restapi::MessageParameter:
+	MessageParameter
+;
+
+TypedErrorResponse returns restapi::TypedResponse:
+	{restapi::TypedResponse}
+	(documentation=Documentation)?
+	NL+ 'errorResponse' 'statusCode' statusCode=EInt
+;
+
+enum AuthenticationType returns restapi::AuthenticationTypes:
+	BASIC="basic" | OAUTH2="oauth2" | CUSTOM="custom";
+	
+/* COMMON */
+
+ModelDocumentation returns restapi::Documentation:
+	{restapi::Documentation}
+	text=JAVADOC_COMMENT;
+	
+Documentation returns restapi::Documentation:
+	{restapi::Documentation}
+	NL+ text=JAVADOC_COMMENT;
+	
+Extension returns restapi::Extension:
+	{restapi::Extension}
+	NL+ name = ExtensionName ':' value=(EString | RICH_TEXT)
+	;		
+	
+ExtensionName returns ecore::EString:
+	(ID (('-'|'+'|'.') ID)*)|EString;
+	
+EInt returns ecore::EInt:
+	'-'? INT;
+
+EString returns ecore::EString:
+	STRING | ID;
+
+StringLiteral returns ecore::EString:
+	RAW_STRING | STRING;
+
+NumericValue returns ecore::EString:
+	STRING | Decimal;
+
+Decimal returns ecore::EString:
+	EInt('.'INT)?;
+	
+QualifiedName:
+	ID ('.' ID)*;
+
+PropertyPath:
+	ID ('.' ID)*;
+	
+MediaTypeQualifier:
+	MediaTypeQualifierWOAsterisk | STRING;
+	
+FeatureName:
+	EString | Keyword;
+
+/* Certain keywords, like 'title', are commonly used as property names in data models. 
+ * Normally, such keywords would need to be prefixed with a ^caret to be declared or 
+ * referenced as property names. We can allow selected keywords to be used as property
+ * names without the caret prefix by making these changes:
+ *   - add the keyword as an alternate to the Keyword rule in XtextDsl.xtext
+ *   - add the keyword to RestTerminalConverters.keywordsAsIdentifiers */
+Keyword:
+	'title';
+
+/* A rule to define or reference a media type without using quotes.
+ * Doesn't support the "*" symbols as it conflicts with ML_COMMENT terminal*/
+MediaTypeQualifierWOAsterisk:
+	MediaTypeFragment ('/' (MediaTypeFragment))?(';' MediaTypeFragment'='MediaTypeFragment)*; 
+	//should support "text/html; charset=UTF-8"
+
+MediaTypeFragment:
+	(ID ( ('-'|'+'|'.') ID )* )
+;
+
+terminal RAW_STRING  : "r" (('"' (!'"')* '"') | ("'" (!"'")* "'"));
+
+terminal JAVADOC_COMMENT returns ecore::EString	: '/**' -> '*/';
+//Define the JAVADOC_COMMENT before ML_COMMENT to be parsed correctly
+//terminal ML_COMMENT_WS   : NL ML_COMMENT;
+@Override 
+terminal ML_COMMENT      : '/* ' -> '*/';
+terminal ML_COMMENT_NL   : '/*\n' -> '*/';
+@Override 
+terminal SL_COMMENT      : '//' !('\n'|'\r')*;
+terminal NL              : ('\r'?'\n')+ '\t'*;
+terminal BEGIN           : '┌';
+terminal END             : '┐';
+@Override 
+terminal WS			: (' '|'\t')+;
+terminal RICH_TEXT       : "'''" IN_RICH_STRING* ("'''");
+terminal fragment IN_RICH_STRING : 
+	  "''" !('«'|"'") 
+	| "'" !('«'|"'")
+	| !('«'|"'");

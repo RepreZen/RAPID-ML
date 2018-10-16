@@ -1,0 +1,23 @@
+rapidModel PrimitiveTypes
+	primitiveTypesLibrary PrimitiveTypeLibrary
+		primitiveType anyURI
+		primitiveType duration
+		primitiveType base64Binary
+		primitiveType boolean
+		primitiveType date
+		primitiveType dateTime
+		primitiveType decimal
+		primitiveType double
+		primitiveType float
+		primitiveType gMonth
+		primitiveType gMonthDay
+		primitiveType gDay
+		primitiveType gYearMonth
+		primitiveType gYear
+		primitiveType QName
+		primitiveType time
+		primitiveType string
+		primitiveType NCName
+		primitiveType int
+		primitiveType integer
+		primitiveType long

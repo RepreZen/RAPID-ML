@@ -1,0 +1,236 @@
+rapidModel IANALinkRelations
+	linkRelationsLibrary
+
+		/**Refers to a resource that is the subject of the link's context.*/
+		linkRelation about specURL "http://tools.ietf.org/html/rfc6903"
+
+		/**Refers to a substitute for this context*/
+		linkRelation alternate specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-alternate"
+
+		/**Refers to an appendix.*/
+		linkRelation appendix specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**Refers to a collection of records, documents, or other materials of historical interest.*/
+		linkRelation archives specURL
+		"http://www.w3.org/TR/2011/WD-html5-20110113/links.html#rel-archives"
+
+		/**Refers to the context's author.*/
+		linkRelation author specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-author"
+
+		/**Gives a permanent link to use for bookmarking purposes.*/
+		linkRelation bookmark specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-bookmark"
+
+		/**Designates the preferred version of a resource (the IRI and its contents).*/
+		linkRelation canonical specURL "http://tools.ietf.org/html/rfc6596"
+
+		/**Refers to a chapter in a collection of resources.*/
+		linkRelation chapter specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**The target IRI points to a resource which represents the collection resource for the context IRI.*/
+		linkRelation collection specURL "http://tools.ietf.org/html/rfc6573"
+
+		/**Refers to a table of contents.*/
+		linkRelation contents specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**Refers to a copyright statement that applies to the link's context.*/
+		linkRelation copyright specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**The target IRI points to a resource where a submission form can be obtained.*/
+		linkRelation create-form specURL "http://tools.ietf.org/html/rfc6861"
+
+		/**Refers to a resource containing the most recent item(s) in a collection of resources.*/
+		linkRelation current specURL "http://tools.ietf.org/html/rfc5005"
+
+		/**Refers to a resource providing information about the link's context.*/
+		linkRelation describedby specURL
+		"http://www.w3.org/TR/powder-dr/#assoc-linking"
+
+		/**The relationship A 'describes' B asserts that resource A provides a description of resource B. There are no constraints on the format or representation of either A or B, neither are there any further constraints on either resource.*/
+		linkRelation describes specURL "http://tools.ietf.org/html/rfc6892"
+
+		/**Refers to a list of patent disclosures made with respect to material for which 'disclosure' relation is specified.*/
+		linkRelation disclosure specURL "http://tools.ietf.org/html/rfc6579"
+
+		/**Refers to a resource whose available representations are byte-for-byte identical with the corresponding representations of the context IRI.*/
+		linkRelation duplicate specURL "http://tools.ietf.org/html/rfc6249"
+
+		/**Refers to a resource that can be used to edit the link's context.*/
+		linkRelation edit specURL "http://tools.ietf.org/html/rfc5023"
+
+		/**The target IRI points to a resource where a submission form for editing associated resource can be obtained.*/
+		linkRelation edit-form specURL "http://tools.ietf.org/html/rfc6861"
+
+		/**Refers to a resource that can be used to edit media associated with the link's context.*/
+		linkRelation edit-media specURL "http://tools.ietf.org/html/rfc5023"
+
+		/**Identifies a related resource that is potentially large and might require special handling.*/
+		linkRelation enclosure specURL "http://tools.ietf.org/html/rfc4287"
+
+		/**An IRI that refers to the furthest preceding resource in a series of resources.*/
+		linkRelation first specURL "http://tools.ietf.org/html/rfc5988"
+
+		/**Refers to a glossary of terms.*/
+		linkRelation glossary specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**Refers to context-sensitive help.*/
+		linkRelation help specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-help"
+
+		/**Refers to a resource hosted by the server indicated by the link context.*/
+		linkRelation hosts specURL "http://tools.ietf.org/html/rfc6690"
+
+		/**Refers to a hub that enables registration for notification of updates to the context.*/
+		linkRelation hub specURL "http://pubsubhubbub.googlecode.com"
+
+		/**Refers to an icon representing the link's context.*/
+		linkRelation icon specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-icon"
+
+		/**Refers to an index.*/
+		linkRelation index specURL "http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**The target IRI points to a resource that is a member of the collection represented by the context IRI.*/
+		linkRelation item specURL "http://tools.ietf.org/html/rfc6573"
+
+		/**An IRI that refers to the furthest following resource in a series of resources.*/
+		linkRelation last specURL "http://tools.ietf.org/html/rfc5988"
+
+		/**Points to a resource containing the latest (e.g., current) version of the context.*/
+		linkRelation latest-version specURL "http://tools.ietf.org/html/rfc5829"
+
+		/**Refers to a license associated with this context.*/
+		linkRelation license specURL "http://tools.ietf.org/html/rfc4946"
+
+		/**Refers to further information about the link's context, expressed as a LRDD ("Link-based Resource Descriptor Document") resource. See [RFC6415] for information about processing this relation type in host-meta documents. When used elsewhere, it refers to additional links and other metadata. Multiple instances indicate additional LRDD resources. LRDD resources MUST have an "application/xrd+xml" representation, and MAY have others.*/
+		linkRelation lrdd specURL "http://tools.ietf.org/html/rfc6415"
+
+		/**The Target IRI points to a Memento, a fixed resource that will not change state anymore.*/
+		linkRelation memento specURL "http://tools.ietf.org/html/rfc7089"
+
+		/**Refers to a resource that can be used to monitor changes in an HTTP resource.*/
+		linkRelation monitor specURL "http://tools.ietf.org/html/rfc5989"
+
+		/**Refers to a resource that can be used to monitor changes in a specified group of HTTP resources.*/
+		linkRelation monitor-group specURL "http://tools.ietf.org/html/rfc5989"
+
+		/**Indicates that the link's context is a part of a series, and that the next in the series is the link target.*/
+		linkRelation next specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-next"
+
+		/**Refers to the immediately following archive resource.*/
+		linkRelation next-archive specURL "http://tools.ietf.org/html/rfc5005"
+
+		/**Indicates that the context’s original author or publisher does not endorse the link target.*/
+		linkRelation nofollow specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-nofollow"
+
+		/**Indicates that no referrer information is to be leaked when following the link.*/
+		linkRelation noreferrer specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-noreferrer"
+
+		/**The Target IRI points to an Original Resource.*/
+		linkRelation original specURL "http://tools.ietf.org/html/rfc7089"
+
+		/**Indicates a resource where payment is accepted.*/
+		linkRelation payment specURL "http://tools.ietf.org/html/rfc5988"
+
+		/**Points to a resource containing the predecessor version in the version history.*/
+		linkRelation predecessor-version specURL
+		"http://tools.ietf.org/html/rfc5829"
+
+		/**Indicates that the link target should be preemptively cached.*/
+		linkRelation prefetch specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-prefetch"
+
+		/**Indicates that the link's context is a part of a series, and that the previous in the series is the link target.*/
+		linkRelation prev specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-prev"
+
+		/**Refers to a resource that provides a preview of the link's context.*/
+		linkRelation preview specURL "http://tools.ietf.org/html/rfc6903"
+
+		/**Refers to the previous resource in an ordered series of resources. Synonym for "prev".*/
+		linkRelation previous specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**Refers to the immediately preceding archive resource.*/
+		linkRelation prev-archive specURL "http://tools.ietf.org/html/rfc5005"
+
+		/**Refers to a privacy policy associated with the link's context.*/
+		linkRelation privacy-policy specURL "http://tools.ietf.org/html/rfc6903"
+
+		/**Identifying that a resource representation conforms to a certain profile, without affecting the non-profile semantics of the resource representation.*/
+		linkRelation profile specURL "http://tools.ietf.org/html/rfc6906"
+
+		/**Identifies a related resource.*/
+		linkRelation related specURL "http://tools.ietf.org/html/rfc4287"
+
+		/**Identifies a resource that is a reply to the context of the link.*/
+		linkRelation replies specURL "http://tools.ietf.org/html/rfc4685"
+
+		/**Refers to a resource that can be used to search through the link's context and related resources.*/
+		linkRelation search specURL
+		"http://www.opensearch.org/Specifications/OpenSearch/1.1"
+
+		/**Refers to a section in a collection of resources.*/
+		linkRelation section specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**Conveys an identifier for the link's context.*/
+		linkRelation self specURL "http://tools.ietf.org/html/rfc4287"
+
+		/**Indicates a URI that can be used to retrieve a service document.*/
+		linkRelation service specURL "http://tools.ietf.org/html/rfc5023"
+
+		/**Refers to the first resource in a collection of resources.*/
+		linkRelation start specURL "http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**Refers to a stylesheet.*/
+		linkRelation stylesheet specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-stylesheet"
+
+		/**Refers to a resource serving as a subsection in a collection of resources.*/
+		linkRelation subsection specURL
+		"http://www.w3.org/TR/1999/REC-html401-19991224"
+
+		/**Points to a resource containing the successor version in the version history.*/
+		linkRelation successor-version specURL "http://tools.ietf.org/html/rfc5829"
+
+		/**Gives a tag (identified by the given address) that applies to the current document.*/
+		linkRelation tag specURL
+		"http://www.w3.org/TR/html5/links.html#link-type-tag"
+
+		/**Refers to the terms of service associated with the link's context.*/
+		linkRelation terms-of-service specURL "http://tools.ietf.org/html/rfc6903"
+
+		/**The Target IRI points to a TimeGate for an Original Resource.*/
+		linkRelation timegate specURL "http://tools.ietf.org/html/rfc7089"
+
+		/**The Target IRI points to a TimeMap for an Original Resource.*/
+		linkRelation timemap specURL "http://tools.ietf.org/html/rfc7089"
+
+		/**Refers to a resource identifying the abstract semantic type of which the link's context is considered to be an instance.*/
+		linkRelation ^type specURL "http://tools.ietf.org/html/rfc6903"
+
+		/**Refers to a parent document in a hierarchy of documents.*/
+		linkRelation up specURL "http://tools.ietf.org/html/rfc5988"
+
+		/**Points to a resource containing the version history for the context.*/
+		linkRelation version-history specURL "http://tools.ietf.org/html/rfc5829"
+
+		/**Identifies a resource that is the source of the information in the link's context.*/
+		linkRelation via specURL "http://tools.ietf.org/html/rfc4287"
+
+		/**Points to a working copy for this resource.*/
+		linkRelation working-copy specURL "http://tools.ietf.org/html/rfc5829"
+
+		/**Points to the versioned resource from which this working copy was obtained.*/
+		linkRelation working-copy-of specURL "http://tools.ietf.org/html/rfc5829"

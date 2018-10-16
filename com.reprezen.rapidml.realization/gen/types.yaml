@@ -1,0 +1,321 @@
+discriminator: _type
+types:
+- name: Base
+  fields:
+    _documentation:
+      name: Documentation
+- name: RealizationModel
+  extensionOf: Base
+  extendInterfaces:
+  - Switchable<RealizationRule>
+  imports:
+    impl:
+    - Optional
+    - Collection
+  fields:
+    name: {
+      }
+    realizationRules:
+      structure: map
+      keyName: name
+    components/realizations:
+      structure: map
+      type: ObjectRealizationStrategy
+    components/propertySets:
+      structure: map
+    components/links:
+      structure: map
+      type: LinkStrategy
+- name: RealizationRule
+  extensionOf: Base
+  extendInterfaces:
+  - ConditionedItem
+  imports:
+    impl:
+      - Collection
+  fields:
+    namingPattern: {
+      }
+    appliesTo:
+      name: Context
+      structure: collection
+      type: ContextPattern
+    realization:
+      type: ObjectRealizationStrategy
+- name: ObjectRealizationStrategy
+  extensionOf: Base
+- name: ObjectRealizationSpec
+  extensionOf: ObjectRealizationStrategy
+  fields:
+    propertySet: {
+      }
+    links:
+      structure: collection
+      type: LinkStrategy
+- name: PropertySet
+  extensionOf: Base
+  abstract: true
+  imports:
+    impl:
+    - ExclusivePropertySet
+    - InclusivePropertySet
+    - ConditionalPropertySet
+    - PropertySetSwitch
+- name: ExclusivePropertySet
+  extensionOf: PropertySet
+  fields:
+    includedProperties:
+      name: IncludedProperty
+      plural: IncludedProperties
+      structure: collection
+      type: PropertyRealization
+- name: InclusivePropertySet
+  extensionOf: PropertySet
+  fields:
+    includedProperties:
+      name: IncludedProperty
+      plural: IncludedProperties
+      structure: collection
+      type: PropertyRealization
+    excludedProperties:
+      name: ExcludedProperty
+      plural: ExcludedProperties
+      structure: collection
+      type: PropertySelector
+- name: ConditionalPropertySet
+  extensionOf: PropertySet
+  extendInterfaces:
+  - ConditionedItem
+  imports:
+    impl:
+    - Collection
+    - Collections
+  fields:
+    where:
+      type: Conditions
+    propertySet:
+      type: PropertySet
+- name: PropertySetSwitch
+  extensionOf: PropertySet
+  extendInterfaces:
+  - Switchable<ConditionalPropertySet>
+  imports:
+    impl:
+      - Collection
+  fields:
+    cases:
+      name: PropertySetCase
+      structure: collection
+      type: ConditionalPropertySet
+- name: AbstractPropertySelector
+  extensionOf: Base
+  abstract: true
+  fields:
+    readWritability:
+      type: ReadWriteSelector
+    multiplicity:
+      type: MultiplicitySelector
+    isRequired:
+      name: Required
+      type: Boolean
+- name: PropertySelector
+  extensionOf: AbstractPropertySelector
+  fields:
+    propertyType:
+      type: PropertyTypeSelector
+- name: PropertyTypeSelector
+  extensionOf: Base
+- name: PrimitivePropertySelector
+  fields:
+    isKey:
+      type: Boolean
+  renames:
+    isIsKey: isKey
+  extensionOf: PropertyTypeSelector
+- name: ReferencePropertySelector
+  extensionOf: PropertyTypeSelector
+  fields:
+    containment:
+      type: ContainmentSelector
+    autoLinkableToObjectResource:
+      type: Boolean
+    autoLinkableToCollectionResource:
+      type: Boolean
+    hasKeys:
+      type: Boolean
+  renames:
+    isHasKeys: hasKeys
+- name: Conditions
+  extensionOf: Base
+  fields:
+    autoLinkableToObjectResource:
+      type: Boolean
+    autoLinkableToCollectionResource:
+      type: Boolean
+    hasKeys:
+      type: Boolean
+  renames:
+    isHasKeys: hasKeys
+- name: ContextPattern
+  extensionOf: Conditions
+  fields:
+    resourceType:
+      type: ResourceTypeSelector
+    definedIn:
+      type: DefinitionContext
+    level:
+      type: ReferenceLevelContext
+- name: DefinitionContext
+  extensionOf: Base
+- name: ResourceDefinitionContext
+  extensionOf: DefinitionContext
+- name: MessageDefinitionContext
+  extensionOf: DefinitionContext
+  fields:
+    methodType:
+      type: MethodTypeSelector
+    messageType:
+      type: MessageTypeSelector
+- name: ReferenceLevelContext
+  extensionOf: Base
+- name: RootObjectContext
+  extensionOf: ReferenceLevelContext
+- name: ReferencePropertyContext
+  extensionOf: ReferenceLevelContext
+  fields:
+    multiplicity:
+      type: MultiplicitySelector
+    readWritability:
+      type: ReadWriteSelector
+    isRequired:
+      name: Required
+      type: Boolean
+    containment:
+      type: ContainmentSelector
+- name: PropertyRealization
+  extensionOf: AbstractPropertySelector
+  fields:
+    propertyType:
+      type: PropertyTypeRealization
+- name: PropertyTypeRealization
+  extensionOf: Base
+- name: PrimitivePropertyRealization
+  extensionOf: PropertyTypeRealization
+  fields:
+    isKey:
+      type: Boolean
+  renames:
+    isIsKey: isKey
+- name: ReferencePropertyRealization
+  extensionOf: PropertyTypeRealization
+  fields:
+    containment:
+      type: ContainmentSelector
+    autoLinkableToObjectResource:
+      type: Boolean
+    autoLinkableToCollectionResource:
+      type: Boolean
+    hasKeys:
+      type: Boolean
+    realization:
+      type: ObjectRealizationStrategy
+- name: LinkStrategy
+  extensionOf: Base
+  abstract: true
+  imports:
+    impl:
+    - Collection
+    - Collections
+  discriminator: strategy
+- name: LinkSpec
+  extensionOf: LinkStrategy
+  discriminatorValue: specification
+  fields:
+    targetResourceType: {
+      }
+    linkRelation: {
+      }
+- name: LinkSwitch
+  extensionOf: LinkStrategy
+  extendInterfaces:
+  - Switchable<ConditionalLink>
+  imports:
+    impl:
+      - Collection
+  discriminatorValue: switch
+  fields:
+    cases:
+      name: LinkCase
+      structure: collection
+      type: ConditionalLink
+- name: ConditionalLink
+  extensionOf: LinkStrategy
+  extendInterfaces:
+  - ConditionedItem
+  discriminatorValue: conditional
+  imports:
+    impl:
+    - Collection
+    - Collections
+  fields:
+    where:
+      type: Conditions
+    link:
+      type: LinkStrategy
+- name: MultiplicitySelector
+  enumValues:
+  - SINGLE_VALUED
+  - MULTI_VALUED
+- name: ReadWriteSelector
+  enumValues:
+  - READABLE
+  - READ_ONLY
+  - WRITABLE
+  - WRITE_ONLY
+  - READ_WRITE
+- name: ContainmentSelector
+  enumValues:
+  - CONTAINING
+  - NON_CONTAINING
+  - CONTAINER
+  - NON_CONTAINER
+  - CONTAINMENT
+  - NON_CONTAINMENT
+- name: ResourceTypeSelector
+  enumValues:
+  - OBJECT_RESOURCE
+  - COLLECTION_RESOURCE
+- name: MessageTypeSelector
+  enumValues:
+  - REQUEST
+  - RESPONSE
+  - INFORMATIONAL_1xx_RESPONSE
+  - SUCCESSFUL_2xx_RESPONSE
+  - REDIRECTION_3xx_RESPONSE
+  - CLIENT_ERROR_4xx_RESPONSE
+  - SERVER_ERROR_5xx_RESPONSE
+- name: MethodTypeSelector
+  enumValues:
+  - READ_METHOD
+  - WRITE_METHOD
+  - GET_METHOD
+  - POST_METHOD
+  - PUT_METHOD
+  - PATCH_METHOD
+  - DELETE_METHOD
+  - OPTIONS_METHOD
+  - HEAD_METHOD
+  - TRACE_METHOD
+  - CONNECT_METHOD
+- name: TargetResourceType
+  enumValues:
+  - THIS_RESOURCE
+  - AUTO_LINK_OBJECT_RESOURCE
+  - AUTO_LINK_COLLECTION_RESOURCE
+imports:
+  ExclusivePropertySet: _intf
+  InclusivePropertySet: _intf
+  ConditionedItem: _intf
+  Switchable: _intf
+  Collections: java.util.Collections
+  Collection: java.util.Collection

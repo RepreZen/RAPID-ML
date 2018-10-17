@@ -177,9 +177,9 @@ public abstract class WorkspaceUtils {
 //    }
 //
 //    // TODO 1757 investigate all uses
-//    public static boolean isZenExtension(String extension) {
-//        return RapidFileExtensions.includes(extension);
-//    }
+    public static boolean isZenExtension(String extension) {
+        return RapidFileExtensions.includes(extension);
+    }
 //
 //    // TODO 1757 investigate all uses
 //    public static boolean isSwaggerExtension(String extension) {

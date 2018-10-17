@@ -3,6 +3,8 @@
  */
 package com.modelsolv.reprezen.restapi.xtext
 
+import org.eclipse.emf.ecore.EPackage
+import com.modelsolv.reprezen.restapi.RestapiPackage
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
@@ -10,6 +12,9 @@ package com.modelsolv.reprezen.restapi.xtext
 class RapidMLStandaloneSetup extends RapidMLStandaloneSetupGenerated {
 
 	def static doSetup() {
+		if (!EPackage.Registry.INSTANCE.containsKey(RestapiPackage.eNS_URI))
+            EPackage.Registry.INSTANCE.put(RestapiPackage.eNS_URI, RestapiPackage.eINSTANCE);
+
 		new RapidMLStandaloneSetup().createInjectorAndDoEMFRegistration()
 	}
 }

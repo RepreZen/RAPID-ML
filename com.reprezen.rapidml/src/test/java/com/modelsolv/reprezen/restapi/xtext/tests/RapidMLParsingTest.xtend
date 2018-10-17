@@ -3,16 +3,18 @@
  */
 package com.modelsolv.reprezen.restapi.xtext.tests
 
+import com.google.common.io.Resources
 import com.google.inject.Inject
 import com.modelsolv.reprezen.restapi.ZenModel
+import java.nio.charset.Charset
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import com.google.common.io.Resources
-import java.nio.charset.Charset
+
+import static org.junit.Assert.*
+import org.junit.Before
 
 @RunWith(XtextRunner)
 @InjectWith(RapidMLInjectorProvider)
@@ -21,35 +23,34 @@ class RapidMLParsingTest {
 	@Inject
 	ParseHelper<ZenModel> parseHelper
 
+
 	@Test
 	def void testStructure() {
 		val result = parseHelper.parse('''
-		rapidModel TaxBlaster
-			dataModel TaxBlasterDataModel
-				structure TaxFiling
-					many: string*
+			rapidModel FooModel
+				dataModel FooDataModel
+					structure Foo
+						single: string
+						many: string*
+						singleRef: Foo
+						manyRef: Foo*
 		''')
-		
-		Assert.assertNotNull(result)
+
+		assertNotNull(result)
 		val errors = result.eResource.errors
-		errors.forEach [
-			println(it.message + " " + it.line + " " + it.column)
-		]
-		Assert.assertTrue(errors.isEmpty)			
+		assertTrue(errors.isEmpty)
 	}
 
 	@Test
-	def void loadModel() {		
-		val result = parseHelper.parse(Resources.toString(
+	def void loadModel() {
+		val model = Resources.toString(
 			Resources.getResource("TaxBlaster.rapid"),
 			Charset.forName("UTF-8")
-		))
-		Assert.assertNotNull(result)
+		)
+		println(model)
+		val result = parseHelper.parse(model)
+		assertNotNull(result)
 		val errors = result.eResource.errors
-		errors.forEach [
-			println(it.message + " " + it.line + " " + it.column)
-		]
-
-		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
+		assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
 	}
 }

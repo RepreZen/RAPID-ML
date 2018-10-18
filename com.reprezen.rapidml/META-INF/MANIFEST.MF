@@ -2,18 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.modelsolv.reprezen.restapi.xtext;singleton:=true
-Automatic-Module-Name: com.modelsolv.reprezen.restapi
+Automatic-Module-Name: com.modelsolv.reprezen.restapi.xtext
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: com.modelsolv.reprezen,
- com.modelsolv.reprezen.core,
+Export-Package: com.modelsolv.reprezen.core,
  com.modelsolv.reprezen.core.debug,
  com.modelsolv.reprezen.core.util,
  com.modelsolv.reprezen.core.workspace,
- com.modelsolv.reprezen.restapi,
  com.modelsolv.reprezen.restapi.xtext,
  com.modelsolv.reprezen.restapi.xtext.conversion,
  com.modelsolv.reprezen.restapi.xtext.formatting,

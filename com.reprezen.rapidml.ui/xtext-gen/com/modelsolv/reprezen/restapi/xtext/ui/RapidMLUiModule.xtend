@@ -24,13 +24,13 @@ import com.modelsolv.reprezen.restapi.xtext.ui.syntaxcoloring.RepreZenHighlighti
 import com.modelsolv.reprezen.restapi.xtext.ui.syntaxcoloring.RepreZenSemanticHighlightingCalculator
 import com.modelsolv.reprezen.restapi.xtext.ui.validation.RepreZenValidatorConfigurationBlock
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtext.ide.editor.contentassist.antlr.IContentAssistParser
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.eclipse.xtext.ui.editor.XtextSourceViewer
-import org.eclipse.xtext.ui.editor.XtextSourceViewer.Factory
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.FQNPrefixMatcher.LastSegmentFinder
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider
-import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider
 import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory
 import org.eclipse.xtext.ui.editor.hover.IEObjectHover
@@ -44,6 +44,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeI
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator
 import org.eclipse.xtext.ui.validation.AbstractValidatorConfigurationBlock
+import org.eclipse.ui.plugin.AbstractUIPlugin
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -111,11 +112,11 @@ class RapidMLUiModule extends AbstractRapidMLUiModule {
 		return RepreZenContentFormatterFactory
 	}
 
-	override bindContentAssistContext$Factory() {
-		return RepreZenContentAssistContextFactory
-	}
+//	override Class<? extends ContentAssistContext.Factory> bindContentAssistContext$Factory() {		
+//		return RepreZenContentAssistContextFactory
+//	}
 
-	override bindIContentAssistParser() {
+	override Class<? extends IContentAssistParser> bindIContentAssistParser() {
 		return RepreZenContentAssistParser
 	}
 
@@ -134,4 +135,5 @@ class RapidMLUiModule extends AbstractRapidMLUiModule {
 	override bindIResourceForEditorInputFactory() {
 		return RepreZenResourceForIEditorInputFactory
 	}
+
 }

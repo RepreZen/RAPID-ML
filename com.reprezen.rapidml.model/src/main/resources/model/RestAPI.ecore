@@ -498,6 +498,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="HasTitle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MediaTypesLibrary">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mediaTypes" lowerBound="1"
+        upperBound="-1" eType="#//MediaType" unsettable="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkRelationsLibrary">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definedLinkRelations" upperBound="-1"
+        eType="#//LinkRelation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveTypesLibrary">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primitiveTypes" upperBound="-1"
+        eType="#//PrimitiveType" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//Documentable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -692,18 +706,4 @@
         eType="#//Constraint" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Inheritable" abstract="true" interface="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MediaTypesLibrary">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mediaTypes" lowerBound="1"
-        upperBound="-1" eType="#//MediaType" unsettable="true" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LinkRelationsLibrary">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="definedLinkRelations" upperBound="-1"
-        eType="#//LinkRelation" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveTypesLibrary">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="primitiveTypes" upperBound="-1"
-        eType="#//PrimitiveType" containment="true"/>
-  </eClassifiers>
 </ecore:EPackage>

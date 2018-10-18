@@ -24,7 +24,6 @@
 'GET'=145
 'HEAD'=144
 'IMPLICIT'=152
-'MediaTypesLibrary'=123
 'OPTIONS'=149
 'PASSWORD'=153
 'PATCH'=146
@@ -86,6 +85,7 @@
 'maximum'=112
 'mediaType'=124
 'mediaTypes'=39
+'mediaTypesLibrary'=123
 'method'=76
 'methodInvocation'=133
 'minimum'=110

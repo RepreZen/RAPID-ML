@@ -12,5 +12,8 @@ Export-Package: com.modelsolv.reprezen.realization.model,
  com.modelsolv.reprezen.realization.model.impl,
  com.modelsolv.reprezen.realization.parser
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ com.reprezen.kaizen.openapi-parser;bundle-version="4.0.1",
+ com.reprezen.jsonoverlay;bundle-version="4.0.1",
+ com.modelsolv.reprezen.bundles;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

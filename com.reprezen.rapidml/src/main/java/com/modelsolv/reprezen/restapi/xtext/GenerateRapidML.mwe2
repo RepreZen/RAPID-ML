@@ -9,6 +9,14 @@ var rootPath = ".."
 
 Workflow {
 
+//	bean = StandaloneSetup {
+//		scanClassPath  = true
+//		platformUri = "${rootPath}"
+////		registerGeneratedEPackage = "org.eclipse.xsd.XSDPackage"
+//		registerGeneratedEPackage = "com.modelsolv.reprezen.restapi.datatypes.DatatypesPackage"
+//		registerGeneratedEPackage = "com.modelsolv.reprezen.restapi.libraries.LibrariesPackage"
+//		registerGeneratedEPackage = "com.modelsolv.reprezen.restapi.RestapiPackage"
+//	}
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -35,7 +43,7 @@ Workflow {
 		}
 		language = StandardLanguage {
 			name = "com.modelsolv.reprezen.restapi.xtext.RapidML"
-			fileExtensions = "rapid"
+			fileExtensions = "rapid"			
 			referencedResource = "platform:/resource/com.reprezen.rapidml.model/model/RestAPI.genmodel"
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
@@ -50,7 +58,7 @@ Workflow {
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 				// Generates checks for @Deprecated grammar annotations, an IssueProvider and a corresponding PropertyPage
-				generateDeprecationValidation = true
+//				generateDeprecationValidation = true
 			}
 		}
 	}

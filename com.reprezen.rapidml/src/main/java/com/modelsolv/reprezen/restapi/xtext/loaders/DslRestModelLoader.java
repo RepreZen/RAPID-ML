@@ -105,7 +105,7 @@ public class DslRestModelLoader implements RestModelLoader {
 
         Injector injector = Guice.createInjector(new RapidMLRuntimeModule());
         XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
-        resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+        resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);        
         org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(modelPath, true);
         ZenModel model = (ZenModel) resource.getContents().get(0);
         return model;

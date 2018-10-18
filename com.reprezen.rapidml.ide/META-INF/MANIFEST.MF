@@ -12,5 +12,10 @@ Export-Package: com.modelsolv.reprezen.restapi.xtext.ide,
  com.modelsolv.reprezen.restapi.xtext.ide.contentassist.antlr,
  com.modelsolv.reprezen.restapi.xtext.ide.contentassist.antlr.internal
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.xtext,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtext.xbase.ide,
+ com.modelsolv.reprezen.restapi.xtext;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

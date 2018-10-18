@@ -1,3 +1,6 @@
 xtend-gen
 target
+xtendbin
 bin
+xtextbin
+.DS_Store

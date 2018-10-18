@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalRapidMLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_NL", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_RICH_TEXT", "RULE_RAW_STRING", "RULE_BEGIN", "RULE_END", "RULE_JAVADOC_COMMENT", "RULE_ML_COMMENT", "RULE_ML_COMMENT_NL", "RULE_SL_COMMENT", "RULE_WS", "RULE_IN_RICH_STRING", "RULE_ANY_OTHER", "'title'", "','", "'@'", "'-'", "'.'", "'_'", "'~'", "'!'", "'$'", "'&'", "'\\''", "'('", "')'", "'*'", "'+'", "';'", "'='", "'to'", "'as'", "'inclusive'", "'?'", "'PUT'", "'POST'", "'DELETE'", "'HEAD'", "'GET'", "'PATCH'", "'TRACE'", "'CONNECT'", "'OPTIONS'", "'header'", "'query'", "'IMPLICIT'", "'PASSWORD'", "'APPLICATION'", "'ACCESS_CODE'", "'basic'", "'oauth2'", "'custom'", "'namespace '", "'rapidModel'", "'with'", "'extensions'", "'import'", "'from'", "'resourceAPI'", "'version'", "'baseURI'", "'secured'", "'by'", "'autoRealizations'", "'collectionResource'", "'type'", "'bound'", "'URI'", "'mediaTypes'", "'objectResource'", "'only'", "'properties'", "'all'", "'including'", "'excluding'", "'/'", "'{'", "'}'", "'%'", "'param'", "'located'", "'in'", "'default'", "'fixed'", "'collectionParam'", "'matrixParam'", "'templateParam'", "'property'", "'of'", "'method'", "'request'", "'resource'", "'response'", "'statusCode'", "'example'", "'externalExample'", "'referenceEmbed'", "'>'", "'referenceLink'", "'linkRelation'", "'targetResource'", "'linkDescriptor'", "'targetProperties'", "'dataModel'", "'structure'", "'extends'", "'and'", "'dataExample'", "':'", "'reference'", "'inverse'", "'enum'", "'simpleType'", "'defined'", "'matching'", "'regex'", "'length'", "'minimum'", "'up'", "'maximum'", "'valueRange'", "'primitiveTypesLibrary'", "'primitiveType'", "'['", "'..'", "']'", "'operation'", "'MediaTypesLibrary'", "'mediaType'", "'specURL'", "'derivedFrom'", "'linkRelationsLibrary'", "'securitySchemesLibrary'", "'scopes'", "'authorized'", "'for'", "'securityScheme'", "'methodInvocation'", "'requires'", "'authorization'", "'defines'", "'uses'", "'flow'", "'settings'", "'errorResponse'", "'required'", "'this'", "'restrict'", "'containing'", "'container'", "'readOnly'", "'key'", "'exclusive'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_NL", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_RICH_TEXT", "RULE_RAW_STRING", "RULE_BEGIN", "RULE_END", "RULE_JAVADOC_COMMENT", "RULE_ML_COMMENT", "RULE_ML_COMMENT_NL", "RULE_SL_COMMENT", "RULE_WS", "RULE_IN_RICH_STRING", "RULE_ANY_OTHER", "'title'", "','", "'@'", "'-'", "'.'", "'_'", "'~'", "'!'", "'$'", "'&'", "'\\''", "'('", "')'", "'*'", "'+'", "';'", "'='", "'to'", "'as'", "'inclusive'", "'?'", "'PUT'", "'POST'", "'DELETE'", "'HEAD'", "'GET'", "'PATCH'", "'TRACE'", "'CONNECT'", "'OPTIONS'", "'header'", "'query'", "'IMPLICIT'", "'PASSWORD'", "'APPLICATION'", "'ACCESS_CODE'", "'basic'", "'oauth2'", "'custom'", "'namespace '", "'rapidModel'", "'with'", "'extensions'", "'import'", "'from'", "'resourceAPI'", "'version'", "'baseURI'", "'secured'", "'by'", "'autoRealizations'", "'collectionResource'", "'type'", "'bound'", "'URI'", "'mediaTypes'", "'objectResource'", "'only'", "'properties'", "'all'", "'including'", "'excluding'", "'/'", "'{'", "'}'", "'%'", "'param'", "'located'", "'in'", "'default'", "'fixed'", "'collectionParam'", "'matrixParam'", "'templateParam'", "'property'", "'of'", "'method'", "'request'", "'resource'", "'response'", "'statusCode'", "'example'", "'externalExample'", "'referenceEmbed'", "'>'", "'referenceLink'", "'linkRelation'", "'targetResource'", "'linkDescriptor'", "'targetProperties'", "'dataModel'", "'structure'", "'extends'", "'and'", "'dataExample'", "':'", "'reference'", "'inverse'", "'enum'", "'simpleType'", "'defined'", "'matching'", "'regex'", "'length'", "'minimum'", "'up'", "'maximum'", "'valueRange'", "'primitiveTypesLibrary'", "'primitiveType'", "'['", "'..'", "']'", "'operation'", "'mediaTypesLibrary'", "'mediaType'", "'specURL'", "'derivedFrom'", "'linkRelationsLibrary'", "'securitySchemesLibrary'", "'scopes'", "'authorized'", "'for'", "'securityScheme'", "'methodInvocation'", "'requires'", "'authorization'", "'defines'", "'uses'", "'flow'", "'settings'", "'errorResponse'", "'required'", "'this'", "'restrict'", "'containing'", "'container'", "'readOnly'", "'key'", "'exclusive'"
     };
     public static final int T__144=144;
     public static final int T__143=143;
@@ -82045,17 +82045,17 @@ public class InternalRapidMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MediaTypesLibrary__Group__2__Impl"
-    // InternalRapidML.g:24305:1: rule__MediaTypesLibrary__Group__2__Impl : ( 'MediaTypesLibrary' ) ;
+    // InternalRapidML.g:24305:1: rule__MediaTypesLibrary__Group__2__Impl : ( 'mediaTypesLibrary' ) ;
     public final void rule__MediaTypesLibrary__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRapidML.g:24309:1: ( ( 'MediaTypesLibrary' ) )
-            // InternalRapidML.g:24310:1: ( 'MediaTypesLibrary' )
+            // InternalRapidML.g:24309:1: ( ( 'mediaTypesLibrary' ) )
+            // InternalRapidML.g:24310:1: ( 'mediaTypesLibrary' )
             {
-            // InternalRapidML.g:24310:1: ( 'MediaTypesLibrary' )
-            // InternalRapidML.g:24311:2: 'MediaTypesLibrary'
+            // InternalRapidML.g:24310:1: ( 'mediaTypesLibrary' )
+            // InternalRapidML.g:24311:2: 'mediaTypesLibrary'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getMediaTypesLibraryAccess().getMediaTypesLibraryKeyword_2()); 

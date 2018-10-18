@@ -3,9 +3,8 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright © 2013-2016 Modelsolv, Inc.&#xA;All Rights Reserved.&#xA;&#xA;NOTICE: All information contained herein is, and remains the property&#xA;of ModelSolv, Inc. See the file license.html in the root directory of&#xA;this project for further information."
     modelDirectory="/com.reprezen.rapidml.model/src/main/java" editDirectory="/com.modelsolv.reprezen.restapi.edit/src"
     editorDirectory="/com.modelsolv.reprezen.restapi.editor/src" modelPluginID="com.modelsolv.reprezen.restapi"
-    modelName="RestAPI" importerID="org.eclipse.emf.importer.ecore" bundleManifest="false"
-    complianceLevel="8.0" copyrightFields="false" editPluginID="com.modelsolv.reprezen.restapi.edit"
-    runtimeVersion="2.12">
+    modelName="RestAPI" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" editPluginID="com.modelsolv.reprezen.restapi.edit">
   <foreignModel>RestAPI.ecore</foreignModel>
   <genPackages prefix="Restapi" basePackage="com.modelsolv.reprezen" disposableProviderFactory="true"
       ecorePackage="RestAPI.ecore#/">
@@ -65,15 +64,13 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//TypedMessage/resourceType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//TypedMessage/useParentTypeReference"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//TypedMessage/mediaTypes"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/getAllExamples"
-          body="return com.modelsolv.reprezen.restapi.util.ExampleUtils.getAllExamples(this);"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/isIncluded" body="return com.modelsolv.reprezen.restapi.util.RestapiModelUtils.isFeatureIncluded(this, feature);">
+      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/getAllExamples"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/isIncluded">
         <genParameters ecoreParameter="RestAPI.ecore#//TypedMessage/isIncluded/feature"/>
       </genOperations>
       <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/getIncludedProperties"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/getActualType" body="Structure structure = getDataType();&#xA;if (structure == null &amp;&amp; getResourceType() instanceof com.modelsolv.reprezen.restapi.ServiceDataResource) {&#xA;    structure = ((com.modelsolv.reprezen.restapi.ServiceDataResource) getResourceType()).getDataType();&#xA;}&#xA;return structure;&#xD;&#xA;"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/getReferenceLinks"
-          body="Collection&lt;ReferenceLink> referenceTreatments = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getReferenceTreatments(), ReferenceLink.class));&#xD;&#xA;return new org.eclipse.emf.common.util.BasicEList&lt;ReferenceLink>(referenceTreatments);"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/getActualType"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//TypedMessage/getReferenceLinks"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//Method">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//Method/request"/>
@@ -81,7 +78,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Method/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Method/httpMethod"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RestAPI.ecore#//Method/containingResourceDefinition"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Method/getName" body="if (getId() == null || Strings.isNullOrEmpty(getId().trim())) {&#xA;    return getHttpMethod().toString().toLowerCase() + getContainingResourceDefinition().getName();&#xA;}&#xA;return getId();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Method/getName"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Parameter/name"/>
@@ -89,9 +86,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Parameter/default"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Parameter/fixed"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//Parameter/sourceReference"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Parameter/getType" body="return getSourceReference().getType();"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Parameter/getPrimitiveType" body="return getType().getPrimitiveType();"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Parameter/getConstraints" body="return getSourceReference().getConstraints();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Parameter/getType"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Parameter/getPrimitiveType"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Parameter/getConstraints"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//RESTElement"/>
     <genClasses ecoreClass="RestAPI.ecore#//Documentation">
@@ -104,8 +101,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//MediaType/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//MediaType/specURL"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//MediaType/derivedFrom"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//MediaType/hashCode" body="return null == getName() ? 0 : getName().hashCode();"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//MediaType/equals" body="if (other == null || !(other instanceof MediaType)) {&#xD;&#xA;    return false;&#xD;&#xA;}&#xD;&#xA;MediaType otherMediaType = (MediaType) other;&#xD;&#xA;String otherName = otherMediaType.getName();&#xD;&#xA;String thisName = this.getName();        &#xD;&#xA;if (otherName == null &amp;&amp; thisName == null) {&#xD;&#xA;    return true;&#xD;&#xA;}&#xD;&#xA;if (otherName == null || thisName == null) {&#xD;&#xA;&#x9;return false;&#xD;&#xA;}       &#xD;&#xA;// Media types are not case sensitive.&#xD;&#xA;return thisName.equalsIgnoreCase((otherName));">
+      <genOperations ecoreOperation="RestAPI.ecore#//MediaType/hashCode"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//MediaType/equals">
         <genParameters ecoreParameter="RestAPI.ecore#//MediaType/equals/other"/>
       </genOperations>
     </genClasses>
@@ -119,7 +116,7 @@
     <genClasses ecoreClass="RestAPI.ecore#//URIParameter">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//URIParameter/uriSegment"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RestAPI.ecore#//URIParameter/containingURI"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//URIParameter/getName" body="if (uriSegment != null) {&#xD;&#xA;    return uriSegment.getName();&#xD;&#xA;}&#xD;&#xA;return name;"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//URIParameter/getName"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//MatrixParameter"/>
     <genClasses ecoreClass="RestAPI.ecore#//TemplateParameter"/>
@@ -134,9 +131,8 @@
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//PropertyReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//PropertyReference/conceptualFeature"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PropertyReference/getType" body="return getConceptualFeature().getType();"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PropertyReference/getConstraints"
-          body="return getConceptualFeature().getConstraints();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PropertyReference/getType"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PropertyReference/getConstraints"/>
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//SourceReference">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RestAPI.ecore#//SourceReference/containingParameter"/>
@@ -174,24 +170,19 @@
     <genClasses ecoreClass="RestAPI.ecore#//ServiceDataResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//ServiceDataResource/default"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ServiceDataResource/definedLinkDescriptors"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/getDefaultLinkDescriptor"
-          body="return com.modelsolv.reprezen.restapi.util.RestapiModelUtils.getDefaultLinkDescriptor(this);"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/isIncluded"
-          body="return com.modelsolv.reprezen.restapi.util.RestapiModelUtils.isFeatureIncluded(this, feature);">
+      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/getDefaultLinkDescriptor"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/isIncluded">
         <genParameters ecoreParameter="RestAPI.ecore#//ServiceDataResource/isIncluded/feature"/>
       </genOperations>
-      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/getReferenceLinks"
-          body="Collection&lt;ReferenceLink> referenceTreatments = Lists.newArrayList(Iterables.filter(getReferenceTreatments(), ReferenceLink.class));&#xA;return new BasicEList&lt;ReferenceLink>(referenceTreatments);"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/getAllReferenceTreatments"
-          body="List&lt;ReferenceTreatment> allReferenceTreatments = Lists.newArrayList(getReferenceTreatments());&#xA;Iterable&lt;ReferenceEmbed> referenceEmbeds = Iterables.filter(allReferenceTreatments, ReferenceEmbed.class);&#xA;Iterable&lt;List&lt;ReferenceTreatment>> nestedReferenceTreatmentsAsList = Iterables.transform(referenceEmbeds,&#xA;        new Function&lt;ReferenceEmbed, List&lt;ReferenceTreatment>>() {&#xA;&#xA;            @Override&#xA;            public List&lt;ReferenceTreatment> apply(ReferenceEmbed input) {&#xA;                return input.getAllNestedReferenceTreatments();&#xA;            }&#xA;        });&#xA;Iterable&lt;ReferenceTreatment> flatNestedReferenceTreatments = Iterables.concat(nestedReferenceTreatmentsAsList);&#xA;allReferenceTreatments.addAll(Lists.newArrayList(flatNestedReferenceTreatments));&#xA;return ECollections.unmodifiableEList(allReferenceTreatments);"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/getReferenceLinks"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/getAllReferenceTreatments"/>
       <genOperations ecoreOperation="RestAPI.ecore#//ServiceDataResource/getIncludedProperties"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//ReferenceTreatment">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ReferenceTreatment/referenceElement"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ReferenceTreatment/referenceRealization"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ReferenceTreatment/ownedReferenceRealization"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ReferenceTreatment/getEmbedHierarchy"
-          body="EObject container = eContainer();&#xA;if (container instanceof ReferenceRealization) {&#xA;    // use containers of the parent ReferenceRealization&#xA;    container = container.eContainer();&#xA;}&#xA;if (container instanceof ReferenceEmbed) {&#xA;    ReferenceEmbed parentEmbed = (ReferenceEmbed)container;&#xA;    List&lt;ReferenceEmbed> hierarchy = Lists.newArrayList(parentEmbed.getEmbedHierarchy());&#xA;    hierarchy.add(parentEmbed);&#xA;    return ECollections.unmodifiableEList(hierarchy);&#xA;}&#xA;return ECollections.emptyEList();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ReferenceTreatment/getEmbedHierarchy"/>
       <genOperations ecoreOperation="RestAPI.ecore#//ReferenceTreatment/getLinkDescriptor"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//ReferenceRealization">
@@ -207,10 +198,8 @@
       <genOperations ecoreOperation="RestAPI.ecore#//ReferenceLink/getTargetResource"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//ReferenceEmbed">
-      <genOperations ecoreOperation="RestAPI.ecore#//ReferenceEmbed/getAllNestedReferenceTreatments"
-          body="if (getReferenceRealization() == null) {&#xA;    return ECollections.emptyEList();&#xA;}&#xA;List&lt;ReferenceTreatment> allReferenceTreatments = Lists.newArrayList(getReferenceRealization().getReferenceTreatments());&#xA;Iterable&lt;ReferenceEmbed> referenceEmbeds = Iterables.filter(allReferenceTreatments, ReferenceEmbed.class);&#xA;Iterable&lt;List&lt;ReferenceTreatment>> nestedReferenceTreatmentsAsList = Iterables.transform(referenceEmbeds,&#xA;        new Function&lt;ReferenceEmbed, List&lt;ReferenceTreatment>>() {&#xA;&#xA;            @Override&#xA;            public List&lt;ReferenceTreatment> apply(ReferenceEmbed input) {&#xA;                return input.getAllNestedReferenceTreatments();&#xA;            }&#xA;        });&#xA;Iterable&lt;ReferenceTreatment> flatNestedReferenceTreatments = Iterables.concat(nestedReferenceTreatmentsAsList);&#xA;allReferenceTreatments.addAll(Lists.newArrayList(flatNestedReferenceTreatments));&#xA;return ECollections.unmodifiableEList(allReferenceTreatments);"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ReferenceEmbed/getNestedReferenceTreatments"
-          body="if (getReferenceRealization() == null) {&#xA;    return ECollections.emptyEList();&#xA;}&#xA;return getReferenceRealization().getReferenceTreatments();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ReferenceEmbed/getAllNestedReferenceTreatments"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ReferenceEmbed/getNestedReferenceTreatments"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//NamedLinkDescriptor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//NamedLinkDescriptor/name"/>
@@ -221,10 +210,8 @@
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//PrimitiveTypeSourceReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//PrimitiveTypeSourceReference/simpleType"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveTypeSourceReference/getType"
-          body="return getSimpleType();"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveTypeSourceReference/getConstraints"
-          body="if (getSimpleType() instanceof ConstrainableType) {&#xA;    return ((ConstrainableType)getSimpleType()).getConstraints();&#xA;}&#xA;return ECollections.emptyEList();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveTypeSourceReference/getType"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveTypeSourceReference/getConstraints"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//URI">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//URI/segments"/>
@@ -237,12 +224,9 @@
     <genClasses ecoreClass="RestAPI.ecore#//PropertyRealization">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//PropertyRealization/baseProperty"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//PropertyRealization/cardinality"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PropertyRealization/getMinOccurs"
-          body="if (getCardinality() == null || getCardinality().length != 2) {&#xA;     return getBaseProperty().getMinOccurs();&#xA;}&#xA;return getCardinality()[0];"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PropertyRealization/getMaxOccurs"
-          body="if (getCardinality() == null || getCardinality().length != 2) {&#xA;     return getBaseProperty().getMaxOccurs();&#xA;}&#xA;return getCardinality()[1];"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PropertyRealization/getPrimitiveType"
-          body="if (getBaseProperty() instanceof PrimitiveProperty) {&#xA;    return ((PrimitiveProperty) getBaseProperty()).getPrimitiveType();&#xA;}&#xA;return null;"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PropertyRealization/getMinOccurs"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PropertyRealization/getMaxOccurs"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PropertyRealization/getPrimitiveType"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//LinkRelation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//LinkRelation/name"/>
@@ -259,10 +243,10 @@
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//ExternalExample">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//ExternalExample/path"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ExternalExample/getBody" body="return ExampleUtils.getBody(this);"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ExternalExample/getBody"/>
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//HasStringValue">
-      <genOperations ecoreOperation="RestAPI.ecore#//HasStringValue/toString" body="if (eIsProxy()) {&#xD;&#xA;&#x9;return super.toString();&#xD;&#xA;}&#xD;&#xA;StringBuffer result = new StringBuffer(super.toString());&#xD;&#xA;return com.modelsolv.reprezen.restapi.util.RestapiModelUtils.getStringValue(this, result);"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//HasStringValue/toString"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//ImportDeclaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//ImportDeclaration/importURI"/>
@@ -275,14 +259,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ObjectRealization/overriddenPropertyList"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ObjectRealization/excludedProperties"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RestAPI.ecore#//ObjectRealization/realizationContainer"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ObjectRealization/getDataType"
-          body="if (eContainer() instanceof ServiceDataResource) {&#xA;    return ((ServiceDataResource) eContainer()).getDataType();&#xA;}&#xA;if (eContainer() instanceof TypedMessage) {&#xA;    return ((TypedMessage) eContainer()).getActualType();&#xA;}&#xA;if (eContainer() instanceof ReferenceRealization) {&#xA;    ReferenceRealization realization = (ReferenceRealization) eContainer();&#xA;    ReferenceTreatment treatment = realization != null ? (ReferenceTreatment) realization.eContainer() : null;&#xA;    &#xA;    return treatment != null ? treatment.getReferenceElement().getDataType() : null;&#xA;}&#xA;if (eContainer() instanceof ReferenceTreatment) {&#xA;    return ((ReferenceTreatment) eContainer()).getReferenceElement().getDataType();&#xA;}&#xA;return null;"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ObjectRealization/getAllIncludedProperties"
-          body="EList&lt;PropertyRealization> allIncludedProperties = new org.eclipse.emf.common.util.BasicEList&lt;PropertyRealization>();&#xA;&#xA;RealizationContainer container = getRealizationContainer();&#xA;if (container instanceof ReferenceRealization) {&#xA;&#x9;ReferenceRealization referenceRealization = (ReferenceRealization) container;&#xA;&#x9;Structure dataType = referenceRealization.getDataType();&#xA;&#xA;&#x9;if (!getExclusivePropertyList().isEmpty()) {&#xA;&#x9;&#x9;allIncludedProperties.addAll(getExclusivePropertyList());&#xA;&#x9;}&#xA;&#xA;&#x9;if (referenceRealization.getRealizationType() ==  com.modelsolv.reprezen.restapi.ReferenceRealizationEnum.EMBED) {&#xA;&#x9;&#x9;if (dataType != null) {&#xA;&#x9;&#x9;&#x9;for (final Feature feature : dataType.getOwnedFeatures()) {&#xA;&#x9;&#x9;&#x9;&#x9;PropertyRealization includedProperty =  com.modelsolv.reprezen.restapi.RestapiFactory.eINSTANCE.createPropertyRealization();&#xA;&#x9;&#x9;&#x9;&#x9;includedProperty.setBaseProperty(feature);&#xA;&#x9;&#x9;&#x9;&#x9;allIncludedProperties.add(includedProperty);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;if (!getExclusivePropertyList().isEmpty()) {&#xA;&#x9;allIncludedProperties.addAll(getExclusivePropertyList());&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;Structure dataType = getDataType();&#xA;if (dataType == null) {&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;for (final Feature feature : dataType.getOwnedFeatures()) {&#xA;&#x9;boolean isExcluded = !com.google.common.collect.Collections2&#xA;&#x9;&#x9;.filter(getExcludedProperties(), new com.google.common.base.Predicate&lt;Feature>() {&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean apply(Feature input) {&#xA;&#x9;&#x9;&#x9;&#x9;return com.modelsolv.reprezen.restapi.util.InheritanceUtils.sameOrOverrides(input, feature);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}).isEmpty();&#xA;&#xA;&#x9;if (isExcluded) {&#xA;&#x9;&#x9;continue;&#xA;&#x9;}&#xA;&#xA;&#x9;Collection&lt;PropertyRealization> overridden = com.google.common.collect.Collections2.filter(&#xA;&#x9;&#x9;getOverriddenPropertyList(),&#xA;&#x9;&#x9;new com.google.common.base.Predicate&lt;PropertyRealization>() {&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean apply(PropertyRealization input) {&#xA;&#x9;&#x9;&#x9;&#x9;return com.modelsolv.reprezen.restapi.util.InheritanceUtils.sameOrOverrides(input.getBaseProperty(), feature);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;});&#xA;&#xA;&#x9;if (!overridden.isEmpty()) {&#xA;&#x9;&#x9;allIncludedProperties.add(com.google.common.collect.Iterables.getFirst(overridden, null));&#xA;&#x9;} else {&#xA;&#x9;&#x9;PropertyRealization includedProperty = com.modelsolv.reprezen.restapi.RestapiFactory.eINSTANCE.createPropertyRealization();&#xA;&#x9;&#x9;includedProperty.setBaseProperty(feature);&#xA;&#x9;&#x9;allIncludedProperties.add(includedProperty);&#xA;&#x9;}&#xA;}&#xA;return allIncludedProperties;"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ObjectRealization/getDataType"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ObjectRealization/getAllIncludedProperties"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//CollectionReferenceElement">
-      <genOperations ecoreOperation="RestAPI.ecore#//CollectionReferenceElement/getName"
-          body="return &quot;ObjectResourceLink&quot;;"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//CollectionReferenceElement/getName"/>
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//HasSecurityValue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//HasSecurityValue/securedBy"/>
@@ -335,6 +316,17 @@
     <genClasses image="false" ecoreClass="RestAPI.ecore#//HasTitle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//HasTitle/title"/>
     </genClasses>
+    <genClasses ecoreClass="RestAPI.ecore#//MediaTypesLibrary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//MediaTypesLibrary/mediaTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="RestAPI.ecore#//LinkRelationsLibrary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//LinkRelationsLibrary/definedLinkRelations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//LinkRelationsLibrary/name"/>
+    </genClasses>
+    <genClasses ecoreClass="RestAPI.ecore#//PrimitiveTypesLibrary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//PrimitiveTypesLibrary/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//PrimitiveTypesLibrary/primitiveTypes"/>
+    </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//Operation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Operation/name"/>
     </genClasses>
@@ -344,8 +336,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Feature/restriction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Feature/readOnly"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Feature/key"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Feature/getMinOccurs" body="if (getCardinality() == null || getCardinality().length != 2) {&#xD;&#xA;     //default value&#xD;&#xA;     return 0;&#xD;&#xA;}&#xD;&#xA;return getCardinality()[0];&#xD;&#xA;"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Feature/getMaxOccurs" body="if (getCardinality() == null || getCardinality().length != 2) {&#xA;     //default value&#xA;     return 1;&#xA;}&#xA;return getCardinality()[1];&#xA;"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Feature/getMinOccurs"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Feature/getMaxOccurs"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//ReferenceProperty">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ReferenceProperty/type"/>
@@ -355,8 +347,7 @@
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//PrimitiveProperty">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//PrimitiveProperty/type"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveProperty/getPrimitiveType"
-          body=" return getType().getPrimitiveType();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveProperty/getPrimitiveType"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//Structure">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//Structure/ownedFeatures"/>
@@ -364,12 +355,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//Structure/ownedOperations"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//Structure/supertypes"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference RestAPI.ecore#//Structure/allSupertypes"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Structure/getReferenceProperties"
-          body="Collection&lt;ReferenceProperty> referenceProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.modelsolv.reprezen.restapi.datatypes.ReferenceProperty.class));&#xA;return new BasicEList&lt;ReferenceProperty>(referenceProperties);&#xA;"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Structure/getPrimitiveProperties"
-          body="Collection&lt;PrimitiveProperty> primitiveProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.modelsolv.reprezen.restapi.datatypes. PrimitiveProperty.class));&#xA;return new BasicEList&lt;PrimitiveProperty>(primitiveProperties);&#xA;"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Structure/getAllPrimitiveProperties"
-          body="Collection&lt;PrimitiveProperty> primitiveProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.modelsolv.reprezen.restapi.datatypes. PrimitiveProperty.class));&#xA;return new BasicEList&lt;PrimitiveProperty>(primitiveProperties);&#xA;"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Structure/getReferenceProperties"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Structure/getPrimitiveProperties"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Structure/getAllPrimitiveProperties"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//DataModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//DataModel/ownedDataTypes"/>
@@ -390,8 +378,7 @@
     <genClasses ecoreClass="RestAPI.ecore#//Enumeration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//Enumeration/enumConstants"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//Enumeration/baseType"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Enumeration/getPrimitiveType"
-          body="return getBaseType();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Enumeration/getPrimitiveType"/>
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//SimpleType"/>
     <genClasses ecoreClass="RestAPI.ecore#//EnumConstant">
@@ -399,17 +386,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//EnumConstant/integerValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//EnumConstant/literalValue"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RestAPI.ecore#//EnumConstant/enumeration"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//EnumConstant/getImplicitIntegerValue"
-          body="return getEnumeration().getEnumConstants().indexOf(this);"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//EnumConstant/getImplicitIntegerValue"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//UserDefinedType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//UserDefinedType/baseType"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//UserDefinedType/getPrimitiveType"
-          body="return getBaseType().getPrimitiveType();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//UserDefinedType/getPrimitiveType"/>
     </genClasses>
     <genClasses ecoreClass="RestAPI.ecore#//PrimitiveType">
-      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveType/getPrimitiveType"
-          body="return this;"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//PrimitiveType/getPrimitiveType"/>
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//DataType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//DataType/name"/>
@@ -419,10 +403,10 @@
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//Element">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//Element/cardinality"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Element/getMinOccurs" body="if (getCardinality() == null || getCardinality().length != 2) {&#xA;     return 1;&#xA;}&#xA;return getCardinality()[0];"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Element/getMaxOccurs" body="if (getCardinality() == null || getCardinality().length != 2) {&#xA;     return 1;&#xA;}&#xA;return getCardinality()[1];"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Element/getMinOccurs"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Element/getMaxOccurs"/>
       <genOperations ecoreOperation="RestAPI.ecore#//Element/getDataType"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//Element/isMultiValued" body="return (1 &lt; getMaxOccurs()) || (-1 == getMaxOccurs());"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//Element/isMultiValued"/>
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//ReferenceElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ReferenceElement/dataType"/>
@@ -444,22 +428,9 @@
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//ConstrainableType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//ConstrainableType/constraints"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ConstrainableType/getConstrainableParent"
-          body="return com.modelsolv.reprezen.restapi.datatypes.util.ConstraintsUtils.getConstrainableParent(this);"/>
-      <genOperations ecoreOperation="RestAPI.ecore#//ConstrainableType/getAllConstraints"
-          body="ConstraintProcessor.addParentConstraints(this);&#xA;return getConstraints();"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ConstrainableType/getConstrainableParent"/>
+      <genOperations ecoreOperation="RestAPI.ecore#//ConstrainableType/getAllConstraints"/>
     </genClasses>
     <genClasses image="false" ecoreClass="RestAPI.ecore#//Inheritable"/>
-    <genClasses ecoreClass="RestAPI.ecore#//MediaTypesLibrary">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//MediaTypesLibrary/mediaTypes"/>
-    </genClasses>
-    <genClasses ecoreClass="RestAPI.ecore#//LinkRelationsLibrary">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//LinkRelationsLibrary/definedLinkRelations"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//LinkRelationsLibrary/name"/>
-    </genClasses>
-    <genClasses ecoreClass="RestAPI.ecore#//PrimitiveTypesLibrary">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RestAPI.ecore#//PrimitiveTypesLibrary/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RestAPI.ecore#//PrimitiveTypesLibrary/primitiveTypes"/>
-    </genClasses>
   </genPackages>
 </genmodel:GenModel>

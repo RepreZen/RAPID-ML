@@ -1,6 +1,7 @@
 target/
 bin/
 xtend-gen/
+xtext-gen/
 *.xtendbin
 *.xtextbin
 .DS_Store

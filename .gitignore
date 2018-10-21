@@ -1,6 +1,7 @@
-xtend-gen
-target
-.xtendbin
-bin
-.xtextbin
+target/
+bin/
+xtend-gen/
+*.xtendbin
+*.xtextbin
 .DS_Store
+*.versionsBackup

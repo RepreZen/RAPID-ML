@@ -395,7 +395,7 @@ class RapidMLScopeProvider extends AbstractDeclarativeScopeProvider {
 			resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE)
 			var org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(modelURI)
 			try {
-				val stream = Resources.getResource('''/libraries/«modelURI.lastSegment()»''').openStream()
+				val stream = Resources.getResource(RapidMLScopeProvider, '''libraries/«modelURI.lastSegment()»''').openStream()
 				resource.load(stream, null)
 
 			} catch (IOException e) {

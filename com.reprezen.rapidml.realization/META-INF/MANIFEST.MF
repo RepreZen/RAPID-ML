@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: com.modelsolv.reprezen.restapi.realization
-Bundle-SymbolicName: com.modelsolv.reprezen.restapi.realization;singleton:=true
-Automatic-Module-Name: com.modelsolv.reprezen.restapi
+Bundle-Name: com.modelsolv.reprezen.rapidml.realization
+Bundle-SymbolicName: com.modelsolv.reprezen.rapidml.realization;singleton:=true
+Automatic-Module-Name: com.modelsolv.reprezen.rapidml
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: RepreZen

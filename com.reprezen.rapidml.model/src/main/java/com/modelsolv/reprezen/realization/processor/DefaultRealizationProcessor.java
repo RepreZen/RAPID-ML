@@ -10,13 +10,13 @@ package com.modelsolv.reprezen.realization.processor;
 
 import com.modelsolv.reprezen.realization.model.RealizationRule;
 import com.modelsolv.reprezen.realization.processor.RealizationProcessor.IRealizationProcessor;
-import com.modelsolv.reprezen.restapi.CollectionResource;
-import com.modelsolv.reprezen.restapi.ObjectResource;
-import com.modelsolv.reprezen.restapi.ReferenceTreatment;
-import com.modelsolv.reprezen.restapi.ResourceAPI;
-import com.modelsolv.reprezen.restapi.ServiceDataResource;
-import com.modelsolv.reprezen.restapi.TypedMessage;
-import com.modelsolv.reprezen.restapi.ReferenceProperty;
+import com.modelsolv.reprezen.rapidml.CollectionResource;
+import com.modelsolv.reprezen.rapidml.ObjectResource;
+import com.modelsolv.reprezen.rapidml.ReferenceTreatment;
+import com.modelsolv.reprezen.rapidml.ResourceAPI;
+import com.modelsolv.reprezen.rapidml.ServiceDataResource;
+import com.modelsolv.reprezen.rapidml.TypedMessage;
+import com.modelsolv.reprezen.rapidml.ReferenceProperty;
 
 public class DefaultRealizationProcessor implements IRealizationProcessor {
     private final DefaultReferenceRealizationRegistry defaultReferenceRealizationRegistry;

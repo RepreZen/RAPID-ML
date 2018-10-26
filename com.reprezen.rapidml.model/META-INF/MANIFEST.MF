@@ -1,23 +1,23 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: com.modelsolv.reprezen.restapi
-Bundle-SymbolicName: com.modelsolv.reprezen.restapi;singleton:=true
-Automatic-Module-Name: com.modelsolv.reprezen.restapi
+Bundle-Name: com.modelsolv.reprezen.rapidml
+Bundle-SymbolicName: com.modelsolv.reprezen.rapidml;singleton:=true
+Automatic-Module-Name: com.modelsolv.reprezen.rapidml
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: RepreZen
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.modelsolv.reprezen.realization.processor,
- com.modelsolv.reprezen.restapi,
- com.modelsolv.reprezen.restapi.datatypes.cardinality,
- com.modelsolv.reprezen.restapi.datatypes.util,
- com.modelsolv.reprezen.restapi.impl,
- com.modelsolv.reprezen.restapi.implicit,
- com.modelsolv.reprezen.restapi.util,
+ com.modelsolv.reprezen.rapidml,
+ com.modelsolv.reprezen.rapidml.datatypes.cardinality,
+ com.modelsolv.reprezen.rapidml.datatypes.util,
+ com.modelsolv.reprezen.rapidml.impl,
+ com.modelsolv.reprezen.rapidml.implicit,
+ com.modelsolv.reprezen.rapidml.util,
  reprezen.org.eclipse.xtext
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- com.modelsolv.reprezen.restapi.realization;bundle-version="1.0.0",
+ com.modelsolv.reprezen.rapidml.realization;bundle-version="1.0.0",
  org.eclipse.xtext.xbase.lib
 Bundle-ActivationPolicy: lazy

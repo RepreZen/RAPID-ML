@@ -11,11 +11,11 @@ package com.modelsolv.reprezen.realization.processor
 import com.google.common.collect.Lists
 import com.google.common.collect.Maps
 import com.modelsolv.reprezen.realization.model.RealizationRule
-import com.modelsolv.reprezen.restapi.ResourceAPI
-import com.modelsolv.reprezen.restapi.ServiceDataResource
-import com.modelsolv.reprezen.restapi.TypedMessage
-import com.modelsolv.reprezen.restapi.ReferenceProperty
-import com.modelsolv.reprezen.restapi.Structure
+import com.modelsolv.reprezen.rapidml.ResourceAPI
+import com.modelsolv.reprezen.rapidml.ServiceDataResource
+import com.modelsolv.reprezen.rapidml.TypedMessage
+import com.modelsolv.reprezen.rapidml.ReferenceProperty
+import com.modelsolv.reprezen.rapidml.Structure
 import com.reprezen.jsonoverlay.Overlay
 import java.util.List
 import java.util.Map

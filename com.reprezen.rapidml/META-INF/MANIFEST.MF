@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: com.modelsolv.reprezen.restapi.xtext
-Bundle-SymbolicName: com.modelsolv.reprezen.restapi.xtext;singleton:=true
-Automatic-Module-Name: com.modelsolv.reprezen.restapi.xtext
+Bundle-Name: com.modelsolv.reprezen.rapidml.xtext
+Bundle-SymbolicName: com.modelsolv.reprezen.rapidml.xtext;singleton:=true
+Automatic-Module-Name: com.modelsolv.reprezen.rapidml.xtext
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: RepreZen
@@ -12,32 +12,32 @@ Export-Package: com.modelsolv.reprezen.core,
  com.modelsolv.reprezen.core.debug,
  com.modelsolv.reprezen.core.util,
  com.modelsolv.reprezen.core.workspace,
- com.modelsolv.reprezen.restapi.xtext,
- com.modelsolv.reprezen.restapi.xtext.conversion,
- com.modelsolv.reprezen.restapi.xtext.formatting,
- com.modelsolv.reprezen.restapi.xtext.formatting2,
- com.modelsolv.reprezen.restapi.xtext.generator,
- com.modelsolv.reprezen.restapi.xtext.libraries.util,
- com.modelsolv.reprezen.restapi.xtext.loaders,
- com.modelsolv.reprezen.restapi.xtext.modelpath,
- com.modelsolv.reprezen.restapi.xtext.naming,
- com.modelsolv.reprezen.restapi.xtext.nls,
- com.modelsolv.reprezen.restapi.xtext.parser,
- com.modelsolv.reprezen.restapi.xtext.parser.antlr,
- com.modelsolv.reprezen.restapi.xtext.parser.antlr.internal,
- com.modelsolv.reprezen.restapi.xtext.resource,
- com.modelsolv.reprezen.restapi.xtext.scoping,
- com.modelsolv.reprezen.restapi.xtext.serializer,
- com.modelsolv.reprezen.restapi.xtext.serializers,
- com.modelsolv.reprezen.restapi.xtext.services,
- com.modelsolv.reprezen.restapi.xtext.tests,
- com.modelsolv.reprezen.restapi.xtext.util,
- com.modelsolv.reprezen.restapi.xtext.validation
+ com.modelsolv.reprezen.rapidml.xtext,
+ com.modelsolv.reprezen.rapidml.xtext.conversion,
+ com.modelsolv.reprezen.rapidml.xtext.formatting,
+ com.modelsolv.reprezen.rapidml.xtext.formatting2,
+ com.modelsolv.reprezen.rapidml.xtext.generator,
+ com.modelsolv.reprezen.rapidml.xtext.libraries.util,
+ com.modelsolv.reprezen.rapidml.xtext.loaders,
+ com.modelsolv.reprezen.rapidml.xtext.modelpath,
+ com.modelsolv.reprezen.rapidml.xtext.naming,
+ com.modelsolv.reprezen.rapidml.xtext.nls,
+ com.modelsolv.reprezen.rapidml.xtext.parser,
+ com.modelsolv.reprezen.rapidml.xtext.parser.antlr,
+ com.modelsolv.reprezen.rapidml.xtext.parser.antlr.internal,
+ com.modelsolv.reprezen.rapidml.xtext.resource,
+ com.modelsolv.reprezen.rapidml.xtext.scoping,
+ com.modelsolv.reprezen.rapidml.xtext.serializer,
+ com.modelsolv.reprezen.rapidml.xtext.serializers,
+ com.modelsolv.reprezen.rapidml.xtext.services,
+ com.modelsolv.reprezen.rapidml.xtext.tests,
+ com.modelsolv.reprezen.rapidml.xtext.util,
+ com.modelsolv.reprezen.rapidml.xtext.validation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext,
- com.modelsolv.reprezen.restapi.realization;bundle-version="1.0.0",
- com.modelsolv.reprezen.restapi;bundle-version="1.0.0",
+ com.modelsolv.reprezen.rapidml.realization;bundle-version="1.0.0",
+ com.modelsolv.reprezen.rapidml;bundle-version="1.0.0",
  org.eclipse.xtext.xbase.lib
 Bundle-ActivationPolicy: lazy

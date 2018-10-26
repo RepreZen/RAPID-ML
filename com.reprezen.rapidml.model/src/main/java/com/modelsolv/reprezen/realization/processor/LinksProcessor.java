@@ -22,19 +22,19 @@ import com.modelsolv.reprezen.realization.model.LinkStrategy;
 import com.modelsolv.reprezen.realization.model.LinkSwitch;
 import com.modelsolv.reprezen.realization.model.ObjectRealizationSpec;
 import com.modelsolv.reprezen.realization.processor.DefaultReferenceRealizationRegistry.ReferenceTreatmentDescriptor;
-import com.modelsolv.reprezen.restapi.ObjectRealization;
-import com.modelsolv.reprezen.restapi.ReferenceRealization;
-import com.modelsolv.reprezen.restapi.ReferenceRealizationEnum;
-import com.modelsolv.reprezen.restapi.ResourceAPI;
-import com.modelsolv.reprezen.restapi.RestapiFactory;
-import com.modelsolv.reprezen.restapi.ServiceDataResource;
-import com.modelsolv.reprezen.restapi.util.ResourceFinder;
+import com.modelsolv.reprezen.rapidml.ObjectRealization;
+import com.modelsolv.reprezen.rapidml.ReferenceRealization;
+import com.modelsolv.reprezen.rapidml.ReferenceRealizationEnum;
+import com.modelsolv.reprezen.rapidml.ResourceAPI;
+import com.modelsolv.reprezen.rapidml.RapidmlFactory;
+import com.modelsolv.reprezen.rapidml.ServiceDataResource;
+import com.modelsolv.reprezen.rapidml.util.ResourceFinder;
 
 public class LinksProcessor {
 
     private final ResourceFinder resourceFinder;
     private final ResourceAPI resourceAPI;
-    private final RestapiFactory restapiFactory = RestapiFactory.eINSTANCE;
+    private final RapidmlFactory rapidmlFactory = RapidmlFactory.eINSTANCE;
 
     /**
      * @param context
@@ -129,14 +129,14 @@ public class LinksProcessor {
 
     private ReferenceRealization createDefaultReferenceLink(ResourceAPI context,
             ReferenceTreatmentDescriptor reference) {
-        ReferenceRealization referenceLink = restapiFactory.createReferenceRealization();
+        ReferenceRealization referenceLink = rapidmlFactory.createReferenceRealization();
         referenceLink.setRealizationType(ReferenceRealizationEnum.LINK);
 
         referenceLink.setDataType(reference.getTargetDataType());
 
         ObjectRealization objectRealization = getLinkDescriptor(reference);
         if (objectRealization == null) {
-            objectRealization = restapiFactory.createObjectRealization();
+            objectRealization = rapidmlFactory.createObjectRealization();
             referenceLink.setInlineObjectRealization(objectRealization);
         }
 

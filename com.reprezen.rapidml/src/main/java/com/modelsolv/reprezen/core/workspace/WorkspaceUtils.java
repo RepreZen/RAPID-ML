@@ -278,7 +278,7 @@ public abstract class WorkspaceUtils {
 //            }
 //        } catch (CoreException e) {
 //            ILog logger = plugin.getLog();
-//            IStatus status = new Status(IStatus.WARNING, "com.modelsolv.reprezen.restapi.xtext", //$NON-NLS-1$
+//            IStatus status = new Status(IStatus.WARNING, "com.modelsolv.reprezen.rapidml.xtext", //$NON-NLS-1$
 //                    "Could not refresh the generation folder.", e); //$NON-NLS-1$
 //            logger.log(status);
 //        }

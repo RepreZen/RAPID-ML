@@ -35,7 +35,7 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>/${project.basedir}/src/main/java/com/modelsolv/reprezen/restapi/xtext/GenerateRapidML.mwe2</argument>
+						<argument>/${project.basedir}/src/main/java/com/modelsolv/reprezen/rapidml/xtext/GenerateRapidML.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>

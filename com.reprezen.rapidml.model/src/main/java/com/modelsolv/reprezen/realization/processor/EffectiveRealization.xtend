@@ -11,14 +11,14 @@ package com.modelsolv.reprezen.realization.processor
 import com.google.common.collect.Maps
 import com.modelsolv.reprezen.realization.model.PropertyRealization
 import com.modelsolv.reprezen.realization.model.RealizationRule
-import com.modelsolv.reprezen.restapi.ObjectRealization
-import com.modelsolv.reprezen.restapi.ReferenceRealization
-import com.modelsolv.reprezen.restapi.ReferenceTreatment
-import com.modelsolv.reprezen.restapi.ServiceDataResource
-import com.modelsolv.reprezen.restapi.Feature
-import com.modelsolv.reprezen.restapi.ReferenceProperty
-import com.modelsolv.reprezen.restapi.Structure
-import com.modelsolv.reprezen.restapi.impl.RestapiFactoryImpl
+import com.modelsolv.reprezen.rapidml.ObjectRealization
+import com.modelsolv.reprezen.rapidml.ReferenceRealization
+import com.modelsolv.reprezen.rapidml.ReferenceTreatment
+import com.modelsolv.reprezen.rapidml.ServiceDataResource
+import com.modelsolv.reprezen.rapidml.Feature
+import com.modelsolv.reprezen.rapidml.ReferenceProperty
+import com.modelsolv.reprezen.rapidml.Structure
+import com.modelsolv.reprezen.rapidml.impl.RapidmlFactoryImpl
 import com.reprezen.jsonoverlay.Overlay
 import java.util.Map
 import java.util.concurrent.CompletableFuture
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList
  * <li>A name for the realization</li>
  * <li>
  *   A map of feature names to constrained feature definitions (in the form of
- *   {@link com.modelsolv.reprezen.restapi.PropertyRealization}s)
+ *   {@link com.modelsolv.reprezen.rapidml.PropertyRealization}s)
  * </li>
  * <li>A map of link relation names to target resources</li>
  * <li>A map of reference property feature names to reference realizations.</li>
@@ -53,7 +53,7 @@ class EffectiveRealization {
 	var protected String name = null
 	val private Structure type
 	val private RealizationRule rule
-	val private Map<String, com.modelsolv.reprezen.restapi.PropertyRealization> properties
+	val private Map<String, com.modelsolv.reprezen.rapidml.PropertyRealization> properties
 	val private Map<String, ServiceDataResource> links
 
 	val private RealizationContainerBuilder emfRealizationBuilder = new RealizationContainerBuilder
@@ -89,11 +89,11 @@ class EffectiveRealization {
 			return rule
 		}
 
-		def Map<String, com.modelsolv.reprezen.restapi.PropertyRealization> getProperties() {
+		def Map<String, com.modelsolv.reprezen.rapidml.PropertyRealization> getProperties() {
 			return properties
 		}
 
-		def com.modelsolv.reprezen.restapi.PropertyRealization getProperty(String name) {
+		def com.modelsolv.reprezen.rapidml.PropertyRealization getProperty(String name) {
 			return properties.get(name)
 		}
 
@@ -261,7 +261,7 @@ class EffectiveRealization {
 			}
 
 			/**
-			 * This class is a wrapper for a <code>cmr.restapi.PropertyRealization</code>.
+			 * This class is a wrapper for a <code>cmr.rapidml.PropertyRealization</code>.
 			 * 
 			 * Its name does not conflict with <code>cmr.realization.model.PropertyRealization</code>, which helps keep other
 			 * code more concise.
@@ -274,14 +274,14 @@ class EffectiveRealization {
 			 */
 			static class ConstrainedFeature {
 
-				com.modelsolv.reprezen.restapi.PropertyRealization property
+				com.modelsolv.reprezen.rapidml.PropertyRealization property
 
 				new(Feature feature) {
-					this.property = RestapiFactoryImpl.eINSTANCE.createPropertyRealization
+					this.property = RapidmlFactoryImpl.eINSTANCE.createPropertyRealization
 					property.baseProperty = feature
 				}
 
-				def com.modelsolv.reprezen.restapi.PropertyRealization get() {
+				def com.modelsolv.reprezen.rapidml.PropertyRealization get() {
 					return property
 				}
 

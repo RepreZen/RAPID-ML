@@ -12,8 +12,8 @@
 
 <plugin>
     <extension point="org.eclipse.emf.ecore.generated_package">
-        <package class="com.modelsolv.reprezen.restapi.RestapiPackage" 
-        	genModel="src/main/resources/model/RestAPI.genmodel" 
-        	uri="http://www.modelsolv.com/reprezen/restapi/1.0"/>
+        <package class="com.modelsolv.reprezen.rapidml.RapidmlPackage" 
+        	genModel="src/main/resources/model/RapidML.genmodel" 
+        	uri="http://www.modelsolv.com/reprezen/rapidml/1.0"/>
     </extension>    
 </plugin>

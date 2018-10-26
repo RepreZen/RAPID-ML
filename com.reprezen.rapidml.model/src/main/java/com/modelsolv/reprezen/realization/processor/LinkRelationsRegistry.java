@@ -11,8 +11,8 @@ package com.modelsolv.reprezen.realization.processor;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
-import com.modelsolv.reprezen.restapi.LinkRelation;
-import com.modelsolv.reprezen.restapi.RestapiFactory;
+import com.modelsolv.reprezen.rapidml.LinkRelation;
+import com.modelsolv.reprezen.rapidml.RapidmlFactory;
 
 public class LinkRelationsRegistry {
     private final Map<String, LinkRelation> linkRelationRegistry = Maps.newHashMap();
@@ -22,7 +22,7 @@ public class LinkRelationsRegistry {
             return linkRelationRegistry.get(linkRelationName);
         }
 
-        LinkRelation linkRelation = RestapiFactory.eINSTANCE.createLinkRelation();
+        LinkRelation linkRelation = RapidmlFactory.eINSTANCE.createLinkRelation();
         linkRelation.setName(linkRelationName);
         linkRelationRegistry.put(linkRelationName, linkRelation);
 

@@ -26,23 +26,23 @@ import com.modelsolv.reprezen.realization.model.Switchable
 import com.modelsolv.reprezen.realization.processor.RealizationContext.MessageRealizationContext
 import com.modelsolv.reprezen.realization.processor.RealizationContext.ReferencePropertyRealizationContext
 import com.modelsolv.reprezen.realization.processor.RealizationContext.ResourceRealizationContext
-import com.modelsolv.reprezen.restapi.CollectionResource
-import com.modelsolv.reprezen.restapi.HTTPMethods
-import com.modelsolv.reprezen.restapi.ObjectResource
-import com.modelsolv.reprezen.restapi.ResourceAPI
-import com.modelsolv.reprezen.restapi.ServiceDataResource
-import com.modelsolv.reprezen.restapi.TypedMessage
-import com.modelsolv.reprezen.restapi.TypedRequest
-import com.modelsolv.reprezen.restapi.TypedResponse
-import com.modelsolv.reprezen.restapi.ReferenceProperty
-import com.modelsolv.reprezen.restapi.Structure
-import com.modelsolv.reprezen.restapi.util.ResourceFinder
+import com.modelsolv.reprezen.rapidml.CollectionResource
+import com.modelsolv.reprezen.rapidml.HTTPMethods
+import com.modelsolv.reprezen.rapidml.ObjectResource
+import com.modelsolv.reprezen.rapidml.ResourceAPI
+import com.modelsolv.reprezen.rapidml.ServiceDataResource
+import com.modelsolv.reprezen.rapidml.TypedMessage
+import com.modelsolv.reprezen.rapidml.TypedRequest
+import com.modelsolv.reprezen.rapidml.TypedResponse
+import com.modelsolv.reprezen.rapidml.ReferenceProperty
+import com.modelsolv.reprezen.rapidml.Structure
+import com.modelsolv.reprezen.rapidml.util.ResourceFinder
 import com.reprezen.jsonoverlay.Overlay
 import java.util.Collection
 import java.util.Map
 import java.util.Optional
 
-import static com.modelsolv.reprezen.restapi.HTTPMethods.*
+import static com.modelsolv.reprezen.rapidml.HTTPMethods.*
 
 class ContextMatcher {
 

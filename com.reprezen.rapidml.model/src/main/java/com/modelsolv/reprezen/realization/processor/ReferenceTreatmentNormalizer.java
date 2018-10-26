@@ -11,7 +11,7 @@ package com.modelsolv.reprezen.realization.processor;
 import static com.modelsolv.reprezen.realization.processor.ReferenceTreatmentFactory.isDefailtRealization;
 import static com.modelsolv.reprezen.realization.processor.ReferenceTreatmentFactory.markWithDefaultRealization;
 import static com.modelsolv.reprezen.realization.processor.ReferenceTreatmentFactory.maybeSetReferenceRealization;
-import static com.modelsolv.reprezen.restapi.datatypes.util.ReferenceTreatmentOperations.hasDeclaredType;
+import static com.modelsolv.reprezen.rapidml.datatypes.util.ReferenceTreatmentOperations.hasDeclaredType;
 import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
@@ -20,17 +20,17 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.collect.Lists;
-import com.modelsolv.reprezen.restapi.CollectionReferenceElement;
-import com.modelsolv.reprezen.restapi.NamedLinkDescriptor;
-import com.modelsolv.reprezen.restapi.RealizationContainer;
-import com.modelsolv.reprezen.restapi.ReferenceEmbed;
-import com.modelsolv.reprezen.restapi.ReferenceLink;
-import com.modelsolv.reprezen.restapi.ReferenceTreatment;
-import com.modelsolv.reprezen.restapi.ResourceAPI;
-import com.modelsolv.reprezen.restapi.ServiceDataResource;
-import com.modelsolv.reprezen.restapi.ReferenceElement;
-import com.modelsolv.reprezen.restapi.Structure;
-import com.modelsolv.reprezen.restapi.util.TagUtils;
+import com.modelsolv.reprezen.rapidml.CollectionReferenceElement;
+import com.modelsolv.reprezen.rapidml.NamedLinkDescriptor;
+import com.modelsolv.reprezen.rapidml.RealizationContainer;
+import com.modelsolv.reprezen.rapidml.ReferenceEmbed;
+import com.modelsolv.reprezen.rapidml.ReferenceLink;
+import com.modelsolv.reprezen.rapidml.ReferenceTreatment;
+import com.modelsolv.reprezen.rapidml.ResourceAPI;
+import com.modelsolv.reprezen.rapidml.ServiceDataResource;
+import com.modelsolv.reprezen.rapidml.ReferenceElement;
+import com.modelsolv.reprezen.rapidml.Structure;
+import com.modelsolv.reprezen.rapidml.util.TagUtils;
 
 public class ReferenceTreatmentNormalizer {
 

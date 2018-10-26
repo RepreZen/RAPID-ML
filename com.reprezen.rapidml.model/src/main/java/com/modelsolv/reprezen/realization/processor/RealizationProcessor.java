@@ -14,33 +14,33 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import com.modelsolv.reprezen.realization.model.RealizationRule;
-import com.modelsolv.reprezen.restapi.CollectionRealizationEnum;
-import com.modelsolv.reprezen.restapi.CollectionReferenceElement;
-import com.modelsolv.reprezen.restapi.CollectionResource;
-import com.modelsolv.reprezen.restapi.Extension;
-import com.modelsolv.reprezen.restapi.Method;
-import com.modelsolv.reprezen.restapi.ObjectRealization;
-import com.modelsolv.reprezen.restapi.ObjectResource;
-import com.modelsolv.reprezen.restapi.RealizationContainer;
-import com.modelsolv.reprezen.restapi.ReferenceLink;
-import com.modelsolv.reprezen.restapi.ReferenceTreatment;
-import com.modelsolv.reprezen.restapi.ResourceAPI;
-import com.modelsolv.reprezen.restapi.ResourceDefinition;
-import com.modelsolv.reprezen.restapi.RestapiFactory;
-import com.modelsolv.reprezen.restapi.ServiceDataResource;
-import com.modelsolv.reprezen.restapi.TypedMessage;
-import com.modelsolv.reprezen.restapi.ReferenceProperty;
-import com.modelsolv.reprezen.restapi.Structure;
-import com.modelsolv.reprezen.restapi.datatypes.util.ReferenceTreatmentOperations;
-import com.modelsolv.reprezen.restapi.util.ResourceFinder;
-import com.modelsolv.reprezen.restapi.util.RestapiModelUtils;
-import com.modelsolv.reprezen.restapi.util.TagUtils;
+import com.modelsolv.reprezen.rapidml.CollectionRealizationEnum;
+import com.modelsolv.reprezen.rapidml.CollectionReferenceElement;
+import com.modelsolv.reprezen.rapidml.CollectionResource;
+import com.modelsolv.reprezen.rapidml.Extension;
+import com.modelsolv.reprezen.rapidml.Method;
+import com.modelsolv.reprezen.rapidml.ObjectRealization;
+import com.modelsolv.reprezen.rapidml.ObjectResource;
+import com.modelsolv.reprezen.rapidml.RealizationContainer;
+import com.modelsolv.reprezen.rapidml.ReferenceLink;
+import com.modelsolv.reprezen.rapidml.ReferenceTreatment;
+import com.modelsolv.reprezen.rapidml.ResourceAPI;
+import com.modelsolv.reprezen.rapidml.ResourceDefinition;
+import com.modelsolv.reprezen.rapidml.RapidmlFactory;
+import com.modelsolv.reprezen.rapidml.ServiceDataResource;
+import com.modelsolv.reprezen.rapidml.TypedMessage;
+import com.modelsolv.reprezen.rapidml.ReferenceProperty;
+import com.modelsolv.reprezen.rapidml.Structure;
+import com.modelsolv.reprezen.rapidml.datatypes.util.ReferenceTreatmentOperations;
+import com.modelsolv.reprezen.rapidml.util.ResourceFinder;
+import com.modelsolv.reprezen.rapidml.util.RapidmlModelUtils;
+import com.modelsolv.reprezen.rapidml.util.TagUtils;
 import com.reprezen.jsonoverlay.Overlay;
 
 public class RealizationProcessor {
     private final ReferenceTreatmentNormalizer referenceTreatmentNormalizer;
     private final ResourceFinder resourceFinder;
-    private final RestapiFactory restapiFactory = RestapiFactory.eINSTANCE;
+    private final RapidmlFactory rapidmlFactory = RapidmlFactory.eINSTANCE;
 
     private final IRealizationProcessor autoRealizationProcessor;
     private final ResourceAPI resourceAPI;
@@ -208,20 +208,20 @@ public class RealizationProcessor {
                 .setResourceRealizationKind(useReferenceLinkList ? CollectionRealizationEnum.REFERENCE_LINK_LIST
                         : CollectionRealizationEnum.EMBEDDED_OBJECT_LIST);
         if (useReferenceLinkList) {
-            ReferenceLink hyperlink = restapiFactory.createReferenceLink();
+            ReferenceLink hyperlink = rapidmlFactory.createReferenceLink();
             ReferenceTreatmentFactory.maybeSetReferenceRealization(hyperlink);
             hyperlink.getReferenceRealization().setTargetResource(targetResource);
             serviceDataResource.getReferenceTreatments().add(hyperlink);
             if (targetResource.getDefaultLinkDescriptor() != null) {
                 hyperlink.getReferenceRealization().setProperties(targetResource.getDefaultLinkDescriptor());
             } else {
-                ObjectRealization linkDescriptor = restapiFactory.createObjectRealization();
+                ObjectRealization linkDescriptor = rapidmlFactory.createObjectRealization();
                 // set container
                 hyperlink.getReferenceRealization().setInlineObjectRealization(linkDescriptor);
                 // Set by ReferenceTreatmentInlineLinkDescriptorProcessor for user-defined link descriptors
                 hyperlink.getReferenceRealization().setProperties(linkDescriptor);
             }
-            CollectionReferenceElement collectionReferenceElement = restapiFactory.createCollectionReferenceElement();
+            CollectionReferenceElement collectionReferenceElement = rapidmlFactory.createCollectionReferenceElement();
             collectionReferenceElement.setCardinality(new int[] { 0, -1 });
             collectionReferenceElement.setDataType(serviceDataResource.getDataType());
 
@@ -249,7 +249,7 @@ public class RealizationProcessor {
     }
 
     private static Predicate<ReferenceProperty> isIncluded(ObjectRealization includedProperties) {
-        return property -> RestapiModelUtils.isFeatureIncluded(includedProperties, property);
+        return property -> RapidmlModelUtils.isFeatureIncluded(includedProperties, property);
     }
 
     private static Predicate<ReferenceProperty> isNotDefined(RealizationContainer realization) {

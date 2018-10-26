@@ -20,9 +20,9 @@ import com.modelsolv.reprezen.realization.model.PropertyTypeSelector
 import com.modelsolv.reprezen.realization.model.ReadWriteSelector
 import com.modelsolv.reprezen.realization.model.ReferencePropertyRealization
 import com.modelsolv.reprezen.realization.model.ReferencePropertySelector
-import com.modelsolv.reprezen.restapi.Feature
-import com.modelsolv.reprezen.restapi.PrimitiveProperty
-import com.modelsolv.reprezen.restapi.ReferenceProperty
+import com.modelsolv.reprezen.rapidml.Feature
+import com.modelsolv.reprezen.rapidml.PrimitiveProperty
+import com.modelsolv.reprezen.rapidml.ReferenceProperty
 import com.reprezen.jsonoverlay.Overlay
 
 import static extension com.modelsolv.reprezen.realization.processor.ContextMatcher.isAutoLinkableToCollectionResource

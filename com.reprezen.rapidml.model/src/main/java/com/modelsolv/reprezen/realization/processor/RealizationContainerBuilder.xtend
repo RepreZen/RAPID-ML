@@ -8,24 +8,24 @@
  *******************************************************************************/
 package com.modelsolv.reprezen.realization.processor
 
-import com.modelsolv.reprezen.restapi.ObjectRealization
-import com.modelsolv.reprezen.restapi.RestapiFactory
+import com.modelsolv.reprezen.rapidml.ObjectRealization
+import com.modelsolv.reprezen.rapidml.RapidmlFactory
 import org.eclipse.emf.common.util.EList
-import com.modelsolv.reprezen.restapi.ReferenceTreatment
+import com.modelsolv.reprezen.rapidml.ReferenceTreatment
 import java.util.ArrayList
-import com.modelsolv.reprezen.restapi.ReferenceRealization
-import com.modelsolv.reprezen.restapi.ReferenceRealizationEnum
-import com.modelsolv.reprezen.restapi.ReferenceProperty
+import com.modelsolv.reprezen.rapidml.ReferenceRealization
+import com.modelsolv.reprezen.rapidml.ReferenceRealizationEnum
+import com.modelsolv.reprezen.rapidml.ReferenceProperty
 import org.eclipse.emf.common.util.ECollections
-import com.modelsolv.reprezen.restapi.ReferenceLink
-import com.modelsolv.reprezen.restapi.util.TagUtils
+import com.modelsolv.reprezen.rapidml.ReferenceLink
+import com.modelsolv.reprezen.rapidml.util.TagUtils
 
 class RealizationContainerBuilder {
-	val private restapiFactory = RestapiFactory.eINSTANCE;
+	val private rapidmlFactory = RapidmlFactory.eINSTANCE;
 	val private linkRelationRegistry = new LinkRelationsRegistry
 
 	def ObjectRealization buildObjectRealization(EffectiveRealization realization) {
-		val objectRealization = restapiFactory.createObjectRealization()
+		val objectRealization = rapidmlFactory.createObjectRealization()
 		objectRealization.allIncludedProperties.addAll(realization.getProperties.values)
 		return objectRealization
 	}
@@ -46,9 +46,9 @@ class RealizationContainerBuilder {
 	
 	def ReferenceTreatment buildReferenceTreatment(ReferenceRealization referenceRealization) {
 		val referenceTreatment = if (referenceRealization.realizationType == ReferenceRealizationEnum.LINK) {
-				restapiFactory.createReferenceLink()
+				rapidmlFactory.createReferenceLink()
 			} else {
-				restapiFactory.createReferenceEmbed()
+				rapidmlFactory.createReferenceEmbed()
 			}
 		referenceTreatment.referenceRealization = referenceRealization
 		if (referenceTreatment instanceof ReferenceLink &&
@@ -63,7 +63,7 @@ class RealizationContainerBuilder {
 	}
 
 	def ReferenceRealization buildReferenceRealization(EffectiveRealization realization) {
-		val referenceRealization = restapiFactory.createReferenceRealization
+		val referenceRealization = rapidmlFactory.createReferenceRealization
 		referenceRealization.realizationType = ReferenceRealizationEnum.EMBED
 		referenceRealization.effectiveRealization = realization
 		referenceRealization.dataType = realization.type

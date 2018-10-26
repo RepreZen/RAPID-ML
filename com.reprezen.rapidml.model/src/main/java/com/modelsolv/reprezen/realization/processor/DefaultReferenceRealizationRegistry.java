@@ -11,12 +11,12 @@ package com.modelsolv.reprezen.realization.processor;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.modelsolv.reprezen.restapi.ReferenceRealization;
-import com.modelsolv.reprezen.restapi.ReferenceTreatment;
-import com.modelsolv.reprezen.restapi.ResourceAPI;
-import com.modelsolv.reprezen.restapi.Element;
-import com.modelsolv.reprezen.restapi.ReferenceProperty;
-import com.modelsolv.reprezen.restapi.Structure;
+import com.modelsolv.reprezen.rapidml.ReferenceRealization;
+import com.modelsolv.reprezen.rapidml.ReferenceTreatment;
+import com.modelsolv.reprezen.rapidml.ResourceAPI;
+import com.modelsolv.reprezen.rapidml.Element;
+import com.modelsolv.reprezen.rapidml.ReferenceProperty;
+import com.modelsolv.reprezen.rapidml.Structure;
 
 public class DefaultReferenceRealizationRegistry {
     private final static boolean TEMP_FEATURE_TOGGLE_USE_GRAPH = true;

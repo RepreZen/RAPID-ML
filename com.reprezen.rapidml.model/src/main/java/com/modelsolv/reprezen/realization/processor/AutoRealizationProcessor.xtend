@@ -1,12 +1,12 @@
 package com.modelsolv.reprezen.realization.processor
 
 import com.modelsolv.reprezen.realization.processor.RealizationProcessor.IRealizationProcessor
-import com.modelsolv.reprezen.restapi.TypedMessage
-import com.modelsolv.reprezen.restapi.ReferenceProperty
-import com.modelsolv.reprezen.restapi.ServiceDataResource
+import com.modelsolv.reprezen.rapidml.TypedMessage
+import com.modelsolv.reprezen.rapidml.ReferenceProperty
+import com.modelsolv.reprezen.rapidml.ServiceDataResource
 import java.util.Optional
-import com.modelsolv.reprezen.restapi.CollectionResource
-import com.modelsolv.reprezen.restapi.ObjectResource
+import com.modelsolv.reprezen.rapidml.CollectionResource
+import com.modelsolv.reprezen.rapidml.ObjectResource
 
 class AutoRealizationProcessor implements IRealizationProcessor {
 

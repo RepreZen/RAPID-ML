@@ -8,13 +8,13 @@
  *******************************************************************************/
 package com.modelsolv.reprezen.realization.processor
 
-import com.modelsolv.reprezen.restapi.ResourceAPI
-import com.modelsolv.reprezen.restapi.ServiceDataResource
-import com.modelsolv.reprezen.restapi.TypedMessage
-import com.modelsolv.reprezen.restapi.TypedRequest
-import com.modelsolv.reprezen.restapi.TypedResponse
-import com.modelsolv.reprezen.restapi.ReferenceProperty
-import com.modelsolv.reprezen.restapi.Structure
+import com.modelsolv.reprezen.rapidml.ResourceAPI
+import com.modelsolv.reprezen.rapidml.ServiceDataResource
+import com.modelsolv.reprezen.rapidml.TypedMessage
+import com.modelsolv.reprezen.rapidml.TypedRequest
+import com.modelsolv.reprezen.rapidml.TypedResponse
+import com.modelsolv.reprezen.rapidml.ReferenceProperty
+import com.modelsolv.reprezen.rapidml.Structure
 
 public abstract class RealizationContext {
 

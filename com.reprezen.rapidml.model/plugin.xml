@@ -12,7 +12,7 @@
 
 <plugin>
     <extension point="org.eclipse.emf.ecore.generated_package">
-        <package class="com.modelsolv.reprezen.rapidml.RapidmlPackage" 
+        <package class="com.reprezen.rapidml.RapidmlPackage" 
         	genModel="src/main/resources/model/RapidML.genmodel" 
         	uri="http://www.modelsolv.com/reprezen/rapidml/1.0"/>
     </extension>    

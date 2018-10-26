@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright © 2013-2016 Modelsolv, Inc.&#xA;All Rights Reserved.&#xA;&#xA;NOTICE: All information contained herein is, and remains the property&#xA;of ModelSolv, Inc. See the file license.html in the root directory of&#xA;this project for further information."
-    modelDirectory="/com.reprezen.rapidml.model/src/main/java" editDirectory="/com.modelsolv.reprezen.rapidml.edit/src"
-    editorDirectory="/com.modelsolv.reprezen.rapidml.editor/src" modelPluginID="com.modelsolv.reprezen.rapidml"
+    modelDirectory="/com.reprezen.rapidml.model/src/main/java" editDirectory="/com.reprezen.rapidml.edit/src"
+    editorDirectory="/com.reprezen.rapidml.editor/src" modelPluginID="com.reprezen.rapidml"
     modelName="RapidML" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
-    copyrightFields="false" editPluginID="com.modelsolv.reprezen.rapidml.edit">
+    copyrightFields="false" editPluginID="com.reprezen.rapidml.edit">
   <foreignModel>RapidML.ecore</foreignModel>
-  <genPackages prefix="Rapidml" basePackage="com.modelsolv.reprezen" disposableProviderFactory="true"
+  <genPackages prefix="Rapidml" basePackage="com.reprezen" disposableProviderFactory="true"
       ecorePackage="RapidML.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//HTTPMethods">
       <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/GET"/>

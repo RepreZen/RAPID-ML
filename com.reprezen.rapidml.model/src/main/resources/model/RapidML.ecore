@@ -16,19 +16,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="TypedMessage" abstract="true" eSuperTypes="#//RealizationContainer #//RESTElement #//WithExamples">
     <eOperations name="getAllExamples" upperBound="-1" eType="#//Example">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return com.modelsolv.reprezen.rapidml.util.ExampleUtils.getAllExamples(this);"/>
+        <details key="body" value="return com.reprezen.rapidml.util.ExampleUtils.getAllExamples(this);"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isIncluded" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return com.modelsolv.reprezen.rapidml.util.RapidmlModelUtils.isFeatureIncluded(this, feature);"/>
+        <details key="body" value="return com.reprezen.rapidml.util.RapidmlModelUtils.isFeatureIncluded(this, feature);"/>
       </eAnnotations>
       <eParameters name="feature" eType="#//Feature"/>
     </eOperations>
     <eOperations name="getIncludedProperties" upperBound="-1" eType="#//PropertyRealization"/>
     <eOperations name="getActualType" eType="#//Structure">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="Structure structure = getDataType();&#xA;if (structure == null &amp;&amp; getResourceType() instanceof com.modelsolv.reprezen.rapidml.ServiceDataResource) {&#xA;    structure = ((com.modelsolv.reprezen.rapidml.ServiceDataResource) getResourceType()).getDataType();&#xA;}&#xA;return structure;&#xD;&#xA;"/>
+        <details key="body" value="Structure structure = getDataType();&#xA;if (structure == null &amp;&amp; getResourceType() instanceof com.reprezen.rapidml.ServiceDataResource) {&#xA;    structure = ((com.reprezen.rapidml.ServiceDataResource) getResourceType()).getDataType();&#xA;}&#xA;return structure;&#xD;&#xA;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getReferenceLinks" upperBound="-1" eType="#//ReferenceLink">
@@ -219,12 +219,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="ServiceDataResource" eSuperTypes="#//RealizationContainer #//ResourceDefinition">
     <eOperations name="getDefaultLinkDescriptor" eType="#//NamedLinkDescriptor">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return com.modelsolv.reprezen.rapidml.util.RapidmlModelUtils.getDefaultLinkDescriptor(this);"/>
+        <details key="body" value="return com.reprezen.rapidml.util.RapidmlModelUtils.getDefaultLinkDescriptor(this);"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isIncluded" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return com.modelsolv.reprezen.rapidml.util.RapidmlModelUtils.isFeatureIncluded(this, feature);"/>
+        <details key="body" value="return com.reprezen.rapidml.util.RapidmlModelUtils.isFeatureIncluded(this, feature);"/>
       </eAnnotations>
       <eParameters name="feature" eType="#//Feature"/>
     </eOperations>
@@ -363,7 +363,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="HasStringValue" abstract="true" interface="true">
     <eOperations name="toString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="if (eIsProxy()) {&#xD;&#xA;&#x9;return super.toString();&#xD;&#xA;}&#xD;&#xA;StringBuffer result = new StringBuffer(super.toString());&#xD;&#xA;return com.modelsolv.reprezen.rapidml.util.RapidmlModelUtils.getStringValue(this, result);"/>
+        <details key="body" value="if (eIsProxy()) {&#xD;&#xA;&#x9;return super.toString();&#xD;&#xA;}&#xD;&#xA;StringBuffer result = new StringBuffer(super.toString());&#xD;&#xA;return com.reprezen.rapidml.util.RapidmlModelUtils.getStringValue(this, result);"/>
       </eAnnotations>
     </eOperations>
   </eClassifiers>
@@ -382,7 +382,7 @@
     </eOperations>
     <eOperations name="getAllIncludedProperties" upperBound="-1" eType="#//PropertyRealization">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="EList&lt;PropertyRealization> allIncludedProperties = new org.eclipse.emf.common.util.BasicEList&lt;PropertyRealization>();&#xA;&#xA;RealizationContainer container = getRealizationContainer();&#xA;if (container instanceof ReferenceRealization) {&#xA;&#x9;ReferenceRealization referenceRealization = (ReferenceRealization) container;&#xA;&#x9;Structure dataType = referenceRealization.getDataType();&#xA;&#xA;&#x9;if (!getExclusivePropertyList().isEmpty()) {&#xA;&#x9;&#x9;allIncludedProperties.addAll(getExclusivePropertyList());&#xA;&#x9;}&#xA;&#xA;&#x9;if (referenceRealization.getRealizationType() ==  com.modelsolv.reprezen.rapidml.ReferenceRealizationEnum.EMBED) {&#xA;&#x9;&#x9;if (dataType != null) {&#xA;&#x9;&#x9;&#x9;for (final Feature feature : dataType.getOwnedFeatures()) {&#xA;&#x9;&#x9;&#x9;&#x9;PropertyRealization includedProperty =  com.modelsolv.reprezen.rapidml.RapidmlFactory.eINSTANCE.createPropertyRealization();&#xA;&#x9;&#x9;&#x9;&#x9;includedProperty.setBaseProperty(feature);&#xA;&#x9;&#x9;&#x9;&#x9;allIncludedProperties.add(includedProperty);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;if (!getExclusivePropertyList().isEmpty()) {&#xA;&#x9;allIncludedProperties.addAll(getExclusivePropertyList());&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;Structure dataType = getDataType();&#xA;if (dataType == null) {&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;for (final Feature feature : dataType.getOwnedFeatures()) {&#xA;&#x9;boolean isExcluded = !com.google.common.collect.Collections2&#xA;&#x9;&#x9;.filter(getExcludedProperties(), new com.google.common.base.Predicate&lt;Feature>() {&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean apply(Feature input) {&#xA;&#x9;&#x9;&#x9;&#x9;return com.modelsolv.reprezen.rapidml.util.InheritanceUtils.sameOrOverrides(input, feature);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}).isEmpty();&#xA;&#xA;&#x9;if (isExcluded) {&#xA;&#x9;&#x9;continue;&#xA;&#x9;}&#xA;&#xA;&#x9;Collection&lt;PropertyRealization> overridden = com.google.common.collect.Collections2.filter(&#xA;&#x9;&#x9;getOverriddenPropertyList(),&#xA;&#x9;&#x9;new com.google.common.base.Predicate&lt;PropertyRealization>() {&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean apply(PropertyRealization input) {&#xA;&#x9;&#x9;&#x9;&#x9;return com.modelsolv.reprezen.rapidml.util.InheritanceUtils.sameOrOverrides(input.getBaseProperty(), feature);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;});&#xA;&#xA;&#x9;if (!overridden.isEmpty()) {&#xA;&#x9;&#x9;allIncludedProperties.add(com.google.common.collect.Iterables.getFirst(overridden, null));&#xA;&#x9;} else {&#xA;&#x9;&#x9;PropertyRealization includedProperty = com.modelsolv.reprezen.rapidml.RapidmlFactory.eINSTANCE.createPropertyRealization();&#xA;&#x9;&#x9;includedProperty.setBaseProperty(feature);&#xA;&#x9;&#x9;allIncludedProperties.add(includedProperty);&#xA;&#x9;}&#xA;}&#xA;return allIncludedProperties;"/>
+        <details key="body" value="EList&lt;PropertyRealization> allIncludedProperties = new org.eclipse.emf.common.util.BasicEList&lt;PropertyRealization>();&#xA;&#xA;RealizationContainer container = getRealizationContainer();&#xA;if (container instanceof ReferenceRealization) {&#xA;&#x9;ReferenceRealization referenceRealization = (ReferenceRealization) container;&#xA;&#x9;Structure dataType = referenceRealization.getDataType();&#xA;&#xA;&#x9;if (!getExclusivePropertyList().isEmpty()) {&#xA;&#x9;&#x9;allIncludedProperties.addAll(getExclusivePropertyList());&#xA;&#x9;}&#xA;&#xA;&#x9;if (referenceRealization.getRealizationType() ==  com.reprezen.rapidml.ReferenceRealizationEnum.EMBED) {&#xA;&#x9;&#x9;if (dataType != null) {&#xA;&#x9;&#x9;&#x9;for (final Feature feature : dataType.getOwnedFeatures()) {&#xA;&#x9;&#x9;&#x9;&#x9;PropertyRealization includedProperty =  com.reprezen.rapidml.RapidmlFactory.eINSTANCE.createPropertyRealization();&#xA;&#x9;&#x9;&#x9;&#x9;includedProperty.setBaseProperty(feature);&#xA;&#x9;&#x9;&#x9;&#x9;allIncludedProperties.add(includedProperty);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;if (!getExclusivePropertyList().isEmpty()) {&#xA;&#x9;allIncludedProperties.addAll(getExclusivePropertyList());&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;Structure dataType = getDataType();&#xA;if (dataType == null) {&#xA;&#x9;return allIncludedProperties;&#xA;}&#xA;&#xA;for (final Feature feature : dataType.getOwnedFeatures()) {&#xA;&#x9;boolean isExcluded = !com.google.common.collect.Collections2&#xA;&#x9;&#x9;.filter(getExcludedProperties(), new com.google.common.base.Predicate&lt;Feature>() {&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean apply(Feature input) {&#xA;&#x9;&#x9;&#x9;&#x9;return com.reprezen.rapidml.util.InheritanceUtils.sameOrOverrides(input, feature);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}).isEmpty();&#xA;&#xA;&#x9;if (isExcluded) {&#xA;&#x9;&#x9;continue;&#xA;&#x9;}&#xA;&#xA;&#x9;Collection&lt;PropertyRealization> overridden = com.google.common.collect.Collections2.filter(&#xA;&#x9;&#x9;getOverriddenPropertyList(),&#xA;&#x9;&#x9;new com.google.common.base.Predicate&lt;PropertyRealization>() {&#xA;&#x9;&#x9;&#x9;@Override&#xA;&#x9;&#x9;&#x9;public boolean apply(PropertyRealization input) {&#xA;&#x9;&#x9;&#x9;&#x9;return com.reprezen.rapidml.util.InheritanceUtils.sameOrOverrides(input.getBaseProperty(), feature);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;});&#xA;&#xA;&#x9;if (!overridden.isEmpty()) {&#xA;&#x9;&#x9;allIncludedProperties.add(com.google.common.collect.Iterables.getFirst(overridden, null));&#xA;&#x9;} else {&#xA;&#x9;&#x9;PropertyRealization includedProperty = com.reprezen.rapidml.RapidmlFactory.eINSTANCE.createPropertyRealization();&#xA;&#x9;&#x9;includedProperty.setBaseProperty(feature);&#xA;&#x9;&#x9;allIncludedProperties.add(includedProperty);&#xA;&#x9;}&#xA;}&#xA;return allIncludedProperties;"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exclusivePropertyList"
@@ -482,7 +482,7 @@
     <eOperations name="getRealizationModel" eType="#//RealizationModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="RealizationModel" instanceClassName="com.modelsolv.reprezen.realization.model.RealizationModel"
+  <eClassifiers xsi:type="ecore:EDataType" name="RealizationModel" instanceClassName="com.reprezen.realization.model.RealizationModel"
       serializable="false"/>
   <eClassifiers xsi:type="ecore:EEnum" name="CollectionRealizationLevelEnum">
     <eLiterals name="ITEM_LEVEL" literal="itemLevel"/>
@@ -494,7 +494,7 @@
       <details key="baseType" value="CollectionRealizationLevelEnum"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="EffectiveRealization" instanceClassName="com.modelsolv.reprezen.realization.processor.EffectiveRealization"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="EffectiveRealization" instanceClassName="com.reprezen.realization.processor.EffectiveRealization"/>
   <eClassifiers xsi:type="ecore:EClass" name="HasTitle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -550,17 +550,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="Structure" eSuperTypes="#//DataType #//WithDataExamples #//Inheritable">
     <eOperations name="getReferenceProperties" upperBound="-1" eType="#//ReferenceProperty">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="Collection&lt;ReferenceProperty> referenceProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.modelsolv.reprezen.rapidml.ReferenceProperty.class));&#xA;return new BasicEList&lt;ReferenceProperty>(referenceProperties);&#xA;"/>
+        <details key="body" value="Collection&lt;ReferenceProperty> referenceProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.reprezen.rapidml.ReferenceProperty.class));&#xA;return new BasicEList&lt;ReferenceProperty>(referenceProperties);&#xA;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getPrimitiveProperties" upperBound="-1" eType="#//PrimitiveProperty">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="Collection&lt;PrimitiveProperty> primitiveProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.modelsolv.reprezen.rapidml.PrimitiveProperty.class));&#xA;return new BasicEList&lt;PrimitiveProperty>(primitiveProperties);&#xA;"/>
+        <details key="body" value="Collection&lt;PrimitiveProperty> primitiveProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.reprezen.rapidml.PrimitiveProperty.class));&#xA;return new BasicEList&lt;PrimitiveProperty>(primitiveProperties);&#xA;"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getAllPrimitiveProperties" upperBound="-1" eType="#//PrimitiveProperty">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="Collection&lt;PrimitiveProperty> primitiveProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.modelsolv.reprezen.rapidml.PrimitiveProperty.class));&#xA;return new BasicEList&lt;PrimitiveProperty>(primitiveProperties);&#xA;"/>
+        <details key="body" value="Collection&lt;PrimitiveProperty> primitiveProperties = com.google.common.collect.Lists.newArrayList(com.google.common.collect.Iterables.filter(getOwnedFeatures(), com.reprezen.rapidml.PrimitiveProperty.class));&#xA;return new BasicEList&lt;PrimitiveProperty>(primitiveProperties);&#xA;"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedFeatures" upperBound="-1"
@@ -694,7 +694,7 @@
       eSuperTypes="#//Extensible">
     <eOperations name="getConstrainableParent" eType="#//ConstrainableType">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return com.modelsolv.reprezen.rapidml.datatypes.util.ConstraintsUtils.getConstrainableParent(this);"/>
+        <details key="body" value="return com.reprezen.rapidml.datatypes.util.ConstraintsUtils.getConstrainableParent(this);"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getAllConstraints" upperBound="-1" eType="#//Constraint">

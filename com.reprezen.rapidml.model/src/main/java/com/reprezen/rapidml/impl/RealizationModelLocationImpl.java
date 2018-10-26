@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import com.google.common.base.Strings;
-import com.reprezen.realization.model.RealizationModel;
-import com.reprezen.realization.parser.RealizationModelParser;
+import com.reprezen.rapidml.realization.model.RealizationModel;
+import com.reprezen.rapidml.realization.parser.RealizationModelParser;
 import com.reprezen.rapidml.RealizationModelLocation;
 import com.reprezen.rapidml.RapidmlPackage;
 

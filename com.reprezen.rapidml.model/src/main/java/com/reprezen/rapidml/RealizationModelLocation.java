@@ -8,7 +8,7 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.realization.model.RealizationModel;
+import com.reprezen.rapidml.realization.model.RealizationModel;
 
 import org.eclipse.emf.ecore.EObject;
 

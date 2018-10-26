@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import com.reprezen.realization.model.RealizationModel;
-import com.reprezen.realization.processor.EffectiveRealization;
+import com.reprezen.rapidml.realization.model.RealizationModel;
+import com.reprezen.rapidml.realization.processor.EffectiveRealization;
 import com.reprezen.rapidml.AuthenticationFlows;
 import com.reprezen.rapidml.AuthenticationMethod;
 import com.reprezen.rapidml.AuthenticationTypes;

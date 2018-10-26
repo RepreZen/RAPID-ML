@@ -44,8 +44,8 @@
 								<argument>-U</argument>
 								<argument>-f</argument>
 								<argument>gen/pom.xml</argument>
-								<argument>-DsrcRoot=${project.build.sourceDirectory}/com/reprezen/realization</argument>
-								<argument>-DpkgRoot=com.reprezen.realization</argument>
+								<argument>-DsrcRoot=${project.build.sourceDirectory}/com/reprezen/rapidml/realization</argument>
+								<argument>-DpkgRoot=com.reprezen.rapidml.realization</argument>
 								<argument>process-classes</argument>
 							</arguments>
 						</configuration>

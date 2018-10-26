@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import com.google.common.base.Strings;
-import com.reprezen.realization.processor.EffectiveRealization;
+import com.reprezen.rapidml.realization.processor.EffectiveRealization;
 import com.reprezen.rapidml.AuthenticationFlows;
 import com.reprezen.rapidml.AuthenticationMethod;
 import com.reprezen.rapidml.AuthenticationTypes;

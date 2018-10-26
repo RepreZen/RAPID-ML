@@ -8,7 +8,7 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.realization.processor.EffectiveRealization;
+import com.reprezen.rapidml.realization.processor.EffectiveRealization;
 
 import com.reprezen.rapidml.Structure;
 

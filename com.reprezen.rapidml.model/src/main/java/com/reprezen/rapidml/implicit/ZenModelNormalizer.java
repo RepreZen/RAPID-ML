@@ -11,7 +11,7 @@ package com.reprezen.rapidml.implicit;
 import java.util.List;
 
 import com.google.common.collect.Lists;
-import com.reprezen.realization.processor.RealizationProcessor;
+import com.reprezen.rapidml.realization.processor.RealizationProcessor;
 import com.reprezen.rapidml.Documentation;
 import com.reprezen.rapidml.Method;
 import com.reprezen.rapidml.ResourceAPI;

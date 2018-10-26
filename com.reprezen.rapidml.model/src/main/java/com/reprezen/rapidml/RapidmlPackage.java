@@ -5248,7 +5248,7 @@ public interface RapidmlPackage extends EPackage {
 	 * The meta object id for the '<em>Realization Model</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.reprezen.realization.model.RealizationModel
+	 * @see com.reprezen.rapidml.realization.model.RealizationModel
 	 * @see com.reprezen.rapidml.impl.RapidmlPackageImpl#getRealizationModel()
 	 * @generated
 	 */
@@ -5268,7 +5268,7 @@ public interface RapidmlPackage extends EPackage {
 	 * The meta object id for the '<em>Effective Realization</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.reprezen.realization.processor.EffectiveRealization
+	 * @see com.reprezen.rapidml.realization.processor.EffectiveRealization
 	 * @see com.reprezen.rapidml.impl.RapidmlPackageImpl#getEffectiveRealization()
 	 * @generated
 	 */
@@ -7925,12 +7925,12 @@ public interface RapidmlPackage extends EPackage {
 	EEnum getCollectionRealizationLevelEnum();
 
 	/**
-	 * Returns the meta object for data type '{@link com.reprezen.realization.model.RealizationModel <em>Realization Model</em>}'.
+	 * Returns the meta object for data type '{@link com.reprezen.rapidml.realization.model.RealizationModel <em>Realization Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Realization Model</em>'.
-	 * @see com.reprezen.realization.model.RealizationModel
-	 * @model instanceClass="com.reprezen.realization.model.RealizationModel" serializeable="false"
+	 * @see com.reprezen.rapidml.realization.model.RealizationModel
+	 * @model instanceClass="com.reprezen.rapidml.realization.model.RealizationModel" serializeable="false"
 	 * @generated
 	 */
 	EDataType getRealizationModel();
@@ -7948,12 +7948,12 @@ public interface RapidmlPackage extends EPackage {
 	EDataType getCollectionRealizationLevelObject();
 
 	/**
-	 * Returns the meta object for data type '{@link com.reprezen.realization.processor.EffectiveRealization <em>Effective Realization</em>}'.
+	 * Returns the meta object for data type '{@link com.reprezen.rapidml.realization.processor.EffectiveRealization <em>Effective Realization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Effective Realization</em>'.
-	 * @see com.reprezen.realization.processor.EffectiveRealization
-	 * @model instanceClass="com.reprezen.realization.processor.EffectiveRealization"
+	 * @see com.reprezen.rapidml.realization.processor.EffectiveRealization
+	 * @model instanceClass="com.reprezen.rapidml.realization.processor.EffectiveRealization"
 	 * @generated
 	 */
 	EDataType getEffectiveRealization();
@@ -10154,7 +10154,7 @@ public interface RapidmlPackage extends EPackage {
 		 * The meta object literal for the '<em>Realization Model</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.reprezen.realization.model.RealizationModel
+		 * @see com.reprezen.rapidml.realization.model.RealizationModel
 		 * @see com.reprezen.rapidml.impl.RapidmlPackageImpl#getRealizationModel()
 		 * @generated
 		 */
@@ -10174,7 +10174,7 @@ public interface RapidmlPackage extends EPackage {
 		 * The meta object literal for the '<em>Effective Realization</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.reprezen.realization.processor.EffectiveRealization
+		 * @see com.reprezen.rapidml.realization.processor.EffectiveRealization
 		 * @see com.reprezen.rapidml.impl.RapidmlPackageImpl#getEffectiveRealization()
 		 * @generated
 		 */

@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: RepreZen
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: com.reprezen.realization.processor,
+Export-Package: com.reprezen.rapidml.realization.processor,
  com.reprezen.rapidml,
  com.reprezen.rapidml.datatypes.cardinality,
  com.reprezen.rapidml.datatypes.util,

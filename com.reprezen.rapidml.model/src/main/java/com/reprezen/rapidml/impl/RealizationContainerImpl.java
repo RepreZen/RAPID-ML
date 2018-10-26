@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import com.reprezen.realization.processor.EffectiveRealization;
+import com.reprezen.rapidml.realization.processor.EffectiveRealization;
 import com.reprezen.rapidml.Extension;
 import com.reprezen.rapidml.ObjectRealization;
 import com.reprezen.rapidml.RealizationContainer;

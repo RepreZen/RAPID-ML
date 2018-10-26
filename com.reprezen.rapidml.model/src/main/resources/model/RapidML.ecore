@@ -482,7 +482,7 @@
     <eOperations name="getRealizationModel" eType="#//RealizationModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="RealizationModel" instanceClassName="com.reprezen.realization.model.RealizationModel"
+  <eClassifiers xsi:type="ecore:EDataType" name="RealizationModel" instanceClassName="com.reprezen.rapidml.realization.model.RealizationModel"
       serializable="false"/>
   <eClassifiers xsi:type="ecore:EEnum" name="CollectionRealizationLevelEnum">
     <eLiterals name="ITEM_LEVEL" literal="itemLevel"/>
@@ -494,7 +494,7 @@
       <details key="baseType" value="CollectionRealizationLevelEnum"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="EffectiveRealization" instanceClassName="com.reprezen.realization.processor.EffectiveRealization"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="EffectiveRealization" instanceClassName="com.reprezen.rapidml.realization.processor.EffectiveRealization"/>
   <eClassifiers xsi:type="ecore:EClass" name="HasTitle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

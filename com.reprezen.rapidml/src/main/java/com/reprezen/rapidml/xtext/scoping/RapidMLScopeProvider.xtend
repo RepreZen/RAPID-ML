@@ -198,8 +198,7 @@ class RapidMLScopeProvider extends AbstractDeclarativeScopeProvider {
 	/** 
 	 * This scope is used for template proposals reference variables lookup.
 	 */
-	def package IScope scope_PropertyReference_conceptualFeature(com.reprezen.rapidml.URI uri,
-		EReference eRef) {
+	def package IScope scope_PropertyReference_conceptualFeature(com.reprezen.rapidml.URI uri, EReference eRef) {
 		if (uri.eContainer() instanceof ServiceDataResource) {
 			return getScopeForDataResource((uri.eContainer() as ServiceDataResource))
 		}
@@ -382,28 +381,30 @@ class RapidMLScopeProvider extends AbstractDeclarativeScopeProvider {
 	}
 
 	def private ZenModel getLibraryModel(URI modelURI) {
-		if (Platform.isRunning()) {
-			var IWorkspaceRoot eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot()
-			var Workspace workspace = new EmfWorkspace(eclipseWorkspace)
-			var RestModelLoader loader = new DslRestModelLoader(workspace)
-			return loader.load(modelURI)
-		} else {
-			// workaround to load libraries in headless generation mode
-			new RapidMLStandaloneSetup().createInjectorAndDoEMFRegistration()
-			var Injector injector = Guice.createInjector(new RapidMLRuntimeModule())
-			var XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet)
-			resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE)
-			var org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(modelURI)
-			try {
-				val stream = Resources.getResource(RapidMLScopeProvider, '''libraries/«modelURI.lastSegment()»''').openStream()
-				resource.load(stream, null)
+		// TODO can we make this work when we're really in a platform scenario?
+		// if (Platform.isRunning()) {
+		// var IWorkspaceRoot eclipseWorkspace = ResourcesPlugin.getWorkspace().getRoot()
+		// var Workspace workspace = new EmfWorkspace(eclipseWorkspace)
+		// var RestModelLoader loader = new DslRestModelLoader(workspace)
+		// return loader.load(modelURI)
+		// } else {
+		// workaround to load libraries in headless generation mode
+		new RapidMLStandaloneSetup().createInjectorAndDoEMFRegistration()
+		var Injector injector = Guice.createInjector(new RapidMLRuntimeModule())
+		var XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet)
+		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE)
+		var org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(modelURI)
+		try {
+			val stream = Resources.getResource(RapidMLScopeProvider, '''libraries/«modelURI.lastSegment()»''').
+				openStream()
+			resource.load(stream, null)
 
-			} catch (IOException e) {
-				throw new RuntimeException(e)
-			}
-
-			return (resource.getContents().get(0) as ZenModel)
+		} catch (IOException e) {
+			throw new RuntimeException(e)
 		}
+
+		return (resource.getContents().get(0) as ZenModel)
+	// }
 	}
 
 	def private IScope getScopeForDataResource(ServiceDataResource dataResource) {

@@ -17,10 +17,9 @@ import org.eclipse.emf.common.util.URI;
  */
 public abstract class ZenLibraries {
 
-    public static final URI LIBRARIES_URI = URI.createPlatformPluginURI(
-            "/com.reprezen.rapidml.xtext/libraries", false);
+    public static final URI LIBRARIES_URI = URI
+            .createPlatformPluginURI("/com.reprezen.rapidml/com/reprezen/rapidml/xtext/scoping/libraries", false);
     public static final URI PRIMITIVE_TYPES = LIBRARIES_URI.appendSegment("PrimitiveTypes.rapid");
     public static final URI STANDARD_MEDIA_TYPES = LIBRARIES_URI.appendSegment("StandardMediaTypes.rapid");
     public static final URI IANA_LINK_RELATIONS = LIBRARIES_URI.appendSegment("IANALinkRelations.rapid");
-
 }

@@ -26,10 +26,10 @@ import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.google.common.collect.Lists;
-import com.reprezen.rapidml.realization.model.RealizationModel;
-import com.reprezen.rapidml.realization.model.impl.RealizationModelImpl;
 import com.reprezen.jsonoverlay.JsonLoader;
 import com.reprezen.jsonoverlay.ReferenceManager;
+import com.reprezen.rapidml.realization.model.RealizationModel;
+import com.reprezen.rapidml.realization.model.impl.RealizationModelImpl;
 
 public class RealizationModelParser {
 
@@ -71,10 +71,8 @@ public class RealizationModelParser {
 
     private void createValidator() {
         if (validator == null) {
-            URL schemaUrl;
             try {
-                schemaUrl = new URL(
-                        "platform:/plugin/com.reprezen.rapidml.realization/schema/auto-realization-config-schema.json");
+                URL schemaUrl = getClass().getClassLoader().getResource("schema/auto-realization-config-schema.json");
                 try (InputStream s = schemaUrl.openStream()) {
                     JsonNode schema = new ObjectMapper().readTree(s);
                     validator = JsonSchemaFactory.byDefault().getJsonSchema(schema);

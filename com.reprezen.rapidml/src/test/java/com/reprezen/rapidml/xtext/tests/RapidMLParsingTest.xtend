@@ -3,8 +3,10 @@
  */
 package com.reprezen.rapidml.xtext.tests
 
+import com.google.common.io.Resources
 import com.google.inject.Inject
 import com.reprezen.rapidml.ZenModel
+import java.nio.charset.Charset
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -21,9 +23,9 @@ class RapidMLParsingTest{
 
 	@Test 
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
+		val resource = Resources.toString(Resources.getResource("TaxBlaster.rapid"), Charset.forName("UTF-8"))
+		val result = parseHelper.parse(resource)
+
 		Assert.assertNotNull(result)
 	}
 

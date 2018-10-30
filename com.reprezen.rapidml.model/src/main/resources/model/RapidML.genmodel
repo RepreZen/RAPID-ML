@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright © 2013-2016 Modelsolv, Inc.&#xA;All Rights Reserved.&#xA;&#xA;NOTICE: All information contained herein is, and remains the property&#xA;of ModelSolv, Inc. See the file license.html in the root directory of&#xA;this project for further information."
+    modelDirectory="/com.reprezen.rapidml.model/src/main/java" editDirectory="/com.reprezen.rapidml.edit/src"
+    editorDirectory="/com.reprezen.rapidml.editor/src" modelPluginID="com.reprezen.rapidml"
+    modelName="RapidML" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" editPluginID="com.reprezen.rapidml.edit">
+  <foreignModel>RapidML.ecore</foreignModel>
+  <genPackages prefix="Rapidml" basePackage="com.reprezen" disposableProviderFactory="true"
+      ecorePackage="RapidML.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//HTTPMethods">
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/GET"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/PUT"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/POST"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/HEAD"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/PATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/TRACE"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/OPTIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HTTPMethods/CONNECT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//ReferenceRealizationEnum">
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//ReferenceRealizationEnum/EMBED"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//ReferenceRealizationEnum/LINK"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//HttpMessageParameterLocation">
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HttpMessageParameterLocation/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HttpMessageParameterLocation/QUERY"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//HttpMessageParameterLocation/HEADER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//CollectionRealizationEnum">
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//CollectionRealizationEnum/EMBEDDED_OBJECT_LIST"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//CollectionRealizationEnum/REFERENCE_LINK_LIST"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//AuthenticationTypes">
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//AuthenticationTypes/BASIC"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//AuthenticationTypes/OAUTH2"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//AuthenticationTypes/CUSTOM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//AuthenticationFlows">
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//AuthenticationFlows/IMPLICIT"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//AuthenticationFlows/PASSWORD"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//AuthenticationFlows/APPLICATION"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//AuthenticationFlows/ACCESS_CODE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RapidML.ecore#//CollectionRealizationLevelEnum">
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//CollectionRealizationLevelEnum/ITEM_LEVEL"/>
+      <genEnumLiterals ecoreEnumLiteral="RapidML.ecore#//CollectionRealizationLevelEnum/COLLECTION_LEVEL"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="RapidML.ecore#//RealizationModel"/>
+    <genDataTypes ecoreDataType="RapidML.ecore#//CollectionRealizationLevelObject"/>
+    <genDataTypes ecoreDataType="RapidML.ecore#//EffectiveRealization"/>
+    <genDataTypes ecoreDataType="RapidML.ecore#//Cardinality"/>
+    <genDataTypes ecoreDataType="RapidML.ecore#//CardinalityOverride"/>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//ResourceDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceDefinition/methods"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceDefinition/mediaTypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ResourceDefinition/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceDefinition/allMediaTypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceDefinition/URI"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//TypedMessage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//TypedMessage/parameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//TypedMessage/resourceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//TypedMessage/useParentTypeReference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//TypedMessage/mediaTypes"/>
+      <genOperations ecoreOperation="RapidML.ecore#//TypedMessage/getAllExamples"/>
+      <genOperations ecoreOperation="RapidML.ecore#//TypedMessage/isIncluded">
+        <genParameters ecoreParameter="RapidML.ecore#//TypedMessage/isIncluded/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="RapidML.ecore#//TypedMessage/getIncludedProperties"/>
+      <genOperations ecoreOperation="RapidML.ecore#//TypedMessage/getActualType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//TypedMessage/getReferenceLinks"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//Method">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Method/request"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Method/responses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Method/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Method/httpMethod"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//Method/containingResourceDefinition"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Method/getName"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Parameter/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Parameter/default"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Parameter/fixed"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//Parameter/sourceReference"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Parameter/getType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Parameter/getPrimitiveType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Parameter/getConstraints"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//RESTElement"/>
+    <genClasses ecoreClass="RapidML.ecore#//Documentation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Documentation/text"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//Documentable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Documentable/documentation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//MediaType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//MediaType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//MediaType/specURL"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//MediaType/derivedFrom"/>
+      <genOperations ecoreOperation="RapidML.ecore#//MediaType/hashCode"/>
+      <genOperations ecoreOperation="RapidML.ecore#//MediaType/equals">
+        <genParameters ecoreParameter="RapidML.ecore#//MediaType/equals/other"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//TypedRequest">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//TypedRequest/containingMethod"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//TypedResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//TypedResponse/statusCode"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//TypedResponse/containingMethod"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//URIParameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//URIParameter/uriSegment"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//URIParameter/containingURI"/>
+      <genOperations ecoreOperation="RapidML.ecore#//URIParameter/getName"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//MatrixParameter"/>
+    <genClasses ecoreClass="RapidML.ecore#//TemplateParameter"/>
+    <genClasses ecoreClass="RapidML.ecore#//CollectionResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//CollectionResource/collectionParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//CollectionResource/referenceElements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//CollectionResource/resourceRealizationKind"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ObjectResource"/>
+    <genClasses ecoreClass="RapidML.ecore#//CollectionParameter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//CollectionParameter/containingResourceDefinition"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//PropertyReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//PropertyReference/conceptualFeature"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PropertyReference/getType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PropertyReference/getConstraints"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//SourceReference">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//SourceReference/containingParameter"/>
+      <genOperations ecoreOperation="RapidML.ecore#//SourceReference/getType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//SourceReference/getConstraints"/>
+      <genOperations ecoreOperation="RapidML.ecore#//SourceReference/getPrimitiveType"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//MessageParameter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//MessageParameter/containingMessage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//MessageParameter/httpLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ZenModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ZenModel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ZenModel/namespace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ZenModel/resourceAPIs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ZenModel/dataModels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ZenModel/mediaTypesLibrary"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ZenModel/linkRelationsLibrary"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ZenModel/primitiveTypesLibrary"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ZenModel/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ZenModel/securitySchemesLibrary"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ResourceAPI">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ResourceAPI/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ResourceAPI/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ResourceAPI/baseURI"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceAPI/ownedResourceDefinitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceAPI/serviceDataModels"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceAPI/formats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceAPI/definedMediaTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceAPI/definedLinkRelations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceAPI/defaultReferenceRealizations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ResourceAPI/autoRealizations"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ServiceDataResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ServiceDataResource/default"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ServiceDataResource/definedLinkDescriptors"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ServiceDataResource/getDefaultLinkDescriptor"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ServiceDataResource/isIncluded">
+        <genParameters ecoreParameter="RapidML.ecore#//ServiceDataResource/isIncluded/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="RapidML.ecore#//ServiceDataResource/getReferenceLinks"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ServiceDataResource/getAllReferenceTreatments"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ServiceDataResource/getIncludedProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ReferenceTreatment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceTreatment/referenceElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceTreatment/referenceRealization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceTreatment/ownedReferenceRealization"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ReferenceTreatment/getEmbedHierarchy"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ReferenceTreatment/getLinkDescriptor"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ReferenceRealization">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceRealization/targetResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ReferenceRealization/realizationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ReferenceRealization/multiValued"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ReferenceRealization/getLinkDescriptor"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ReferenceLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ReferenceLink/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceLink/linkRelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ReferenceLink/collectionRealizationLevel"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ReferenceLink/getTargetResource"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ReferenceEmbed">
+      <genOperations ecoreOperation="RapidML.ecore#//ReferenceEmbed/getAllNestedReferenceTreatments"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ReferenceEmbed/getNestedReferenceTreatments"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//NamedLinkDescriptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//NamedLinkDescriptor/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//NamedLinkDescriptor/default"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//PathSegment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//PathSegment/referenceElement"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//PrimitiveTypeSourceReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//PrimitiveTypeSourceReference/simpleType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PrimitiveTypeSourceReference/getType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PrimitiveTypeSourceReference/getConstraints"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//URI">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//URI/segments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//URI/uriParameters"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//URISegment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//URISegment/name"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//URISegmentWithParameter"/>
+    <genClasses ecoreClass="RapidML.ecore#//PropertyRealization">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//PropertyRealization/baseProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//PropertyRealization/cardinality"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PropertyRealization/getMinOccurs"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PropertyRealization/getMaxOccurs"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PropertyRealization/getPrimitiveType"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//LinkRelation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//LinkRelation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//LinkRelation/specURL"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//WithExamples">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//WithExamples/examples"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//Example">
+      <genOperations ecoreOperation="RapidML.ecore#//Example/getBody"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//InlineExample">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//InlineExample/body"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ExternalExample">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ExternalExample/path"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ExternalExample/getBody"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//HasStringValue">
+      <genOperations ecoreOperation="RapidML.ecore#//HasStringValue/toString"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ImportDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ImportDeclaration/importURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ImportDeclaration/importedNamespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ImportDeclaration/alias"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ImportDeclaration/importedModel"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ObjectRealization">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ObjectRealization/exclusivePropertyList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ObjectRealization/overriddenPropertyList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ObjectRealization/excludedProperties"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//ObjectRealization/realizationContainer"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ObjectRealization/getDataType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ObjectRealization/getAllIncludedProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//CollectionReferenceElement">
+      <genOperations ecoreOperation="RapidML.ecore#//CollectionReferenceElement/getName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//HasSecurityValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//HasSecurityValue/securedBy"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//SecurityScheme">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//SecurityScheme/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//SecurityScheme/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//SecurityScheme/scopes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//SecurityScheme/settings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//SecurityScheme/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//SecurityScheme/errorResponses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//SecurityScheme/flow"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//AuthenticationMethod">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//AuthenticationMethod/scheme"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//AuthenticationMethod/scopes"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//SecurityScope">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//SecurityScope/name"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//SecuritySchemeParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//SecuritySchemeParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//SecuritySchemeParameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//SecuritySchemeLibrary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//SecuritySchemeLibrary/securitySchemes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//SecuritySchemeLibrary/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//RealizationContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//RealizationContainer/withDefaultRealization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//RealizationContainer/inlineObjectRealization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//RealizationContainer/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//RealizationContainer/referenceTreatments"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//RealizationContainer/dataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//RealizationContainer/realizationName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//RealizationContainer/effectiveRealization"/>
+      <genOperations ecoreOperation="RapidML.ecore#//RealizationContainer/getActualType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//Extensible">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Extensible/extensions"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//Extension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Extension/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Extension/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//RealizationModelLocation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//RealizationModelLocation/uri"/>
+      <genOperations ecoreOperation="RapidML.ecore#//RealizationModelLocation/getRealizationModel"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//HasTitle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//HasTitle/title"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//MediaTypesLibrary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//MediaTypesLibrary/mediaTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//LinkRelationsLibrary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//LinkRelationsLibrary/definedLinkRelations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//LinkRelationsLibrary/name"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//PrimitiveTypesLibrary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//PrimitiveTypesLibrary/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//PrimitiveTypesLibrary/primitiveTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Operation/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Feature/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//Feature/containingDataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Feature/restriction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Feature/readOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Feature/key"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Feature/getMinOccurs"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Feature/getMaxOccurs"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ReferenceProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceProperty/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceProperty/inverse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ReferenceProperty/containment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ReferenceProperty/container"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//PrimitiveProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//PrimitiveProperty/type"/>
+      <genOperations ecoreOperation="RapidML.ecore#//PrimitiveProperty/getPrimitiveType"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//Structure">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Structure/ownedFeatures"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Structure/ownedElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Structure/ownedOperations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//Structure/supertypes"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//Structure/allSupertypes"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Structure/getReferenceProperties"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Structure/getPrimitiveProperties"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Structure/getAllPrimitiveProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//DataModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//DataModel/ownedDataTypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//DataModel/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//WithDataExamples">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//WithDataExamples/dataExamples"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//DataExample"/>
+    <genClasses ecoreClass="RapidML.ecore#//InlineDataExample">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//InlineDataExample/body"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//Constraint">
+      <genOperations ecoreOperation="RapidML.ecore#//Constraint/supports">
+        <genParameters ecoreParameter="RapidML.ecore#//Constraint/supports/type"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//Enumeration/enumConstants"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//Enumeration/baseType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Enumeration/getPrimitiveType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//SimpleType"/>
+    <genClasses ecoreClass="RapidML.ecore#//EnumConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//EnumConstant/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//EnumConstant/integerValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//EnumConstant/literalValue"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference RapidML.ecore#//EnumConstant/enumeration"/>
+      <genOperations ecoreOperation="RapidML.ecore#//EnumConstant/getImplicitIntegerValue"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//UserDefinedType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//UserDefinedType/baseType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//UserDefinedType/getPrimitiveType"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//PrimitiveType">
+      <genOperations ecoreOperation="RapidML.ecore#//PrimitiveType/getPrimitiveType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//DataType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//DataType/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//SingleValueType">
+      <genOperations ecoreOperation="RapidML.ecore#//SingleValueType/getPrimitiveType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//Element/cardinality"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Element/getMinOccurs"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Element/getMaxOccurs"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Element/getDataType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//Element/isMultiValued"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//ReferenceElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RapidML.ecore#//ReferenceElement/dataType"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ReferenceElement/getName"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//LengthConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//LengthConstraint/minLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//LengthConstraint/maxLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//LengthConstraint/length"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//RegExConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//RegExConstraint/pattern"/>
+    </genClasses>
+    <genClasses ecoreClass="RapidML.ecore#//ValueRangeConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ValueRangeConstraint/minValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ValueRangeConstraint/minValueExclusive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ValueRangeConstraint/maxValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RapidML.ecore#//ValueRangeConstraint/maxValueExclusive"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//ConstrainableType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RapidML.ecore#//ConstrainableType/constraints"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ConstrainableType/getConstrainableParent"/>
+      <genOperations ecoreOperation="RapidML.ecore#//ConstrainableType/getAllConstraints"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="RapidML.ecore#//Inheritable"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -22,8 +22,8 @@ Workflow {
 				}
 				eclipsePlugin = {
 					enabled = true
-					src = "com.reprezen.rapidml.ui/xtext-gen"
-					srcGen = "com.reprezen.rapidml.ui/xtend-gen"
+					src = "com.reprezen.rapidml.ui/src"
+					srcGen = "com.reprezen.rapidml.ui/xtext-gen"
 				}
 				mavenLayout = true
 			}

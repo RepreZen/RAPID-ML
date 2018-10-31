@@ -9,19 +9,19 @@
 package com.reprezen.rapidml.xtext.util
 
 import com.reprezen.rapidml.Documentable
+import com.reprezen.rapidml.Enumeration
+import com.reprezen.rapidml.Feature
+import com.reprezen.rapidml.PrimitiveProperty
 import com.reprezen.rapidml.RealizationContainer
 import com.reprezen.rapidml.ReferenceEmbed
 import com.reprezen.rapidml.ReferenceLink
+import com.reprezen.rapidml.ReferenceProperty
 import com.reprezen.rapidml.ReferenceTreatment
 import com.reprezen.rapidml.ResourceAPI
 import com.reprezen.rapidml.ServiceDataResource
 import com.reprezen.rapidml.TypedMessage
-import com.reprezen.rapidml.ZenModel
-import com.reprezen.rapidml.Enumeration
-import com.reprezen.rapidml.Feature
-import com.reprezen.rapidml.PrimitiveProperty
-import com.reprezen.rapidml.ReferenceProperty
 import com.reprezen.rapidml.UserDefinedType
+import com.reprezen.rapidml.ZenModel
 import java.util.ArrayList
 import java.util.Arrays
 import java.util.Collection
@@ -30,6 +30,7 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 
 class ZenModelHelper {
+
 	protected def dispatch List<? extends Object> getReferenceTreatmentIncludedProperties(ReferenceEmbed refEmbed) {
 		// contains Features and ReferenceTreatments
 		val includedProps = new ArrayList<EObject>();

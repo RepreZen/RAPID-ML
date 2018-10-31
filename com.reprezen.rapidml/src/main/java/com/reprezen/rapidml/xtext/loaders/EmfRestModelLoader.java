@@ -8,15 +8,12 @@
  *******************************************************************************/
 package com.reprezen.rapidml.xtext.loaders;
 
-import com.reprezen.core.workspace.Workspace;
-import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.xtext.validation.RestFileValidator;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import com.google.common.base.Preconditions;
+import com.reprezen.rapidml.ZenModel;
 
 /**
  * Loads the RESTApi model that are in EMF format.
@@ -26,14 +23,7 @@ import com.google.common.base.Preconditions;
  * @author jimleroyer
  * @since 2013/04/26
  */
-public class EmfRestModelLoader implements RestModelLoader {
-
-    protected RestFileValidator validator;
-
-    public EmfRestModelLoader(Workspace workspace) {
-        Preconditions.checkArgument(workspace != null, "The workspace cannot be null.");
-        this.validator = new RestFileValidator(workspace);
-    }
+public class EmfRestModelLoader extends RestModelLoader {
 
     /**
      * Loads the model at the given location and returns it.
@@ -41,12 +31,13 @@ public class EmfRestModelLoader implements RestModelLoader {
      * @param modelLocation
      *            Location of the RESTApi metamodel.
      * @return {@link com.reprezen.rapidml.ZenModel}
-     * @throws {@link com.reprezen.rapidml.xtext.RestApiException}
+     * @throws {@link
+     *             com.reprezen.rapidml.xtext.RestApiException}
      */
     @Override
     public ZenModel load(URI modelLocation) {
         Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
-        validator.validateFile(modelLocation);
+        validateFile(modelLocation.toFileString());
         return doLoad(modelLocation);
     }
 
@@ -56,12 +47,13 @@ public class EmfRestModelLoader implements RestModelLoader {
      * @param modelLocation
      *            Location of the RESTApi metamodel.
      * @return {@link com.reprezen.rapidml.ZenModel}
-     * @throws {@link com.reprezen.rapidml.xtext.RestApiException}
+     * @throws {@link
+     *             com.reprezen.rapidml.xtext.RestApiException}
      */
     @Override
     public ZenModel load(String modelLocation) {
         Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
-        validator.validateFile(modelLocation);
+        validateFile(modelLocation);
         return doLoad(URI.createFileURI(modelLocation));
     }
 

@@ -13,14 +13,10 @@ import static java.lang.String.format;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 
+import com.reprezen.core.RapidFileExtensions;
 import com.reprezen.core.XmiFileExtensions;
-import com.reprezen.core.workspace.EmfWorkspace;
-import com.reprezen.core.workspace.Workspace;
-import com.reprezen.core.workspace.WorkspaceUtils;
 import com.reprezen.rapidml.ZenModel;
 
 /**
@@ -52,12 +48,10 @@ public class ModelLoaderUtils {
      *             Signals that an I/O exception has occurred.
      */
     public static ZenModel loadModel(URI modelURI) throws IOException {
-        IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-        Workspace repregenWorkspace = new EmfWorkspace(workspaceRoot);
-        if (WorkspaceUtils.isZenExtension(modelURI.fileExtension())) {
-            return new DslRestModelLoader(repregenWorkspace).load(modelURI);
+        if (RapidFileExtensions.isZenExtension(modelURI.fileExtension())) {
+            return new DslRestModelLoader().load(modelURI);
         } else if (XmiFileExtensions.XMI.getExtension().equalsIgnoreCase(modelURI.fileExtension())) {
-            return new EmfRestModelLoader(repregenWorkspace).load(modelURI);
+            return new EmfRestModelLoader().load(modelURI);
         } else {
             String extension = modelURI.fileExtension();
             throw new IOException(format("The '%s' extension is not supported for WADL generation.", extension));

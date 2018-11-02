@@ -8,6 +8,12 @@
  *******************************************************************************/
 package com.reprezen.rapidml.xtext.loaders;
 
+import static java.lang.String.format;
+
+import java.io.File;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+
 import org.eclipse.emf.common.util.URI;
 
 import com.reprezen.rapidml.ZenModel;
@@ -18,7 +24,7 @@ import com.reprezen.rapidml.ZenModel;
  * @author jimleroyer
  * @since 2013/04/25
  */
-public interface RestModelLoader {
+public abstract class RestModelLoader {
 
     /**
      * Loads the model at the given location and returns it.
@@ -27,7 +33,7 @@ public interface RestModelLoader {
      *            {@link org.eclipse.emf.common.util.URI} of the RESTApi metamodel.
      * @return {@link com.reprezen.rapidml.ZenModel}
      */
-    public ZenModel load(URI modelPath);
+    public abstract ZenModel load(URI modelPath);
 
     /**
      * Loads the model at the given location and returns it.
@@ -36,6 +42,20 @@ public interface RestModelLoader {
      *            Location of the model, as a {@link String}.
      * @return {@link com.reprezen.rapidml.ZenModel}
      */
-    public ZenModel load(String modelLocation);
+    public abstract ZenModel load(String modelLocation);
 
+    public static void validateFile(String modelPath) {
+        File modelFile;
+        try {
+            modelFile = Paths.get(new java.net.URI(modelPath)).toFile();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(format("The model file '%s' does not exist.", modelPath));
+        }
+        if (!modelFile.exists()) {
+            throw new RuntimeException(format("The model file '%s' does not exist.", modelFile));
+        }
+        if (!modelFile.isFile()) {
+            throw new RuntimeException(format("The '%s' path is not a file.", modelFile));
+        }
+    }
 }

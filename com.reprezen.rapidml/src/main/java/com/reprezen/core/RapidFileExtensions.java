@@ -8,6 +8,9 @@
  *******************************************************************************/
 package com.reprezen.core;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+
 /**
  * This class enumerates all file extensions that RepreZen deals with.
  * 
@@ -54,4 +57,11 @@ public enum RapidFileExtensions {
         return false;
     }
 
+    public static boolean isZenFile(IResource resource) {
+        return resource instanceof IFile && includes(resource.getFileExtension());
+    }
+
+    public static boolean isZenExtension(String extension) {
+        return includes(extension);
+    }
 }

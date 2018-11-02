@@ -8,20 +8,22 @@
  *******************************************************************************/
 package com.reprezen.rapidml.xtext.converters;
 
+import static java.lang.String.format;
+
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.common.base.Preconditions;
-import com.reprezen.core.workspace.Workspace;
-import com.reprezen.core.workspace.WorkspaceUtils;
+import com.reprezen.core.RapidFileExtensions;
 import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.ZenModel;
 import com.reprezen.rapidml.xtext.loaders.DslRestModelLoader;
+import com.reprezen.rapidml.xtext.loaders.RestModelLoader;
 import com.reprezen.rapidml.xtext.serializers.EmfRestModelSerializer;
-import com.reprezen.rapidml.xtext.validation.RestFileValidator;
 
 /**
  * A REST DSL to EMF XMI converter.
@@ -31,19 +33,16 @@ import com.reprezen.rapidml.xtext.validation.RestFileValidator;
  */
 public class Dsl2EmfConverter {
 
-    protected RestFileValidator validator;
-    protected Workspace workspace;
     private final String modelFile;
     private final String modelPath;
 
-    public Dsl2EmfConverter(String modelFile, Workspace workspace) throws IOException {
+    public Dsl2EmfConverter(String modelFile) throws IOException {
         Preconditions.checkArgument(modelFile != null, "The model path should not be null");
-        Preconditions.checkArgument(WorkspaceUtils.isZenExtension(getFileExtension(modelFile)),
+        Preconditions.checkArgument(RapidFileExtensions.isZenExtension(getFileExtension(modelFile)),
                 "The model path should end with the 'rest' extension.");
-        validator = new RestFileValidator(workspace);
-        validator.validateFile(modelFile);
 
-        this.workspace = workspace;
+        RestModelLoader.validateFile(modelFile);
+
         this.modelFile = modelFile;
         this.modelPath = getDirectory(modelFile);
 
@@ -54,7 +53,10 @@ public class Dsl2EmfConverter {
 
     public void dslToEmf(String outputDirectory) throws IOException {
         Preconditions.checkArgument(outputDirectory != null, "The output directory should not be null.");
-        validator.validateDirectory(outputDirectory);
+        if (!Paths.get(outputDirectory).toFile().exists()) {
+            throw new RuntimeException(format("The directory '%s' does not exist.", outputDirectory));
+        }
+
         ZenModel model = loadDslModel(this.modelFile);
         String dslFilePath = new File(outputDirectory, getEmfFilename(this.modelFile)).getPath();
         saveEmfModel(dslFilePath, model);
@@ -74,7 +76,7 @@ public class Dsl2EmfConverter {
 
     private ZenModel loadDslModel(String path) {
         URI uri = URI.createFileURI(path);
-        return new DslRestModelLoader(workspace).load(uri);
+        return new DslRestModelLoader().load(uri);
     }
 
     private void saveEmfModel(String path, ZenModel model) throws IOException {

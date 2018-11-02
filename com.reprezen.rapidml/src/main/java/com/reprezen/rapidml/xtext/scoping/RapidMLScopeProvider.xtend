@@ -7,6 +7,60 @@
  */
 package com.reprezen.rapidml.xtext.scoping
 
+import com.google.common.collect.Collections2
+import com.google.common.collect.Iterables
+import com.google.common.collect.Lists
+import com.google.common.collect.Sets
+import com.google.common.io.Resources
+import com.google.inject.Guice
+import com.google.inject.Injector
+import com.reprezen.rapidml.AuthenticationMethod
+import com.reprezen.rapidml.DataModel
+import com.reprezen.rapidml.Enumeration
+import com.reprezen.rapidml.Feature
+import com.reprezen.rapidml.LinkRelation
+import com.reprezen.rapidml.MediaType
+import com.reprezen.rapidml.Method
+import com.reprezen.rapidml.ObjectRealization
+import com.reprezen.rapidml.PrimitiveProperty
+import com.reprezen.rapidml.PrimitiveType
+import com.reprezen.rapidml.PrimitiveTypeSourceReference
+import com.reprezen.rapidml.PropertyRealization
+import com.reprezen.rapidml.PropertyReference
+import com.reprezen.rapidml.RealizationContainer
+import com.reprezen.rapidml.ReferenceEmbed
+import com.reprezen.rapidml.ReferenceLink
+import com.reprezen.rapidml.ReferenceProperty
+import com.reprezen.rapidml.ReferenceRealization
+import com.reprezen.rapidml.ReferenceRealizationEnum
+import com.reprezen.rapidml.ReferenceTreatment
+import com.reprezen.rapidml.ResourceAPI
+import com.reprezen.rapidml.ResourceDefinition
+import com.reprezen.rapidml.ServiceDataResource
+import com.reprezen.rapidml.Structure
+import com.reprezen.rapidml.TemplateParameter
+import com.reprezen.rapidml.TypedMessage
+import com.reprezen.rapidml.ZenModel
+import com.reprezen.rapidml.util.InheritanceUtils
+import com.reprezen.rapidml.xtext.RapidMLRuntimeModule
+import com.reprezen.rapidml.xtext.RapidMLStandaloneSetup
+import com.reprezen.rapidml.xtext.libraries.util.PrimitiveTypes
+import java.io.IOException
+import java.util.Collection
+import java.util.Collections
+import java.util.List
+import java.util.Set
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.resource.IEObjectDescription
+import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.resource.XtextResourceSet
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
+
 import static com.google.common.collect.Iterables.filter
 import static com.google.common.collect.Iterables.transform
 import static com.reprezen.rapidml.util.RapidmlModelUtils.getContainingResourceDefinition
@@ -16,69 +70,6 @@ import static com.reprezen.rapidml.xtext.loaders.ZenLibraries.IANA_LINK_RELATION
 import static com.reprezen.rapidml.xtext.loaders.ZenLibraries.PRIMITIVE_TYPES
 import static com.reprezen.rapidml.xtext.loaders.ZenLibraries.STANDARD_MEDIA_TYPES
 import static org.eclipse.xtext.EcoreUtil2.getAllContentsOfType
-import java.io.IOException
-import java.io.InputStream
-import java.util.Collection
-import java.util.Collections
-import java.util.List
-import java.util.Set
-import org.eclipse.core.resources.IWorkspaceRoot
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.core.runtime.Platform
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.resource.IEObjectDescription
-import org.eclipse.xtext.resource.XtextResource
-import org.eclipse.xtext.resource.XtextResourceSet
-import org.eclipse.xtext.scoping.IScope
-import org.eclipse.xtext.scoping.Scopes
-import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
-import com.google.common.base.Function
-import com.google.common.base.Predicate
-import com.google.common.collect.Collections2
-import com.google.common.collect.Iterables
-import com.google.common.collect.Lists
-import com.google.common.collect.Sets
-import com.google.common.io.Resources
-import com.google.inject.Guice
-import com.google.inject.Injector
-import com.reprezen.core.workspace.EmfWorkspace
-import com.reprezen.core.workspace.Workspace
-import com.reprezen.rapidml.AuthenticationMethod
-import com.reprezen.rapidml.LinkRelation
-import com.reprezen.rapidml.MediaType
-import com.reprezen.rapidml.Method
-import com.reprezen.rapidml.ObjectRealization
-import com.reprezen.rapidml.PrimitiveTypeSourceReference
-import com.reprezen.rapidml.PropertyRealization
-import com.reprezen.rapidml.PropertyReference
-import com.reprezen.rapidml.RealizationContainer
-import com.reprezen.rapidml.ReferenceEmbed
-import com.reprezen.rapidml.ReferenceLink
-import com.reprezen.rapidml.ReferenceRealization
-import com.reprezen.rapidml.ReferenceRealizationEnum
-import com.reprezen.rapidml.ReferenceTreatment
-import com.reprezen.rapidml.ResourceAPI
-import com.reprezen.rapidml.ResourceDefinition
-import com.reprezen.rapidml.ServiceDataResource
-import com.reprezen.rapidml.TemplateParameter
-import com.reprezen.rapidml.TypedMessage
-import com.reprezen.rapidml.ZenModel
-import com.reprezen.rapidml.DataModel
-import com.reprezen.rapidml.Enumeration
-import com.reprezen.rapidml.Feature
-import com.reprezen.rapidml.PrimitiveProperty
-import com.reprezen.rapidml.PrimitiveType
-import com.reprezen.rapidml.ReferenceProperty
-import com.reprezen.rapidml.Structure
-import com.reprezen.rapidml.xtext.RapidMLRuntimeModule
-import com.reprezen.rapidml.xtext.RapidMLStandaloneSetup
-import com.reprezen.rapidml.util.InheritanceUtils
-//import com.reprezen.rapidml.xtext.RestApiXtextPlugin;
-import com.reprezen.rapidml.xtext.libraries.util.PrimitiveTypes
-import com.reprezen.rapidml.xtext.loaders.DslRestModelLoader
-import com.reprezen.rapidml.xtext.loaders.RestModelLoader
 
 /** 
  * This class contains custom scoping description.
@@ -393,7 +384,7 @@ class RapidMLScopeProvider extends AbstractDeclarativeScopeProvider {
 		var Injector injector = Guice.createInjector(new RapidMLRuntimeModule())
 		var XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet)
 		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE)
-		var org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(modelURI)
+		var Resource resource = resourceSet.createResource(modelURI)
 		try {
 			val stream = Resources.getResource(RapidMLScopeProvider, '''libraries/«modelURI.lastSegment()»''').
 				openStream()

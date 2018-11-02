@@ -21,9 +21,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.reprezen.core.workspace.Workspace;
 import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.xtext.validation.RestFileValidator;
 import com.reprezen.rapidml.xtext.RapidMLRuntimeModule;
 
 /**
@@ -34,23 +32,16 @@ import com.reprezen.rapidml.xtext.RapidMLRuntimeModule;
  * @author jimleroyer
  * @since 2013/04/26
  */
-public class DslRestModelLoader implements RestModelLoader {
+public class DslRestModelLoader extends RestModelLoader {
 
     /** Cache for platform models (PrimitiveTypes.zen, etc) for performance purpose. */
-    private static final LoadingCache<URI, ZenModel> MODELS_CACHE = CacheBuilder.newBuilder().build(
-            new CacheLoader<URI, ZenModel>() {
+    private static final LoadingCache<URI, ZenModel> MODELS_CACHE = CacheBuilder.newBuilder()
+            .build(new CacheLoader<URI, ZenModel>() {
                 @Override
                 public ZenModel load(URI key) throws Exception {
-                    return loadInternal(key, null);
+                    return loadInternal(key);
                 }
             });
-
-    protected com.reprezen.rapidml.xtext.validation.RestFileValidator validator;
-
-    public DslRestModelLoader(Workspace workspace) {
-        Preconditions.checkArgument(workspace != null, "The workspace cannot be null."); //$NON-NLS-1$
-        this.validator = new RestFileValidator(workspace);
-    }
 
     /**
      * Loads the model at the given location and returns it.
@@ -71,7 +62,7 @@ public class DslRestModelLoader implements RestModelLoader {
                 return (ZenModel) newResource.getContents().get(0);
             }
         }
-        return loadInternal(modelPath, validator);
+        return loadInternal(modelPath);
     }
 
     /**
@@ -86,11 +77,9 @@ public class DslRestModelLoader implements RestModelLoader {
         return load(URI.createFileURI(modelLocation));
     }
 
-    private static ZenModel loadInternal(URI modelPath, RestFileValidator validator) {
+    private static ZenModel loadInternal(URI modelPath) {
         Preconditions.checkArgument(modelPath != null, "The model path should not be null"); //$NON-NLS-1$
-        if (validator != null) {
-            validator.validateFile(modelPath);
-        }
+        validateFile(modelPath.toFileString());
 
         // TODO: Remove the next commented code line once reviewed and proven stable:
         // The following line was replaced with the following as the xtext auto builder was throwing an exception with
@@ -105,7 +94,7 @@ public class DslRestModelLoader implements RestModelLoader {
 
         Injector injector = Guice.createInjector(new RapidMLRuntimeModule());
         XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
-        resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);        
+        resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
         org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(modelPath, true);
         ZenModel model = (ZenModel) resource.getContents().get(0);
         return model;

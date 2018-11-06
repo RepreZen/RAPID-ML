@@ -6,4 +6,3 @@ xtext-gen/
 *.xtextbin
 .DS_Store
 *.versionsBackup
-com.reprezen.rapidml.ui/*

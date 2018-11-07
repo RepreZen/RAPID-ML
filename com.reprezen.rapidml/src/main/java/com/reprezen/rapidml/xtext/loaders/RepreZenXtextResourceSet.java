@@ -19,10 +19,9 @@ public class RepreZenXtextResourceSet extends XtextResourceSet {
 
     public RepreZenXtextResourceSet() {
         super();
-//        getURIConverter().getURIHandlers().add(0, new WebURIHandler());
-        
-        //ZEN-971 (https://www.eclipse.org/forums/index.php/t/835760/) 
-        //Improve receiving changes from imported model file
+
+        // ZEN-971 (https://www.eclipse.org/forums/index.php/t/835760/)
+        // Improve receiving changes from imported model file
         getLoadOptions().put(ResourceDescriptionsProvider.LIVE_SCOPE, Boolean.TRUE);
     }
 }

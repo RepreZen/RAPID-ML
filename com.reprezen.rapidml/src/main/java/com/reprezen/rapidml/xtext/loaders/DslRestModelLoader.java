@@ -79,7 +79,7 @@ public class DslRestModelLoader extends RestModelLoader {
 
     private static ZenModel loadInternal(URI modelPath) {
         Preconditions.checkArgument(modelPath != null, "The model path should not be null"); //$NON-NLS-1$
-        validateFile(modelPath.toFileString());
+        validateFile(modelPath);
 
         // TODO: Remove the next commented code line once reviewed and proven stable:
         // The following line was replaced with the following as the xtext auto builder was throwing an exception with

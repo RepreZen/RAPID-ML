@@ -4,14 +4,14 @@
 	<parent>
 		<groupId>com.reprezen.rapidml</groupId>
 		<artifactId>com.reprezen.rapidml.parent</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>com.reprezen.rapidml</groupId>
 			<artifactId>com.reprezen.rapidml.realization</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>

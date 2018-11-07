@@ -3,7 +3,7 @@
     <parent>
 	<groupId>com.reprezen.rapidml</groupId>
 	<artifactId>com.reprezen.rapidml.parent</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
     </parent>
     <artifactId>com.reprezen.rapidml.ide</artifactId>
     <packaging>jar</packaging>

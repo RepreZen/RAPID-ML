@@ -37,7 +37,6 @@ public class EmfRestModelLoader extends RestModelLoader {
     @Override
     public ZenModel load(URI modelLocation) {
         Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
-        validateFile(modelLocation.toFileString());
         return doLoad(modelLocation);
     }
 
@@ -53,11 +52,12 @@ public class EmfRestModelLoader extends RestModelLoader {
     @Override
     public ZenModel load(String modelLocation) {
         Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
-        validateFile(modelLocation);
         return doLoad(URI.createFileURI(modelLocation));
     }
 
     protected ZenModel doLoad(URI modelLocation) {
+        validateFile(modelLocation);
+
         ResourceSet resourceSet = new ResourceSetImpl();
         org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(modelLocation, true);
         ZenModel model = (ZenModel) resource.getContents().get(0);

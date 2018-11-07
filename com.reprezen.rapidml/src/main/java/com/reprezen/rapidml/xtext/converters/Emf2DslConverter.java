@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 import org.apache.commons.io.FilenameUtils;
-import org.eclipse.core.internal.resources.Workspace;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.common.base.Preconditions;
@@ -38,7 +37,7 @@ public class Emf2DslConverter {
     protected final String modelFile;
     protected final String modelPath;
 
-    public Emf2DslConverter(String modelFile, Workspace workspace) throws IOException {
+    public Emf2DslConverter(String modelFile) throws IOException {
         Preconditions.checkArgument(modelFile != null, "The model path should not be null");
         Preconditions.checkArgument(XMI.extensionEquals(getFileExtension(modelFile)),
                 "The model path should end with the 'xmi' extension.");

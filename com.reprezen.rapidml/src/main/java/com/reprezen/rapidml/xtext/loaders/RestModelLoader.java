@@ -11,9 +11,12 @@ package com.reprezen.rapidml.xtext.loaders;
 import static java.lang.String.format;
 
 import java.io.File;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 
 import com.reprezen.rapidml.ZenModel;
@@ -44,18 +47,36 @@ public abstract class RestModelLoader {
      */
     public abstract ZenModel load(String modelLocation);
 
-    public static void validateFile(String modelPath) {
-        File modelFile;
-        try {
-            modelFile = Paths.get(new java.net.URI(modelPath)).toFile();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(format("The model file '%s' does not exist.", modelPath));
-        }
-        if (!modelFile.exists()) {
-            throw new RuntimeException(format("The model file '%s' does not exist.", modelFile));
-        }
-        if (!modelFile.isFile()) {
-            throw new RuntimeException(format("The '%s' path is not a file.", modelFile));
+    public static void validateFile(URI modelPath) {
+        if (modelPath.isPlatformResource()) {
+            IFile file;
+            try {
+                file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(modelPath.toPlatformString(true)));
+            } catch (Exception e) {
+                throw new RuntimeException(format("The model file '%s' does not exist.", modelPath));
+            }
+            if (file == null || !file.exists()) {
+                throw new RuntimeException(format("The model file '%s' does not exist.", modelPath));
+            }
+            if (file.getType() != IResource.FILE) {
+                throw new RuntimeException(format("The '%s' path is not a file.", modelPath));
+            }
         }
     }
+
+    public static void validateFile(String modelPath) {
+        File file;
+        try {
+            file = Paths.get(new java.net.URI(modelPath)).toFile();
+        } catch (Exception e) {
+            throw new RuntimeException(format("The model file '%s' does not exist.", modelPath));
+        }
+        if (file == null || !file.exists()) {
+            throw new RuntimeException(format("The model file '%s' does not exist.", modelPath));
+        }
+        if (!file.isFile()) {
+            throw new RuntimeException(format("The '%s' path is not a file.", modelPath));
+        }
+    }
+
 }

@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.reprezen.rapidml</groupId>
     <artifactId>com.reprezen.rapidml.parent</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.4</version>
     <packaging>pom</packaging>
     <name>RAPID-ML</name>
     <description>Parser and Model for RAPID-ML modeling language</description>
@@ -54,7 +54,7 @@
 	<connection>git@github.com:RepreZen/RAPID-ML.git</connection>
 	<developerConnection>scm:git:git@github.com:RepreZen/RAPID-ML</developerConnection>
 	<url>https://github.com/RepreZen/RAPID-ML/tree/master</url>
-	<tag>HEAD</tag>
+	<tag>v0.0.4</tag>
     </scm>
     <build>
 	<pluginManagement>
@@ -290,7 +290,7 @@
 	    <dependency>
 	    	<groupId>com.reprezen.rapidml</groupId>
 	    	<artifactId>com.reprezen.rapidml.realization</artifactId>
-	    	<version>0.0.4-SNAPSHOT</version>
+	    	<version>0.0.4</version>
 	    </dependency>
 	    <dependency>
 	    	<groupId>org.eclipse.xtend</groupId>

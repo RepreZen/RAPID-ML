@@ -24,8 +24,7 @@ import org.eclipse.xtext.parsetree.reconstr.ITokenStream;
 import org.eclipse.xtext.util.Pair;
 
 import com.google.inject.Inject;
-import com.reprezen.rapidml.xtext.nls.Messages;
-import com.reprezen.rapidml.xtext.services.RapidMLGrammarAccess;
+import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
 
 /**
  * Restores the canonical order of a resource on formatting. <br>
@@ -41,12 +40,11 @@ public class RepreZenNodeModelStreamer extends NodeModelStreamer {
     @Inject
     private ResourceContentSorter resourceSorter;
 
-//    TODO
-//    @Inject
-//    private IPreferenceStoreAccess preferenceStoreAccess;
+    // @Inject
+    // private IPreferenceStoreAccess preferenceStoreAccess;
 
     @Inject
-    private RapidMLGrammarAccess grammarAccess;
+    private XtextDslGrammarAccess grammarAccess;
 
     @Override
     protected List<INode> getLeafs(ICompositeNode root, int fromOffset, int toOffset) {
@@ -73,9 +71,9 @@ public class RepreZenNodeModelStreamer extends NodeModelStreamer {
                 break;
             // BEGINNING OF THE MODIFICATION
             // TODO
-//            boolean modify = preferenceStoreAccess.getWritablePreferenceStore().getBoolean(
-//                    Messages.FormatterPreferencePage_incorrect_order_pref_key); // if the preference setting is true
-            boolean modify = true;
+            boolean modify = false; // preferenceStoreAccess.getWritablePreferenceStore()
+            // .getBoolean(Messages.FormatterPreferencePage_incorrect_order_pref_key); // if the preference setting
+            // is true
             if (modify && resourceSorter.isApplicable(node)) {
                 Iterator<INode> canonicalOrderIter = resourceSorter.getCanonicalOrder((ICompositeNode) node).iterator();
                 iterator.prune();

@@ -8,9 +8,9 @@
  *******************************************************************************/
 package com.reprezen.rapidml.xtext.modelpath;
 
+import com.reprezen.core.ConfigVariable;
 import com.reprezen.core.debug.Debug;
 import com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option;
-import com.reprezen.core.ConfigVariable;
 
 public class DebugModelPath extends Debug<Option> {
 

@@ -31,8 +31,9 @@ public class JAVADOC_COMMENTValueConverter extends AbstractLexerBasedConverter<S
     protected void assertValidValue(String value) {
         super.assertValidValue(value);
         if (javaDocRegex.matcher(value).matches()) {
-            throw new ValueConverterException(getRuleName()
-                    + "-value should start with a '/**' and end with a '*/' (value: " + value + ").", null, null);
+            throw new ValueConverterException(
+                    getRuleName() + "-value should start with a '/**' and end with a '*/' (value: " + value + ").",
+                    null, null);
         }
     }
 
@@ -44,7 +45,8 @@ public class JAVADOC_COMMENTValueConverter extends AbstractLexerBasedConverter<S
         if (matcher.find()) {
             return trimFormatRegex.matcher(matcher.group(1)).replaceAll("$1");
         }
-        throw new ValueConverterException(getRuleName()
-                + "-value should start with a '/**' and end with a '*/' (value: " + string + ").", null, null);
+        throw new ValueConverterException(
+                getRuleName() + "-value should start with a '/**' and end with a '*/' (value: " + string + ").", null,
+                null);
     }
 }

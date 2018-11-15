@@ -36,7 +36,7 @@ import org.eclipse.xtext.util.Pair;
 import org.eclipse.xtext.util.Tuples;
 
 import com.google.common.base.Strings;
-import com.reprezen.rapidml.xtext.services.RapidMLGrammarAccess;
+import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
 
 /**
  * This class contains custom formatting description.
@@ -49,7 +49,7 @@ public class XtextDslFormatter extends AbstractDeclarativeFormatter {
 
     @Override
     protected void configureFormatting(FormattingConfig c) {
-        RapidMLGrammarAccess f = (RapidMLGrammarAccess) getGrammarAccess();
+        com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess f = (com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess) getGrammarAccess();
 
         // Used to assign correct value to FormattingConfigBasedStream
         // #indentationLevel
@@ -87,7 +87,8 @@ public class XtextDslFormatter extends AbstractDeclarativeFormatter {
         c.setNoSpace().around(f.getIncludedPropertiesAccess().getCommaKeyword_2_0_6_0_0());
         c.setNoSpace().around(f.getIncludedPropertiesAccess().getCommaKeyword_2_1_3_5_0_0());
         c.setNoSpace().around(f.getIncludedPropertiesAccess().getCommaKeyword_2_1_4_5_0_0());
-        c.setNoSpace().around(f.getAnonimousLinkDescriptorAccess().getExclusivePropertyListPropertyRealizationParserRuleCall_3_3_1_0());
+        c.setNoSpace().around(f.getAnonimousLinkDescriptorAccess()
+                .getExclusivePropertyListPropertyRealizationParserRuleCall_3_3_1_0());
 
         c.setNoSpace().around(f.getMediaTypeQualifierWOAsteriskAccess().getSolidusKeyword_1_0());
 
@@ -113,7 +114,7 @@ public class XtextDslFormatter extends AbstractDeclarativeFormatter {
     @Override
     public ITokenStream createFormatterStream(String indent, ITokenStream out, boolean preserveWhitespaces) {
         return new FixedCommentFormatterStream(out, indent, getConfig(), createMatcher(), getHiddenTokenHelper(),
-                preserveWhitespaces, (RapidMLGrammarAccess) getGrammarAccess());
+                preserveWhitespaces, (XtextDslGrammarAccess) getGrammarAccess());
     }
 
     /**
@@ -121,7 +122,8 @@ public class XtextDslFormatter extends AbstractDeclarativeFormatter {
      *         {@link org.eclipse.xtext.service.AbstractElementFinder#findKeywordPairs(String, String)}
      * @see org.eclipse.xtext.service.AbstractElementFinder#findKeywordPairs(String, String)
      */
-    private List<Pair<RuleCall, RuleCall>> findRulePairs(Grammar grammar, AbstractRule leftRule, AbstractRule rightRule) {
+    private List<Pair<RuleCall, RuleCall>> findRulePairs(Grammar grammar, AbstractRule leftRule,
+            AbstractRule rightRule) {
         ArrayList<Pair<RuleCall, RuleCall>> pairs = new ArrayList<>();
         for (AbstractRule ar : GrammarUtil.allRules(grammar)) {
             if (ar instanceof ParserRule && !GrammarUtil.isDatatypeRule((ParserRule) ar)) {
@@ -151,11 +153,11 @@ public class XtextDslFormatter extends AbstractDeclarativeFormatter {
     // first
     // indented comment
     private static class FixedCommentFormatterStream extends FormattingConfigBasedStream {
-        private RapidMLGrammarAccess grammarAccess;
+        private XtextDslGrammarAccess grammarAccess;
 
         protected FixedCommentFormatterStream(ITokenStream out, String indentation, FormattingConfig cfg,
                 IElementMatcher<ElementPattern> matcher, IHiddenTokenHelper hiddenTokenHelper, boolean preserveSpaces,
-                RapidMLGrammarAccess grammarAccess) {
+                XtextDslGrammarAccess grammarAccess) {
             super(out, indentation, cfg, matcher, hiddenTokenHelper, preserveSpaces);
             this.grammarAccess = grammarAccess;
         }

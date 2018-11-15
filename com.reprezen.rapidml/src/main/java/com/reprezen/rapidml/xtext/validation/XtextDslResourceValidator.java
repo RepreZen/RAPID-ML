@@ -29,8 +29,8 @@ public class XtextDslResourceValidator extends ResourceValidatorImpl {
     /**
      * This marker acceptor hides linking errors if syntax errors are present in the model. <br>
      * See <a href="https://modelsolv.atlassian.net/browse/ZEN-605">ZEN-605 Numerous Syntax errors cause failure to
-     * recognize defined data types, very hard to diagnose root cause</a> See <a
-     * href="http://stackoverflow.com/questions/24391080/hide-linking-errors-when-syntax-errors-are-present">Hide
+     * recognize defined data types, very hard to diagnose root cause</a> See
+     * <a href="http://stackoverflow.com/questions/24391080/hide-linking-errors-when-syntax-errors-are-present">Hide
      * linking errors when syntax errors are present<a/>
      */
     protected static class SyntaxOrLinkingListBasedMarkerAcceptor implements IAcceptor<Issue> {

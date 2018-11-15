@@ -8,7 +8,10 @@
  *******************************************************************************/
 package com.reprezen.rapidml.xtext.scoping;
 
+import static com.reprezen.rapidml.xtext.RestApiXtextPlugin.ZEN_CONTENT_TYPE;
 import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.debug;
+import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option.DEFAULT;
+import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option.RESOLUTION;
 
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -48,7 +51,6 @@ import com.google.inject.Provider;
 import com.reprezen.rapidml.ImportDeclaration;
 import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.xtext.modelpath.DebugModelPath;
 import com.reprezen.rapidml.xtext.modelpath.ImportResolver;
 import com.reprezen.rapidml.xtext.modelpath.ModelPath;
 import com.reprezen.rapidml.xtext.nls.Messages;
@@ -58,8 +60,6 @@ import com.reprezen.rapidml.xtext.nls.Messages;
  * @date Nov 18, 2014
  */
 public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopeProvider {
-	
-	public static final String ZEN_CONTENT_TYPE = "com.reprezen.rapidml.xtext.ui.zen"; //$NON-NLS-1$
 
     @Inject
     private ImportUriResolver importResolver;
@@ -138,18 +138,18 @@ public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopePro
         try {
             containerUri = hasRelativeUri(resource) ? null : new java.net.URI(resource.getURI().toString());
             String fqModelName = importDeclaration.getImportedNamespace();
-            com.reprezen.rapidml.xtext.modelpath.ModelPath modelPath = getModelPath();
-            com.reprezen.rapidml.xtext.modelpath.ImportResolver importResolver = new ImportResolver(modelPath, containerUri, fqModelName, importUriString);
+            ModelPath modelPath = getModelPath();
+            ImportResolver importResolver = new ImportResolver(modelPath, containerUri, fqModelName, importUriString);
             // TODO This should silently ignore failing URL proposals and only add an error if all of them fail
             for (java.net.URI nextResolvedUri : importResolver.resolve()) {
-            	debug(DebugModelPath.Option.RESOLUTION, ":Proposed URI: " + nextResolvedUri.toString());
+                debug(RESOLUTION, ":Proposed URI: " + nextResolvedUri.toString());
                 URI importUri = URI.createURI(nextResolvedUri.toString());
                 Resource importedResource = getResource(resource, importUri);
 
                 if (importedResource instanceof XtextResource) {
                     XtextResource xResource = (XtextResource) importedResource;
                     if (xResource.getErrors().isEmpty()) {
-                        debug(DebugModelPath.Option.RESOLUTION, DebugModelPath.Option.DEFAULT, ":Import resolved to " + nextResolvedUri.toString(), "Model Path=",
+                        debug(RESOLUTION, DEFAULT, ":Import resolved to " + nextResolvedUri.toString(), "Model Path=",
                                 modelPath, "FQ Model Name=", fqModelName, "Container=", containerUri, "Import URI=",
                                 importUriString);
                         importDeclaration.setImportedModel((ZenModel) xResource.getContents().get(0));
@@ -157,13 +157,13 @@ public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopePro
                     } else {
                         String msg = NLS.bind(Messages.RepreZenImportUriGlobalScopeProvider_importModelSyntaxError,
                                 importedResource.getURI());
-                        debug(DebugModelPath.Option.RESOLUTION, ":Failed resolution for URI " + nextResolvedUri.toString(), "Reason=", msg);
+                        debug(RESOLUTION, ":Failed resolution for URI " + nextResolvedUri.toString(), "Reason=", msg);
                         addError(resource, importDeclaration, msg);
                     }
                 } else {
                     String msg = NLS.bind(Messages.RepreZenImportUriGlobalScopeProvider_importIncorrectFormat,
                             importUriString);
-                    debug(DebugModelPath.Option.RESOLUTION, ":Failed resolution fro URI " + nextResolvedUri.toString(), "Reason=", msg);
+                    debug(RESOLUTION, ":Failed resolution fro URI " + nextResolvedUri.toString(), "Reason=", msg);
                     addError(resource, importDeclaration, msg);
                 }
             }

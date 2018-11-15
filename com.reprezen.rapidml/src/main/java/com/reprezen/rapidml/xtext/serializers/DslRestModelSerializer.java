@@ -15,7 +15,8 @@ import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.xtext.RapidMLStandaloneSetup;
+import com.reprezen.rapidml.xtext.RestApiException;
+import com.reprezen.rapidml.xtext.XtextDslStandaloneSetup;
 
 /**
  * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at a given location under the DSL Xtext serialization
@@ -37,15 +38,15 @@ public class DslRestModelSerializer implements RestModelSerializer {
      *            {@link com.modelsolv.reprezen.restapi.ZenModel} to serialize.
      */
     @Override
-    public void serialize(String path, ZenModel model) throws RuntimeException {
-        XtextResourceSet resourceSet = new RapidMLStandaloneSetup().createInjectorAndDoEMFRegistration()
+    public void serialize(String path, ZenModel model) throws RestApiException {
+        XtextResourceSet resourceSet = new XtextDslStandaloneSetup().createInjectorAndDoEMFRegistration()
                 .getInstance(XtextResourceSet.class);
         org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(URI.createFileURI(path));
         resource.getContents().add(model);
         try {
             resource.save(SaveOptions.newBuilder().noValidation().getOptions().toOptionsMap());
         } catch (IOException e) {
-            throw new RuntimeException(String.format("Could not save the ZenModel at location '%s'", path), e);
+            throw new RestApiException(String.format("Could not save the ZenModel at location '%s'", path), e);
         }
     }
 

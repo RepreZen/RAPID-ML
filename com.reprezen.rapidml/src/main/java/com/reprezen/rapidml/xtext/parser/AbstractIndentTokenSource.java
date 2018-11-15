@@ -92,8 +92,8 @@ public abstract class AbstractIndentTokenSource implements TokenSource {
     protected Token skipDuplicateNLTokens(Token nextToken) {
         // skip duplicate NL tokens
         while (nextToken != Token.EOF_TOKEN && isNLToken(nextToken) && isNLToken(prevToken)
-                // undo changes from the commit 93725b66fab92aa25922161929983aa6fd131d8f
-                // to enable code-assist for included properties ZEN-1413
+        // undo changes from the commit 93725b66fab92aa25922161929983aa6fd131d8f
+        // to enable code-assist for included properties ZEN-1413
                 && shouldSkipNewLines(nextToken)) {
             CommonToken skipToken = new CommonToken(prevToken);
             skipToken.setType(getWSTokenType());

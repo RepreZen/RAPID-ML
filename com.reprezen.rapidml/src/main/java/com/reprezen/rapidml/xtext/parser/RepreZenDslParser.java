@@ -12,14 +12,14 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.TokenSource;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 
-import com.reprezen.rapidml.xtext.parser.antlr.RapidMLParser;
-import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalRapidMLParser;
+import com.reprezen.rapidml.xtext.parser.antlr.XtextDslParser;
+import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslParser;
 
 /**
  * @author Konstantin Zaitsev
  * @date Oct 29, 2014
  */
-public class RepreZenDslParser extends RapidMLParser {
+public class RepreZenDslParser extends XtextDslParser {
 
     @Override
     protected TokenSource createLexer(CharStream stream) {
@@ -37,7 +37,7 @@ public class RepreZenDslParser extends RapidMLParser {
     }
 
     @Override
-    protected InternalRapidMLParser createParser(XtextTokenStream stream) {
+    protected InternalXtextDslParser createParser(XtextTokenStream stream) {
         return new RepreZenInternalDslParser(stream, getGrammarAccess());
     }
 }

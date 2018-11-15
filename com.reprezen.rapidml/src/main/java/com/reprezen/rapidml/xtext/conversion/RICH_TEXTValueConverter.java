@@ -30,8 +30,9 @@ public class RICH_TEXTValueConverter extends AbstractLexerBasedConverter<String>
     protected void assertValidValue(String value) {
         super.assertValidValue(value);
         if (javaDocRegex.matcher(value).matches()) {
-            throw new ValueConverterException(getRuleName()
-                    + "-value should start with a \"'''\" and end with a \"'''\" (value: " + value + ").", null, null);
+            throw new ValueConverterException(
+                    getRuleName() + "-value should start with a \"'''\" and end with a \"'''\" (value: " + value + ").",
+                    null, null);
         }
     }
 
@@ -42,7 +43,8 @@ public class RICH_TEXTValueConverter extends AbstractLexerBasedConverter<String>
         if (matcher.find()) {
             return matcher.group(1);
         }
-        throw new ValueConverterException(getRuleName()
-                + "-value should start with a \"'''\" and end with a \"'''\" (value: " + string + ").", null, null);
+        throw new ValueConverterException(
+                getRuleName() + "-value should start with a \"'''\" and end with a \"'''\" (value: " + string + ").",
+                null, null);
     }
 }

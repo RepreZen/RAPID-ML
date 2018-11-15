@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 import org.eclipse.xtext.util.Strings;
 
 public class ImportResolver {
-    public static final String SYS_VARIABLE_MODEL_PATH = "com.reprezen.rapid-ml.modelpath";
+    public static final String SYS_VARIABLE_MODEL_PATH = "com.modelsolv.reprezen.rapid-ml.modelpath";
 
     private ModelPath modelPath;
     private URI containerUri;

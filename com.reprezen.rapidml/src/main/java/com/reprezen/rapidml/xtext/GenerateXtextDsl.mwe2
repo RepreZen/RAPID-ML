@@ -1,0 +1,149 @@
+module com.reprezen.rapidml.xtext.XtextDsl
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.generator.*
+import org.eclipse.xtext.ui.generator.*
+
+var grammarURI = "classpath:/com/reprezen/rapidml/xtext/XtextDsl.xtext"
+var file.extensions = "zen, rapid"
+var projectName = "com.reprezen.rapidml"
+var runtimeProject = "../${projectName}"
+
+Workflow {
+	bean = StandaloneSetup {
+		scanClassPath  = true
+		platformUri = "${runtimeProject}/.."
+	registerGeneratedEPackage = "org.eclipse.xsd.XSDPackage"
+//	registerGeneratedEPackage = "com.modelsolv.reprezen.restapi.datatypes.DatatypesPackage"
+	registerGeneratedEPackage = "com.reprezen.rapidml.RapidmlPackage"
+//	registerGenModelFile = "platform:/resource/org.eclipse.xsd/model/XSD.genmodel"
+//	registerGenModelFile = "platform:/resource/RestApiMetamodel/metamodels/RestAPI.genmodel"
+	
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}/src/main/xtext-gen"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}.ui/src-gen"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}.tests/src-gen"
+	}
+
+	component = Generator {
+		pathRtProject = runtimeProject
+		pathUiProject = "${runtimeProject}.ui"
+		projectNameRt = projectName
+		projectNameUi = "${projectName}.ui"
+		srcPath = "/src/main/java"
+		srcGenPath = "/src/main/xtext-gen"
+		
+		language = {
+			uri = grammarURI
+			fileExtensions = file.extensions
+
+			// Java API to access grammar elements (required by several other fragments)
+			// setting the xml version to force XText to generate XMI, not binary xtextbin file
+			// as described in http://www.eclipse.org/forums/index.php/t/489765/
+			fragment = grammarAccess.GrammarAccessFragment auto-inject {
+    			xmlVersion = "1.0"
+			}
+
+			// generates Java API for the generated EPackages
+			// fragment = ecore.EcoreGeneratorFragment {}
+
+			// the serialization component
+			fragment = parseTreeConstructor.ParseTreeConstructorFragment {}
+
+			// a custom ResourceFactory for use with EMF 
+			fragment = resourceFactory.ResourceFactoryFragment {
+				fileExtensions = file.extensions
+			}
+
+			// the Antlr parser
+			fragment = parser.antlr.XtextAntlrGeneratorFragment {
+				options = {
+					classSplitting = true
+				}
+			}
+
+			// the Ecore2Xtext specific terminal converter
+			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment {}
+
+			// java-based API for validation 
+			fragment = validation.JavaValidatorFragment {
+			// composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
+			// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			}
+
+			// scoping and exporting API
+			//fragment = scoping.ImportURIScopingFragment {}
+			// fragment = exporting.SimpleNamesFragment {}
+
+			// scoping and exporting API 
+
+			 fragment = scoping.ImportNamespacesScopingFragment {}
+			 fragment = exporting.QualifiedNamesFragment {}
+
+			// testing API
+			fragment = junit.Junit4Fragment {}
+			
+			// formatter API 
+			fragment = ecore2xtext.FormatterFragment {}
+
+			// labeling API 
+			fragment = labeling.LabelProviderFragment {}
+
+			// outline API 
+            fragment = outline.OutlineTreeProviderFragment {}
+            fragment = outline.QuickOutlineFragment {}
+
+			// java-based API for content assistance 
+			fragment = contentAssist.JavaBasedContentAssistFragment {}
+
+			// antlr parser generator tailored for content assist 
+			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+				options = {
+					classSplitting = true
+				}
+			}
+
+			// provides a compare view
+            fragment = compare.CompareFragment {
+                fileExtensions = file.extensions
+            }
+
+			fragment = builder.BuilderIntegrationFragment {}
+
+			// project wizard (optional) 
+
+			// fragment = projectWizard.SimpleProjectWizardFragment {
+			//		generatorProjectName = "${projectName}.generator" 
+			//		modelFileExtension = file.extensions
+			// }
+
+			// quickfix API 
+			fragment = quickfix.QuickfixProviderFragment {}
+
+		    // rename refactoring
+		    fragment = refactoring.RefactorElementNameFragment {}
+      }
+		
+		language = {
+			uri = "classpath:/com/reprezen/rapidml/xtext/RepreZenTerminals.xtext"
+			fileExtensions = "___terms"
+			// setting the xml version to force XText to generate XMI, not binary xtextbin file
+			// as described in http://www.eclipse.org/forums/index.php/t/489765/
+			fragment = grammarAccess.GrammarAccessFragment auto-inject {
+    			xmlVersion = "1.0"
+			}
+			fragment = parseTreeConstructor.ParseTreeConstructorFragment {}
+			fragment = contentAssist.JavaBasedContentAssistFragment {}
+			fragment = validation.JavaValidatorFragment {
+			}
+		}
+	}
+}

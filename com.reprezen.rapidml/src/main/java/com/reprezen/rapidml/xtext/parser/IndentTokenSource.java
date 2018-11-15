@@ -10,8 +10,8 @@ package com.reprezen.rapidml.xtext.parser;
 
 import org.antlr.runtime.Token;
 
-import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalRapidMLLexer;
-import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalRapidMLParser;
+import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer;
+import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslParser;
 
 /**
  * @author Konstantin Zaitsev
@@ -21,22 +21,22 @@ public class IndentTokenSource extends AbstractIndentTokenSource {
 
     @Override
     protected String[] getTokenNames() {
-        return InternalRapidMLParser.tokenNames;
+        return InternalXtextDslParser.tokenNames;
     }
 
     @Override
     protected int getBeginTokenType() {
-        return InternalRapidMLLexer.RULE_BEGIN;
+        return InternalXtextDslLexer.RULE_BEGIN;
     }
 
     @Override
     protected int getEndTokenType() {
-        return InternalRapidMLLexer.RULE_END;
+        return InternalXtextDslLexer.RULE_END;
     }
 
     @Override
     protected int getWSTokenType() {
-        return InternalRapidMLLexer.RULE_WS;
+        return InternalXtextDslLexer.RULE_WS;
     }
 
     @Override
@@ -46,13 +46,13 @@ public class IndentTokenSource extends AbstractIndentTokenSource {
 
     @Override
     protected boolean isCommentToken(Token token) {
-        return token.getType() == InternalRapidMLLexer.RULE_ML_COMMENT
-                || token.getType() == InternalRapidMLLexer.RULE_ML_COMMENT_NL
-                || token.getType() == InternalRapidMLLexer.RULE_SL_COMMENT;
+        return token.getType() == InternalXtextDslLexer.RULE_ML_COMMENT
+                || token.getType() == InternalXtextDslLexer.RULE_ML_COMMENT_NL
+                || token.getType() == InternalXtextDslLexer.RULE_SL_COMMENT;
     }
 
     @Override
     protected boolean isNLToken(Token token) {
-        return token.getType() == InternalRapidMLLexer.RULE_NL || token == Token.EOF_TOKEN;
+        return token.getType() == InternalXtextDslLexer.RULE_NL || token == Token.EOF_TOKEN;
     }
 }

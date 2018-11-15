@@ -16,12 +16,12 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.parsetree.reconstr.impl.ValueSerializer;
 
 import com.google.common.base.Strings;
-import com.reprezen.rapidml.xtext.services.RapidMLGrammarAccess;
+import com.reprezen.rapidml.xtext.services.RepreZenTerminalsGrammarAccess;
 
 public class RepreZenValueSerializer extends ValueSerializer {
 
     @Inject
-    private RapidMLGrammarAccess grammarAccess;
+    private RepreZenTerminalsGrammarAccess grammarAccess;
 
     private int indentLevel = 0;
 

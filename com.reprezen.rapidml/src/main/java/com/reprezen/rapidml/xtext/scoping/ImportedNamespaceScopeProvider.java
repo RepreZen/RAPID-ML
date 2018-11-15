@@ -26,13 +26,13 @@ import org.eclipse.xtext.util.Strings;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
+import com.reprezen.rapidml.DataModel;
 import com.reprezen.rapidml.HasSecurityValue;
 import com.reprezen.rapidml.ImportDeclaration;
 import com.reprezen.rapidml.Method;
 import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.SecuritySchemeLibrary;
 import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.DataModel;
 import com.reprezen.rapidml.util.RapidmlModelUtils;
 
 public class ImportedNamespaceScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {

@@ -12,8 +12,11 @@ import static com.reprezen.rapidml.RapidmlPackage.Literals.COLLECTION_PARAMETER;
 import static com.reprezen.rapidml.RapidmlPackage.Literals.MATRIX_PARAMETER;
 import static com.reprezen.rapidml.RapidmlPackage.Literals.MESSAGE_PARAMETER;
 import static com.reprezen.rapidml.RapidmlPackage.Literals.NAMED_LINK_DESCRIPTOR;
+import static com.reprezen.rapidml.RapidmlPackage.Literals.PRIMITIVE_PROPERTY;
+import static com.reprezen.rapidml.RapidmlPackage.Literals.REFERENCE_PROPERTY;
 import static com.reprezen.rapidml.RapidmlPackage.Literals.SERVICE_DATA_RESOURCE;
-import static com.reprezen.rapidml.xtext.parser.antlr.internal.InternalRapidMLParser.RULE_ID;
+import static com.reprezen.rapidml.RapidmlPackage.Literals.STRUCTURE;
+import static com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslParser.RULE_ID;
 import static org.antlr.runtime.Token.EOF;
 
 import java.util.ArrayList;
@@ -42,8 +45,8 @@ import org.eclipse.xtext.util.Strings;
 import com.google.common.base.Optional;
 import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.xtext.nls.Messages;
-import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalRapidMLLexer;
-import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalRapidMLParser;
+import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer;
+import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslParser;
 
 /**
  * RepreZen custom syntax error message provider.
@@ -69,8 +72,9 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
     public SyntaxErrorMessage getSyntaxErrorMessage(IParserErrorContext context) {
         String contextName = context.getCurrentContext() != null ? getNameFromEObject(context.getCurrentContext())
                 : Messages.CustomSyntaxErrorMessageProvider_unknownElement;
-        String unexpectedText = context.getRecognitionException() != null ? context.getRecognitionException().token
-                .getText() : ""; //$NON-NLS-1$
+        String unexpectedText = context.getRecognitionException() != null
+                ? context.getRecognitionException().token.getText()
+                : ""; //$NON-NLS-1$
 
         // ZEN-2309 hack to fix this message until we rename the ZenModel eclass
         String wrongName = Strings.toFirstLower(RapidmlPackage.eINSTANCE.getZenModel().getName());
@@ -104,8 +108,8 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
 
     private SyntaxErrorMessage processMismatchedTokenException(IParserErrorContext context,
             MismatchedTokenException exception) {
-        if ((InternalRapidMLLexer.RULE_END == exception.expecting)
-                && (InternalRapidMLLexer.RULE_JAVADOC_COMMENT == exception.token.getType())) {
+        if ((InternalXtextDslLexer.RULE_END == exception.expecting)
+                && (InternalXtextDslLexer.RULE_JAVADOC_COMMENT == exception.token.getType())) {
             return new SyntaxErrorMessage(Messages.CustomSyntaxErrorMessageProvider_msgInvalidDocumentationIndentLevel,
                     Diagnostic.SYNTAX_DIAGNOSTIC);
         }
@@ -118,7 +122,7 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
             int prevTokenIndex = exception.index - 1;
             if (0 < prevTokenIndex) {
                 Token prevToken = xtextTokenStream.get(prevTokenIndex);
-                if (InternalRapidMLLexer.RULE_JAVADOC_COMMENT == prevToken.getType()) {
+                if (InternalXtextDslLexer.RULE_JAVADOC_COMMENT == prevToken.getType()) {
                     return new SyntaxErrorMessage(
                             Messages.CustomSyntaxErrorMessageProvider_msgInvalidDocumentationIndentLevel,
                             Diagnostic.SYNTAX_DIAGNOSTIC);
@@ -151,18 +155,19 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
             if (prevNode.getGrammarElement() instanceof Keyword) {
                 String prevContextName = ((Keyword) prevNode.getGrammarElement()).getValue();
                 if (",".equals(unexpectedText)) { //$NON-NLS-1$
-                    return new SyntaxErrorMessage(NLS.bind(
-                            Messages.CustomSyntaxErrorMessageProvider_msgRequiredAttributes, prevContextName),
+                    return new SyntaxErrorMessage(
+                            NLS.bind(Messages.CustomSyntaxErrorMessageProvider_msgRequiredAttributes, prevContextName),
                             Diagnostic.SYNTAX_DIAGNOSTIC);
                 } else {
-                    return new SyntaxErrorMessage(NLS.bind(
-                            Messages.CustomSyntaxErrorMessageProvider_msgNotAllowedAttribute, unexpectedText,
-                            prevContextName), Diagnostic.SYNTAX_DIAGNOSTIC);
+                    return new SyntaxErrorMessage(
+                            NLS.bind(Messages.CustomSyntaxErrorMessageProvider_msgNotAllowedAttribute, unexpectedText,
+                                    prevContextName),
+                            Diagnostic.SYNTAX_DIAGNOSTIC);
                 }
             }
         }
-        if (InternalRapidMLLexer.RULE_BEGIN == exception.token.getType()
-                || InternalRapidMLLexer.RULE_END == exception.token.getType()) {
+        if (InternalXtextDslLexer.RULE_BEGIN == exception.token.getType()
+                || InternalXtextDslLexer.RULE_END == exception.token.getType()) {
             if (isNextTokenDocumentation(exception.input, exception.index)) {
                 return new SyntaxErrorMessage(
                         Messages.CustomSyntaxErrorMessageProvider_msgInvalidDocumentationIndentLevel,
@@ -190,9 +195,10 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
         if (isDocumentationIndentError(exception)) {
             errorMessage = Messages.CustomSyntaxErrorMessageProvider_msgInvalidDocumentationIndentLevel;
         } else {
-            errorMessage = exception.expecting == RepreZenInternalDslParser.RULE_ID ? NLS.bind(
-                    Messages.CustomSyntaxErrorMessageProvider_msgMissingTokenId, new Object[] {
-                            getTokenName(exception.expecting), contextName, getUnexpectedTextLabel(unexpectedText) })
+            errorMessage = exception.expecting == RepreZenInternalDslParser.RULE_ID
+                    ? NLS.bind(Messages.CustomSyntaxErrorMessageProvider_msgMissingTokenId,
+                            new Object[] { getTokenName(exception.expecting), contextName,
+                                    getUnexpectedTextLabel(unexpectedText) })
                     : NLS.bind(Messages.CustomSyntaxErrorMessageProvider_msgMissingToken, new Object[] {
                             getTokenName(exception.expecting), contextName, getUnexpectedTextLabel(unexpectedText) });
         }
@@ -200,9 +206,9 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
     }
 
     private boolean isDocumentationIndentError(MissingTokenException exception) {
-        if (InternalRapidMLLexer.RULE_BEGIN == exception.getMissingType()) {
+        if (InternalXtextDslLexer.RULE_BEGIN == exception.getMissingType()) {
             return isNextTokenDocumentation(exception.input, exception.index);
-        } else if (InternalRapidMLLexer.RULE_JAVADOC_COMMENT == exception.token.getType()) {
+        } else if (InternalXtextDslLexer.RULE_JAVADOC_COMMENT == exception.token.getType()) {
             return true;
         }
         return false;
@@ -213,11 +219,11 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
             XtextTokenStream xtextTokenStream = (XtextTokenStream) input;
             for (int nextTokenIndex = index + 1; nextTokenIndex < xtextTokenStream.size(); nextTokenIndex++) {
                 Token nextToken = xtextTokenStream.get(nextTokenIndex);
-                if (InternalRapidMLLexer.RULE_JAVADOC_COMMENT == nextToken.getType()) {
+                if (InternalXtextDslLexer.RULE_JAVADOC_COMMENT == nextToken.getType()) {
                     return true;
                 }
-                if (InternalRapidMLLexer.RULE_NL != nextToken.getType()
-                        && InternalRapidMLLexer.RULE_BEGIN != nextToken.getType()) {
+                if (InternalXtextDslLexer.RULE_NL != nextToken.getType()
+                        && InternalXtextDslLexer.RULE_BEGIN != nextToken.getType()) {
                     break;
                 }
             }
@@ -247,8 +253,8 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
         String errorMessage;
         if (RepreZenInternalDslParser.RULE_JAVADOC_COMMENT == exception.token.getType()) {
             errorMessage = Messages.CustomSyntaxErrorMessageProvider_msgInvalidDocumentationIndentLevel;
-        } else if (InternalRapidMLLexer.RULE_BEGIN == exception.token.getType()
-                || InternalRapidMLLexer.RULE_END == exception.token.getType()) {
+        } else if (InternalXtextDslLexer.RULE_BEGIN == exception.token.getType()
+                || InternalXtextDslLexer.RULE_END == exception.token.getType()) {
             if (isNextTokenDocumentation(exception.input, exception.index)) {
                 return new SyntaxErrorMessage(
                         Messages.CustomSyntaxErrorMessageProvider_msgInvalidDocumentationIndentLevel,
@@ -258,11 +264,11 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
                         Diagnostic.SYNTAX_DIAGNOSTIC);
             }
         } else {
-            errorMessage = exception.token.getType() == RepreZenInternalDslParser.RULE_ID ? NLS.bind(
-                    Messages.CustomSyntaxErrorMessageProvider_msgUnexpectedTokenId, new Object[] { unexpectedText,
-                            contextName, getTokenName(exception.expecting) }) : NLS.bind(
-                    Messages.CustomSyntaxErrorMessageProvider_msgUnexpectedToken, new Object[] { unexpectedText,
-                            contextName, getTokenName(exception.expecting) });
+            errorMessage = exception.token.getType() == RepreZenInternalDslParser.RULE_ID
+                    ? NLS.bind(Messages.CustomSyntaxErrorMessageProvider_msgUnexpectedTokenId,
+                            new Object[] { unexpectedText, contextName, getTokenName(exception.expecting) })
+                    : NLS.bind(Messages.CustomSyntaxErrorMessageProvider_msgUnexpectedToken,
+                            new Object[] { unexpectedText, contextName, getTokenName(exception.expecting) });
         }
         return new SyntaxErrorMessage(errorMessage, Diagnostic.SYNTAX_DIAGNOSTIC);
     }
@@ -308,7 +314,7 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
         case EOF:
             return Messages.CustomSyntaxErrorMessageProvider_endOfFile;
         default:
-            return InternalRapidMLParser.tokenNames[tokenType];
+            return InternalXtextDslParser.tokenNames[tokenType];
         }
     }
 
@@ -395,19 +401,19 @@ public class CustomSyntaxErrorMessageProvider extends SyntaxErrorMessageProvider
 
     private static class MissingInterfaceDataTypeName extends MissingNameErrorHandler {
         public MissingInterfaceDataTypeName() {
-            super(RapidmlPackage.Literals.STRUCTURE);
+            super(STRUCTURE);
         }
     }
 
     private static class MissingReferencePropertyName extends MissingNameErrorHandler {
         public MissingReferencePropertyName() {
-            super(RapidmlPackage.Literals.REFERENCE_PROPERTY);
+            super(REFERENCE_PROPERTY);
         }
     }
 
     private static class MissingPrimitivePropertyName extends MissingNameErrorHandler {
         public MissingPrimitivePropertyName() {
-            super(RapidmlPackage.Literals.PRIMITIVE_PROPERTY);
+            super(PRIMITIVE_PROPERTY);
         }
     }
 

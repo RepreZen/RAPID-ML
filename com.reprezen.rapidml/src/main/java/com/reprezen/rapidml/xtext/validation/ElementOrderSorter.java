@@ -33,7 +33,7 @@ import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.inject.Inject;
-import com.reprezen.rapidml.xtext.services.RapidMLGrammarAccess;
+import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
 import com.reprezen.rapidml.xtext.util.XtextDslGrammarUtil;
 
 /**
@@ -45,7 +45,7 @@ import com.reprezen.rapidml.xtext.util.XtextDslGrammarUtil;
 public class ElementOrderSorter {
 
     @Inject
-    public RapidMLGrammarAccess grammarAccess;
+    public XtextDslGrammarAccess grammarAccess;
 
     private Map<EClassifier, Map<Keyword, Integer>> grammarTree = Maps.newHashMap();
 

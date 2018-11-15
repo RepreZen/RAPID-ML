@@ -29,9 +29,10 @@ public class RawStringValueConverter extends AbstractLexerBasedConverter<String>
     protected void assertValidValue(String value) {
         super.assertValidValue(value);
         if (rawStringRegex.matcher(value).matches()) {
-            throw new ValueConverterException(getRuleName()
-                    + "-value should start with an `r\"` (or `r'`) and end with a `\"` (or `'`) (value: " + value
-                    + ").", null, null);
+            throw new ValueConverterException(
+                    getRuleName() + "-value should start with an `r\"` (or `r'`) and end with a `\"` (or `'`) (value: "
+                            + value + ").",
+                    null, null);
         }
     }
 

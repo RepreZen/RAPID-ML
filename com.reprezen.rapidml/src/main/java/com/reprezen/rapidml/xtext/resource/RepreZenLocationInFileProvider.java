@@ -26,16 +26,15 @@ import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.reprezen.rapidml.Documentation;
 import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.xtext.services.RapidMLGrammarAccess;
+import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
 
 /**
  * @author Konstantin Zaitsev
  * @date Dec 23, 2014
  */
 public class RepreZenLocationInFileProvider extends DefaultLocationInFileProvider {
-
     @Inject
-    private RapidMLGrammarAccess grammarAccess;
+    private XtextDslGrammarAccess grammarAccess;
 
     private Collection<Keyword> beginRules = null;
 
@@ -88,8 +87,9 @@ public class RepreZenLocationInFileProvider extends DefaultLocationInFileProvide
         ITextRegion result = ITextRegion.EMPTY_REGION;
         boolean isInRange = !useBeginRule;
         for (INode child : node.getChildren()) {
-            EObject rule = child.getGrammarElement() instanceof RuleCall ? ((RuleCall) child.getGrammarElement())
-                    .getRule() : child.getGrammarElement();
+            EObject rule = child.getGrammarElement() instanceof RuleCall
+                    ? ((RuleCall) child.getGrammarElement()).getRule()
+                    : child.getGrammarElement();
             if (getBeginRules().contains(rule)) {
                 isInRange = true;
             }
@@ -99,14 +99,14 @@ public class RepreZenLocationInFileProvider extends DefaultLocationInFileProvide
             if (!isHidden(child) && isInRange) {
                 int length = getNodeLength(child);
                 if (length != 0) {
-                    result = result.merge(new TextRegionWithLineInformation(child.getOffset(), length, child
-                            .getStartLine() - 1, child.getEndLine() - 1));
+                    result = result.merge(new TextRegionWithLineInformation(child.getOffset(), length,
+                            child.getStartLine() - 1, child.getEndLine() - 1));
                 }
             }
         }
         return result;
     }
-    
+
     private Collection<Keyword> getBeginRules() {
         if (beginRules == null) {
             beginRules = Lists.newArrayList(grammarAccess.getZenModelAccess().getRapidModelKeyword_4_1());
@@ -115,8 +115,7 @@ public class RepreZenLocationInFileProvider extends DefaultLocationInFileProvide
     }
 
     /**
-     * Modified version of node.getLenght that exclude NL, END and BEGIN rules
-     * from calculation.
+     * Modified version of node.getLenght that exclude NL, END and BEGIN rules from calculation.
      * 
      * @param node
      *            node

@@ -51,8 +51,8 @@ import com.reprezen.rapidml.ResourceDefinition;
 /**
  * Sorts the contents of a resource definition to achieve the canonical order. <br>
  * 
- * @see <a href="https://modelsolv.atlassian.net/browse/ZEN-752">ZEN-752
- *      Formatter for properties specified in any order<a/>
+ * @see <a href="https://modelsolv.atlassian.net/browse/ZEN-752">ZEN-752 Formatter for properties specified in any
+ *      order<a/>
  * 
  * @author Tatiana Fesenko <tatiana.fesenko@modelsolv.com>
  * 
@@ -168,10 +168,10 @@ public class ResourceContentSorter {
                 return "+".equals(input.getCardinality()) || "*".equals(input.getCardinality()); //$NON-NLS-1$ //$NON-NLS-2$
             }
         };
-        
+
         Collection<Group> groups = EcoreUtil2.getAllContentsOfType(grammarElement, Group.class);
         groups = filter(groups, isRepeatableGroup);
-        
+
         final Function<Group, AbstractElement> getLastElement = new Function<Group, AbstractElement>() {
 
             @Override
@@ -207,12 +207,12 @@ public class ResourceContentSorter {
         Set<AbstractElement> els = new HashSet<AbstractElement>();
         for (AbstractElement el : groupSurrounds) {
             if (el instanceof Alternatives) {
-                els.addAll(((Alternatives)el).getElements());
+                els.addAll(((Alternatives) el).getElements());
             } else {
                 els.add(el);
             }
         }
-        
+
         Collection<AbstractElement> listSeparators = filter(els, Predicates.or(isCommaKeyword, isNLTermianl));
 
         return Collections.unmodifiableSet(new HashSet<>(listSeparators));

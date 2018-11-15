@@ -19,7 +19,7 @@ import org.junit.runner.RunWith
 class RapidMLParsingTest{
 
 	@Inject
-	ParseHelper<ZenModel> parseHelper;
+	ParseHelper<ZenModel> parseHelper
 
 	@Test 
 	def void loadModel() {

@@ -1,0 +1,3178 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext">
+  <xtext:Grammar name="com.reprezen.rapidml.xtext.XtextDsl" usedGrammars="/1">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
+      <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </metamodelDeclarations>
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
+      <ePackage href="http://www.modelsolv.com/reprezen/rapidml/1.0#/"/>
+    </metamodelDeclarations>
+    <rules xsi:type="xtext:ParserRule" name="ZenModel">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ZenModel"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ZenModel"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" value="namespace "/>
+          <elements xsi:type="xtext:Assignment" feature="namespace" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Assignment" feature="imports" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Assignment" feature="documentation" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.77"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" value="rapidModel"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+          <elements xsi:type="xtext:Keyword" value="title"/>
+          <elements xsi:type="xtext:Assignment" feature="title" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" value="extensions"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="resourceAPIs" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="dataModels" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.39"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="primitiveTypesLibrary" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.57"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="mediaTypesLibrary" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.62"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="linkRelationsLibrary" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.64"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="securitySchemesLibrary" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.68"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Import">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ImportDeclaration"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="import"/>
+        <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="from"/>
+        <elements xsi:type="xtext:Assignment" feature="importURI" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="as"/>
+          <elements xsi:type="xtext:Assignment" feature="alias" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ResourceAPI">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ResourceAPI"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ResourceAPI"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="resourceAPI"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="version"/>
+            <elements xsi:type="xtext:Assignment" feature="version" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="baseURI"/>
+            <elements xsi:type="xtext:Assignment" feature="baseURI" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+            <elements xsi:type="xtext:Keyword" value="title"/>
+            <elements xsi:type="xtext:Assignment" feature="title" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="secured"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="by"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="*" feature="securedBy" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.69"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="with"/>
+            <elements xsi:type="xtext:Keyword" value="autoRealizations"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="autoRealizations" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.67"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="ownedResourceDefinitions" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="definedMediaTypes" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.63"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="definedLinkRelations" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.65"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ResourceDefinition">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ResourceDefinition"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="CollectionResource">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//CollectionResource"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//CollectionResource"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="default" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="default"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="collectionResource"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="bound"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="to"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="type"/>
+          <elements xsi:type="xtext:Assignment" feature="dataType" operator="=">
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.1">
+                <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Structure"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="URI"/>
+            <elements xsi:type="xtext:Assignment" feature="URI" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="secured"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="by"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="*" feature="securedBy" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.69"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Assignment" feature="collectionParameters" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="inlineObjectRealization" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="referenceTreatments" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="definedLinkDescriptors" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Keyword" value="mediaTypes"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Group" cardinality="*">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Keyword" value=","/>
+                  <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+                </elements>
+                <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                  <terminal xsi:type="xtext:CrossReference">
+                    <type metamodel="/0/@metamodelDeclarations.1">
+                      <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                    </type>
+                    <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                  </terminal>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="methods" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="examples" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ObjectResource">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ObjectResource"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ObjectResource"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="default" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="default"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="objectResource"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="bound"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="to"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="type"/>
+          <elements xsi:type="xtext:Assignment" feature="dataType" operator="=">
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.1">
+                <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Structure"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="URI"/>
+            <elements xsi:type="xtext:Assignment" feature="URI" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="secured"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="by"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="*" feature="securedBy" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.69"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Assignment" feature="inlineObjectRealization" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="referenceTreatments" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="definedLinkDescriptors" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.38"/>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Keyword" value="mediaTypes"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Group" cardinality="*">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Keyword" value=","/>
+                  <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+                </elements>
+                <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                  <terminal xsi:type="xtext:CrossReference">
+                    <type metamodel="/0/@metamodelDeclarations.1">
+                      <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                    </type>
+                    <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                  </terminal>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="methods" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="examples" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="IncludedProperties">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ObjectRealization"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ObjectRealization"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="only"/>
+            <elements xsi:type="xtext:Keyword" value="properties"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Assignment" feature="exclusivePropertyList" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="*">
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value=","/>
+                <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" feature="exclusivePropertyList" operator="+=">
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+            <elements xsi:type="xtext:Keyword" value="all"/>
+            <elements xsi:type="xtext:Keyword" value="properties"/>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Keyword" cardinality="?" value="including"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Assignment" feature="overriddenPropertyList" operator="+=">
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+              </elements>
+              <elements xsi:type="xtext:Group" cardinality="*">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Keyword" value=","/>
+                  <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+                </elements>
+                <elements xsi:type="xtext:Assignment" feature="overriddenPropertyList" operator="+=">
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Keyword" value="excluding"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Assignment" feature="excludedProperties" operator="+=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Feature"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Group" cardinality="*">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Keyword" value=","/>
+                  <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+                </elements>
+                <elements xsi:type="xtext:Assignment" feature="excludedProperties" operator="+=">
+                  <terminal xsi:type="xtext:CrossReference">
+                    <type metamodel="/0/@metamodelDeclarations.1">
+                      <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Feature"/>
+                    </type>
+                    <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+                  </terminal>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+            </elements>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PropertyRealization">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PropertyRealization"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PropertyRealization"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="baseProperty" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Feature"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="cardinality" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.60"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="constraints" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="URI">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URI"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URI"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="/"/>
+        <elements xsi:type="xtext:Assignment" feature="segments" operator="+=">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value="/"/>
+          <elements xsi:type="xtext:Assignment" feature="segments" operator="+=">
+            <terminal xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+              <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="uriParameters" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="URISegment">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URISegment"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URISegment"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="URISegmentWithParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URISegmentWithParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URISegmentWithParameter"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="URISegmentRule">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+        <elements xsi:type="xtext:Alternatives" cardinality="+">
+          <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SegmentSymbol">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:Keyword" value="@"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Unreserved">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Keyword" value="-"/>
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:Keyword" value="_"/>
+        <elements xsi:type="xtext:Keyword" value="~"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PctEncoded">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="%"/>
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SubDelims">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Keyword" value="!"/>
+        <elements xsi:type="xtext:Keyword" value="$"/>
+        <elements xsi:type="xtext:Keyword" value="&amp;"/>
+        <elements xsi:type="xtext:Keyword" value="'"/>
+        <elements xsi:type="xtext:Keyword" value="("/>
+        <elements xsi:type="xtext:Keyword" value=")"/>
+        <elements xsi:type="xtext:Keyword" value="*"/>
+        <elements xsi:type="xtext:Keyword" value="+"/>
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+        <elements xsi:type="xtext:Keyword" value="="/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MessageParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MessageParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MessageParameter"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="required" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="required"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="param"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="sourceReference" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="located"/>
+          <elements xsi:type="xtext:Keyword" value="in"/>
+          <elements xsi:type="xtext:Assignment" feature="httpLocation" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:UnorderedGroup">
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="default"/>
+              <elements xsi:type="xtext:Assignment" feature="default" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="fixed"/>
+              <elements xsi:type="xtext:Assignment" feature="fixed" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="CollectionParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//CollectionParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//CollectionParameter"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="required" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="required"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="collectionParam"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="sourceReference" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:UnorderedGroup">
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="default"/>
+              <elements xsi:type="xtext:Assignment" feature="default" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="fixed"/>
+              <elements xsi:type="xtext:Assignment" feature="fixed" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="URIParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URIParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MatrixParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MatrixParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MatrixParameter"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="required" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="required"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="matrixParam"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="sourceReference" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:UnorderedGroup">
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="default"/>
+              <elements xsi:type="xtext:Assignment" feature="default" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="fixed"/>
+              <elements xsi:type="xtext:Assignment" feature="fixed" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="TemplateParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TemplateParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TemplateParameter"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="required" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="required"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="templateParam"/>
+        <elements xsi:type="xtext:Assignment" feature="uriSegment" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//URISegmentWithParameter"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="sourceReference" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:UnorderedGroup">
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="default"/>
+              <elements xsi:type="xtext:Assignment" feature="default" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="fixed"/>
+              <elements xsi:type="xtext:Assignment" feature="fixed" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SourceReference">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SourceReference"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PropertyReference">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PropertyReference"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PropertyReference"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="bound"/>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="to"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="property"/>
+        <elements xsi:type="xtext:Assignment" feature="conceptualFeature" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveProperty"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+          </terminal>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PrimitiveTypeSourceReference">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveTypeSourceReference"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveTypeSourceReference"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="of"/>
+        <elements xsi:type="xtext:Keyword" value="type"/>
+        <elements xsi:type="xtext:Assignment" feature="simpleType" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveType"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+          </terminal>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Method">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Method"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Method"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="method"/>
+        <elements xsi:type="xtext:Assignment" feature="httpMethod" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="id" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="secured"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="by"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="*" feature="securedBy" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.69"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="?" feature="request" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="responses" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.28"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="HTTPMethods">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EEnum" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/PUT"/>
+          <literal value="PUT"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/POST"/>
+          <literal value="POST"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/DELETE"/>
+          <literal value="DELETE"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/HEAD"/>
+          <literal value="HEAD"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/GET"/>
+          <literal value="GET"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/PATCH"/>
+          <literal value="PATCH"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/TRACE"/>
+          <literal value="TRACE"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/CONNECT"/>
+          <literal value="CONNECT"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HTTPMethods/OPTIONS"/>
+          <literal value="OPTIONS"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="HttpMessageParameterLocation">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EEnum" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HttpMessageParameterLocation"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HttpMessageParameterLocation/HEADER"/>
+          <literal value="header"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//HttpMessageParameterLocation/QUERY"/>
+          <literal value="query"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="TypedRequest">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TypedRequest"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TypedRequest"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="request"/>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="useParentTypeReference" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="this"/>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="resource"/>
+            <elements xsi:type="xtext:Assignment" feature="resourceType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ResourceDefinition"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="type"/>
+            <elements xsi:type="xtext:Assignment" feature="dataType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Structure"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+              </terminal>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Assignment" feature="inlineObjectRealization" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="referenceTreatments" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Keyword" value="mediaTypes"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Group" cardinality="*">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Keyword" value=","/>
+                  <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+                </elements>
+                <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                  <terminal xsi:type="xtext:CrossReference">
+                    <type metamodel="/0/@metamodelDeclarations.1">
+                      <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                    </type>
+                    <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                  </terminal>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="parameters" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="examples" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="TypedResponse">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TypedResponse"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TypedResponse"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="response"/>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="useParentTypeReference" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="this"/>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="resource"/>
+            <elements xsi:type="xtext:Assignment" feature="resourceType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ResourceDefinition"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="type"/>
+            <elements xsi:type="xtext:Assignment" feature="dataType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Structure"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+              </terminal>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="statusCode"/>
+          <elements xsi:type="xtext:Assignment" feature="statusCode" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.81"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Assignment" feature="inlineObjectRealization" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="referenceTreatments" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+            </elements>
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Keyword" value="mediaTypes"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                </terminal>
+              </elements>
+              <elements xsi:type="xtext:Group" cardinality="*">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Keyword" value=","/>
+                  <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+                </elements>
+                <elements xsi:type="xtext:Assignment" feature="mediaTypes" operator="+=">
+                  <terminal xsi:type="xtext:CrossReference">
+                    <type metamodel="/0/@metamodelDeclarations.1">
+                      <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                    </type>
+                    <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                  </terminal>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="parameters" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="examples" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.29"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Example">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Example"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.30"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.31"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="InlineExample">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//InlineExample"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//InlineExample"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="example"/>
+        <elements xsi:type="xtext:Assignment" feature="body" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.9"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ExternalExample">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ExternalExample"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ExternalExample"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="externalExample"/>
+        <elements xsi:type="xtext:Assignment" feature="path" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ReferenceTreatment">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceTreatment"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.33"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.35"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ReferenceEmbed">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceEmbed"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceEmbed"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="referenceEmbed"/>
+        <elements xsi:type="xtext:Keyword" cardinality="+" value=">"/>
+        <elements xsi:type="xtext:Assignment" feature="referenceElement" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceElement"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" feature="ownedReferenceRealization" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.34"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ReferenceEmbedRealization">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceRealization"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceRealization"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="inlineObjectRealization" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="referenceTreatments" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.32"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ReferenceLink">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceLink"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceLink"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="referenceLink"/>
+        <elements xsi:type="xtext:Keyword" value=">"/>
+        <elements xsi:type="xtext:Assignment" feature="referenceElement" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceElement"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" feature="ownedReferenceRealization" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.36"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="linkRelation"/>
+            <elements xsi:type="xtext:Assignment" feature="linkRelation" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//LinkRelation"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ReferenceLinkRealization">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceRealization"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceRealization"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" value="targetResource"/>
+          <elements xsi:type="xtext:Assignment" feature="targetResource" operator="=">
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.1">
+                <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ResourceDefinition"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Assignment" feature="inlineObjectRealization" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.37"/>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="linkDescriptor"/>
+            <elements xsi:type="xtext:Assignment" feature="properties" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//NamedLinkDescriptor"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+              </terminal>
+            </elements>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="AnonimousLinkDescriptor">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ObjectRealization"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ObjectRealization"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="targetProperties"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Assignment" feature="exclusivePropertyList" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="*">
+            <elements xsi:type="xtext:Group" predicated="true">
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value=","/>
+                <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="exclusivePropertyList" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="NamedLinkDescriptor">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//NamedLinkDescriptor"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//NamedLinkDescriptor"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="default" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="default"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="linkDescriptor"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Assignment" feature="exclusivePropertyList" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="*">
+            <elements xsi:type="xtext:Group" predicated="true">
+              <elements xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value=","/>
+                <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="exclusivePropertyList" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="DataModel">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//DataModel"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//DataModel"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="dataModel"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+          <elements xsi:type="xtext:Keyword" value="title"/>
+          <elements xsi:type="xtext:Assignment" feature="title" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="ownedDataTypes" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.41"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Structure">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Structure"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Structure"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="structure"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="extends"/>
+          <elements xsi:type="xtext:Assignment" feature="supertypes" operator="+=">
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.1">
+                <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Inheritable"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+            </terminal>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="*">
+            <elements xsi:type="xtext:Keyword" value=","/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="and"/>
+            <elements xsi:type="xtext:Assignment" feature="supertypes" operator="+=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Inheritable"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+              </terminal>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="ownedFeatures" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.45"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="ownedOperations" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.61"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="dataExamples" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.43"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="DataType">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//DataType"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.40"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.48"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Inheritable">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Inheritable"/>
+      </type>
+      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.40"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="DataExample">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//DataExample"/>
+      </type>
+      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.44"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="InlineDataExample">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//InlineDataExample"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//InlineDataExample"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="dataExample"/>
+        <elements xsi:type="xtext:Assignment" feature="body" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.9"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Feature">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Feature"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.46"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.47"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ReferenceProperty">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceProperty"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="restriction" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="restrict"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="as"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Assignment" feature="containment" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="containing"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" feature="container" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="container"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="reference"/>
+              <elements xsi:type="xtext:Keyword" cardinality="?" value="to"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="reference"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="to"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Structure"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="cardinality" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="inverse"/>
+          <elements xsi:type="xtext:Assignment" feature="inverse" operator="=">
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.1">
+                <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ReferenceProperty"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PrimitiveProperty">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveProperty"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveProperty"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="restriction" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="restrict"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.89"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="to"/>
+          <elements xsi:type="xtext:Keyword" value="as"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="readOnly" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="readOnly"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="key" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="key"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SingleValueType"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="cardinality" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.59"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="constraints" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SingleValueType">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SingleValueType"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.49"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.52"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Enumeration">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Enumeration"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Enumeration"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="enum"/>
+        <elements xsi:type="xtext:Assignment" feature="baseType" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveType"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="enumConstants" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.50"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" value="extensions"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="EnumConstant">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//EnumConstant"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//EnumConstant"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value=":"/>
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Assignment" feature="integerValue" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.81"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="literalValue" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+            </elements>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SimpleType">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SimpleType"/>
+      </type>
+      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="UserDefinedType">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//UserDefinedType"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//UserDefinedType"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="simpleType"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="defined"/>
+        <elements xsi:type="xtext:Keyword" value="as"/>
+        <elements xsi:type="xtext:Assignment" feature="baseType" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SimpleType"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="constraints" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.53"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Constraint">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Constraint"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.55"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.56"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.54"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="RegExConstraint">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//RegExConstraint"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//RegExConstraint"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="matching"/>
+        <elements xsi:type="xtext:Keyword" value="regex"/>
+        <elements xsi:type="xtext:Assignment" feature="pattern" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.83"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="LengthConstraint">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//LengthConstraint"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//LengthConstraint"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="of"/>
+        <elements xsi:type="xtext:Keyword" value="length"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="from"/>
+              <elements xsi:type="xtext:Keyword" cardinality="?" value="minimum"/>
+              <elements xsi:type="xtext:Assignment" feature="minLength" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.81"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" cardinality="?" value="up"/>
+              <elements xsi:type="xtext:Keyword" value="to"/>
+              <elements xsi:type="xtext:Keyword" cardinality="?" value="maximum"/>
+              <elements xsi:type="xtext:Assignment" feature="maxLength" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.81"/>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="length" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.81"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ValueRangeConstraint">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ValueRangeConstraint"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//ValueRangeConstraint"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="with"/>
+        <elements xsi:type="xtext:Keyword" value="valueRange"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="from"/>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="minimum"/>
+          <elements xsi:type="xtext:Assignment" feature="minValue" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.84"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="inclusive"/>
+            <elements xsi:type="xtext:Assignment" feature="minValueExclusive" operator="?=">
+              <terminal xsi:type="xtext:Keyword" value="exclusive"/>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="up"/>
+          <elements xsi:type="xtext:Keyword" value="to"/>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="maximum"/>
+          <elements xsi:type="xtext:Assignment" feature="maxValue" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.84"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="inclusive"/>
+            <elements xsi:type="xtext:Assignment" feature="maxValueExclusive" operator="?=">
+              <terminal xsi:type="xtext:Keyword" value="exclusive"/>
+            </elements>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PrimitiveTypesLibrary">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveTypesLibrary"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveTypesLibrary"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="primitiveTypesLibrary"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="primitiveTypes" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.58"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PrimitiveType">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveType"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//PrimitiveType"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="primitiveType"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Cardinality">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EDataType" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Cardinality"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Keyword" value="!"/>
+          <elements xsi:type="xtext:Keyword" value="?"/>
+          <elements xsi:type="xtext:Keyword" value="*"/>
+          <elements xsi:type="xtext:Keyword" value="+"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="["/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+          <elements xsi:type="xtext:Keyword" value=".."/>
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+            <elements xsi:type="xtext:Keyword" value="*"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="]"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="CardinalityOverride">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EDataType" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//CardinalityOverride"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Keyword" value="!"/>
+          <elements xsi:type="xtext:Keyword" value="?"/>
+          <elements xsi:type="xtext:Keyword" value="*"/>
+          <elements xsi:type="xtext:Keyword" value="+"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="["/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+          <elements xsi:type="xtext:Keyword" value=".."/>
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+            <elements xsi:type="xtext:Keyword" value="*"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="]"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Operation">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Operation"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Operation"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="operation"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MediaTypesLibrary">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaTypesLibrary"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaTypesLibrary"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="mediaTypesLibrary"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="mediaTypes" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.63"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MediaType">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="mediaType"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="specURL"/>
+            <elements xsi:type="xtext:Assignment" feature="specURL" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="derivedFrom"/>
+            <elements xsi:type="xtext:Keyword" value="("/>
+            <elements xsi:type="xtext:Assignment" feature="derivedFrom" operator="+=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="*">
+              <elements xsi:type="xtext:Keyword" value=","/>
+              <elements xsi:type="xtext:Assignment" feature="derivedFrom" operator="+=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MediaType"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.88"/>
+                </terminal>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value=")"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Keyword" value="extensions"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="LinkRelationsLibrary">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//LinkRelationsLibrary"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//LinkRelationsLibrary"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="linkRelationsLibrary"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="definedLinkRelations" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.65"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="LinkRelation">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//LinkRelation"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//LinkRelation"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="linkRelation"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.66"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="specURL"/>
+          <elements xsi:type="xtext:Assignment" feature="specURL" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="LinkRelationName">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value="-"/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="RealizationModelLocation">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//RealizationModelLocation"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//RealizationModelLocation"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" feature="uri" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SecuritySchemeLibrary">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecuritySchemeLibrary"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecuritySchemeLibrary"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="securitySchemesLibrary"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="securitySchemes" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.71"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="AuthenticationMethod">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationMethod"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationMethod"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" feature="scheme" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.1">
+              <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecurityScheme"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="authorized"/>
+            <elements xsi:type="xtext:Keyword" cardinality="?" value="for"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="scopes"/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+            <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:Assignment" feature="scopes" operator="+=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.1">
+                  <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecurityScope"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="*">
+              <elements xsi:type="xtext:Group" predicated="true">
+                <elements xsi:type="xtext:Alternatives">
+                  <elements xsi:type="xtext:Keyword" value=","/>
+                  <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+                </elements>
+              </elements>
+              <elements xsi:type="xtext:Assignment" feature="scopes" operator="+=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.1">
+                    <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecurityScope"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+                </terminal>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="AuthenticationFlows">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EEnum" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationFlows"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationFlows/IMPLICIT"/>
+          <literal value="IMPLICIT"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationFlows/PASSWORD"/>
+          <literal value="PASSWORD"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationFlows/APPLICATION"/>
+          <literal value="APPLICATION"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationFlows/ACCESS_CODE"/>
+          <literal value="ACCESS_CODE"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SecurityScheme">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecurityScheme"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecurityScheme"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="securityScheme"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="type"/>
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.76"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="methodInvocation"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="requires"/>
+        <elements xsi:type="xtext:Keyword" value="authorization"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="parameters" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.74"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="errorResponses" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.75"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="defines"/>
+          <elements xsi:type="xtext:Keyword" value="scopes"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="+" feature="scopes" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.72"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="uses"/>
+          <elements xsi:type="xtext:Keyword" value="flow"/>
+          <elements xsi:type="xtext:Assignment" feature="flow" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.70"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" value="settings"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="+" feature="settings" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.73"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:Keyword" value="extensions"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.6"/>
+          <elements xsi:type="xtext:Assignment" cardinality="+" feature="extensions" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.79"/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+          <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="?" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.7"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SecurityScope">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecurityScope"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecurityScope"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.86"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="SecuritySchemeParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecuritySchemeParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//SecuritySchemeParameter"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="AuthParameter">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//MessageParameter"/>
+      </type>
+      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="TypedErrorResponse">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TypedResponse"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//TypedResponse"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="documentation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.78"/>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Keyword" value="errorResponse"/>
+        <elements xsi:type="xtext:Keyword" value="statusCode"/>
+        <elements xsi:type="xtext:Assignment" feature="statusCode" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.81"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="AuthenticationType">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EEnum" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationTypes"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationTypes/BASIC"/>
+          <literal value="basic"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationTypes/OAUTH2"/>
+          <literal value="oauth2"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.modelsolv.com/reprezen/rapidml/1.0#//AuthenticationTypes/CUSTOM"/>
+          <literal value="custom"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ModelDocumentation">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Documentation"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Documentation"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.1"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Documentation">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Documentation"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Documentation"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" feature="text" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.1"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Extension">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Extension"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.1">
+            <classifier xsi:type="ecore:EClass" href="http://www.modelsolv.com/reprezen/rapidml/1.0#//Extension"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" cardinality="+" rule="/1/@rules.5"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.80"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+            <elements xsi:type="xtext:RuleCall" rule="/1/@rules.9"/>
+          </terminal>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ExtensionName">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+          <elements xsi:type="xtext:Group" cardinality="*">
+            <elements xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="-"/>
+              <elements xsi:type="xtext:Keyword" value="+"/>
+              <elements xsi:type="xtext:Keyword" value="."/>
+            </elements>
+            <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="EInt">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="-"/>
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="EString">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="StringLiteral">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="NumericValue">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.85"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Decimal">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.81"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="."/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.1"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="QualifiedName">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value="."/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="PropertyPath">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value="."/>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MediaTypeQualifier">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.91"/>
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.2"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="FeatureName">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.82"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.90"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Keyword">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Keyword" value="title"/>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MediaTypeQualifierWOAsterisk">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.92"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="/"/>
+          <elements xsi:type="xtext:RuleCall" rule="/0/@rules.92"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=";"/>
+          <elements xsi:type="xtext:RuleCall" rule="/0/@rules.92"/>
+          <elements xsi:type="xtext:Keyword" value="="/>
+          <elements xsi:type="xtext:RuleCall" rule="/0/@rules.92"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="MediaTypeFragment">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="-"/>
+            <elements xsi:type="xtext:Keyword" value="+"/>
+            <elements xsi:type="xtext:Keyword" value="."/>
+          </elements>
+          <elements xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+        </elements>
+      </alternatives>
+    </rules>
+  </xtext:Grammar>
+  <xtext:Grammar name="com.reprezen.rapidml.xtext.RepreZenTerminals" usedGrammars="/2" definesHiddenTokens="true" hiddenTokens="/1/@rules.8 /1/@rules.2 /1/@rules.3 /1/@rules.4">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
+      <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </metamodelDeclarations>
+    <rules xsi:type="xtext:TerminalRule" name="RAW_STRING">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="r"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="&quot;"/>
+            <elements xsi:type="xtext:NegatedToken" cardinality="*">
+              <terminal xsi:type="xtext:Keyword" value="&quot;"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="&quot;"/>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="'"/>
+            <elements xsi:type="xtext:NegatedToken" cardinality="*">
+              <terminal xsi:type="xtext:Keyword" value="'"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="'"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="JAVADOC_COMMENT">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="/**"/>
+        <elements xsi:type="xtext:UntilToken">
+          <terminal xsi:type="xtext:Keyword" value="*/"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="ML_COMMENT">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="/* "/>
+        <elements xsi:type="xtext:UntilToken">
+          <terminal xsi:type="xtext:Keyword" value="*/"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="ML_COMMENT_NL">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="/*&#xA;"/>
+        <elements xsi:type="xtext:UntilToken">
+          <terminal xsi:type="xtext:Keyword" value="*/"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="SL_COMMENT">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="//"/>
+        <elements xsi:type="xtext:NegatedToken" cardinality="*">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+            <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+          </terminal>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="NL">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Group" cardinality="+">
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
+          <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" cardinality="*" value="&#x9;"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="BEGIN">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Keyword" value="&#x250c;"/>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="END">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Keyword" value="&#x2510;"/>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="WS">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives" cardinality="+">
+        <elements xsi:type="xtext:Keyword" value=" "/>
+        <elements xsi:type="xtext:Keyword" value="&#x9;"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="RICH_TEXT">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="'''"/>
+        <elements xsi:type="xtext:RuleCall" cardinality="*" rule="/1/@rules.10"/>
+        <elements xsi:type="xtext:Keyword" value="'''"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="IN_RICH_STRING" fragment="true">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="''"/>
+          <elements xsi:type="xtext:NegatedToken">
+            <terminal xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+              <elements xsi:type="xtext:Keyword" value="'"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="'"/>
+          <elements xsi:type="xtext:NegatedToken">
+            <terminal xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+              <elements xsi:type="xtext:Keyword" value="'"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:NegatedToken">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="&#xab;"/>
+            <elements xsi:type="xtext:Keyword" value="'"/>
+          </terminal>
+        </elements>
+      </alternatives>
+    </rules>
+  </xtext:Grammar>
+  <xtext:Grammar name="org.eclipse.xtext.common.Terminals" definesHiddenTokens="true" hiddenTokens="/1/@rules.8 /1/@rules.2 /1/@rules.4">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
+      <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </metamodelDeclarations>
+    <rules xsi:type="xtext:TerminalRule" name="ID">
+      <type metamodel="/2/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="^"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="a"/>
+            <right value="z"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="A"/>
+            <right value="Z"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="_"/>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="*">
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="a"/>
+            <right value="z"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="A"/>
+            <right value="Z"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="_"/>
+          <elements xsi:type="xtext:CharacterRange">
+            <left value="0"/>
+            <right value="9"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="INT">
+      <type metamodel="/2/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </type>
+      <alternatives xsi:type="xtext:CharacterRange" cardinality="+">
+        <left value="0"/>
+        <right value="9"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="STRING">
+      <type metamodel="/2/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="&quot;"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Wildcard"/>
+            </elements>
+            <elements xsi:type="xtext:NegatedToken">
+              <terminal xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="\"/>
+                <elements xsi:type="xtext:Keyword" value="&quot;"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="&quot;"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="'"/>
+          <elements xsi:type="xtext:Alternatives" cardinality="*">
+            <elements xsi:type="xtext:Group">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Wildcard"/>
+            </elements>
+            <elements xsi:type="xtext:NegatedToken">
+              <terminal xsi:type="xtext:Alternatives">
+                <elements xsi:type="xtext:Keyword" value="\"/>
+                <elements xsi:type="xtext:Keyword" value="'"/>
+              </terminal>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="'"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="ML_COMMENT">
+      <type metamodel="/2/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="/*"/>
+        <elements xsi:type="xtext:UntilToken">
+          <terminal xsi:type="xtext:Keyword" value="*/"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="SL_COMMENT">
+      <type metamodel="/2/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="//"/>
+        <elements xsi:type="xtext:NegatedToken" cardinality="*">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+            <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
+          <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="WS">
+      <type metamodel="/2/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives" cardinality="+">
+        <elements xsi:type="xtext:Keyword" value=" "/>
+        <elements xsi:type="xtext:Keyword" value="&#x9;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:TerminalRule" name="ANY_OTHER">
+      <type metamodel="/2/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Wildcard"/>
+    </rules>
+  </xtext:Grammar>
+</xmi:XMI>

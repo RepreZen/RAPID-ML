@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-Description: Parser and Model for RAPID-ML modeling language
+Bundle-License: https://www.eclipse.org/legal/epl-v10.html
+Bundle-ManifestVersion: 2
+Bundle-Name: com.reprezen.rapidml.realization
+Bundle-SymbolicName: com.reprezen.rapidml.realization
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.reprezen.rapidml.realization.model,
+ com.reprezen.rapidml.realization.model.impl,
+ com.reprezen.rapidml.realization.parser
+Import-Package: com.fasterxml.jackson.core;version="[2.6,3)",
+ com.fasterxml.jackson.databind;version="[2.6,3)",
+ com.fasterxml.jackson.databind.node;version="[2.6,3)",
+ com.github.fge.jsonschema.core.exceptions,
+ com.github.fge.jsonschema.core.report,
+ com.github.fge.jsonschema.main,
+ com.google.common.collect,
+ com.reprezen.jsonoverlay,
+ com.reprezen.rapidml.realization.model,
+ org.apache.commons.lang3
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: ModelSolv, Inc.

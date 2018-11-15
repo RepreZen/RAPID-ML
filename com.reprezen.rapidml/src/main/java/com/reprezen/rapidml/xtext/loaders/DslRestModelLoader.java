@@ -22,7 +22,7 @@ import com.google.common.cache.LoadingCache;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.xtext.RapidMLRuntimeModule;
+import com.reprezen.rapidml.xtext.XtextDslRuntimeModule;
 
 /**
  * Loads the RESTApi model that are in Xtext DSL format.
@@ -92,7 +92,7 @@ public class DslRestModelLoader extends RestModelLoader {
 
         // Injector injector = new XtextDslStandaloneSetup().createInjectorAndDoEMFRegistration();
 
-        Injector injector = Guice.createInjector(new RapidMLRuntimeModule());
+        Injector injector = Guice.createInjector(new XtextDslRuntimeModule());
         XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
         resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
         org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(modelPath, true);

@@ -14,7 +14,7 @@
     <url>http://rapid-api.org/rapid-ml/index.html</url>
     
     <properties>
-	<xtextVersion>2.9.2</xtextVersion>
+	<xtextVersion>2.9.1</xtextVersion>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<maven.compiler.source>1.8</maven.compiler.source>
 	<maven.compiler.target>1.8</maven.compiler.target>
@@ -22,8 +22,7 @@
     <modules>
 	<module>com.reprezen.rapidml.realization</module>
 	<module>com.reprezen.rapidml.model</module>
-	<module>com.reprezen.rapidml</module>
-	<module>com.reprezen.rapidml.ide</module>
+	<module>com.reprezen.rapidml</module>	
     </modules>
     <licenses>
 	<license>

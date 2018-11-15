@@ -22,7 +22,7 @@ import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Injector;
 import com.reprezen.rapidml.ZenModel;
-import com.reprezen.rapidml.xtext.RapidMLStandaloneSetup;
+import com.reprezen.rapidml.xtext.XtextDslStandaloneSetup;
 
 /**
  * A utility class to load ZenModel in headless mode.
@@ -51,7 +51,7 @@ public class ZenModelLoader {
      * used to load models in headless mode.
      */
     public ZenModelLoader() {
-        Injector injector = RapidMLStandaloneSetup.doSetup();
+        Injector injector = XtextDslStandaloneSetup.doSetup();
         this.resourceSet = injector.getInstance(ResourceSet.class);
         this.validator = injector.getInstance(IResourceValidator.class);
     }

@@ -24,14 +24,14 @@ import com.google.common.base.Optional;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import com.reprezen.rapidml.RapidmlPackage;
-import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalRapidMLParser;
-import com.reprezen.rapidml.xtext.services.RapidMLGrammarAccess;
+import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslParser;
+import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
 
 /**
  * @author Konstantin Zaitsev, Tatiana Fesenko
  * @date Oct 29, 2014
  */
-public class RepreZenInternalDslParser extends InternalRapidMLParser {
+public class RepreZenInternalDslParser extends InternalXtextDslParser {
     private static final String MEDIA_TYPES_KEYWORD = RapidmlPackage.Literals.RESOURCE_DEFINITION__MEDIA_TYPES
             .getName();
     private final Collection<String> includedPropertiesKeywords;
@@ -40,7 +40,7 @@ public class RepreZenInternalDslParser extends InternalRapidMLParser {
      * @param input
      * @param grammarAccess
      */
-    public RepreZenInternalDslParser(TokenStream input, RapidMLGrammarAccess grammarAccess) {
+    public RepreZenInternalDslParser(TokenStream input, XtextDslGrammarAccess grammarAccess) {
         super(input, grammarAccess);
         includedPropertiesKeywords = Sets.newHashSet( //
                 grammarAccess.getIncludedPropertiesAccess().getPropertiesKeyword_2_1_2().getValue());
@@ -63,8 +63,8 @@ public class RepreZenInternalDslParser extends InternalRapidMLParser {
                 Optional<ICompositeNode> parent = getNodeBySemanticClass(getLastLeafNode(),
                         RapidmlPackage.Literals.TYPED_MESSAGE, RapidmlPackage.Literals.RESOURCE_DEFINITION);
                 if (parent.isPresent()) {
-                    if (Iterables.size(Iterables.filter(parent.get().getChildren(), matchGrammarRule(getGrammarAccess()
-                            .getIncludedPropertiesAccess().getObjectRealizationAction_0()))) > 1) {
+                    if (Iterables.size(Iterables.filter(parent.get().getChildren(), matchGrammarRule(
+                            getGrammarAccess().getIncludedPropertiesAccess().getObjectRealizationAction_0()))) > 1) {
                         reportError(new DuplicateTokenException(token, getTokenStream()));
                     }
                 }

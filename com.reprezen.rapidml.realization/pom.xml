@@ -13,12 +13,10 @@
 		<dependency>
 			<groupId>com.github.java-json-tools</groupId>
 			<artifactId>json-schema-validator</artifactId>
-			<version>2.2.10</version>
 		</dependency>
 		<dependency>
 			<groupId>com.reprezen.jsonoverlay</groupId>
 			<artifactId>jsonoverlay</artifactId>
-			<version>4.0.1-201809050106</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -201,42 +201,35 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.junit4</artifactId>
-			<version>${xtextVersion}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.xbase.junit</artifactId>
-			<version>${xtextVersion}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.xbase</artifactId>
-			<version>${xtextVersion}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.xtext</artifactId>
-			<version>${xtextVersion}</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-			<version>${xtextVersion}</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.reprezen.rapidml</groupId>
-			<artifactId>com.reprezen.rapidml.model</artifactId>
-			<version>${project.version}</version>		
+			<artifactId>com.reprezen.rapidml.model</artifactId>		
 		</dependency>
 	</dependencies>
 </project>

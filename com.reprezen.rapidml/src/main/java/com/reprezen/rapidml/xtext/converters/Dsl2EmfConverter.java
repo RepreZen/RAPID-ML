@@ -22,6 +22,7 @@ import com.reprezen.core.RapidFileExtensions;
 import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.ZenModel;
 import com.reprezen.rapidml.xtext.loaders.DslRestModelLoader;
+import com.reprezen.rapidml.xtext.loaders.RepreZenXtextResourceSet;
 import com.reprezen.rapidml.xtext.loaders.RestModelLoader;
 import com.reprezen.rapidml.xtext.serializers.EmfRestModelSerializer;
 
@@ -76,7 +77,7 @@ public class Dsl2EmfConverter {
 
     private ZenModel loadDslModel(String path) {
         URI uri = URI.createFileURI(path);
-        return new DslRestModelLoader().load(uri);
+        return new DslRestModelLoader(new RepreZenXtextResourceSet()).load(uri);
     }
 
     private void saveEmfModel(String path, ZenModel model) throws IOException {

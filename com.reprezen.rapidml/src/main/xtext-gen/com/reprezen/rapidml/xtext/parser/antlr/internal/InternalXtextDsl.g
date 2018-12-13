@@ -9809,7 +9809,7 @@ ruleAuthenticationType returns [Enumerator current=null]
 
 
 
-RULE_RAW_STRING : 'r' ('"' ~('"')* '"'|'\'' ~('\'')* '\'');
+RULE_RAW_STRING : 'r' ('"' (~('"')|'\\"')* '"'|'\'' (~('\'')|'\\\'')* '\'');
 
 RULE_JAVADOC_COMMENT : '/**' ( options {greedy=false;} : . )*'*/';
 

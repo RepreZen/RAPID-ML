@@ -3102,11 +3102,11 @@ public class InternalXtextDslLexer extends Lexer {
         try {
             int _type = RULE_RAW_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXtextDsl.g:9812:17: ( 'r' ( '\"' (~ ( '\"' ) )* '\"' | '\\'' (~ ( '\\'' ) )* '\\'' ) )
-            // InternalXtextDsl.g:9812:19: 'r' ( '\"' (~ ( '\"' ) )* '\"' | '\\'' (~ ( '\\'' ) )* '\\'' )
+            // InternalXtextDsl.g:9812:17: ( 'r' ( '\"' (~ ( '\"' ) | '\\\\\"' )* '\"' | '\\'' (~ ( '\\'' ) | '\\\\\\'' )* '\\'' ) )
+            // InternalXtextDsl.g:9812:19: 'r' ( '\"' (~ ( '\"' ) | '\\\\\"' )* '\"' | '\\'' (~ ( '\\'' ) | '\\\\\\'' )* '\\'' )
             {
             match('r'); 
-            // InternalXtextDsl.g:9812:23: ( '\"' (~ ( '\"' ) )* '\"' | '\\'' (~ ( '\\'' ) )* '\\'' )
+            // InternalXtextDsl.g:9812:23: ( '\"' (~ ( '\"' ) | '\\\\\"' )* '\"' | '\\'' (~ ( '\\'' ) | '\\\\\\'' )* '\\'' )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -3124,23 +3124,44 @@ public class InternalXtextDslLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalXtextDsl.g:9812:24: '\"' (~ ( '\"' ) )* '\"'
+                    // InternalXtextDsl.g:9812:24: '\"' (~ ( '\"' ) | '\\\\\"' )* '\"'
                     {
                     match('\"'); 
-                    // InternalXtextDsl.g:9812:28: (~ ( '\"' ) )*
+                    // InternalXtextDsl.g:9812:28: (~ ( '\"' ) | '\\\\\"' )*
                     loop1:
                     do {
-                        int alt1=2;
+                        int alt1=3;
                         int LA1_0 = input.LA(1);
 
-                        if ( ((LA1_0>='\u0000' && LA1_0<='!')||(LA1_0>='#' && LA1_0<='\uFFFF')) ) {
+                        if ( (LA1_0=='\\') ) {
+                            int LA1_2 = input.LA(2);
+
+                            if ( (LA1_2=='\"') ) {
+                                int LA1_4 = input.LA(3);
+
+                                if ( ((LA1_4>='\u0000' && LA1_4<='\uFFFF')) ) {
+                                    alt1=2;
+                                }
+
+                                else {
+                                    alt1=1;
+                                }
+
+                            }
+                            else if ( ((LA1_2>='\u0000' && LA1_2<='!')||(LA1_2>='#' && LA1_2<='\uFFFF')) ) {
+                                alt1=1;
+                            }
+
+
+                        }
+                        else if ( ((LA1_0>='\u0000' && LA1_0<='!')||(LA1_0>='#' && LA1_0<='[')||(LA1_0>=']' && LA1_0<='\uFFFF')) ) {
                             alt1=1;
                         }
 
 
                         switch (alt1) {
                     	case 1 :
-                    	    // InternalXtextDsl.g:9812:28: ~ ( '\"' )
+                    	    // InternalXtextDsl.g:9812:29: ~ ( '\"' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3150,6 +3171,14 @@ public class InternalXtextDslLexer extends Lexer {
                     	        MismatchedSetException mse = new MismatchedSetException(null,input);
                     	        recover(mse);
                     	        throw mse;}
+
+
+                    	    }
+                    	    break;
+                    	case 2 :
+                    	    // InternalXtextDsl.g:9812:36: '\\\\\"'
+                    	    {
+                    	    match("\\\""); 
 
 
                     	    }
@@ -3165,23 +3194,44 @@ public class InternalXtextDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalXtextDsl.g:9812:40: '\\'' (~ ( '\\'' ) )* '\\''
+                    // InternalXtextDsl.g:9812:48: '\\'' (~ ( '\\'' ) | '\\\\\\'' )* '\\''
                     {
                     match('\''); 
-                    // InternalXtextDsl.g:9812:45: (~ ( '\\'' ) )*
+                    // InternalXtextDsl.g:9812:53: (~ ( '\\'' ) | '\\\\\\'' )*
                     loop2:
                     do {
-                        int alt2=2;
+                        int alt2=3;
                         int LA2_0 = input.LA(1);
 
-                        if ( ((LA2_0>='\u0000' && LA2_0<='&')||(LA2_0>='(' && LA2_0<='\uFFFF')) ) {
+                        if ( (LA2_0=='\\') ) {
+                            int LA2_2 = input.LA(2);
+
+                            if ( (LA2_2=='\'') ) {
+                                int LA2_4 = input.LA(3);
+
+                                if ( ((LA2_4>='\u0000' && LA2_4<='\uFFFF')) ) {
+                                    alt2=2;
+                                }
+
+                                else {
+                                    alt2=1;
+                                }
+
+                            }
+                            else if ( ((LA2_2>='\u0000' && LA2_2<='&')||(LA2_2>='(' && LA2_2<='\uFFFF')) ) {
+                                alt2=1;
+                            }
+
+
+                        }
+                        else if ( ((LA2_0>='\u0000' && LA2_0<='&')||(LA2_0>='(' && LA2_0<='[')||(LA2_0>=']' && LA2_0<='\uFFFF')) ) {
                             alt2=1;
                         }
 
 
                         switch (alt2) {
                     	case 1 :
-                    	    // InternalXtextDsl.g:9812:45: ~ ( '\\'' )
+                    	    // InternalXtextDsl.g:9812:54: ~ ( '\\'' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3191,6 +3241,14 @@ public class InternalXtextDslLexer extends Lexer {
                     	        MismatchedSetException mse = new MismatchedSetException(null,input);
                     	        recover(mse);
                     	        throw mse;}
+
+
+                    	    }
+                    	    break;
+                    	case 2 :
+                    	    // InternalXtextDsl.g:9812:62: '\\\\\\''
+                    	    {
+                    	    match("\\'"); 
 
 
                     	    }
@@ -5196,7 +5254,7 @@ public class InternalXtextDslLexer extends Lexer {
     static final String DFA20_acceptS =
         "\20\uffff\1\26\3\uffff\1\36\1\37\1\40\1\41\2\uffff\1\44\1\45\1\46\1\47\1\50\1\uffff\1\52\1\53\1\54\1\55\1\56\1\57\1\uffff\1\103\1\117\2\uffff\1\144\1\145\1\147\14\uffff\1\u0092\1\u0093\1\u0094\1\u0095\1\uffff\1\u0097\1\u0098\1\uffff\1\u009a\1\uffff\1\u0097\2\uffff\1\u008d\46\uffff\1\26\10\uffff\1\u0091\1\35\1\36\1\37\1\40\1\41\1\146\1\42\1\43\1\44\1\45\1\46\1\47\1\50\1\uffff\1\51\1\u0099\1\52\1\53\1\54\1\55\1\56\1\57\3\uffff\1\103\1\117\3\uffff\1\144\1\145\1\147\16\uffff\1\u0092\1\u0093\1\u0094\1\u0095\1\u0098\11\uffff\1\22\14\uffff\1\63\4\uffff\1\10\6\uffff\1\15\26\uffff\1\71\5\uffff\1\u008e\1\u008f\1\u0090\1\u0096\4\uffff\1\135\51\uffff\1\160\3\uffff\1\32\1\114\23\uffff\1\24\20\uffff\1\125\1\uffff\1\173\5\uffff\1\177\22\uffff\1\3\1\uffff\1\23\1\uffff\1\74\5\uffff\1\126\4\uffff\1\7\1\uffff\1\170\35\uffff\1\30\11\uffff\1\167\1\174\3\uffff\1\176\21\uffff\1\132\1\4\15\uffff\1\64\5\uffff\1\u008a\1\21\33\uffff\1\61\4\uffff\1\u0080\2\uffff\1\u0081\3\uffff\1\u0085\26\uffff\1\6\17\uffff\1\161\10\uffff\1\u008c\2\uffff\1\72\6\uffff\1\u008b\5\uffff\1\133\1\uffff\1\175\2\uffff\1\u0084\12\uffff\1\73\6\uffff\1\113\3\uffff\1\100\3\uffff\1\123\2\uffff\1\12\1\uffff\1\13\1\14\5\uffff\1\153\1\17\1\130\1\166\12\uffff\1\136\1\134\5\uffff\1\62\3\uffff\1\u0082\1\u0083\6\uffff\1\75\1\76\1\116\1\60\1\164\1\uffff\1\124\17\uffff\1\171\14\uffff\1\131\3\uffff\1\70\3\uffff\1\u0087\1\u0086\2\uffff\1\1\4\uffff\1\122\5\uffff\1\34\1\141\1\uffff\1\33\1\140\6\uffff\1\112\2\uffff\1\111\3\uffff\1\121\1\uffff\1\152\3\uffff\1\150\6\uffff\1\2\6\uffff\1\5\3\uffff\1\157\1\uffff\1\137\1\uffff\1\77\1\127\4\uffff\1\120\1\uffff\1\25\3\uffff\1\31\5\uffff\1\11\12\uffff\1\154\1\115\4\uffff\1\66\4\uffff\1\u0088\1\u0089\21\uffff\1\105\2\uffff\1\104\1\67\3\uffff\1\172\1\uffff\1\165\7\uffff\1\143\2\uffff\1\102\1\106\4\uffff\1\162\4\uffff\1\27\2\uffff\1\107\1\uffff\1\101\3\uffff\1\65\4\uffff\1\110\1\16\3\uffff\1\163\4\uffff\1\151\3\uffff\1\20\7\uffff\1\155\1\uffff\1\142\1\156";
     static final String DFA20_specialS =
-        "\1\2\36\uffff\1\1\41\uffff\1\0\u0325\uffff}>";
+        "\1\1\36\uffff\1\2\41\uffff\1\0\u0325\uffff}>";
     static final String[] DFA20_transitionS = {
             "\11\102\1\75\1\72\2\102\1\71\22\102\1\75\1\34\1\101\1\102\1\35\1\33\1\36\1\37\1\40\1\41\1\42\1\43\1\20\1\27\1\30\1\23\12\100\1\50\1\44\1\102\1\45\1\47\1\53\1\26\1\70\1\77\1\63\1\57\2\77\1\61\1\60\1\67\5\77\1\64\1\56\3\77\1\62\1\16\5\77\1\54\1\102\1\55\1\76\1\31\1\102\1\10\1\12\1\15\1\14\1\5\1\7\1\77\1\65\1\6\1\77\1\51\1\46\1\17\1\1\1\21\1\22\1\66\1\2\1\13\1\4\1\52\1\11\1\3\3\77\1\24\1\102\1\25\1\32\u248d\102\1\73\3\102\1\74\udaef\102",
             "\1\103",
@@ -6118,18 +6176,6 @@ public class InternalXtextDslLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA20_31 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA20_31=='\'') ) {s = 133;}
-
-                        else if ( ((LA20_31>='\u0000' && LA20_31<='&')||(LA20_31>='(' && LA20_31<='\uFFFF')) ) {s = 135;}
-
-                        else s = 134;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA20_0 = input.LA(1);
 
                         s = -1;
@@ -6264,6 +6310,18 @@ public class InternalXtextDslLexer extends Lexer {
                         else if ( (LA20_0=='\"') ) {s = 65;}
 
                         else if ( ((LA20_0>='\u0000' && LA20_0<='\b')||(LA20_0>='\u000B' && LA20_0<='\f')||(LA20_0>='\u000E' && LA20_0<='\u001F')||LA20_0=='#'||LA20_0=='<'||LA20_0=='\\'||LA20_0=='`'||LA20_0=='|'||(LA20_0>='\u007F' && LA20_0<='\u250B')||(LA20_0>='\u250D' && LA20_0<='\u250F')||(LA20_0>='\u2511' && LA20_0<='\uFFFF')) ) {s = 66;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA20_31 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA20_31=='\'') ) {s = 133;}
+
+                        else if ( ((LA20_31>='\u0000' && LA20_31<='&')||(LA20_31>='(' && LA20_31<='\uFFFF')) ) {s = 135;}
+
+                        else s = 134;
 
                         if ( s>=0 ) return s;
                         break;

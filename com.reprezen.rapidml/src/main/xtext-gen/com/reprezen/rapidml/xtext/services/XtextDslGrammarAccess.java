@@ -8628,7 +8628,7 @@ public class XtextDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal RAW_STRING:
-	//	"r" ('"' !'"'* '"' | "'" !"'"* "'");
+	//	"r" ('"' (!'"' | '\\"')* '"' | "'" (!"'" | "\\'")* "'");
 	public TerminalRule getRAW_STRINGRule() {
 		return gaRepreZenTerminals.getRAW_STRINGRule();
 	} 

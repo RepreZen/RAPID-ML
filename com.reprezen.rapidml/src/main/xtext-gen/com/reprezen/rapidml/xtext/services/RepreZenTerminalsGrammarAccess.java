@@ -81,7 +81,7 @@ public class RepreZenTerminalsGrammarAccess extends AbstractGrammarElementFinder
 
 	
 	//terminal RAW_STRING:
-	//	"r" ('"' !'"'* '"' | "'" !"'"* "'");
+	//	"r" ('"' (!'"' | '\\"')* '"' | "'" (!"'" | "\\'")* "'");
 	public TerminalRule getRAW_STRINGRule() {
 		return tRAW_STRING;
 	} 

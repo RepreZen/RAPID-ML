@@ -1,0 +1,6 @@
+rapidModel test	
+	dataModel testDataModel
+		simpleType Reg1 as string 
+			matching regex r"[0-9a-zA-Z!\"%&\*;<> \.,\(\)\n\r/='\+:\?@#\{\-_]{1,256}"
+		simpleType Reg2 as string 
+			matching regex r'[0-9a-zA-Z!"%&\*;<> \.,\(\)\n\r/=\'\+:\?@#\{\-_]{1,256}'

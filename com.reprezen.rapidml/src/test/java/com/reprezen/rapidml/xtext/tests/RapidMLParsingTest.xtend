@@ -10,6 +10,9 @@ import java.nio.charset.Charset
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.util.CancelIndicator
+import org.eclipse.xtext.validation.CheckMode
+import org.eclipse.xtext.validation.IResourceValidator
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,6 +23,9 @@ class RapidMLParsingTest{
 
 	@Inject
 	ParseHelper<ZenModel> parseHelper
+	
+	@Inject
+	IResourceValidator validator
 
 	@Test 
 	def void loadModel() {
@@ -27,6 +33,10 @@ class RapidMLParsingTest{
 		val result = parseHelper.parse(resource)
 
 		Assert.assertNotNull(result)
+		
+		val issues = validator.validate(result.eResource, CheckMode.ALL, CancelIndicator.NullImpl)
+		
+		Assert.assertEquals(0, issues.size)
 	}
 
 }

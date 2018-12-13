@@ -15,6 +15,7 @@ import java.io.IOException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
 
+import com.google.inject.Injector;
 import com.reprezen.core.RapidFileExtensions;
 import com.reprezen.core.XmiFileExtensions;
 import com.reprezen.rapidml.ZenModel;
@@ -33,9 +34,9 @@ public class ModelLoaderUtils {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    public static ZenModel loadModel(IFile file) throws IOException {
+    public static ZenModel loadModel(Injector injector, IFile file) throws IOException {
         URI modelUri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-        return loadModel(modelUri);
+        return loadModel(injector, modelUri);
     }
 
     /**
@@ -47,9 +48,9 @@ public class ModelLoaderUtils {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    public static ZenModel loadModel(URI modelURI) throws IOException {
+    public static ZenModel loadModel(Injector injector, URI modelURI) throws IOException {
         if (RapidFileExtensions.isZenExtension(modelURI.fileExtension())) {
-            return new DslRestModelLoader().load(modelURI);
+            return injector.getInstance(DslRestModelLoader.class).load(modelURI);
         } else if (XmiFileExtensions.XMI.getExtension().equalsIgnoreCase(modelURI.fileExtension())) {
             return new EmfRestModelLoader().load(modelURI);
         } else {

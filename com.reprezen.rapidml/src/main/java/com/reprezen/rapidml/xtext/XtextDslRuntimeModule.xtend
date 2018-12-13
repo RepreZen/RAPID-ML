@@ -34,11 +34,19 @@ import com.reprezen.rapidml.xtext.scoping.ImportedNamespaceScopeProvider
 import com.reprezen.rapidml.xtext.scoping.RepreZenImportUriGlobalScopeProvider
 import com.reprezen.rapidml.xtext.serializers.RepreZenValueSerializer
 import com.reprezen.rapidml.xtext.validation.XtextDslResourceValidator
+import com.reprezen.rapidml.xtext.preferences.RapidMLPreferences
+import com.reprezen.rapidml.xtext.preferences.DefaultRapidMLPreferences
 
 /** 
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class XtextDslRuntimeModule extends com.reprezen.rapidml.xtext.AbstractXtextDslRuntimeModule {
+
+	override configure(Binder binder) {
+		super.configure(binder)
+		binder.bind(RapidMLPreferences).to(DefaultRapidMLPreferences)
+	}
+
 	override Class<? extends IValueConverterService> bindIValueConverterService() {
 		return RestTerminalConverters
 	}

@@ -105,15 +105,16 @@ import com.reprezen.rapidml.util.ObjectRealizationUtils;
 import com.reprezen.rapidml.util.PrimitiveTypes;
 import com.reprezen.rapidml.util.RapidmlModelUtils;
 import com.reprezen.rapidml.xtext.nls.Messages;
+import com.reprezen.rapidml.xtext.preferences.RapidMLPreferences;
 import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
 
 public class XtextDslJavaValidator extends AbstractXtextDslJavaValidator {
 
     @Inject
     private ElementOrderSorter elementOrderSorter;
-    //
-    // @Inject
-    // private IPreferenceStoreAccess preferenceStoreAccess;
+
+    @Inject
+    private RapidMLPreferences preferences;
 
     @Inject
     private XtextDslGrammarAccess grammarAccess;
@@ -522,14 +523,14 @@ public class XtextDslJavaValidator extends AbstractXtextDslJavaValidator {
     public void checkElementOrder(ServiceDataResource serviceDataResource) {
         String settingName = NLS.bind(Messages.RepreZenValidatorConfigurationBlock_random_order_issue_key_all,
                 serviceDataResource.eClass().getName());
-        String setting = SeverityConverter.SEVERITY_IGNORE; // preferenceStoreAccess.getWritablePreferenceStore().getString(settingName);
+        String setting = preferences.getString(settingName);
         if (!SeverityConverter.SEVERITY_IGNORE.equals(setting)) {
             List<INode> nodes = elementOrderSorter.getIncorrectOrderChildren(serviceDataResource);
             for (INode n : nodes) {
                 if (n.getGrammarElement() instanceof Keyword) {
                     settingName = NLS.bind(Messages.RepreZenValidatorConfigurationBlock_random_order_issue_key,
                             serviceDataResource.eClass().getName(), ((Keyword) n.getGrammarElement()).getValue());
-                    setting = SeverityConverter.SEVERITY_IGNORE; // preferenceStoreAccess.getWritablePreferenceStore().getString(settingName);
+                    setting = preferences.getString(settingName);
                     if (!SeverityConverter.SEVERITY_IGNORE.equals(setting)) {
                         EObject semanticElement = findActualSemanticObject(n, serviceDataResource);
                         if (serviceDataResource != semanticElement) {

@@ -11,6 +11,8 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import com.reprezen.rapidml.xtext.serializers.RepreZenTextSerializer
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.util.CancelIndicator
 
 @RunWith(XtextRunner)
 @InjectWith(RapidMLInjectorProvider)
@@ -26,6 +28,7 @@ class SerializerTest {
 	def void testSerialize() {
 		val resource = Resources.toString(Resources.getResource("TaxBlaster.rapid"), Charset.forName("UTF-8"))
 		val model = parseHelper.parse(resource)
+		EcoreUtil2.resolveLazyCrossReferences(model.eResource, CancelIndicator.NullImpl)
 		val result = serializer.serializeToDslString(model)
 
 		Assert.assertNotNull(result)

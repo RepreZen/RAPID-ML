@@ -11,7 +11,6 @@ package com.reprezen.rapidml.xtext.serializers;
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.serializer.ISerializer;
@@ -35,7 +34,7 @@ public class RepreZenTextSerializer {
         // Xtext serializer needs both a resource with non-null URL and a resource set
         XtextResourceSet resourceSet = new RepreZenXtextResourceSet();
         XtextResource resource = ((XtextResource) resourceSet.createResource(URI.createURI("dummy.rapid")));
-        resource.getContents().add(EcoreUtil.copy(zenModel));
+        resource.getContents().add(zenModel);
         // serialize
         return serializer.serialize(zenModel);
 

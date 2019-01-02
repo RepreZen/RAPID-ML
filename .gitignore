@@ -108,6 +108,7 @@ buildNumber.properties
 xtend-gen/
 *.xtendbin
 *.xtextbin
+com.reprezen.rapidml.ui
 
 # macos stuff
 .DS_Store

@@ -254,7 +254,6 @@
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext</artifactId>
-			<version>${xtextVersion}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.eclipse.equinox</groupId>

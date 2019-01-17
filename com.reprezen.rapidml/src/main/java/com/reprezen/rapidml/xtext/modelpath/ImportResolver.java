@@ -82,7 +82,16 @@ public class ImportResolver {
         String template = item.getUriTemplate();
         try {
             return item.getMatches(fqModelName, importUri) //
-                    .map((ModelPathBindings b) -> b.interpolate(template != null ? template : containerUri.toString())) //
+                    .map((ModelPathBindings b) -> {
+                    	String value = null;
+                    	if (template != null) {
+                    		value = template;
+                    	} else if (containerUri != null) {
+                    		value = containerUri.toString();
+                    	}
+
+                    	return value != null ? b.interpolate(value) : null;
+                    }) //
                     .filter(Objects::nonNull) //
                     .map(wrapBadUri(uriString -> new URI(uriString))) //
                     .map(context -> importUri != null ? context.resolve(importUri) : context);

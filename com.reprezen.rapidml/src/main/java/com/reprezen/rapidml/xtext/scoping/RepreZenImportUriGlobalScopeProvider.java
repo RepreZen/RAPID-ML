@@ -13,7 +13,6 @@ import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.debug;
 import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option.DEFAULT;
 import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option.RESOLUTION;
 
-import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -134,14 +133,13 @@ public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopePro
         if (Strings.isEmpty(importUriString)) {
             return;
         }
-        java.net.URI containerUri;
-        try {
-            containerUri = hasRelativeUri(resource) ? null : new java.net.URI(resource.getURI().toString());
+
+            URI containerUri = hasRelativeUri(resource) ? null : resource.getURI();
             String fqModelName = importDeclaration.getImportedNamespace();
             ModelPath modelPath = getModelPath();
             ImportResolver importResolver = new ImportResolver(modelPath, containerUri, fqModelName, importUriString);
             // TODO This should silently ignore failing URL proposals and only add an error if all of them fail
-            for (java.net.URI nextResolvedUri : importResolver.resolve()) {
+            for (URI nextResolvedUri : importResolver.resolve()) {
                 debug(RESOLUTION, ":Proposed URI: " + nextResolvedUri.toString());
                 URI importUri = URI.createURI(nextResolvedUri.toString());
                 Resource importedResource = getResource(resource, importUri);
@@ -167,15 +165,11 @@ public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopePro
                     addError(resource, importDeclaration, msg);
                 }
             }
-        } catch (URISyntaxException e) {
-            // TODO ignore
-            return;
-        }
+        
     }
 
-    private boolean hasRelativeUri(Resource resource) throws URISyntaxException {
-        java.net.URI testUri = new java.net.URI(resource.getURI().toString());
-        return testUri.getScheme() == null;
+    private boolean hasRelativeUri(Resource resource) {
+        return resource.getURI() != null && resource.getURI().isRelative();
     }
 
     private Resource getResource(Resource context, URI newURI) {

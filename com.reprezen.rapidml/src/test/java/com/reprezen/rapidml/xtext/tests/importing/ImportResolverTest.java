@@ -4,10 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
 import org.junit.Test;
 
 import com.google.common.collect.Lists;
@@ -18,7 +18,7 @@ public class ImportResolverTest {
 
     @Test
     public void nullModelPathTests() throws URISyntaxException {
-        URI containerUri = new URI("file:/x/y/Z.rapid");
+        URI containerUri = URI.createURI("file:/x/y/Z.rapid");
         testNullModelPath(containerUri, "Sibling.rapid", "file:/x/y/Sibling.rapid");
         testNullModelPath(containerUri, "z/Child.rapid", "file:/x/y/z/Child.rapid");
         testNullModelPath(containerUri, "../Aunt.rapid", "file:/x/Aunt.rapid");
@@ -41,7 +41,7 @@ public class ImportResolverTest {
     @Test
     public void simpleModelPathWithDotTests() throws URISyntaxException {
         ModelPath modelPath = new ModelPath("file:/x/y/z/; .; http://x.y.z/a/b/c/");
-        URI containerUri = new URI("http://container/uri/model.rapid");
+        URI containerUri = URI.createURI("http://container/uri/model.rapid");
         testModelPath(modelPath, null, containerUri, "Sibling.rapid", "file:/x/y/z/Sibling.rapid",
                 "http://container/uri/Sibling.rapid", "http://x.y.z/a/b/c/Sibling.rapid");
         testModelPath(modelPath, null, containerUri, "z/Child.rapid", "file:/x/y/z/z/Child.rapid",
@@ -82,7 +82,7 @@ public class ImportResolverTest {
     @Test
     public void simplePatternPathTests() throws URISyntaxException, MalformedURLException {
         ModelPath modelPath = new ModelPath("[ a.b ] http://a.b/; [ , x/y] file:/; [ a.b, x/y] http://a.b/");
-        URI containerUri = new URI("http://container/uri/model.rapid");
+        URI containerUri = URI.createURI("http://container/uri/model.rapid");
         testModelPath(modelPath, "a.b.c", containerUri, "model.rapid", "http://a.b/model.rapid");
         testModelPath(modelPath, "a.b.c", containerUri, "model.rapid", "http://a.b/model.rapid");
         testModelPath(modelPath, "x.a.b.c", containerUri, "model.rapid");
@@ -96,7 +96,7 @@ public class ImportResolverTest {
     public void platformUrlTemplateTests() throws URISyntaxException {
         ModelPath modelPath = new ModelPath(
                 "[ a.b ] platform:/resource/projB/; [a.c] platform:/resource/projC/dir/; .");
-        URI containerUri = new URI("platform:/resource/mainProject/models/Model.rapid");
+        URI containerUri = URI.createURI("platform:/resource/mainProject/models/Model.rapid");
         testModelPath(modelPath, "a.b.c.Model.DM", containerUri, "foo/xxx.rapid", //
                 "platform:/resource/projB/foo/xxx.rapid", //
                 "platform:/resource/mainProject/models/foo/xxx.rapid");
@@ -110,7 +110,7 @@ public class ImportResolverTest {
     @Test
     public void noImportUriTests() throws URISyntaxException {
         ModelPath modelPath = new ModelPath("[ a.b ] http://example.com/; [ , foo/bar ] http://bogus.com/; .");
-        URI containerUri = new URI("http://container.com/");
+        URI containerUri = URI.createURI("http://container.com/");
         testModelPath(modelPath, "a.b.c", containerUri, null, //
                 "http://example.com/");
         testModelPath(modelPath, "a.b.c", containerUri, "foo/bar/model.rapid", //

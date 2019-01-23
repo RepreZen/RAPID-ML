@@ -11,7 +11,6 @@ package com.reprezen.rapidml.xtext.modelpath;
 import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.debug;
 import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option.RESOLUTION;
 
-import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -64,27 +63,36 @@ public class ImportResolver {
 			debug(RESOLUTION, ":Using default importer-relative model path ('.')");
 			return getUrisForItem(new ModelPathItem(null, null, "."))::iterator;
 		} else {
-			return modelPath.getItems().stream() //
-					.flatMap(wrapBadUri(item -> getUrisForItem(item))) //
-					::iterator;
+			try {
+				return modelPath.getItems().stream() //
+						.flatMap(wrapBadUri(this::getUrisForItem)) //
+				::iterator;
+			} catch (RuntimeException e) {
+				throw (IllegalArgumentException) e.getCause();
+			}
 		}
 	}
 
 	private Stream<URI> getUrisForItem(ModelPathItem item) {
-		String template = item.getUriTemplate();
-		return item.getMatches(fqModelName, importUri) //
-				.map((ModelPathBindings b) -> {
-					String value = null;
-					if (template != null) {
-						value = template;
-					} else if (containerUri != null) {
-						value = containerUri.toString();
-					}
-					return value != null ? b.interpolate(value) : null;
-				}) //
-				.filter(Objects::nonNull) //
-				.map(wrapBadUri(uriString -> URI.createURI(uriString))) //
-				.map(context -> importUri != null ? importUri.resolve(context) : context);
+		try {
+			return item.getMatches(fqModelName, importUri) //
+					.map(binding -> interpolate(binding, item)) //
+					.filter(Objects::nonNull) //
+					.map(wrapBadUri(URI::createURI)) //
+					.map(context -> importUri != null ? importUri.resolve(context) : context);
+		} catch (RuntimeException e) {
+			throw (IllegalArgumentException) e.getCause();
+		}
+	}
+
+	private String interpolate(ModelPathBindings binding, ModelPathItem item) {
+		if (item.getUriTemplate() != null) {
+			return binding.interpolate(item.getUriTemplate());
+		}
+		if (containerUri != null) {
+			return binding.interpolate(containerUri.toString());
+		}
+		return null;
 	}
 
 	@FunctionalInterface
@@ -92,11 +100,11 @@ public class ImportResolver {
 		R accept(T t) throws E;
 	}
 
-	static <T, R> Function<T, R> wrapBadUri(ThrowingFunction<T, R, URISyntaxException> f) {
+	static <T, R> Function<T, R> wrapBadUri(ThrowingFunction<T, R, IllegalArgumentException> f) {
 		return t -> {
 			try {
 				return f.accept(t);
-			} catch (URISyntaxException e) {
+			} catch (IllegalArgumentException e) {
 				throw new RuntimeException(e);
 			}
 		};

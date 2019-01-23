@@ -1,6 +1,0 @@
-import PersonDocument.PersonDocumentDataModel from "PersonDocument.rapid"
-
-rapidModel Person
-	dataModel PersonDataModel
-		structure Person
-			personDocuments : as reference to PersonDocument* inverse person

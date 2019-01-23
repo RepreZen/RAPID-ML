@@ -11,8 +11,6 @@ package com.reprezen.rapidml.xtext.loaders;
 import java.io.File;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -43,10 +41,9 @@ public class ZenModelLoader {
      * This constructor should be used only in tests where the resourceSet is injected and cleaned up by the
      * XtextRunner.
      */
-    @Inject
-    public ZenModelLoader(ResourceSet resourceSet, IResourceValidator validator) {
+    public ZenModelLoader(ResourceSet resourceSet) {
         this.resourceSet = resourceSet;
-        this.validator = validator;
+        this.validator = null;
     }
 
     /*

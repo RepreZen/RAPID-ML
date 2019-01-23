@@ -19,7 +19,7 @@ import org.eclipse.xtext.util.CancelIndicator
 class SerializerTest {
 	
 	@Inject
-	ParseHelper<ZenModel> parseHelper
+	ParseHelper<ZenModel> parseHelper;
 
 	@Inject
 	RepreZenTextSerializer serializer

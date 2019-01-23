@@ -11,13 +11,14 @@ package com.reprezen.rapidml.xtext.modelpath;
 import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.debug;
 import static com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option.MATCHING;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+
+import org.eclipse.emf.common.util.URI;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -123,7 +124,7 @@ public class ModelPathItem {
             return Stream.empty();
         }
         List<ModelPathBindings> modelMatches = getMatches(modelPattern, fqModelName, Delimiter.DOT);
-        List<ModelPathBindings> pathMatches = getMatches(pathPattern, importUri != null ? importUri.getPath() : null,
+        List<ModelPathBindings> pathMatches = getMatches(pathPattern, importUri != null ? importUri.toString() : null,
                 Delimiter.SLASH);
         if (modelMatches == null && pathMatches == null) {
             return Stream.of(new ModelPathBindings());

@@ -80,7 +80,6 @@ public class ImportResolver {
 					} else if (containerUri != null) {
 						value = containerUri.toString();
 					}
-
 					return value != null ? b.interpolate(value) : null;
 				}) //
 				.filter(Objects::nonNull) //

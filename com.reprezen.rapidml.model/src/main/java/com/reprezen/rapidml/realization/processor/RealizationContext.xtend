@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright � 2013, 2018 Modelsolv, Inc.
+ * Copyright © 2013, 2018 Modelsolv, Inc.
  * All Rights Reserved.
  * 
  * NOTICE: All information contained herein is, and remains the property

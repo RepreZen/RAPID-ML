@@ -46,6 +46,9 @@ public class RestApiXtextPlugin extends Plugin {
      * @return the shared instance
      */
     public static RestApiXtextPlugin getDefault() {
+    	if (plugin == null) {
+    		plugin = new RestApiXtextPlugin();
+    	}
         return plugin;
     }
 

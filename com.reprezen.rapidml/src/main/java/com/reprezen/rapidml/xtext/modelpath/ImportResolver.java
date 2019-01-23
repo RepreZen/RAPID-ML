@@ -76,7 +76,7 @@ public class ImportResolver {
 	private Stream<URI> getUrisForItem(ModelPathItem item) {
 		try {
 			return item.getMatches(fqModelName, importUri) //
-					.map(binding -> interpolate(binding, item)) //
+					.map(binding -> interpolateIfNeeded(binding, item)) //
 					.filter(Objects::nonNull) //
 					.map(wrapBadUri(URI::createURI)) //
 					.map(context -> importUri != null ? importUri.resolve(context) : context);
@@ -85,14 +85,11 @@ public class ImportResolver {
 		}
 	}
 
-	private String interpolate(ModelPathBindings binding, ModelPathItem item) {
+	private String interpolateIfNeeded(ModelPathBindings binding, ModelPathItem item) {
 		if (item.getUriTemplate() != null) {
 			return binding.interpolate(item.getUriTemplate());
 		}
-		if (containerUri != null) {
-			return binding.interpolate(containerUri.toString());
-		}
-		return null;
+		return containerUri.toString();
 	}
 
 	@FunctionalInterface

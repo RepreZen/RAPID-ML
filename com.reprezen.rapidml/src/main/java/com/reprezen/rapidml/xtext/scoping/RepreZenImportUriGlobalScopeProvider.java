@@ -134,7 +134,7 @@ public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopePro
             return;
         }
         try {
-            URI containerUri = hasRelativeUri(resource) ? null : resource.getURI();
+            URI containerUri = resource.getURI();
             String fqModelName = importDeclaration.getImportedNamespace();
             ModelPath modelPath = getModelPath();
             ImportResolver importResolver = new ImportResolver(modelPath, containerUri, fqModelName, importUriString);
@@ -168,10 +168,6 @@ public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopePro
             // TODO ignore
             return;
         }
-    }
-
-    private boolean hasRelativeUri(Resource resource) {
-        return resource.getURI() != null && resource.getURI().isRelative();
     }
 
     private Resource getResource(Resource context, URI newURI) {

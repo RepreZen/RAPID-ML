@@ -8,17 +8,16 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Collection Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Collection Parameter</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.CollectionParameter#getContainingResourceDefinition <em>Containing Resource Definition</em>}</li>
+ * <li>{@link com.reprezen.rapidml.CollectionParameter#getContainingResourceDefinition
+ * <em>Containing Resource Definition</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getCollectionParameter()
@@ -27,15 +26,18 @@ package com.reprezen.rapidml;
  */
 public interface CollectionParameter extends Parameter {
 	/**
-	 * Returns the value of the '<em><b>Containing Resource Definition</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.reprezen.rapidml.CollectionResource#getCollectionParameters <em>Collection Parameters</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Containing Resource Definition</b></em>'
+	 * container reference. It is bidirectional and its opposite is
+	 * '{@link com.reprezen.rapidml.CollectionResource#getCollectionParameters
+	 * <em>Collection Parameters</em>}'. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Containing Resource Definition</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Containing Resource Definition</em>' container
+	 * reference isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Containing Resource Definition</em>' container reference.
+	 * 
+	 * @return the value of the '<em>Containing Resource Definition</em>' container
+	 *         reference.
 	 * @see #setContainingResourceDefinition(CollectionResource)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getCollectionParameter_ContainingResourceDefinition()
 	 * @see com.reprezen.rapidml.CollectionResource#getCollectionParameters
@@ -45,10 +47,14 @@ public interface CollectionParameter extends Parameter {
 	CollectionResource getContainingResourceDefinition();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.CollectionParameter#getContainingResourceDefinition <em>Containing Resource Definition</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Resource Definition</em>' container reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.CollectionParameter#getContainingResourceDefinition
+	 * <em>Containing Resource Definition</em>}' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Containing Resource Definition</em>'
+	 *            container reference.
 	 * @see #getContainingResourceDefinition()
 	 * @generated
 	 */

@@ -8,18 +8,18 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Named Link Descriptor</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Named
+ * Link Descriptor</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.NamedLinkDescriptor#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.NamedLinkDescriptor#isDefault <em>Default</em>}</li>
+ * <li>{@link com.reprezen.rapidml.NamedLinkDescriptor#getName
+ * <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.NamedLinkDescriptor#isDefault
+ * <em>Default</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getNamedLinkDescriptor()
@@ -28,13 +28,14 @@ package com.reprezen.rapidml;
  */
 public interface NamedLinkDescriptor extends ObjectRealization {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getNamedLinkDescriptor_Name()
@@ -44,23 +45,26 @@ public interface NamedLinkDescriptor extends ObjectRealization {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.NamedLinkDescriptor#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.NamedLinkDescriptor#getName <em>Name</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Default</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Default</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Default</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Default</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Default</em>' attribute.
 	 * @see #setDefault(boolean)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getNamedLinkDescriptor_Default()
@@ -70,10 +74,12 @@ public interface NamedLinkDescriptor extends ObjectRealization {
 	boolean isDefault();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.NamedLinkDescriptor#isDefault <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.NamedLinkDescriptor#isDefault <em>Default</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Default</em>' attribute.
 	 * @see #isDefault()
 	 * @generated
 	 */

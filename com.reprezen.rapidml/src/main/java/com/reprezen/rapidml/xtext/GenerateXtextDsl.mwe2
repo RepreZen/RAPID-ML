@@ -11,14 +11,12 @@ var runtimeProject = "../${projectName}"
 
 Workflow {
 	bean = StandaloneSetup {
-		scanClassPath  = true
+		scanClassPath = true
 		platformUri = "${runtimeProject}/.."
-	registerGeneratedEPackage = "org.eclipse.xsd.XSDPackage"
-//	registerGeneratedEPackage = "com.modelsolv.reprezen.restapi.datatypes.DatatypesPackage"
-	registerGeneratedEPackage = "com.reprezen.rapidml.RapidmlPackage"
-//	registerGenModelFile = "platform:/resource/org.eclipse.xsd/model/XSD.genmodel"
-//	registerGenModelFile = "platform:/resource/RestApiMetamodel/metamodels/RestAPI.genmodel"
-	
+		registerGeneratedEPackage = "org.eclipse.xsd.XSDPackage"
+		registerGeneratedEPackage = "com.reprezen.rapidml.RapidmlPackage"
+		//	registerGenModelFile = "platform:/resource/org.eclipse.xsd/model/XSD.genmodel"
+		//	registerGenModelFile = "platform:/resource/RestApiMetamodel/metamodels/RestAPI.genmodel"
 	}
 
 	component = DirectoryCleaner {
@@ -40,7 +38,6 @@ Workflow {
 		projectNameUi = "${projectName}.ui"
 		srcPath = "/src/main/java"
 		srcGenPath = "/src/main/xtext-gen"
-		
 		language = {
 			uri = grammarURI
 			fileExtensions = file.extensions
@@ -49,7 +46,7 @@ Workflow {
 			// setting the xml version to force XText to generate XMI, not binary xtextbin file
 			// as described in http://www.eclipse.org/forums/index.php/t/489765/
 			fragment = grammarAccess.GrammarAccessFragment auto-inject {
-    			xmlVersion = "1.0"
+				xmlVersion = "1.0"
 			}
 
 			// generates Java API for the generated EPackages
@@ -84,13 +81,12 @@ Workflow {
 			// fragment = exporting.SimpleNamesFragment {}
 
 			// scoping and exporting API 
-
-			 fragment = scoping.ImportNamespacesScopingFragment {}
-			 fragment = exporting.QualifiedNamesFragment {}
+			fragment = scoping.ImportNamespacesScopingFragment {}
+			fragment = exporting.QualifiedNamesFragment {}
 
 			// testing API
 			fragment = junit.Junit4Fragment {}
-			
+
 			// formatter API 
 			fragment = ecore2xtext.FormatterFragment {}
 
@@ -98,8 +94,8 @@ Workflow {
 			fragment = labeling.LabelProviderFragment {}
 
 			// outline API 
-            fragment = outline.OutlineTreeProviderFragment {}
-            fragment = outline.QuickOutlineFragment {}
+			fragment = outline.OutlineTreeProviderFragment {}
+			fragment = outline.QuickOutlineFragment {}
 
 			// java-based API for content assistance 
 			fragment = contentAssist.JavaBasedContentAssistFragment {}
@@ -112,9 +108,9 @@ Workflow {
 			}
 
 			// provides a compare view
-            fragment = compare.CompareFragment {
-                fileExtensions = file.extensions
-            }
+			fragment = compare.CompareFragment {
+				fileExtensions = file.extensions
+			}
 
 			fragment = builder.BuilderIntegrationFragment {}
 
@@ -128,22 +124,20 @@ Workflow {
 			// quickfix API 
 			fragment = quickfix.QuickfixProviderFragment {}
 
-		    // rename refactoring
-		    fragment = refactoring.RefactorElementNameFragment {}
-      }
-		
+			// rename refactoring
+			fragment = refactoring.RefactorElementNameFragment {}
+		}
+
 		language = {
 			uri = "classpath:/com/reprezen/rapidml/xtext/RepreZenTerminals.xtext"
-			fileExtensions = "___terms"
-			// setting the xml version to force XText to generate XMI, not binary xtextbin file
-			// as described in http://www.eclipse.org/forums/index.php/t/489765/
+			fileExtensions = "___terms"// setting the xml version to force XText to generate XMI, not binary xtextbin file
+// as described in http://www.eclipse.org/forums/index.php/t/489765/
 			fragment = grammarAccess.GrammarAccessFragment auto-inject {
-    			xmlVersion = "1.0"
+				xmlVersion = "1.0"
 			}
 			fragment = parseTreeConstructor.ParseTreeConstructorFragment {}
 			fragment = contentAssist.JavaBasedContentAssistFragment {}
-			fragment = validation.JavaValidatorFragment {
-			}
+			fragment = validation.JavaValidatorFragment {}
 		}
 	}
 }

@@ -17,11 +17,11 @@ import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
  */
 public class RepreZenXtextResourceSet extends XtextResourceSet {
 
-    public RepreZenXtextResourceSet() {
-        super();
+	public RepreZenXtextResourceSet() {
+		super();
 
-        // ZEN-971 (https://www.eclipse.org/forums/index.php/t/835760/)
-        // Improve receiving changes from imported model file
-        getLoadOptions().put(ResourceDescriptionsProvider.LIVE_SCOPE, Boolean.TRUE);
-    }
+		// ZEN-971 (https://www.eclipse.org/forums/index.php/t/835760/)
+		// Improve receiving changes from imported model file
+		getLoadOptions().put(ResourceDescriptionsProvider.LIVE_SCOPE, Boolean.TRUE);
+	}
 }

@@ -25,37 +25,37 @@ import com.reprezen.rapidml.ZenModel;
  */
 public class ModelLoaderUtils {
 
-    /**
-     * Load model.
-     * 
-     * @param file
-     *            the source file
-     * @return the Zen model
-     * @throws IOException
-     *             Signals that an I/O exception has occurred.
-     */
-    public static ZenModel loadModel(Injector injector, IFile file) throws IOException {
-        URI modelUri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-        return loadModel(injector, modelUri);
-    }
+	/**
+	 * Load model.
+	 * 
+	 * @param file
+	 *            the source file
+	 * @return the Zen model
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public static ZenModel loadModel(Injector injector, IFile file) throws IOException {
+		URI modelUri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+		return loadModel(injector, modelUri);
+	}
 
-    /**
-     * Load model.
-     * 
-     * @param modelURI
-     *            the URI of the source model
-     * @return the Zen model
-     * @throws IOException
-     *             Signals that an I/O exception has occurred.
-     */
-    public static ZenModel loadModel(Injector injector, URI modelURI) throws IOException {
-        if (RapidFileExtensions.isZenExtension(modelURI.fileExtension())) {
-            return injector.getInstance(DslRestModelLoader.class).load(modelURI);
-        } else if (XmiFileExtensions.XMI.getExtension().equalsIgnoreCase(modelURI.fileExtension())) {
-            return new EmfRestModelLoader().load(modelURI);
-        } else {
-            String extension = modelURI.fileExtension();
-            throw new IOException(format("The '%s' extension is not supported for WADL generation.", extension));
-        }
-    }
+	/**
+	 * Load model.
+	 * 
+	 * @param modelURI
+	 *            the URI of the source model
+	 * @return the Zen model
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public static ZenModel loadModel(Injector injector, URI modelURI) throws IOException {
+		if (RapidFileExtensions.isZenExtension(modelURI.fileExtension())) {
+			return injector.getInstance(DslRestModelLoader.class).load(modelURI);
+		} else if (XmiFileExtensions.XMI.getExtension().equalsIgnoreCase(modelURI.fileExtension())) {
+			return new EmfRestModelLoader().load(modelURI);
+		} else {
+			String extension = modelURI.fileExtension();
+			throw new IOException(format("The '%s' extension is not supported for WADL generation.", extension));
+		}
+	}
 }

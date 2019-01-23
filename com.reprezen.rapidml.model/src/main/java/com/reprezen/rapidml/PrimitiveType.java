@@ -8,11 +8,9 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Primitive Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Primitive Type</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getPrimitiveType()
@@ -21,10 +19,10 @@ package com.reprezen.rapidml;
  */
 public interface PrimitiveType extends SimpleType {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this;'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='return this;'"
 	 * @generated
 	 */
 	PrimitiveType getPrimitiveType();

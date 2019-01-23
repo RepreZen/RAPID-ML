@@ -8,20 +8,22 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Value Range Constraint</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Value
+ * Range Constraint</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.ValueRangeConstraint#getMinValue <em>Min Value</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ValueRangeConstraint#isMinValueExclusive <em>Min Value Exclusive</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ValueRangeConstraint#getMaxValue <em>Max Value</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ValueRangeConstraint#isMaxValueExclusive <em>Max Value Exclusive</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ValueRangeConstraint#getMinValue <em>Min
+ * Value</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ValueRangeConstraint#isMinValueExclusive
+ * <em>Min Value Exclusive</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ValueRangeConstraint#getMaxValue <em>Max
+ * Value</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ValueRangeConstraint#isMaxValueExclusive
+ * <em>Max Value Exclusive</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getValueRangeConstraint()
@@ -30,13 +32,14 @@ package com.reprezen.rapidml;
  */
 public interface ValueRangeConstraint extends Constraint {
 	/**
-	 * Returns the value of the '<em><b>Min Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Min Value</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Min Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Min Value</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Min Value</em>' attribute.
 	 * @see #setMinValue(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getValueRangeConstraint_MinValue()
@@ -46,10 +49,12 @@ public interface ValueRangeConstraint extends Constraint {
 	String getMinValue();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ValueRangeConstraint#getMinValue <em>Min Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ValueRangeConstraint#getMinValue <em>Min
+	 * Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Min Value</em>' attribute.
 	 * @see #getMinValue()
 	 * @generated
 	 */
@@ -63,6 +68,7 @@ public interface ValueRangeConstraint extends Constraint {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Min Value Exclusive</em>' attribute.
 	 * @see #setMinValueExclusive(boolean)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getValueRangeConstraint_MinValueExclusive()
@@ -72,23 +78,27 @@ public interface ValueRangeConstraint extends Constraint {
 	boolean isMinValueExclusive();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ValueRangeConstraint#isMinValueExclusive <em>Min Value Exclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Value Exclusive</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ValueRangeConstraint#isMinValueExclusive <em>Min
+	 * Value Exclusive</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Min Value Exclusive</em>' attribute.
 	 * @see #isMinValueExclusive()
 	 * @generated
 	 */
 	void setMinValueExclusive(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Max Value</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Max Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Max Value</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Max Value</em>' attribute.
 	 * @see #setMaxValue(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getValueRangeConstraint_MaxValue()
@@ -98,10 +108,12 @@ public interface ValueRangeConstraint extends Constraint {
 	String getMaxValue();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ValueRangeConstraint#getMaxValue <em>Max Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ValueRangeConstraint#getMaxValue <em>Max
+	 * Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Max Value</em>' attribute.
 	 * @see #getMaxValue()
 	 * @generated
 	 */
@@ -115,6 +127,7 @@ public interface ValueRangeConstraint extends Constraint {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Max Value Exclusive</em>' attribute.
 	 * @see #setMaxValueExclusive(boolean)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getValueRangeConstraint_MaxValueExclusive()
@@ -124,10 +137,13 @@ public interface ValueRangeConstraint extends Constraint {
 	boolean isMaxValueExclusive();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ValueRangeConstraint#isMaxValueExclusive <em>Max Value Exclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Value Exclusive</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ValueRangeConstraint#isMaxValueExclusive <em>Max
+	 * Value Exclusive</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Max Value Exclusive</em>' attribute.
 	 * @see #isMaxValueExclusive()
 	 * @generated
 	 */

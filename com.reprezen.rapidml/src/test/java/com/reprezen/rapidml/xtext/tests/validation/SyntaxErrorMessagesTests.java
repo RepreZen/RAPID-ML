@@ -33,103 +33,103 @@ import com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslParser;
  * @date Oct 28, 2014
  */
 public class SyntaxErrorMessagesTests {
-    private static final ObjectResource OBJECT_RESOURCE = RapidmlFactory.eINSTANCE.createObjectResource();
+	private static final ObjectResource OBJECT_RESOURCE = RapidmlFactory.eINSTANCE.createObjectResource();
 
-    @Test
-    public void testUnwantedToken() {
-        Assert.assertEquals("Unexpected token 'default' found in objectResource, expecting name", //$NON-NLS-1$
-                getErrorMessage(new UnwantedTokenException(RULE_ID, getStream(getTokenByName("'default'"))), //$NON-NLS-1$
-                        OBJECT_RESOURCE));
+	@Test
+	public void testUnwantedToken() {
+		Assert.assertEquals("Unexpected token 'default' found in objectResource, expecting name", //$NON-NLS-1$
+				getErrorMessage(new UnwantedTokenException(RULE_ID, getStream(getTokenByName("'default'"))), //$NON-NLS-1$
+						OBJECT_RESOURCE));
 
-        Assert.assertEquals("Unexpected token 'default' found in objectResource, expecting 'only'", //$NON-NLS-1$
-                getErrorMessage(new UnwantedTokenException(getTokenByName("'only'"), //$NON-NLS-1$
-                        getStream(getTokenByName("'default'"))), OBJECT_RESOURCE)); //$NON-NLS-1$
+		Assert.assertEquals("Unexpected token 'default' found in objectResource, expecting 'only'", //$NON-NLS-1$
+				getErrorMessage(new UnwantedTokenException(getTokenByName("'only'"), //$NON-NLS-1$
+						getStream(getTokenByName("'default'"))), OBJECT_RESOURCE)); //$NON-NLS-1$
 
-        Assert.assertEquals("Unexpected token 'RULE_ID' found in objectResource, expecting 'only'", //$NON-NLS-1$
-                getErrorMessage(new UnwantedTokenException(getTokenByName("'only'"), getStream(RULE_ID)), //$NON-NLS-1$
-                        OBJECT_RESOURCE));
-    }
+		Assert.assertEquals("Unexpected token 'RULE_ID' found in objectResource, expecting 'only'", //$NON-NLS-1$
+				getErrorMessage(new UnwantedTokenException(getTokenByName("'only'"), getStream(RULE_ID)), //$NON-NLS-1$
+						OBJECT_RESOURCE));
+	}
 
-    @Test
-    public void testMissingToken() {
-        Assert.assertEquals("Missing name in objectResource before 'default'", //$NON-NLS-1$
-                getErrorMessage(new MissingTokenException(RULE_ID, getStream(getTokenByName("'default'")), //$NON-NLS-1$
-                        OBJECT_RESOURCE), OBJECT_RESOURCE));
+	@Test
+	public void testMissingToken() {
+		Assert.assertEquals("Missing name in objectResource before 'default'", //$NON-NLS-1$
+				getErrorMessage(new MissingTokenException(RULE_ID, getStream(getTokenByName("'default'")), //$NON-NLS-1$
+						OBJECT_RESOURCE), OBJECT_RESOURCE));
 
-        Assert.assertEquals("Missing token 'only' in objectResource before 'default'", //$NON-NLS-1$
-                getErrorMessage(new MissingTokenException(getTokenByName("'only'"), //$NON-NLS-1$
-                        getStream(getTokenByName("'default'")), OBJECT_RESOURCE), OBJECT_RESOURCE)); //$NON-NLS-1$
-    }
+		Assert.assertEquals("Missing token 'only' in objectResource before 'default'", //$NON-NLS-1$
+				getErrorMessage(new MissingTokenException(getTokenByName("'only'"), //$NON-NLS-1$
+						getStream(getTokenByName("'default'")), OBJECT_RESOURCE), OBJECT_RESOURCE)); //$NON-NLS-1$
+	}
 
-    private static String getErrorMessage(RecognitionException ex, EObject ctx) {
-        return new CustomSyntaxErrorMessageProvider().getSyntaxErrorMessage(new ParserErrorContext(ex, ctx))
-                .getMessage();
-    }
+	private static String getErrorMessage(RecognitionException ex, EObject ctx) {
+		return new CustomSyntaxErrorMessageProvider().getSyntaxErrorMessage(new ParserErrorContext(ex, ctx))
+				.getMessage();
+	}
 
-    private static CommonTokenStream getStream(final int... tokenTypes) {
-        return new CommonTokenStream(new TokenSource() {
-            private int cnt = 0;
+	private static CommonTokenStream getStream(final int... tokenTypes) {
+		return new CommonTokenStream(new TokenSource() {
+			private int cnt = 0;
 
-            @Override
-            public Token nextToken() {
-                if (cnt < tokenTypes.length) {
-                    Token token = new ClassicToken(tokenTypes[cnt], InternalXtextDslParser.tokenNames[tokenTypes[cnt]]);
-                    cnt++;
-                    return token;
-                }
-                return Token.EOF_TOKEN;
-            }
+			@Override
+			public Token nextToken() {
+				if (cnt < tokenTypes.length) {
+					Token token = new ClassicToken(tokenTypes[cnt], InternalXtextDslParser.tokenNames[tokenTypes[cnt]]);
+					cnt++;
+					return token;
+				}
+				return Token.EOF_TOKEN;
+			}
 
-            @Override
-            public String getSourceName() {
-                return "Test Source"; //$NON-NLS-1$
-            }
+			@Override
+			public String getSourceName() {
+				return "Test Source"; //$NON-NLS-1$
+			}
 
-        });
-    }
+		});
+	}
 
-    private int getTokenByName(String name) {
-        String[] tokennames = InternalXtextDslParser.tokenNames;
-        for (int i = 0; i < tokennames.length; i++) {
-            if (tokennames[i].equals(name)) {
-                return i;
-            }
-        }
-        return -1;
-    }
+	private int getTokenByName(String name) {
+		String[] tokennames = InternalXtextDslParser.tokenNames;
+		for (int i = 0; i < tokennames.length; i++) {
+			if (tokennames[i].equals(name)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
-    private static class ParserErrorContext implements IParserErrorContext {
-        private RecognitionException ex;
-        private EObject ctx;
+	private static class ParserErrorContext implements IParserErrorContext {
+		private RecognitionException ex;
+		private EObject ctx;
 
-        public ParserErrorContext(RecognitionException ex, EObject ctx) {
-            this.ex = ex;
-            this.ctx = ctx;
-        }
+		public ParserErrorContext(RecognitionException ex, EObject ctx) {
+			this.ex = ex;
+			this.ctx = ctx;
+		}
 
-        @Override
-        public String getDefaultMessage() {
-            return ""; //$NON-NLS-1$
-        }
+		@Override
+		public String getDefaultMessage() {
+			return ""; //$NON-NLS-1$
+		}
 
-        @Override
-        public EObject getCurrentContext() {
-            return ctx;
-        }
+		@Override
+		public EObject getCurrentContext() {
+			return ctx;
+		}
 
-        @Override
-        public INode getCurrentNode() {
-            return null;
-        }
+		@Override
+		public INode getCurrentNode() {
+			return null;
+		}
 
-        @Override
-        public RecognitionException getRecognitionException() {
-            return ex;
-        }
+		@Override
+		public RecognitionException getRecognitionException() {
+			return ex;
+		}
 
-        @Override
-        public String[] getTokenNames() {
-            return null;
-        }
-    }
+		@Override
+		public String[] getTokenNames() {
+			return null;
+		}
+	}
 }

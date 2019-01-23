@@ -16,30 +16,29 @@ import com.reprezen.rapidml.MatrixParameter;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Matrix Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Matrix
+ * Parameter</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class MatrixParameterImpl extends URIParameterImpl implements MatrixParameter {
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected MatrixParameterImpl() {
+	protected MatrixParameterImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.MATRIX_PARAMETER;
 	}
 
-} //MatrixParameterImpl
+} // MatrixParameterImpl

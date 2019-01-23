@@ -16,22 +16,22 @@ import com.reprezen.rapidml.TypedMessage;
 
 public class MessageMediaTypeProcessor {
 
-    public void process(TypedMessage message) {
-        // add resource level media types if message mediaTypes are absent
-        if (message.getMediaTypes().isEmpty()) {
-            Optional<ServiceDataResource> resource = getContainingResourceDefinition(message);
-            if (resource.isPresent()) {
-                message.getMediaTypes().addAll(resource.get().getMediaTypes());
-            }
-        }
-    }
+	public void process(TypedMessage message) {
+		// add resource level media types if message mediaTypes are absent
+		if (message.getMediaTypes().isEmpty()) {
+			Optional<ServiceDataResource> resource = getContainingResourceDefinition(message);
+			if (resource.isPresent()) {
+				message.getMediaTypes().addAll(resource.get().getMediaTypes());
+			}
+		}
+	}
 
-    public static Optional<ServiceDataResource> getContainingResourceDefinition(TypedMessage message) {
-        Method method = (Method) message.eContainer();
-        if (method != null && method.getContainingResourceDefinition() instanceof ServiceDataResource) {
-            return Optional.of((ServiceDataResource)method.getContainingResourceDefinition());
-        }
-        return Optional.empty();
-    }
+	public static Optional<ServiceDataResource> getContainingResourceDefinition(TypedMessage message) {
+		Method method = (Method) message.eContainer();
+		if (method != null && method.getContainingResourceDefinition() instanceof ServiceDataResource) {
+			return Optional.of((ServiceDataResource) method.getContainingResourceDefinition());
+		}
+		return Optional.empty();
+	}
 
 }

@@ -15,34 +15,34 @@ import java.util.stream.Collectors;
 import com.google.common.collect.Lists;
 
 public class ModelPath {
-    List<ModelPathItem> items = Lists.newArrayList();
-    private String name;
+	List<ModelPathItem> items = Lists.newArrayList();
+	private String name;
 
-    public ModelPath(List<ModelPathItem> items) {
-        this.items = items;
-    }
+	public ModelPath(List<ModelPathItem> items) {
+		this.items = items;
+	}
 
-    public ModelPath(String modelPathString) {
-        this(Arrays.stream(modelPathString.split(";|[\\r\\n]+"))
-                .map((String itemString) -> new ModelPathItem(itemString)).collect(Collectors.toList()));
-    }
+	public ModelPath(String modelPathString) {
+		this(Arrays.stream(modelPathString.split(";|[\\r\\n]+"))
+				.map((String itemString) -> new ModelPathItem(itemString)).collect(Collectors.toList()));
+	}
 
-    public List<ModelPathItem> getItems() {
-        return items;
-    }
+	public List<ModelPathItem> getItems() {
+		return items;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Override
-    public String toString() {
-        return String.join("; ",
-                items.stream().map((ModelPathItem item) -> item.toString()).collect(Collectors.toList()));
-    }
+	@Override
+	public String toString() {
+		return String.join("; ",
+				items.stream().map((ModelPathItem item) -> item.toString()).collect(Collectors.toList()));
+	}
 
 }

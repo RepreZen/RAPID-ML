@@ -11,15 +11,14 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Documentation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Documentation</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.Documentation#getText <em>Text</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Documentation#getText <em>Text</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getDocumentation()
@@ -28,13 +27,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Documentation extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Text</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Text</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getDocumentation_Text()
@@ -44,10 +44,11 @@ public interface Documentation extends EObject {
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Documentation#getText <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Text</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.Documentation#getText
+	 * <em>Text</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
 	 * @generated
 	 */

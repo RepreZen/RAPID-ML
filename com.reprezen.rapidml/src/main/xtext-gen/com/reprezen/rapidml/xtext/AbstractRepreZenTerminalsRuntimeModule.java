@@ -11,7 +11,8 @@ import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
 /**
- * Manual modifications go to {com.reprezen.rapidml.xtext.RepreZenTerminalsRuntimeModule}
+ * Manual modifications go to
+ * {com.reprezen.rapidml.xtext.RepreZenTerminalsRuntimeModule}
  */
 @SuppressWarnings("all")
 public abstract class AbstractRepreZenTerminalsRuntimeModule extends org.eclipse.xtext.service.DefaultRuntimeModule {
@@ -23,33 +24,38 @@ public abstract class AbstractRepreZenTerminalsRuntimeModule extends org.eclipse
 		properties = tryBindProperties(binder, "com/reprezen/rapidml/xtext/RepreZenTerminals.properties");
 		super.configure(binder);
 	}
-	
+
 	public void configureLanguageName(Binder binder) {
-		binder.bind(String.class).annotatedWith(Names.named(Constants.LANGUAGE_NAME)).toInstance("com.reprezen.rapidml.xtext.RepreZenTerminals");
+		binder.bind(String.class).annotatedWith(Names.named(Constants.LANGUAGE_NAME))
+				.toInstance("com.reprezen.rapidml.xtext.RepreZenTerminals");
 	}
-	
+
 	public void configureFileExtensions(Binder binder) {
 		if (properties == null || properties.getProperty(Constants.FILE_EXTENSIONS) == null)
 			binder.bind(String.class).annotatedWith(Names.named(Constants.FILE_EXTENSIONS)).toInstance("___terms");
 	}
-	
-	// contributed by org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
+
+	// contributed by
+	// org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
 	public java.lang.ClassLoader bindClassLoaderToInstance() {
 		return getClass().getClassLoader();
 	}
 
-	// contributed by org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
+	// contributed by
+	// org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
 	public Class<? extends org.eclipse.xtext.IGrammarAccess> bindIGrammarAccess() {
 		return com.reprezen.rapidml.xtext.services.RepreZenTerminalsGrammarAccess.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parseTreeConstructor.ParseTreeConstructorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parseTreeConstructor.ParseTreeConstructorFragment
 	public Class<? extends org.eclipse.xtext.parsetree.reconstr.IParseTreeConstructor> bindIParseTreeConstructor() {
 		return com.reprezen.rapidml.xtext.parseTreeConstruction.RepreZenTerminalsParsetreeConstructor.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.validation.JavaValidatorFragment
-	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends com.reprezen.rapidml.xtext.validation.RepreZenTerminalsJavaValidator> bindRepreZenTerminalsJavaValidator() {
+	@org.eclipse.xtext.service.SingletonBinding(eager = true)
+	public Class<? extends com.reprezen.rapidml.xtext.validation.RepreZenTerminalsJavaValidator> bindRepreZenTerminalsJavaValidator() {
 		return com.reprezen.rapidml.xtext.validation.RepreZenTerminalsJavaValidator.class;
 	}
 

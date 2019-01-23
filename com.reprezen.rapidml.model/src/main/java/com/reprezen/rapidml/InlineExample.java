@@ -8,17 +8,15 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Inline Example</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Inline
+ * Example</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.InlineExample#getBody <em>Body</em>}</li>
+ * <li>{@link com.reprezen.rapidml.InlineExample#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getInlineExample()
@@ -27,13 +25,14 @@ package com.reprezen.rapidml;
  */
 public interface InlineExample extends Example {
 	/**
-	 * Returns the value of the '<em><b>Body</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Body</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Body</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Body</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Body</em>' attribute.
 	 * @see #setBody(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getInlineExample_Body()
@@ -43,10 +42,11 @@ public interface InlineExample extends Example {
 	String getBody();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.InlineExample#getBody <em>Body</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Body</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.InlineExample#getBody
+	 * <em>Body</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Body</em>' attribute.
 	 * @see #getBody()
 	 * @generated
 	 */

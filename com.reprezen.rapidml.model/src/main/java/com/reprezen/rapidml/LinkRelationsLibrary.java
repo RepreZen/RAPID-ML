@@ -9,20 +9,20 @@
 package com.reprezen.rapidml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Link Relations Library</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Link
+ * Relations Library</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.LinkRelationsLibrary#getDefinedLinkRelations <em>Defined Link Relations</em>}</li>
- *   <li>{@link com.reprezen.rapidml.LinkRelationsLibrary#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.LinkRelationsLibrary#getDefinedLinkRelations
+ * <em>Defined Link Relations</em>}</li>
+ * <li>{@link com.reprezen.rapidml.LinkRelationsLibrary#getName
+ * <em>Name</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getLinkRelationsLibrary()
@@ -31,15 +31,17 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface LinkRelationsLibrary extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Defined Link Relations</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.LinkRelation}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Defined Link Relations</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.LinkRelation}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Defined Link Relations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Defined Link Relations</em>' containment reference
+	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Defined Link Relations</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Defined Link Relations</em>' containment
+	 *         reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getLinkRelationsLibrary_DefinedLinkRelations()
 	 * @model containment="true"
 	 * @generated
@@ -47,13 +49,14 @@ public interface LinkRelationsLibrary extends EObject {
 	EList<LinkRelation> getDefinedLinkRelations();
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getLinkRelationsLibrary_Name()
@@ -63,10 +66,12 @@ public interface LinkRelationsLibrary extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.LinkRelationsLibrary#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.LinkRelationsLibrary#getName <em>Name</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */

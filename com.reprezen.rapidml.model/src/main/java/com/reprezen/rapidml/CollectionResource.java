@@ -11,17 +11,19 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Collection Resource</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Collection Resource</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.CollectionResource#getCollectionParameters <em>Collection Parameters</em>}</li>
- *   <li>{@link com.reprezen.rapidml.CollectionResource#getReferenceElements <em>Reference Elements</em>}</li>
- *   <li>{@link com.reprezen.rapidml.CollectionResource#getResourceRealizationKind <em>Resource Realization Kind</em>}</li>
+ * <li>{@link com.reprezen.rapidml.CollectionResource#getCollectionParameters
+ * <em>Collection Parameters</em>}</li>
+ * <li>{@link com.reprezen.rapidml.CollectionResource#getReferenceElements
+ * <em>Reference Elements</em>}</li>
+ * <li>{@link com.reprezen.rapidml.CollectionResource#getResourceRealizationKind
+ * <em>Resource Realization Kind</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getCollectionResource()
@@ -30,16 +32,20 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CollectionResource extends ServiceDataResource {
 	/**
-	 * Returns the value of the '<em><b>Collection Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.CollectionParameter}.
-	 * It is bidirectional and its opposite is '{@link com.reprezen.rapidml.CollectionParameter#getContainingResourceDefinition <em>Containing Resource Definition</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Collection Parameters</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.CollectionParameter}. It is bidirectional and its
+	 * opposite is
+	 * '{@link com.reprezen.rapidml.CollectionParameter#getContainingResourceDefinition
+	 * <em>Containing Resource Definition</em>}'. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Collection Parameters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Collection Parameters</em>' containment reference
+	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Collection Parameters</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Collection Parameters</em>' containment
+	 *         reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getCollectionResource_CollectionParameters()
 	 * @see com.reprezen.rapidml.CollectionParameter#getContainingResourceDefinition
 	 * @model opposite="containingResourceDefinition" containment="true"
@@ -48,15 +54,18 @@ public interface CollectionResource extends ServiceDataResource {
 	EList<CollectionParameter> getCollectionParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Reference Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.CollectionReferenceElement}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Reference Elements</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.CollectionReferenceElement}. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Reference Elements</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Reference Elements</em>' containment reference
+	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reference Elements</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Reference Elements</em>' containment reference
+	 *         list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getCollectionResource_ReferenceElements()
 	 * @model containment="true" transient="true"
 	 * @generated
@@ -64,14 +73,16 @@ public interface CollectionResource extends ServiceDataResource {
 	EList<CollectionReferenceElement> getReferenceElements();
 
 	/**
-	 * Returns the value of the '<em><b>Resource Realization Kind</b></em>' attribute.
-	 * The literals are from the enumeration {@link com.reprezen.rapidml.CollectionRealizationEnum}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Resource Realization Kind</b></em>'
+	 * attribute. The literals are from the enumeration
+	 * {@link com.reprezen.rapidml.CollectionRealizationEnum}. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Resource Realization Kind</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Resource Realization Kind</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Resource Realization Kind</em>' attribute.
 	 * @see com.reprezen.rapidml.CollectionRealizationEnum
 	 * @see #setResourceRealizationKind(CollectionRealizationEnum)
@@ -82,10 +93,14 @@ public interface CollectionResource extends ServiceDataResource {
 	CollectionRealizationEnum getResourceRealizationKind();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.CollectionResource#getResourceRealizationKind <em>Resource Realization Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resource Realization Kind</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.CollectionResource#getResourceRealizationKind
+	 * <em>Resource Realization Kind</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Resource Realization Kind</em>'
+	 *            attribute.
 	 * @see com.reprezen.rapidml.CollectionRealizationEnum
 	 * @see #getResourceRealizationKind()
 	 * @generated

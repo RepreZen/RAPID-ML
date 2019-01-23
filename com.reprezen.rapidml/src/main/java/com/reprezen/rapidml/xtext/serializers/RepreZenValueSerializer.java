@@ -20,25 +20,25 @@ import com.reprezen.rapidml.xtext.services.RepreZenTerminalsGrammarAccess;
 
 public class RepreZenValueSerializer extends ValueSerializer {
 
-    @Inject
-    private RepreZenTerminalsGrammarAccess grammarAccess;
+	@Inject
+	private RepreZenTerminalsGrammarAccess grammarAccess;
 
-    private int indentLevel = 0;
+	private int indentLevel = 0;
 
-    @Override
-    public String serializeUnassignedValue(EObject context, RuleCall ruleCall, INode node) {
-        if (ruleCall.getRule().equals(grammarAccess.getBEGINRule())) {
-            indentLevel++;
-            return "\t";
-        }
-        if (ruleCall.getRule().equals(grammarAccess.getENDRule())) {
-            indentLevel--;
-            return "";
-        }
-        if (ruleCall.getRule().equals(grammarAccess.getNLRule())) {
-            return "\n" + Strings.repeat("\t", indentLevel);
-        }
-        return super.serializeUnassignedValue(context, ruleCall, node);
-    }
+	@Override
+	public String serializeUnassignedValue(EObject context, RuleCall ruleCall, INode node) {
+		if (ruleCall.getRule().equals(grammarAccess.getBEGINRule())) {
+			indentLevel++;
+			return "\t";
+		}
+		if (ruleCall.getRule().equals(grammarAccess.getENDRule())) {
+			indentLevel--;
+			return "";
+		}
+		if (ruleCall.getRule().equals(grammarAccess.getNLRule())) {
+			return "\n" + Strings.repeat("\t", indentLevel);
+		}
+		return super.serializeUnassignedValue(context, ruleCall, node);
+	}
 
 }

@@ -19,8 +19,8 @@ import com.reprezen.rapidml.xtext.RestApiException;
 import com.reprezen.rapidml.xtext.XtextDslStandaloneSetup;
 
 /**
- * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at a given location under the DSL Xtext serialization
- * format.
+ * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at a given
+ * location under the DSL Xtext serialization format.
  * 
  * REVIEW: We should be working with streams, always, not with files.
  * 
@@ -29,25 +29,26 @@ import com.reprezen.rapidml.xtext.XtextDslStandaloneSetup;
  */
 public class DslRestModelSerializer implements RestModelSerializer {
 
-    /**
-     * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at the given path.
-     * 
-     * @param path
-     *            Location of the RESTApi metamodel.
-     * @param model
-     *            {@link com.modelsolv.reprezen.restapi.ZenModel} to serialize.
-     */
-    @Override
-    public void serialize(String path, ZenModel model) throws RestApiException {
-        XtextResourceSet resourceSet = new XtextDslStandaloneSetup().createInjectorAndDoEMFRegistration()
-                .getInstance(XtextResourceSet.class);
-        org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(URI.createFileURI(path));
-        resource.getContents().add(model);
-        try {
-            resource.save(SaveOptions.newBuilder().noValidation().getOptions().toOptionsMap());
-        } catch (IOException e) {
-            throw new RestApiException(String.format("Could not save the ZenModel at location '%s'", path), e);
-        }
-    }
+	/**
+	 * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at the given
+	 * path.
+	 * 
+	 * @param path
+	 *            Location of the RESTApi metamodel.
+	 * @param model
+	 *            {@link com.modelsolv.reprezen.restapi.ZenModel} to serialize.
+	 */
+	@Override
+	public void serialize(String path, ZenModel model) throws RestApiException {
+		XtextResourceSet resourceSet = new XtextDslStandaloneSetup().createInjectorAndDoEMFRegistration()
+				.getInstance(XtextResourceSet.class);
+		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(URI.createFileURI(path));
+		resource.getContents().add(model);
+		try {
+			resource.save(SaveOptions.newBuilder().noValidation().getOptions().toOptionsMap());
+		} catch (IOException e) {
+			throw new RestApiException(String.format("Could not save the ZenModel at location '%s'", path), e);
+		}
+	}
 
 }

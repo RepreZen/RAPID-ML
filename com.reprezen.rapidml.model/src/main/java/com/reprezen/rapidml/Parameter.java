@@ -8,26 +8,22 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.rapidml.Constraint;
-import com.reprezen.rapidml.PrimitiveType;
-import com.reprezen.rapidml.SingleValueType;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Parameter</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.Parameter#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.Parameter#isRequired <em>Required</em>}</li>
- *   <li>{@link com.reprezen.rapidml.Parameter#getDefault <em>Default</em>}</li>
- *   <li>{@link com.reprezen.rapidml.Parameter#getFixed <em>Fixed</em>}</li>
- *   <li>{@link com.reprezen.rapidml.Parameter#getSourceReference <em>Source Reference</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Parameter#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Parameter#isRequired <em>Required</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Parameter#getDefault <em>Default</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Parameter#getFixed <em>Fixed</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Parameter#getSourceReference <em>Source
+ * Reference</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getParameter()
@@ -36,13 +32,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Parameter extends RESTElement, Extensible {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getParameter_Name()
@@ -52,23 +49,25 @@ public interface Parameter extends RESTElement, Extensible {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Required</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Required</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Required</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Required</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Required</em>' attribute.
 	 * @see #setRequired(boolean)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getParameter_Required()
@@ -78,23 +77,25 @@ public interface Parameter extends RESTElement, Extensible {
 	boolean isRequired();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#isRequired <em>Required</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Required</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#isRequired
+	 * <em>Required</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Required</em>' attribute.
 	 * @see #isRequired()
 	 * @generated
 	 */
 	void setRequired(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Default</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Default</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Default</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Default</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Default</em>' attribute.
 	 * @see #setDefault(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getParameter_Default()
@@ -104,23 +105,25 @@ public interface Parameter extends RESTElement, Extensible {
 	String getDefault();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#getDefault <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#getDefault
+	 * <em>Default</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Default</em>' attribute.
 	 * @see #getDefault()
 	 * @generated
 	 */
 	void setDefault(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Fixed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Fixed</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Fixed</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Fixed</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Fixed</em>' attribute.
 	 * @see #setFixed(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getParameter_Fixed()
@@ -130,24 +133,27 @@ public interface Parameter extends RESTElement, Extensible {
 	String getFixed();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#getFixed <em>Fixed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fixed</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#getFixed
+	 * <em>Fixed</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Fixed</em>' attribute.
 	 * @see #getFixed()
 	 * @generated
 	 */
 	void setFixed(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Source Reference</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link com.reprezen.rapidml.SourceReference#getContainingParameter <em>Containing Parameter</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Source Reference</b></em>' containment
+	 * reference. It is bidirectional and its opposite is
+	 * '{@link com.reprezen.rapidml.SourceReference#getContainingParameter
+	 * <em>Containing Parameter</em>}'. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source Reference</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Source Reference</em>' containment reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Source Reference</em>' containment reference.
 	 * @see #setSourceReference(SourceReference)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getParameter_SourceReference()
@@ -158,38 +164,42 @@ public interface Parameter extends RESTElement, Extensible {
 	SourceReference getSourceReference();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Parameter#getSourceReference <em>Source Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source Reference</em>' containment reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.Parameter#getSourceReference <em>Source
+	 * Reference</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Source Reference</em>' containment
+	 *            reference.
 	 * @see #getSourceReference()
 	 * @generated
 	 */
 	void setSourceReference(SourceReference value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return getSourceReference().getType();'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='return getSourceReference().getType();'"
 	 * @generated
 	 */
 	com.reprezen.rapidml.SingleValueType getType();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return getType().getPrimitiveType();'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='return getType().getPrimitiveType();'"
 	 * @generated
 	 */
 	com.reprezen.rapidml.PrimitiveType getPrimitiveType();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return getSourceReference().getConstraints();'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='return getSourceReference().getConstraints();'"
 	 * @generated
 	 */
 	EList<com.reprezen.rapidml.Constraint> getConstraints();

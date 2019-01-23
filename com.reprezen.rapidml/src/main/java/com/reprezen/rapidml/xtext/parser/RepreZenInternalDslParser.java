@@ -32,44 +32,44 @@ import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
  * @date Oct 29, 2014
  */
 public class RepreZenInternalDslParser extends InternalXtextDslParser {
-    private static final String MEDIA_TYPES_KEYWORD = RapidmlPackage.Literals.RESOURCE_DEFINITION__MEDIA_TYPES
-            .getName();
-    private final Collection<String> includedPropertiesKeywords;
+	private static final String MEDIA_TYPES_KEYWORD = RapidmlPackage.Literals.RESOURCE_DEFINITION__MEDIA_TYPES
+			.getName();
+	private final Collection<String> includedPropertiesKeywords;
 
-    /**
-     * @param input
-     * @param grammarAccess
-     */
-    public RepreZenInternalDslParser(TokenStream input, XtextDslGrammarAccess grammarAccess) {
-        super(input, grammarAccess);
-        includedPropertiesKeywords = Sets.newHashSet( //
-                grammarAccess.getIncludedPropertiesAccess().getPropertiesKeyword_2_1_2().getValue());
-    }
+	/**
+	 * @param input
+	 * @param grammarAccess
+	 */
+	public RepreZenInternalDslParser(TokenStream input, XtextDslGrammarAccess grammarAccess) {
+		super(input, grammarAccess);
+		includedPropertiesKeywords = Sets.newHashSet( //
+				grammarAccess.getIncludedPropertiesAccess().getPropertiesKeyword_2_1_2().getValue());
+	}
 
-    @Override
-    protected void newLeafNode(Token token, EObject grammarElement) {
-        if (grammarElement != null && grammarElement instanceof Keyword) {
-            String key = ((Keyword) grammarElement).getValue();
-            if (key.equals(MEDIA_TYPES_KEYWORD)) {
-                Optional<ICompositeNode> parent = getNodeBySemanticClass(getLastLeafNode(),
-                        RapidmlPackage.Literals.TYPED_MESSAGE, RapidmlPackage.Literals.RESOURCE_DEFINITION);
-                if (parent.isPresent()) {
-                    if (Iterables.any(parent.get().getChildren(), matchKeyword(MEDIA_TYPES_KEYWORD))) {
-                        reportError(new DuplicateTokenException(token, getTokenStream()));
-                    }
-                }
-            }
-            if (includedPropertiesKeywords.contains(key)) {
-                Optional<ICompositeNode> parent = getNodeBySemanticClass(getLastLeafNode(),
-                        RapidmlPackage.Literals.TYPED_MESSAGE, RapidmlPackage.Literals.RESOURCE_DEFINITION);
-                if (parent.isPresent()) {
-                    if (Iterables.size(Iterables.filter(parent.get().getChildren(), matchGrammarRule(
-                            getGrammarAccess().getIncludedPropertiesAccess().getObjectRealizationAction_0()))) > 1) {
-                        reportError(new DuplicateTokenException(token, getTokenStream()));
-                    }
-                }
-            }
-        }
-        super.newLeafNode(token, grammarElement);
-    }
+	@Override
+	protected void newLeafNode(Token token, EObject grammarElement) {
+		if (grammarElement != null && grammarElement instanceof Keyword) {
+			String key = ((Keyword) grammarElement).getValue();
+			if (key.equals(MEDIA_TYPES_KEYWORD)) {
+				Optional<ICompositeNode> parent = getNodeBySemanticClass(getLastLeafNode(),
+						RapidmlPackage.Literals.TYPED_MESSAGE, RapidmlPackage.Literals.RESOURCE_DEFINITION);
+				if (parent.isPresent()) {
+					if (Iterables.any(parent.get().getChildren(), matchKeyword(MEDIA_TYPES_KEYWORD))) {
+						reportError(new DuplicateTokenException(token, getTokenStream()));
+					}
+				}
+			}
+			if (includedPropertiesKeywords.contains(key)) {
+				Optional<ICompositeNode> parent = getNodeBySemanticClass(getLastLeafNode(),
+						RapidmlPackage.Literals.TYPED_MESSAGE, RapidmlPackage.Literals.RESOURCE_DEFINITION);
+				if (parent.isPresent()) {
+					if (Iterables.size(Iterables.filter(parent.get().getChildren(), matchGrammarRule(
+							getGrammarAccess().getIncludedPropertiesAccess().getObjectRealizationAction_0()))) > 1) {
+						reportError(new DuplicateTokenException(token, getTokenStream()));
+					}
+				}
+			}
+		}
+		super.newLeafNode(token, grammarElement);
+	}
 }

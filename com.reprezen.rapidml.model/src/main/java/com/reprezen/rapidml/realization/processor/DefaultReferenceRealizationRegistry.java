@@ -11,132 +11,134 @@ package com.reprezen.rapidml.realization.processor;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.reprezen.rapidml.Element;
+import com.reprezen.rapidml.ReferenceProperty;
 import com.reprezen.rapidml.ReferenceRealization;
 import com.reprezen.rapidml.ReferenceTreatment;
 import com.reprezen.rapidml.ResourceAPI;
-import com.reprezen.rapidml.Element;
-import com.reprezen.rapidml.ReferenceProperty;
 import com.reprezen.rapidml.Structure;
 
 public class DefaultReferenceRealizationRegistry {
-    private final static boolean TEMP_FEATURE_TOGGLE_USE_GRAPH = true;
+	private final static boolean TEMP_FEATURE_TOGGLE_USE_GRAPH = true;
 
-    // We have a single instance of DefaultReferenceEmbedRegistry per normalization
-    private final Map<ResourceAPI, Map<ReferenceTreatmentDescriptor, ReferenceRealization>> defaultReferenceRealizations = new HashMap<>();
-    
-    private final LinksProcessor linkProcessor;
-    private final ResourceAPI context;
+	// We have a single instance of DefaultReferenceEmbedRegistry per normalization
+	private final Map<ResourceAPI, Map<ReferenceTreatmentDescriptor, ReferenceRealization>> defaultReferenceRealizations = new HashMap<>();
 
-    public DefaultReferenceRealizationRegistry(LinksProcessor realizationProtocol) {
-        this.linkProcessor = realizationProtocol;
-        context = realizationProtocol.getResourceAPI();
-    }
+	private final LinksProcessor linkProcessor;
+	private final ResourceAPI context;
 
-    public ReferenceTreatment createOrRetrieveDefaultReferenceTreatment(ReferenceProperty reference) {
-        ReferenceRealization referenceRealization = createOrRetrieveDefaultReferenceRealization(
-                newReferenceTreatmentDescriptor(reference));
-        if (referenceRealization == null) {
-            // null is return in case of cycles, won't be application with the new design
-            return null;
-        }
-        ReferenceTreatment referenceTreatment = ReferenceTreatmentFactory.createReferenceTreatment(referenceRealization,
-                reference);
-        return referenceTreatment;
-    }
+	public DefaultReferenceRealizationRegistry(LinksProcessor realizationProtocol) {
+		this.linkProcessor = realizationProtocol;
+		context = realizationProtocol.getResourceAPI();
+	}
 
-    private ReferenceRealization createOrRetrieveDefaultReferenceRealization(ReferenceTreatmentDescriptor reference) {
-        ReferenceRealization referenceRealization = getDefaultReferenceRealization(reference);
-        if (referenceRealization != null) {
-            return referenceRealization;
-        }
-        referenceRealization = linkProcessor.createDefaultReferenceRealization(context, reference);
-        if (referenceRealization == null) {
-            return null;
-        }
-        context.getDefaultReferenceRealizations().add(referenceRealization);
-        getDefaultReferenceRealizations(context).put(reference, referenceRealization);
-        // postprocess here. Otherwise, propertySet will run on the same element twice
-        return referenceRealization;
-    }
+	public ReferenceTreatment createOrRetrieveDefaultReferenceTreatment(ReferenceProperty reference) {
+		ReferenceRealization referenceRealization = createOrRetrieveDefaultReferenceRealization(
+				newReferenceTreatmentDescriptor(reference));
+		if (referenceRealization == null) {
+			// null is return in case of cycles, won't be application with the new design
+			return null;
+		}
+		ReferenceTreatment referenceTreatment = ReferenceTreatmentFactory.createReferenceTreatment(referenceRealization,
+				reference);
+		return referenceTreatment;
+	}
 
-    private ReferenceRealization getDefaultReferenceRealization(ReferenceTreatmentDescriptor reference) {
-        Map<ReferenceTreatmentDescriptor, ReferenceRealization> defaultReferenceEmbedsForAPI = getDefaultReferenceRealizations(
-                context);
-        if (TEMP_FEATURE_TOGGLE_USE_GRAPH) {
-            return defaultReferenceEmbedsForAPI.get(reference);
-        }
-        return null;
-    }
+	private ReferenceRealization createOrRetrieveDefaultReferenceRealization(ReferenceTreatmentDescriptor reference) {
+		ReferenceRealization referenceRealization = getDefaultReferenceRealization(reference);
+		if (referenceRealization != null) {
+			return referenceRealization;
+		}
+		referenceRealization = linkProcessor.createDefaultReferenceRealization(context, reference);
+		if (referenceRealization == null) {
+			return null;
+		}
+		context.getDefaultReferenceRealizations().add(referenceRealization);
+		getDefaultReferenceRealizations(context).put(reference, referenceRealization);
+		// postprocess here. Otherwise, propertySet will run on the same element twice
+		return referenceRealization;
+	}
 
-    private Map<ReferenceTreatmentDescriptor, ReferenceRealization> getDefaultReferenceRealizations(
-            ResourceAPI context) {
-        Map<ReferenceTreatmentDescriptor, ReferenceRealization> defaultReferenceEmbedsForAPI = defaultReferenceRealizations
-                .get(context);
-        if (defaultReferenceEmbedsForAPI == null) {
-            defaultReferenceEmbedsForAPI = new HashMap<>();
-            defaultReferenceRealizations.put(context, defaultReferenceEmbedsForAPI);
-        }
-        return defaultReferenceEmbedsForAPI;
-    }
+	private ReferenceRealization getDefaultReferenceRealization(ReferenceTreatmentDescriptor reference) {
+		Map<ReferenceTreatmentDescriptor, ReferenceRealization> defaultReferenceEmbedsForAPI = getDefaultReferenceRealizations(
+				context);
+		if (TEMP_FEATURE_TOGGLE_USE_GRAPH) {
+			return defaultReferenceEmbedsForAPI.get(reference);
+		}
+		return null;
+	}
 
-    private static ReferenceTreatmentDescriptor newReferenceTreatmentDescriptor(Element reference) {
-        boolean objectNotCollection = !reference.isMultiValued();
-        return new ReferenceTreatmentDescriptor(reference.getDataType(), objectNotCollection);
-    }
+	private Map<ReferenceTreatmentDescriptor, ReferenceRealization> getDefaultReferenceRealizations(
+			ResourceAPI context) {
+		Map<ReferenceTreatmentDescriptor, ReferenceRealization> defaultReferenceEmbedsForAPI = defaultReferenceRealizations
+				.get(context);
+		if (defaultReferenceEmbedsForAPI == null) {
+			defaultReferenceEmbedsForAPI = new HashMap<>();
+			defaultReferenceRealizations.put(context, defaultReferenceEmbedsForAPI);
+		}
+		return defaultReferenceEmbedsForAPI;
+	}
 
-    /**
-     * Used as a key in the default realizations registry. Also defines all necessary information for default
-     * realization creation. This information is used by ReferenceTreatmentFactory.
-     *
-     */
-    public static class ReferenceTreatmentDescriptor {
-        private final Structure targetDataType;
+	private static ReferenceTreatmentDescriptor newReferenceTreatmentDescriptor(Element reference) {
+		boolean objectNotCollection = !reference.isMultiValued();
+		return new ReferenceTreatmentDescriptor(reference.getDataType(), objectNotCollection);
+	}
 
-        /**
-         * ReferenceTreatmentDescriptor is used as a key in a hashmap, linkSpec is one of its defining properties
-         */
-        private final boolean isObjectNotCollection;
+	/**
+	 * Used as a key in the default realizations registry. Also defines all
+	 * necessary information for default realization creation. This information is
+	 * used by ReferenceTreatmentFactory.
+	 *
+	 */
+	public static class ReferenceTreatmentDescriptor {
+		private final Structure targetDataType;
 
-        private ReferenceTreatmentDescriptor(Structure targetDataType, boolean isObjectNotCollection) {
-            this.targetDataType = targetDataType;
-            this.isObjectNotCollection = isObjectNotCollection;
-        }
+		/**
+		 * ReferenceTreatmentDescriptor is used as a key in a hashmap, linkSpec is one
+		 * of its defining properties
+		 */
+		private final boolean isObjectNotCollection;
 
-        public Structure getTargetDataType() {
-            return targetDataType;
-        }
+		private ReferenceTreatmentDescriptor(Structure targetDataType, boolean isObjectNotCollection) {
+			this.targetDataType = targetDataType;
+			this.isObjectNotCollection = isObjectNotCollection;
+		}
 
-        public boolean isObjectNotCollection() {
-            return isObjectNotCollection;
-        }
+		public Structure getTargetDataType() {
+			return targetDataType;
+		}
 
-        @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + (isObjectNotCollection ? 1231 : 1237);
-            result = prime * result + ((targetDataType == null) ? 0 : targetDataType.hashCode());
-            return result;
-        }
+		public boolean isObjectNotCollection() {
+			return isObjectNotCollection;
+		}
 
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            ReferenceTreatmentDescriptor other = (ReferenceTreatmentDescriptor) obj;
-            if (isObjectNotCollection != other.isObjectNotCollection)
-                return false;
-            if (targetDataType == null) {
-                if (other.targetDataType != null)
-                    return false;
-            } else if (!targetDataType.equals(other.targetDataType))
-                return false;
-            return true;
-        }
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + (isObjectNotCollection ? 1231 : 1237);
+			result = prime * result + ((targetDataType == null) ? 0 : targetDataType.hashCode());
+			return result;
+		}
 
-    }
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			ReferenceTreatmentDescriptor other = (ReferenceTreatmentDescriptor) obj;
+			if (isObjectNotCollection != other.isObjectNotCollection)
+				return false;
+			if (targetDataType == null) {
+				if (other.targetDataType != null)
+					return false;
+			} else if (!targetDataType.equals(other.targetDataType))
+				return false;
+			return true;
+		}
+
+	}
 }

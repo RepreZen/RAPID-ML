@@ -14,38 +14,38 @@ import com.google.common.io.Resources;
 
 public class DataModelImport {
 
-    private final static String XTEXT_RESOURCES_FOLDER = 
-    		Resources.getResource(DataModelImport.class, "/dsl/").getFile();
+	private final static String XTEXT_RESOURCES_FOLDER = //
+			Resources.getResource(DataModelImport.class, "/dsl/").getFile();
 
-    private final String fqn;
-    private final String modelFileFromModelsDslPath;
-    private final String label;
+	private final String fqn;
+	private final String modelFileFromModelsDslPath;
+	private final String label;
 
-    public DataModelImport(String fqn, String modelFileFromModelsDslPath, String label) {
-        this.fqn = fqn;
-        this.modelFileFromModelsDslPath = modelFileFromModelsDslPath;
-        this.label = label;
-    }
+	public DataModelImport(String fqn, String modelFileFromModelsDslPath, String label) {
+		this.fqn = fqn;
+		this.modelFileFromModelsDslPath = modelFileFromModelsDslPath;
+		this.label = label;
+	}
 
-    public String importString() {
-        return "import " + fqn + " from \"" //$NON-NLS-1$ //$NON-NLS-2$
-                + URI.createFileURI(XTEXT_RESOURCES_FOLDER + modelFileFromModelsDslPath) + "\""; //$NON-NLS-1$
-    }
+	public String importString() {
+		return "import " + fqn + " from \"" //$NON-NLS-1$ //$NON-NLS-2$
+				+ URI.createFileURI(XTEXT_RESOURCES_FOLDER + modelFileFromModelsDslPath) + "\""; //$NON-NLS-1$
+	}
 
-    public String fqn(String type) {
-        return fqn + "." + type; //$NON-NLS-1$
-    }
+	public String fqn(String type) {
+		return fqn + "." + type; //$NON-NLS-1$
+	}
 
-    @Override
-    public String toString() {
-        return "DataModelImport [fqn=" + fqn + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-    }
+	@Override
+	public String toString() {
+		return "DataModelImport [fqn=" + fqn + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+	}
 
-    public String getFqn() {
-        return fqn;
-    }
+	public String getFqn() {
+		return fqn;
+	}
 
-    public String getLabel() {
-        return label;
-    }
+	public String getLabel() {
+		return label;
+	}
 }

@@ -25,24 +25,25 @@ import com.reprezen.rapidml.PrimitiveTypesLibrary;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Primitive Types Library</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Primitive Types Library</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.PrimitiveTypesLibraryImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.PrimitiveTypesLibraryImpl#getPrimitiveTypes <em>Primitive Types</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.PrimitiveTypesLibraryImpl#getName
+ * <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.PrimitiveTypesLibraryImpl#getPrimitiveTypes
+ * <em>Primitive Types</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveTypesLibrary {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -50,9 +51,9 @@ public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveT
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -60,9 +61,10 @@ public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveT
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPrimitiveTypes() <em>Primitive Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPrimitiveTypes() <em>Primitive
+	 * Types</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getPrimitiveTypes()
 	 * @generated
 	 * @ordered
@@ -70,8 +72,8 @@ public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveT
 	protected EList<PrimitiveType> primitiveTypes;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PrimitiveTypesLibraryImpl() {
@@ -79,8 +81,8 @@ public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveT
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -89,8 +91,8 @@ public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveT
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -98,121 +100,124 @@ public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveT
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<PrimitiveType> getPrimitiveTypes() {
 		if (primitiveTypes == null) {
-			primitiveTypes = new EObjectContainmentEList<PrimitiveType>(PrimitiveType.class, this, RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES);
+			primitiveTypes = new EObjectContainmentEList<PrimitiveType>(PrimitiveType.class, this,
+					RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES);
 		}
 		return primitiveTypes;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
-				return ((InternalEList<?>)getPrimitiveTypes()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
+			return ((InternalEList<?>) getPrimitiveTypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
-				return getName();
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
-				return getPrimitiveTypes();
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
+			return getName();
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
+			return getPrimitiveTypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
-				setName((String)newValue);
-				return;
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
-				getPrimitiveTypes().clear();
-				getPrimitiveTypes().addAll((Collection<? extends PrimitiveType>)newValue);
-				return;
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
+			setName((String) newValue);
+			return;
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
+			getPrimitiveTypes().clear();
+			getPrimitiveTypes().addAll((Collection<? extends PrimitiveType>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
-				getPrimitiveTypes().clear();
-				return;
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
+			getPrimitiveTypes().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
-				return primitiveTypes != null && !primitiveTypes.isEmpty();
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case RapidmlPackage.PRIMITIVE_TYPES_LIBRARY__PRIMITIVE_TYPES:
+			return primitiveTypes != null && !primitiveTypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
@@ -221,4 +226,4 @@ public class PrimitiveTypesLibraryImpl extends EObjectImpl implements PrimitiveT
 		return result.toString();
 	}
 
-} //PrimitiveTypesLibraryImpl
+} // PrimitiveTypesLibraryImpl

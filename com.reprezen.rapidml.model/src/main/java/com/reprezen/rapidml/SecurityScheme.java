@@ -11,21 +11,24 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Security Scheme</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Security
+ * Scheme</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.SecurityScheme#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.SecurityScheme#getType <em>Type</em>}</li>
- *   <li>{@link com.reprezen.rapidml.SecurityScheme#getScopes <em>Scopes</em>}</li>
- *   <li>{@link com.reprezen.rapidml.SecurityScheme#getSettings <em>Settings</em>}</li>
- *   <li>{@link com.reprezen.rapidml.SecurityScheme#getParameters <em>Parameters</em>}</li>
- *   <li>{@link com.reprezen.rapidml.SecurityScheme#getErrorResponses <em>Error Responses</em>}</li>
- *   <li>{@link com.reprezen.rapidml.SecurityScheme#getFlow <em>Flow</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecurityScheme#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecurityScheme#getType <em>Type</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecurityScheme#getScopes
+ * <em>Scopes</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecurityScheme#getSettings
+ * <em>Settings</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecurityScheme#getParameters
+ * <em>Parameters</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecurityScheme#getErrorResponses <em>Error
+ * Responses</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecurityScheme#getFlow <em>Flow</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getSecurityScheme()
@@ -34,13 +37,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface SecurityScheme extends Documentable, RESTElement {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getSecurityScheme_Name()
@@ -50,24 +54,26 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.SecurityScheme#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.SecurityScheme#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link com.reprezen.rapidml.AuthenticationTypes}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' attribute. The literals are
+	 * from the enumeration {@link com.reprezen.rapidml.AuthenticationTypes}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see com.reprezen.rapidml.AuthenticationTypes
 	 * @see #setType(AuthenticationTypes)
@@ -78,10 +84,11 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	AuthenticationTypes getType();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.SecurityScheme#getType <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.SecurityScheme#getType
+	 * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Type</em>' attribute.
 	 * @see com.reprezen.rapidml.AuthenticationTypes
 	 * @see #getType()
 	 * @generated
@@ -93,10 +100,11 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	 * The list contents are of type {@link com.reprezen.rapidml.SecurityScope}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scopes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Scopes</em>' containment reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Scopes</em>' containment reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getSecurityScheme_Scopes()
 	 * @model containment="true"
@@ -105,14 +113,15 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	EList<SecurityScope> getScopes();
 
 	/**
-	 * Returns the value of the '<em><b>Settings</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.SecuritySchemeParameter}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Settings</b></em>' containment reference
+	 * list. The list contents are of type
+	 * {@link com.reprezen.rapidml.SecuritySchemeParameter}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Settings</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Settings</em>' containment reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Settings</em>' containment reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getSecurityScheme_Settings()
 	 * @model containment="true"
@@ -121,14 +130,15 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	EList<SecuritySchemeParameter> getSettings();
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.MessageParameter}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference
+	 * list. The list contents are of type
+	 * {@link com.reprezen.rapidml.MessageParameter}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getSecurityScheme_Parameters()
 	 * @model containment="true"
@@ -137,15 +147,17 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	EList<MessageParameter> getParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Error Responses</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.TypedResponse}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Error Responses</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.TypedResponse}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Error Responses</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Error Responses</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Error Responses</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Error Responses</em>' containment reference
+	 *         list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getSecurityScheme_ErrorResponses()
 	 * @model containment="true"
 	 * @generated
@@ -153,14 +165,15 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	EList<TypedResponse> getErrorResponses();
 
 	/**
-	 * Returns the value of the '<em><b>Flow</b></em>' attribute.
-	 * The literals are from the enumeration {@link com.reprezen.rapidml.AuthenticationFlows}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Flow</b></em>' attribute. The literals are
+	 * from the enumeration {@link com.reprezen.rapidml.AuthenticationFlows}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Flow</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Flow</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Flow</em>' attribute.
 	 * @see com.reprezen.rapidml.AuthenticationFlows
 	 * @see #setFlow(AuthenticationFlows)
@@ -171,10 +184,11 @@ public interface SecurityScheme extends Documentable, RESTElement {
 	AuthenticationFlows getFlow();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.SecurityScheme#getFlow <em>Flow</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Flow</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.SecurityScheme#getFlow
+	 * <em>Flow</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Flow</em>' attribute.
 	 * @see com.reprezen.rapidml.AuthenticationFlows
 	 * @see #getFlow()
 	 * @generated

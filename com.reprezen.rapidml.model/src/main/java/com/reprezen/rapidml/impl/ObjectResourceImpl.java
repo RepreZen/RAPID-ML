@@ -16,30 +16,29 @@ import com.reprezen.rapidml.ObjectResource;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Object Resource</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Object
+ * Resource</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class ObjectResourceImpl extends ServiceDataResourceImpl implements ObjectResource {
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected ObjectResourceImpl() {
+	protected ObjectResourceImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.OBJECT_RESOURCE;
 	}
 
-} //ObjectResourceImpl
+} // ObjectResourceImpl

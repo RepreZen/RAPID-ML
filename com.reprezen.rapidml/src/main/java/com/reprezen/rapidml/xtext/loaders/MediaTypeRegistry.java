@@ -18,21 +18,21 @@ import com.reprezen.rapidml.MediaType;
  *
  */
 public class MediaTypeRegistry extends LibraryRegistry<MediaType> {
-    public MediaTypeRegistry() {
-        super(MediaType.class, ZenLibraries.STANDARD_MEDIA_TYPES);
-    }
+	public MediaTypeRegistry() {
+		super(MediaType.class, ZenLibraries.STANDARD_MEDIA_TYPES);
+	}
 
-    @Override
-    protected Function<MediaType, String> getElementId() {
-        return new Function<MediaType, String>() {
+	@Override
+	protected Function<MediaType, String> getElementId() {
+		return new Function<MediaType, String>() {
 
-            @Override
-            public String apply(MediaType element) {
-                return element.getName();
-            }
+			@Override
+			public String apply(MediaType element) {
+				return element.getName();
+			}
 
-        };
+		};
 
-    }
+	}
 
 }

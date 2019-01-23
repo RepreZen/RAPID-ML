@@ -23,26 +23,26 @@ import com.reprezen.rapidml.util.TagUtils;
 
 public class ConstraintProcessor {
 
-    public static void addParentConstraints(final ConstrainableType constrainableType) {
-        if (TagUtils.getTagWithName(constrainableType, TagUtils.CONSTRAINTS_PROCESSED).isPresent()) {
-            return;
-        }
-        TagUtils.addTag(constrainableType, TagUtils.CONSTRAINTS_PROCESSED);
-        ConstrainableType constrainableParent = constrainableType.getConstrainableParent();
-        if (constrainableParent != null) {
-            ImmutableList<Constraint> filteredConstraints = ImmutableList
-                    .copyOf(Iterables.filter(constrainableParent.getAllConstraints(), new Predicate<Constraint>() {
-                        @Override
-                        public boolean apply(Constraint constraint) {
-                            return all(constrainableType.getConstraints(), not(instanceOf(constraint.getClass())));
-                        }
-                    }));
-            for (Constraint constraint: filteredConstraints) {
-                Constraint inheritedConstraint = EcoreUtil.copy(constraint);
-                TagUtils.addTag(inheritedConstraint, TagUtils.CONSTRAINT_INHERITED);
-                constrainableType.getConstraints().add(inheritedConstraint);
-            }
-        }
-    }
+	public static void addParentConstraints(final ConstrainableType constrainableType) {
+		if (TagUtils.getTagWithName(constrainableType, TagUtils.CONSTRAINTS_PROCESSED).isPresent()) {
+			return;
+		}
+		TagUtils.addTag(constrainableType, TagUtils.CONSTRAINTS_PROCESSED);
+		ConstrainableType constrainableParent = constrainableType.getConstrainableParent();
+		if (constrainableParent != null) {
+			ImmutableList<Constraint> filteredConstraints = ImmutableList
+					.copyOf(Iterables.filter(constrainableParent.getAllConstraints(), new Predicate<Constraint>() {
+						@Override
+						public boolean apply(Constraint constraint) {
+							return all(constrainableType.getConstraints(), not(instanceOf(constraint.getClass())));
+						}
+					}));
+			for (Constraint constraint : filteredConstraints) {
+				Constraint inheritedConstraint = EcoreUtil.copy(constraint);
+				TagUtils.addTag(inheritedConstraint, TagUtils.CONSTRAINT_INHERITED);
+				constrainableType.getConstraints().add(inheritedConstraint);
+			}
+		}
+	}
 
 }

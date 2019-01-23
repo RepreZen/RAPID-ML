@@ -11,9 +11,8 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Has String Value</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Has
+ * String Value</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getHasStringValue()
@@ -22,9 +21,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface HasStringValue extends EObject {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (eIsProxy()) {\r\n\treturn super.toString();\r\n}\r\nStringBuffer result = new StringBuffer(super.toString());\r\nreturn com.reprezen.rapidml.util.RapidmlModelUtils.getStringValue(this, result);'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if
+	 *        (eIsProxy()) {\r\n\treturn super.toString();\r\n}\r\nStringBuffer
+	 *        result = new StringBuffer(super.toString());\r\nreturn
+	 *        com.reprezen.rapidml.util.RapidmlModelUtils.getStringValue(this,
+	 *        result);'"
 	 * @generated
 	 */
 	String toString();

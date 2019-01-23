@@ -8,17 +8,15 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Primitive Property</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Primitive Property</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.PrimitiveProperty#getType <em>Type</em>}</li>
+ * <li>{@link com.reprezen.rapidml.PrimitiveProperty#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getPrimitiveProperty()
@@ -27,13 +25,14 @@ package com.reprezen.rapidml;
  */
 public interface PrimitiveProperty extends Feature, HasStringValue, ConstrainableType {
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Type</em>' reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(SingleValueType)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getPrimitiveProperty_Type()
@@ -43,20 +42,21 @@ public interface PrimitiveProperty extends Feature, HasStringValue, Constrainabl
 	SingleValueType getType();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.PrimitiveProperty#getType <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
+	 * Sets the value of the '{@link com.reprezen.rapidml.PrimitiveProperty#getType
+	 * <em>Type</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Type</em>' reference.
 	 * @see #getType()
 	 * @generated
 	 */
 	void setType(SingleValueType value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body=' return getType().getPrimitiveType();'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body=' return getType().getPrimitiveType();'"
 	 * @generated
 	 */
 	PrimitiveType getPrimitiveType();

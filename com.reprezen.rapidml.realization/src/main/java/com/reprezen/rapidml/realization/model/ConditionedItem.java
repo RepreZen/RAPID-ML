@@ -12,9 +12,9 @@ import java.util.Collection;
 
 public interface ConditionedItem {
 
-    Collection<? extends Conditions> getConditions();
+	Collection<? extends Conditions> getConditions();
 
-    default boolean noConditionsResult() {
-        return false;
-    }
+	default boolean noConditionsResult() {
+		return false;
+	}
 }

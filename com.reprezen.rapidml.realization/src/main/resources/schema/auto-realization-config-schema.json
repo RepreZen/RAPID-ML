@@ -1,977 +1,1054 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "description": "JSON Schema for Realization Model, an ordered collection of realization rules. It's a top-level model, directly under rapidModel so it can have visibiility to API and data models, but can be reused across APIs as needed.",
-    "allOf": [
-        {
-            "$ref": "#/definitions/_Object"
-        }
-    ],
-    "additionalProperties": false,
-    "properties": {
-        "$schema":{
-            "description": "Allowed for compatiblility with VSCode and other editors that use this property on the root object to identify a schema for validation."
-        },
-        "name": {
-            "description": "Name of this realization model",
-            "type": "string"
-        },
-        "_type": {
-            "pattern": "^RealizationModel$"
-        },
-        "_documentation": {},
-        "realizationRules": {
-            "description": "An ordered list of realization rules to be evaluated against an reference context. The first matching rule will be applied.",
-            "type": "object",
-            "additionalProperties": {
-                "$ref": "#/definitions/RealizationRule"
-            }
-        },
-        "components" : {
-            "description": "Libraries of reusable components.",
-            "type": "object",
-            "properties": {
-                "realizations":{
-                    "description": "Library of reusable object realization strategies.",
-                    "type":"object",
-                    "additionalProperties": {
-                        "$ref" : "#/definitions/ObjectRealizationStrategy_Subtype"
-                    }
-                },
-                "propertySets":{
-                    "description": "Library of reusable property set strategies.",
-                    "type":"object",
-                    "additionalProperties": {
-                        "$ref" : "#/definitions/PropertySetStrategy_Subtype"
-                    }
-                },
-                "links":{
-                    "description": "Library of reusable link strategies.",
-                    "type":"object",
-                    "additionalProperties": {
-                        "$ref" : "#/definitions/LinkStrategy_Subtype"
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "_Object": {
-            "description": "Abstract root for all objects. Contains the _type property as a discriminator to identify the concrete subtype.",
-            "type": "object",
-            "properties": {
-                "_type": {
-                    "description": "Type discriminator, which should be specified whenever the object is a subtype of the object type specified in the schema. Each subtype should assign a unique value to this, as a fixed property value.",
-                    "type": "string"
-                },
-                "_documentation": {
-                    "description": "Documentation comment attached to the object.",
-                    "type" :"string"
-                }
-            },
-            "required": [
-                "_type"
-            ]
-        },
-        "_Ref": {
-            "description": "Abstract supertype for a typed reference. Subclasses will specify a schema to which the referenced object is expected to conform.",
-            "type": "object",
-            "properties": {
-                "$ref": {
-                    "description": "JSON Reference to another object. Subtypes will specify, by naming convention, documentation and/or other means, the schema to which the referenced object is expected to conform.",
-                    "type": "string"
-                }
-            },
-            "additionalProperties": true
-        },
-        "RealizationRule": {
-            "description": "A realization rule, with a set of contexts in which the realization applies.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^RealizationRule$"
-                },
-                "_documentation": {},
-                "namingPattern": {
-                    "description": "An expression that determines the name of the realizations generated from this rule for a given data structure. The generated realization name can be used by generators to assign type names, schema names, etc. Should be unique within the realization model, and should include the variable ${TypeName}, which is replaced by the name of the data structure. If omitted, the name is ${TypeName}_${RealizationRuleName}, where ${RealizationRuleName} is the property name containing this realization rule.",
-                    "type": "string"
-                },
-                "appliesTo": {
-                    "$ref": "#/definitions/ContextPatterns"
-                },
-                "realization": {
-                    "$ref": "#/definitions/ObjectRealizationStrategy_Subtype"
-                }
-            }
-        },
-        "ObjectRealizationStrategy": {
-            "description": "Abstract supertype for a realization of an object reference.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ]
-        },
-        "ObjectRealizationStrategy_Subtype": {
-            "description": "One of the known subtypes of ReferenceRealizationSpec.",
-            "type": "object",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/ObjectRealizationSpec"
-                },
-                {
-                    "$ref": "#/definitions/ObjectRealizationRef"
-                }
-            ]
-        },
-        "ObjectRealizationSpec": {
-            "description": "Specifies a realization of an object reference.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/ObjectRealizationStrategy"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^ObjectRealizationSpec$"
-                },
-                "_documentation": {},
-                "propertySet": {
-                    "$ref": "#/definitions/PropertySetStrategy_Subtype"
-                },
-                "links": {
-                    "description": "Multiple links are not currently supported but may be in the future.",
-                    "maxItems": 1,
-                    "type" : "array",
-                    "items": {
-                        "$ref" : "#/definitions/LinkStrategy_Subtype"
-                    }
-                }
-            }
-        },
-        "ObjectRealizationRef": {
-            "description": "Instruction to apply a realization strategy, which should normally reside in a library of reusable realization strategies.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/ObjectRealizationStrategy"
-                },
-                {
-                    "$ref": "#/definitions/_Ref"
-                }
-            ],
-            "properties": {
-                "_type": {
-                    "pattern": "^ObjectRealizationRef$"
-                },
-                "_documentation": {},
-                "$ref": {
-                    "description": "Reference to a RealizationStrategy object"
-                }
-            }
-        },
-        "PropertySetStrategy": {
-            "description": "Abstract superclass for property set",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ]
-        },
-        "PropertySetStrategy_Subtype": {
-            "description": "An instance of one of the concrete PropertySetStrategy subtypes.",
-            "type": "object",
-            "properties": {
-                "_type": {
-                    "type": "string",
-                    "enum": [
-                        "ExclusivePropertySet",
-                        "InclusivePropertySet",
-                        "PropertySetRef",
-                        "ConditionalPropertySet",
-                        "PropertySetSwitch"
-                    ]
-                }
-            },
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/ExclusivePropertySet"
-                },
-                {
-                    "$ref": "#/definitions/InclusivePropertySet"
-                },
-                {
-                    "$ref": "#/definitions/PropertySetRef"
-                },
-                {
-                    "$ref": "#/definitions/ConditionalPropertySet"
-                },
-                {
-                    "$ref": "#/definitions/PropertySetSwitch"
-                }
-            ],
-            "required":[
-                "_type"
-            ]
-        },
-        "ExclusivePropertySet": {
-            "description": "A property set that excludes all properties except those explicitly included.",
-            "additionalProperties": false,
-            "allOf": [
-                {
-                    "$ref": "#/definitions/PropertySetStrategy"
-                }
-            ],
-            "properties": {
-                "_type": {
-                    "pattern": "^ExclusivePropertySet$"
-                },
-                "_documentation": {},
-                "includedProperties": {
-                    "description": "The set of properties to be included, with optional realization metadata. Realization metadata may include cardinality overrides, constraints, and/or reference treatments.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/PropertyRealization"
-                    }
-                }
-            }
-        },
-        "InclusivePropertySet": {
-            "description": "A property set that includes all properties except those explicitly excluded.",
-            "additionalProperties": false,
-            "allOf": [
-                {
-                    "$ref": "#/definitions/PropertySetStrategy"
-                }
-            ],
-            "properties": {
-                "_type": {
-                    "pattern": "^InclusivePropertySet$"
-                },
-                "_documentation": {},
-                "includedProperties": {
-                    "description": "A subset of the properties to be included, with realization metadata. Realization metadata may include cardinality overrides, constraints, and/or reference treatments. Since all properties are included by default, properties (or property selectors) need only be listed in includedProperties if they have some realization metadata.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/PropertyRealization"
-                    }
-                },
-                "excludedProperties": {
-                    "description": "A list of properties, or property selectors, to be excluded from the property set.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/PropertySelector"
-                    }
-                }
-            }
-        },
-        "PropertySetRef": {
-            "description": "Instruction to apply a referenced property set strategy, which should normally reside in a library of reusable property set strategies.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/PropertySetStrategy"
-                },
-                {
-                    "$ref": "#/definitions/_Ref"
-                }
-            ],
-            "properties": {
-                "_type": {
-                    "pattern": "^PropertySetRef$"
-                },
-                "_documentation": {},
-                "$ref": {
-                    "description": "Reference to a PropertySetStrategy object."
-                }
-            }
-        },
-        
-        "ConditionalPropertySet": {
-            "description": "Applies a property set if the object reference matches specified conditions, or unconditionally if no conditions are specified.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/PropertySetStrategy"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^ConditionalPropertySet$"
-                },
-                "_documentation": {},
-                "where": {
-                    "$ref" : "#/definitions/Conditions"
-                },
-                "propertySet": {
-                    "$ref": "#/definitions/PropertySetStrategy_Subtype"
-                }
-            }
-        },
-    
-        "PropertySetSwitch": {
-            "description": "Evaluates and selects at most one property set strategy from a given sequence of 'cases', each a ConditionalPropertySet. The switch exits after processing the first applicable property set. A ConditionalPropertySet that doesn't specify any conditions applies unconditionally. An unconditional property set can serve as the 'default' case at the end of the switch case sequence.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/PropertySetStrategy"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^PropertySetSwitch$"
-                },
-                "_documentation": {},
-                "cases":
-                {
-                    "description": "Property set strategies to be conditionally included.",
-                    "type":"array",
-                    "items": {
-                        "$ref": "#/definitions/ConditionalPropertySet"
-                    },
-                    "minItems": 1
-                }
-            },
-            "required":[
-                "cases"
-            ]
-        },
-        
-        "AbstractPropertySelector": {
-            "description": "Abstract supertype of a property selector, with a set of matching criteria to select a subset of properties.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ],
-            "properties": {
-                "readWritability": {
-                    "$ref": "#/definitions/ReadWriteSelector"
-                },
-                "multiplicity": {
-                    "$ref": "#/definitions/MultiplicitySelector"
-                },
-                "isRequired": {
-                    "$ref": "#/definitions/RequiredSelector"
-                }
-            }
-        },
-        "PropertySelector": {
-            "description": "Specifies matching criteria to select a subset of properties. Used directly in `excludedProperties`.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractPropertySelector"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^PropertySelector$"
-                },
-                "_documentation": {},
-                "readWritability": {},
-                "multiplicity": {},
-                "isRequired": {},
-                "propertyType": {
-                    "$ref": "#/definitions/PropertyTypeSelector_Subtype"
-                }
-            }
-        },
-        "AbstractPropertyTypeSelector": {
-            "description": "Abstract supertype for primitive and reference property selectors.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ]
-        },
-        "PropertyTypeSelector_Subtype": {
-            "description": "An instance of one of the concrete property type selectors.",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/PrimitivePropertySelector"
-                },
-                {
-                    "$ref": "#/definitions/ReferencePropertySelector"
-                }
-            ]
-        },
-        "AbstractPrimitivePropertySelector": {
-            "description": "Abstract supertype of a primitive property selector, with optional matching criteria.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractPropertyTypeSelector"
-                }
-            ],
-            "properties" : {
-                "isKey": {
-                    "$ref": "#/definitions/KeyPropertySelector"
-                }
-            }
-        },
-        "PrimitivePropertySelector": {
-            "description": "Selects primitive properties, with optional matching criteria.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractPrimitivePropertySelector"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^PrimitivePropertySelector$"
-                },
-                "_documentation": {},
-                "isKey": {}
-            }
-        },
-        "AbstractReferencePropertySelector": {
-            "description": "Abstract supertype of reference property selector.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractPropertyTypeSelector"
-                }
-            ],
-            "properties": {
-                "containment": {
-                    "$ref": "#/definitions/ContainmentSelector"
-                },
-                "autoLinkableToObjectResource": {
-                    "$ref": "#/definitions/ObjectResourceLinkabilitySelector"
-                },
-                "autoLinkableToCollectionResource": {
-                    "$ref": "#/definitions/CollectionResourceLinkabilitySelector"
-                },
-                "hasKeys": {
-                    "$ref": "#/definitions/KeyedDataStructureSelector"
-                }
-            }
-        },
-        "ReferencePropertySelector": {
-            "description": "Selects reference properties, with optional matching criteria.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractReferencePropertySelector"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^ReferencePropertySelector$"
-                },
-                "_documentation": {},
-                "containment": {},
-                "autoLinkableToObjectResource": {},
-                "autoLinkableToCollectionResource": {},
-                "hasKeys": {}
-            }
-        },
-        "Conditions": {
-            "description": "Criteria that may be used in conditional branching strategies. These are limited by design to attributes that describe the referrent data structure, to preserve the functional semantics of a realization rule, such that: \n <pre>rule : structure --> realization</pre>",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^Conditions$"
-                },
-                "_documentation": {},
-                "autoLinkableToObjectResource": {
-                    "$ref": "#/definitions/ObjectResourceLinkabilitySelector"
-                },
-                "autoLinkableToCollectionResource": {
-                    "$ref": "#/definitions/CollectionResourceLinkabilitySelector"
-                },
-                "hasKeys": {
-                    "$ref": "#/definitions/KeyedDataStructureSelector"
-                }
-            }
-        },
-        "ContextPattern": {
-            "description": "A set of conditions to determine whether a realization should apply to a given object reference.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^ContextPattern$"
-                },
-                "_documentation": {},
-                "autoLinkableToObjectResource": {
-                    "$ref": "#/definitions/ObjectResourceLinkabilitySelector"
-                },
-                "autoLinkableToCollectionResource": {
-                    "$ref": "#/definitions/CollectionResourceLinkabilitySelector"
-                },
-                "hasKeys": {
-                    "$ref": "#/definitions/KeyedDataStructureSelector"
-                },
-                "resourceType": {
-                    "$ref": "#/definitions/ResourceTypeSelector"
-                },
-                "definedIn": {
-                    "$ref": "#/definitions/DefinitionContext_Subtype"
-                },
-                "level": {
-                    "$ref": "#/definitions/ReferenceLevelContext_Subtype"
-                }
-            }
-        },
-        "ContextPatterns":
-        {
-            "description": "A set of criteria, used to determine whether an object reference matches a given realization construct, such as a rule, property set strategy, or link strategy.",
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/ContextPattern"
-            }
-        },
-
-        "DefinitionContext": {
-            "description": "Abstract supertype for a definition context, which limits a realization rule to a resource-defined or message-defined realization.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ]
-        },
-        "DefinitionContext_Subtype": {
-            "description": "Instance of a known DefinitionContext subtype",
-            "type": "object",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/ResourceDefinitionContext"
-                },
-                {
-                    "$ref": "#/definitions/MessageDefinitionContext"
-                }
-            ]
-        },
-        "ResourceDefinitionContext": {
-            "description": "Limits a realization rule to resource-defined realizations, i.e. a realization defined at resource scope.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/DefinitionContext"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^ResourceDefinitionContext$"
-                },
-                "_documentation": {}
-            }
-        },
-        "MessageDefinitionContext": {
-            "description": "Limits a realization rule to message-defined realizations, i.e. a realization defined in the scope of a request or response message. May specify matching criteria to select a subset of message-level realizations. Note that only type-bound messages define their own realizations. Resource-bound messages use the realization defined in the specified resource, and so don't define a message-specific realization.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/DefinitionContext"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^MessageDefinitionContext$"
-                },
-                "_documentation": {},
-                "methodType": {
-                    "$ref": "#/definitions/MethodTypeSelector"
-                },
-                "messageType": {
-                    "$ref": "#/definitions/MessageTypeSelector"
-                }
-            }
-        },
-        "ReferenceLevelContext": {
-            "description": "Abstract supertype for a reference level context, which limits a realization rule to the root object in a realization, or to reference properties occuring somewhere in the realization graph.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ]
-        },
-        "ReferenceLevelContext_Subtype": {
-            "description": "Instance of a known ReferenceLevelContext subtype.",
-            "type": "object",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/RootObjectContext"
-                },
-                {
-                    "$ref": "#/definitions/ReferencePropertyContext"
-                }
-            ]
-        },
-        "RootObjectContext": {
-            "description": "Limits a realization rule to an object reference at the root of a realization graph. This is the object bound directly to a resource, or to a type-bound request or response message.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/ReferenceLevelContext"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^RootObjectContext$"
-                },
-                "_documentation": {}
-            }
-        },
-        "ReferencePropertyContext": {
-            "description": "Limits a realization rule to reference properties occurring somewhere under the root object in the realization graph. May specify additional matching criteria to select a subset of reference properties.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/ReferenceLevelContext"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^ReferencePropertyContext$"
-                },
-                "_documentation": {},
-                "multiplicity": {
-                    "$ref": "#/definitions/MultiplicitySelector"
-                },
-                "readWritability": {
-                    "$ref": "#/definitions/ReadWriteSelector"
-                },
-                "isRequired": {
-                    "$ref": "#/definitions/RequiredSelector"
-                },
-                "containment": {
-                    "$ref": "#/definitions/ContainmentSelector"
-                }
-            }
-        },
-        "MultiplicitySelector": {
-            "description": "Limits scope to single-valued or multi-valued properties.",
-            "type": "string",
-            "enum": [
-                "SINGLE_VALUED",
-                "MULTI_VALUED"
-            ]
-        },
-        "RequiredSelector": {
-            "description": "Limits scope to optional or required properties. If the value is `false`, only optional properties, with a cardinality having lower-bound of zero, are in scope. If the value is `true`, only required properties, with a cardinality having lower-bound greater than zero, are in scope.",
-            "type": "boolean"
-        },
-        "ReadWriteSelector": {
-            "description": "Limits scope based on readability and/or writability of the property.",
-            "type": "string",
-            "enum": [
-                "READABLE",
-                "READ_ONLY",
-                "WRITABLE",
-                "WRITE_ONLY",
-                "READ_WRITE"
-            ]
-        },
-        "KeyPropertySelector": {
-            "description": "Limits scope to key (true) or non-key (false) properties.",
-            "type": "boolean"
-        },
-        "ContainmentSelector": {
-            "description": "Limits scope to containing, container, or non-containment references.",
-            "type": "string",
-            "enum": [
-                "CONTAINING",
-                "NON_CONTAINING",
-                "CONTAINER",
-                "NON_CONTAINER",
-                "CONTAINMENT",
-                "NON_CONTAINMENT"
-            ]
-        },
-        "ResourceTypeSelector": {
-            "description": "Limits scope to objectResource or collectionResource.",
-            "type": "string",
-            "enum": [
-                "OBJECT_RESOURCE",
-                "COLLECTION_RESOURCE"
-            ]
-        },
-        "MessageTypeSelector": {
-            "description": "Limits scope to a specific kind of message.",
-            "type": "string",
-            "enum": [
-                "REQUEST",
-                "RESPONSE",
-                "INFORMATIONAL_1xx_RESPONSE",
-                "SUCCESSFUL_2xx_RESPONSE",
-                "REDIRECTION_3xx_RESPONSE",
-                "CLIENT_ERROR_4xx_RESPONSE",
-                "SERVER_ERROR_5xx_RESPONSE"
-            ]
-        },
-        "MethodTypeSelector": {
-            "description": "Limits scope to an individual method or method category.",
-            "type": "string",
-            "enum": [
-                "READ_METHOD",
-                "WRITE_METHOD",
-                "GET_METHOD",
-                "POST_METHOD",
-                "PUT_METHOD",
-                "PATCH_METHOD",
-                "DELETE_METHOD",
-                "OPTIONS_METHOD",
-                "HEAD_METHOD",
-                "TRACE_METHOD",
-                "CONNECT_METHOD"
-            ]
-        },
-        "KeyedDataStructureSelector": {
-            "description": "Limits scope to referenced data structures with (true) or without (false) key properties.",
-            "type": "boolean"
-        },
-        "ObjectResourceLinkabilitySelector": {
-            "description": "Limits scope to referenced data structures with (true) or without (false) an auto-link target objectResource. (Note: Auto-link resources were called 'default' resources in earlier versions of RAPID-ML.)",
-            "type": "boolean"
-        },
-        "CollectionResourceLinkabilitySelector": {
-            "description": "Limits scope to referenced data structures with (true) or without (false) an auto-link target collectionResource. (Note: Auto-link resources were called 'default' resources in earlier versions of RAPID-ML.)",
-            "type": "boolean"
-        },
-        "PropertyRealization": {
-            "description": "An entry in a property set. Combines a property selector with an optional realization spec.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractPropertySelector"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^PropertyRealization$"
-                },
-                "_documentation": {},
-                "readWritability": {},
-                "multiplicity": {},
-                "isRequired": {},
-                "propertyType": {
-                    "$ref": "#/definitions/PropertyTypeRealization_Subtype"
-                }
-            }
-        },
-        "PropertyTypeRealization": {
-            "description": "Abstract supertype of a primitive of reference property realization.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/_Object"
-                }
-            ]
-        },
-        "PropertyTypeRealization_Subtype": {
-            "description": "One of the known subtypes of PropertyTypeRealization",
-            "type": "object",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/PrimitivePropertyRealization"
-                },
-                {
-                    "$ref": "#/definitions/ReferencePropertyRealization"
-                }
-            ]
-        },
-        "PrimitivePropertyRealization": {
-            "description": "Realization of a set of primitive properties.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractPrimitivePropertySelector"
-                },
-                {
-                    "$ref": "#/definitions/PropertyTypeRealization"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^PrimitivePropertyRealization$"
-                },
-                "_documentation": {},
-                "isKey": {}
-            }
-        },
-        "ReferencePropertyRealization": {
-            "description": "Realization of a set of reference properties.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/AbstractReferencePropertySelector"
-                },
-                {
-                    "$ref": "#/definitions/PropertyTypeRealization"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "_type": {
-                    "pattern": "^ReferencePropertyRealization$"
-                },
-                "_documentation": {},
-                "containment": {},
-                "autoLinkableToObjectResource": {},
-                "autoLinkableToCollectionResource": {},
-                "hasKeys": {},
-                "realization": {
-                    "$ref": "#/definitions/ObjectRealizationStrategy_Subtype"
-                }
-            }
-        },
-
-        "LinkStrategy" : {
-            "description": "Abstract supertype for a Link or set of Links.",
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"description": "JSON Schema for Realization Model, an ordered collection of realization rules. It's a top-level model, directly under rapidModel so it can have visibiility to API and data models, but can be reused across APIs as needed.",
+	"allOf": [
+		{
+			"$ref": "#/definitions/_Object"
+		}
+	],
+	"additionalProperties": false,
+	"properties": {
+		"$schema": {
+			"description": "Allowed for compatiblility with VSCode and other editors that use this property on the root object to identify a schema for validation."
+		},
+		"name": {
+			"description": "Name of this realization model",
+			"type": "string"
+		},
+		"_type": {
+			"pattern": "^RealizationModel$"
+		},
+		"_documentation": {
+			
+		},
+		"realizationRules": {
+			"description": "An ordered list of realization rules to be evaluated against an reference context. The first matching rule will be applied.",
 			"type": "object",
-            "properties" : {
-                "strategy": {
-                    "type": "string",
-                    "enum": [
-                        "specification",
-                        "reference",
-                        "switch",
-                        "conditional"
-                    ]
-                },
-                "_documentation": {
-                    "description": "Documentation comment attached to the object.",
-                    "type" :"string"
-                }
-            }
-        },
-
-        "LinkStrategy_Subtype":{
-            "description": "One of the known LinkStrategy subtypes.",
-            "type": "object",
-            "properties": {
-            },
-            "oneOf":[
-                {"$ref":"#/definitions/LinkSpec"},
-                {"$ref":"#/definitions/LinkRef"},
-                {"$ref":"#/definitions/LinkSwitch"},
-                {"$ref":"#/definitions/ConditionalLink"}
-            ], 
-            "required":[
-                "strategy"
-            ]
-        },
-        
-        "LinkSpec": {
-            "allOf": [
-                {
-                    "$ref": "#/definitions/LinkStrategy"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "strategy": {
-                    "pattern": "^specification$"
-                },
-                "_documentation": {},
-                "targetResourceType": {
-                    "$ref": "#/definitions/TargetResourceType"
-                },
-                "linkRelation": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "strategy"
-            ]
-        },
-
-        "LinkRef": {
-            "description": "Instruction to include a link strategy, which should normally reside in a library of reusable link strategies.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/LinkStrategy"
-                },
-                {
-                    "$ref": "#/definitions/_Ref"
-                }
-            ],
-            "properties": {
-                "strategy": {
-                    "pattern": "^reference$"
-                },
-                "_documentation": {},
-                "$ref": {
-                    "description": "Reference to a LinkStrategy object."
-                }
-            },
-            "required": [
-                "strategy"
-            ]
-        },
-    
-        "LinkSwitch": {
-            "description": 
-                "Evaluates and selects at most one link strategy from a given sequence of 'cases'. The switch exits after processing the first applicable link strategy. A LinkStrategy that doesn't specify any conditions applies unconditionally. An unconditional LinkStrategy can serve as the 'default' case at the end of the switch case sequence.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/LinkStrategy"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "strategy": {
-                    "pattern": "^switch$"
-                },
-                "_documentation": {},
-                "cases": {
-                    "description": "Link strategies to be conditionally included.",
-                    "type":"array",
-                    "items": {
-                        "$ref": "#/definitions/ConditionalLink"
-                    },
-                    "minItems": 1
-                }
-            },
-            "required":[
-                "strategy",
-                "cases"
-            ]
-        },
-        
-        "ConditionalLink": {
-            "description": "Applies a link strategy if the object reference matches specified conditions, or unconditionally if no conditions are specified.",
-            "allOf": [
-                {
-                    "$ref": "#/definitions/LinkStrategy"
-                }
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "strategy": {
-                    "pattern": "^conditional$"
-                },
-                "_documentation": {},
-                "where": {
-                    "$ref" : "#/definitions/Conditions"
-                },
-                "link": {
-                    "$ref": "#/definitions/LinkStrategy_Subtype"
-                }
-            },
-            "required": [
-                "strategy"
-            ]
-        },
-    
-        "TargetResourceType": {
-            "type": "string",
-            "enum": [
-                "AUTO_LINK_OBJECT_RESOURCE",
-                "AUTO_LINK_COLLECTION_RESOURCE"
-            ]
-        }
-    }
+			"additionalProperties": {
+				"$ref": "#/definitions/RealizationRule"
+			}
+		},
+		"components": {
+			"description": "Libraries of reusable components.",
+			"type": "object",
+			"properties": {
+				"realizations": {
+					"description": "Library of reusable object realization strategies.",
+					"type": "object",
+					"additionalProperties": {
+						"$ref": "#/definitions/ObjectRealizationStrategy_Subtype"
+					}
+				},
+				"propertySets": {
+					"description": "Library of reusable property set strategies.",
+					"type": "object",
+					"additionalProperties": {
+						"$ref": "#/definitions/PropertySetStrategy_Subtype"
+					}
+				},
+				"links": {
+					"description": "Library of reusable link strategies.",
+					"type": "object",
+					"additionalProperties": {
+						"$ref": "#/definitions/LinkStrategy_Subtype"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"_Object": {
+			"description": "Abstract root for all objects. Contains the _type property as a discriminator to identify the concrete subtype.",
+			"type": "object",
+			"properties": {
+				"_type": {
+					"description": "Type discriminator, which should be specified whenever the object is a subtype of the object type specified in the schema. Each subtype should assign a unique value to this, as a fixed property value.",
+					"type": "string"
+				},
+				"_documentation": {
+					"description": "Documentation comment attached to the object.",
+					"type": "string"
+				}
+			},
+			"required": [
+				"_type"
+			]
+		},
+		"_Ref": {
+			"description": "Abstract supertype for a typed reference. Subclasses will specify a schema to which the referenced object is expected to conform.",
+			"type": "object",
+			"properties": {
+				"$ref": {
+					"description": "JSON Reference to another object. Subtypes will specify, by naming convention, documentation and/or other means, the schema to which the referenced object is expected to conform.",
+					"type": "string"
+				}
+			},
+			"additionalProperties": true
+		},
+		"RealizationRule": {
+			"description": "A realization rule, with a set of contexts in which the realization applies.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^RealizationRule$"
+				},
+				"_documentation": {
+					
+				},
+				"namingPattern": {
+					"description": "An expression that determines the name of the realizations generated from this rule for a given data structure. The generated realization name can be used by generators to assign type names, schema names, etc. Should be unique within the realization model, and should include the variable ${TypeName}, which is replaced by the name of the data structure. If omitted, the name is ${TypeName}_${RealizationRuleName}, where ${RealizationRuleName} is the property name containing this realization rule.",
+					"type": "string"
+				},
+				"appliesTo": {
+					"$ref": "#/definitions/ContextPatterns"
+				},
+				"realization": {
+					"$ref": "#/definitions/ObjectRealizationStrategy_Subtype"
+				}
+			}
+		},
+		"ObjectRealizationStrategy": {
+			"description": "Abstract supertype for a realization of an object reference.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			]
+		},
+		"ObjectRealizationStrategy_Subtype": {
+			"description": "One of the known subtypes of ReferenceRealizationSpec.",
+			"type": "object",
+			"oneOf": [
+				{
+					"$ref": "#/definitions/ObjectRealizationSpec"
+				},
+				{
+					"$ref": "#/definitions/ObjectRealizationRef"
+				}
+			]
+		},
+		"ObjectRealizationSpec": {
+			"description": "Specifies a realization of an object reference.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ObjectRealizationStrategy"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^ObjectRealizationSpec$"
+				},
+				"_documentation": {
+					
+				},
+				"propertySet": {
+					"$ref": "#/definitions/PropertySetStrategy_Subtype"
+				},
+				"links": {
+					"description": "Multiple links are not currently supported but may be in the future.",
+					"maxItems": 1,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/LinkStrategy_Subtype"
+					}
+				}
+			}
+		},
+		"ObjectRealizationRef": {
+			"description": "Instruction to apply a realization strategy, which should normally reside in a library of reusable realization strategies.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ObjectRealizationStrategy"
+				},
+				{
+					"$ref": "#/definitions/_Ref"
+				}
+			],
+			"properties": {
+				"_type": {
+					"pattern": "^ObjectRealizationRef$"
+				},
+				"_documentation": {
+					
+				},
+				"$ref": {
+					"description": "Reference to a RealizationStrategy object"
+				}
+			}
+		},
+		"PropertySetStrategy": {
+			"description": "Abstract superclass for property set",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			]
+		},
+		"PropertySetStrategy_Subtype": {
+			"description": "An instance of one of the concrete PropertySetStrategy subtypes.",
+			"type": "object",
+			"properties": {
+				"_type": {
+					"type": "string",
+					"enum": [
+						"ExclusivePropertySet",
+						"InclusivePropertySet",
+						"PropertySetRef",
+						"ConditionalPropertySet",
+						"PropertySetSwitch"
+					]
+				}
+			},
+			"oneOf": [
+				{
+					"$ref": "#/definitions/ExclusivePropertySet"
+				},
+				{
+					"$ref": "#/definitions/InclusivePropertySet"
+				},
+				{
+					"$ref": "#/definitions/PropertySetRef"
+				},
+				{
+					"$ref": "#/definitions/ConditionalPropertySet"
+				},
+				{
+					"$ref": "#/definitions/PropertySetSwitch"
+				}
+			],
+			"required": [
+				"_type"
+			]
+		},
+		"ExclusivePropertySet": {
+			"description": "A property set that excludes all properties except those explicitly included.",
+			"additionalProperties": false,
+			"allOf": [
+				{
+					"$ref": "#/definitions/PropertySetStrategy"
+				}
+			],
+			"properties": {
+				"_type": {
+					"pattern": "^ExclusivePropertySet$"
+				},
+				"_documentation": {
+					
+				},
+				"includedProperties": {
+					"description": "The set of properties to be included, with optional realization metadata. Realization metadata may include cardinality overrides, constraints, and/or reference treatments.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PropertyRealization"
+					}
+				}
+			}
+		},
+		"InclusivePropertySet": {
+			"description": "A property set that includes all properties except those explicitly excluded.",
+			"additionalProperties": false,
+			"allOf": [
+				{
+					"$ref": "#/definitions/PropertySetStrategy"
+				}
+			],
+			"properties": {
+				"_type": {
+					"pattern": "^InclusivePropertySet$"
+				},
+				"_documentation": {
+					
+				},
+				"includedProperties": {
+					"description": "A subset of the properties to be included, with realization metadata. Realization metadata may include cardinality overrides, constraints, and/or reference treatments. Since all properties are included by default, properties (or property selectors) need only be listed in includedProperties if they have some realization metadata.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PropertyRealization"
+					}
+				},
+				"excludedProperties": {
+					"description": "A list of properties, or property selectors, to be excluded from the property set.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PropertySelector"
+					}
+				}
+			}
+		},
+		"PropertySetRef": {
+			"description": "Instruction to apply a referenced property set strategy, which should normally reside in a library of reusable property set strategies.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/PropertySetStrategy"
+				},
+				{
+					"$ref": "#/definitions/_Ref"
+				}
+			],
+			"properties": {
+				"_type": {
+					"pattern": "^PropertySetRef$"
+				},
+				"_documentation": {
+					
+				},
+				"$ref": {
+					"description": "Reference to a PropertySetStrategy object."
+				}
+			}
+		},
+		"ConditionalPropertySet": {
+			"description": "Applies a property set if the object reference matches specified conditions, or unconditionally if no conditions are specified.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/PropertySetStrategy"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^ConditionalPropertySet$"
+				},
+				"_documentation": {
+					
+				},
+				"where": {
+					"$ref": "#/definitions/Conditions"
+				},
+				"propertySet": {
+					"$ref": "#/definitions/PropertySetStrategy_Subtype"
+				}
+			}
+		},
+		"PropertySetSwitch": {
+			"description": "Evaluates and selects at most one property set strategy from a given sequence of 'cases', each a ConditionalPropertySet. The switch exits after processing the first applicable property set. A ConditionalPropertySet that doesn't specify any conditions applies unconditionally. An unconditional property set can serve as the 'default' case at the end of the switch case sequence.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/PropertySetStrategy"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^PropertySetSwitch$"
+				},
+				"_documentation": {
+					
+				},
+				"cases": {
+					"description": "Property set strategies to be conditionally included.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ConditionalPropertySet"
+					},
+					"minItems": 1
+				}
+			},
+			"required": [
+				"cases"
+			]
+		},
+		"AbstractPropertySelector": {
+			"description": "Abstract supertype of a property selector, with a set of matching criteria to select a subset of properties.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			],
+			"properties": {
+				"readWritability": {
+					"$ref": "#/definitions/ReadWriteSelector"
+				},
+				"multiplicity": {
+					"$ref": "#/definitions/MultiplicitySelector"
+				},
+				"isRequired": {
+					"$ref": "#/definitions/RequiredSelector"
+				}
+			}
+		},
+		"PropertySelector": {
+			"description": "Specifies matching criteria to select a subset of properties. Used directly in `excludedProperties`.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractPropertySelector"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^PropertySelector$"
+				},
+				"_documentation": {
+					
+				},
+				"readWritability": {
+					
+				},
+				"multiplicity": {
+					
+				},
+				"isRequired": {
+					
+				},
+				"propertyType": {
+					"$ref": "#/definitions/PropertyTypeSelector_Subtype"
+				}
+			}
+		},
+		"AbstractPropertyTypeSelector": {
+			"description": "Abstract supertype for primitive and reference property selectors.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			]
+		},
+		"PropertyTypeSelector_Subtype": {
+			"description": "An instance of one of the concrete property type selectors.",
+			"oneOf": [
+				{
+					"$ref": "#/definitions/PrimitivePropertySelector"
+				},
+				{
+					"$ref": "#/definitions/ReferencePropertySelector"
+				}
+			]
+		},
+		"AbstractPrimitivePropertySelector": {
+			"description": "Abstract supertype of a primitive property selector, with optional matching criteria.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractPropertyTypeSelector"
+				}
+			],
+			"properties": {
+				"isKey": {
+					"$ref": "#/definitions/KeyPropertySelector"
+				}
+			}
+		},
+		"PrimitivePropertySelector": {
+			"description": "Selects primitive properties, with optional matching criteria.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractPrimitivePropertySelector"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^PrimitivePropertySelector$"
+				},
+				"_documentation": {
+					
+				},
+				"isKey": {
+					
+				}
+			}
+		},
+		"AbstractReferencePropertySelector": {
+			"description": "Abstract supertype of reference property selector.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractPropertyTypeSelector"
+				}
+			],
+			"properties": {
+				"containment": {
+					"$ref": "#/definitions/ContainmentSelector"
+				},
+				"autoLinkableToObjectResource": {
+					"$ref": "#/definitions/ObjectResourceLinkabilitySelector"
+				},
+				"autoLinkableToCollectionResource": {
+					"$ref": "#/definitions/CollectionResourceLinkabilitySelector"
+				},
+				"hasKeys": {
+					"$ref": "#/definitions/KeyedDataStructureSelector"
+				}
+			}
+		},
+		"ReferencePropertySelector": {
+			"description": "Selects reference properties, with optional matching criteria.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractReferencePropertySelector"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^ReferencePropertySelector$"
+				},
+				"_documentation": {
+					
+				},
+				"containment": {
+					
+				},
+				"autoLinkableToObjectResource": {
+					
+				},
+				"autoLinkableToCollectionResource": {
+					
+				},
+				"hasKeys": {
+					
+				}
+			}
+		},
+		"Conditions": {
+			"description": "Criteria that may be used in conditional branching strategies. These are limited by design to attributes that describe the referrent data structure, to preserve the functional semantics of a realization rule, such that: \n <pre>rule : structure --> realization</pre>",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^Conditions$"
+				},
+				"_documentation": {
+					
+				},
+				"autoLinkableToObjectResource": {
+					"$ref": "#/definitions/ObjectResourceLinkabilitySelector"
+				},
+				"autoLinkableToCollectionResource": {
+					"$ref": "#/definitions/CollectionResourceLinkabilitySelector"
+				},
+				"hasKeys": {
+					"$ref": "#/definitions/KeyedDataStructureSelector"
+				}
+			}
+		},
+		"ContextPattern": {
+			"description": "A set of conditions to determine whether a realization should apply to a given object reference.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^ContextPattern$"
+				},
+				"_documentation": {
+					
+				},
+				"autoLinkableToObjectResource": {
+					"$ref": "#/definitions/ObjectResourceLinkabilitySelector"
+				},
+				"autoLinkableToCollectionResource": {
+					"$ref": "#/definitions/CollectionResourceLinkabilitySelector"
+				},
+				"hasKeys": {
+					"$ref": "#/definitions/KeyedDataStructureSelector"
+				},
+				"resourceType": {
+					"$ref": "#/definitions/ResourceTypeSelector"
+				},
+				"definedIn": {
+					"$ref": "#/definitions/DefinitionContext_Subtype"
+				},
+				"level": {
+					"$ref": "#/definitions/ReferenceLevelContext_Subtype"
+				}
+			}
+		},
+		"ContextPatterns": {
+			"description": "A set of criteria, used to determine whether an object reference matches a given realization construct, such as a rule, property set strategy, or link strategy.",
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/ContextPattern"
+			}
+		},
+		"DefinitionContext": {
+			"description": "Abstract supertype for a definition context, which limits a realization rule to a resource-defined or message-defined realization.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			]
+		},
+		"DefinitionContext_Subtype": {
+			"description": "Instance of a known DefinitionContext subtype",
+			"type": "object",
+			"oneOf": [
+				{
+					"$ref": "#/definitions/ResourceDefinitionContext"
+				},
+				{
+					"$ref": "#/definitions/MessageDefinitionContext"
+				}
+			]
+		},
+		"ResourceDefinitionContext": {
+			"description": "Limits a realization rule to resource-defined realizations, i.e. a realization defined at resource scope.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/DefinitionContext"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^ResourceDefinitionContext$"
+				},
+				"_documentation": {
+					
+				}
+			}
+		},
+		"MessageDefinitionContext": {
+			"description": "Limits a realization rule to message-defined realizations, i.e. a realization defined in the scope of a request or response message. May specify matching criteria to select a subset of message-level realizations. Note that only type-bound messages define their own realizations. Resource-bound messages use the realization defined in the specified resource, and so don't define a message-specific realization.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/DefinitionContext"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^MessageDefinitionContext$"
+				},
+				"_documentation": {
+					
+				},
+				"methodType": {
+					"$ref": "#/definitions/MethodTypeSelector"
+				},
+				"messageType": {
+					"$ref": "#/definitions/MessageTypeSelector"
+				}
+			}
+		},
+		"ReferenceLevelContext": {
+			"description": "Abstract supertype for a reference level context, which limits a realization rule to the root object in a realization, or to reference properties occuring somewhere in the realization graph.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			]
+		},
+		"ReferenceLevelContext_Subtype": {
+			"description": "Instance of a known ReferenceLevelContext subtype.",
+			"type": "object",
+			"oneOf": [
+				{
+					"$ref": "#/definitions/RootObjectContext"
+				},
+				{
+					"$ref": "#/definitions/ReferencePropertyContext"
+				}
+			]
+		},
+		"RootObjectContext": {
+			"description": "Limits a realization rule to an object reference at the root of a realization graph. This is the object bound directly to a resource, or to a type-bound request or response message.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ReferenceLevelContext"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^RootObjectContext$"
+				},
+				"_documentation": {
+					
+				}
+			}
+		},
+		"ReferencePropertyContext": {
+			"description": "Limits a realization rule to reference properties occurring somewhere under the root object in the realization graph. May specify additional matching criteria to select a subset of reference properties.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/ReferenceLevelContext"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^ReferencePropertyContext$"
+				},
+				"_documentation": {
+					
+				},
+				"multiplicity": {
+					"$ref": "#/definitions/MultiplicitySelector"
+				},
+				"readWritability": {
+					"$ref": "#/definitions/ReadWriteSelector"
+				},
+				"isRequired": {
+					"$ref": "#/definitions/RequiredSelector"
+				},
+				"containment": {
+					"$ref": "#/definitions/ContainmentSelector"
+				}
+			}
+		},
+		"MultiplicitySelector": {
+			"description": "Limits scope to single-valued or multi-valued properties.",
+			"type": "string",
+			"enum": [
+				"SINGLE_VALUED",
+				"MULTI_VALUED"
+			]
+		},
+		"RequiredSelector": {
+			"description": "Limits scope to optional or required properties. If the value is `false`, only optional properties, with a cardinality having lower-bound of zero, are in scope. If the value is `true`, only required properties, with a cardinality having lower-bound greater than zero, are in scope.",
+			"type": "boolean"
+		},
+		"ReadWriteSelector": {
+			"description": "Limits scope based on readability and/or writability of the property.",
+			"type": "string",
+			"enum": [
+				"READABLE",
+				"READ_ONLY",
+				"WRITABLE",
+				"WRITE_ONLY",
+				"READ_WRITE"
+			]
+		},
+		"KeyPropertySelector": {
+			"description": "Limits scope to key (true) or non-key (false) properties.",
+			"type": "boolean"
+		},
+		"ContainmentSelector": {
+			"description": "Limits scope to containing, container, or non-containment references.",
+			"type": "string",
+			"enum": [
+				"CONTAINING",
+				"NON_CONTAINING",
+				"CONTAINER",
+				"NON_CONTAINER",
+				"CONTAINMENT",
+				"NON_CONTAINMENT"
+			]
+		},
+		"ResourceTypeSelector": {
+			"description": "Limits scope to objectResource or collectionResource.",
+			"type": "string",
+			"enum": [
+				"OBJECT_RESOURCE",
+				"COLLECTION_RESOURCE"
+			]
+		},
+		"MessageTypeSelector": {
+			"description": "Limits scope to a specific kind of message.",
+			"type": "string",
+			"enum": [
+				"REQUEST",
+				"RESPONSE",
+				"INFORMATIONAL_1xx_RESPONSE",
+				"SUCCESSFUL_2xx_RESPONSE",
+				"REDIRECTION_3xx_RESPONSE",
+				"CLIENT_ERROR_4xx_RESPONSE",
+				"SERVER_ERROR_5xx_RESPONSE"
+			]
+		},
+		"MethodTypeSelector": {
+			"description": "Limits scope to an individual method or method category.",
+			"type": "string",
+			"enum": [
+				"READ_METHOD",
+				"WRITE_METHOD",
+				"GET_METHOD",
+				"POST_METHOD",
+				"PUT_METHOD",
+				"PATCH_METHOD",
+				"DELETE_METHOD",
+				"OPTIONS_METHOD",
+				"HEAD_METHOD",
+				"TRACE_METHOD",
+				"CONNECT_METHOD"
+			]
+		},
+		"KeyedDataStructureSelector": {
+			"description": "Limits scope to referenced data structures with (true) or without (false) key properties.",
+			"type": "boolean"
+		},
+		"ObjectResourceLinkabilitySelector": {
+			"description": "Limits scope to referenced data structures with (true) or without (false) an auto-link target objectResource. (Note: Auto-link resources were called 'default' resources in earlier versions of RAPID-ML.)",
+			"type": "boolean"
+		},
+		"CollectionResourceLinkabilitySelector": {
+			"description": "Limits scope to referenced data structures with (true) or without (false) an auto-link target collectionResource. (Note: Auto-link resources were called 'default' resources in earlier versions of RAPID-ML.)",
+			"type": "boolean"
+		},
+		"PropertyRealization": {
+			"description": "An entry in a property set. Combines a property selector with an optional realization spec.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractPropertySelector"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^PropertyRealization$"
+				},
+				"_documentation": {
+					
+				},
+				"readWritability": {
+					
+				},
+				"multiplicity": {
+					
+				},
+				"isRequired": {
+					
+				},
+				"propertyType": {
+					"$ref": "#/definitions/PropertyTypeRealization_Subtype"
+				}
+			}
+		},
+		"PropertyTypeRealization": {
+			"description": "Abstract supertype of a primitive of reference property realization.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/_Object"
+				}
+			]
+		},
+		"PropertyTypeRealization_Subtype": {
+			"description": "One of the known subtypes of PropertyTypeRealization",
+			"type": "object",
+			"oneOf": [
+				{
+					"$ref": "#/definitions/PrimitivePropertyRealization"
+				},
+				{
+					"$ref": "#/definitions/ReferencePropertyRealization"
+				}
+			]
+		},
+		"PrimitivePropertyRealization": {
+			"description": "Realization of a set of primitive properties.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractPrimitivePropertySelector"
+				},
+				{
+					"$ref": "#/definitions/PropertyTypeRealization"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^PrimitivePropertyRealization$"
+				},
+				"_documentation": {
+					
+				},
+				"isKey": {
+					
+				}
+			}
+		},
+		"ReferencePropertyRealization": {
+			"description": "Realization of a set of reference properties.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/AbstractReferencePropertySelector"
+				},
+				{
+					"$ref": "#/definitions/PropertyTypeRealization"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"_type": {
+					"pattern": "^ReferencePropertyRealization$"
+				},
+				"_documentation": {
+					
+				},
+				"containment": {
+					
+				},
+				"autoLinkableToObjectResource": {
+					
+				},
+				"autoLinkableToCollectionResource": {
+					
+				},
+				"hasKeys": {
+					
+				},
+				"realization": {
+					"$ref": "#/definitions/ObjectRealizationStrategy_Subtype"
+				}
+			}
+		},
+		"LinkStrategy": {
+			"description": "Abstract supertype for a Link or set of Links.",
+			"type": "object",
+			"properties": {
+				"strategy": {
+					"type": "string",
+					"enum": [
+						"specification",
+						"reference",
+						"switch",
+						"conditional"
+					]
+				},
+				"_documentation": {
+					"description": "Documentation comment attached to the object.",
+					"type": "string"
+				}
+			}
+		},
+		"LinkStrategy_Subtype": {
+			"description": "One of the known LinkStrategy subtypes.",
+			"type": "object",
+			"properties": {
+				
+			},
+			"oneOf": [
+				{
+					"$ref": "#/definitions/LinkSpec"
+				},
+				{
+					"$ref": "#/definitions/LinkRef"
+				},
+				{
+					"$ref": "#/definitions/LinkSwitch"
+				},
+				{
+					"$ref": "#/definitions/ConditionalLink"
+				}
+			],
+			"required": [
+				"strategy"
+			]
+		},
+		"LinkSpec": {
+			"allOf": [
+				{
+					"$ref": "#/definitions/LinkStrategy"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"strategy": {
+					"pattern": "^specification$"
+				},
+				"_documentation": {
+					
+				},
+				"targetResourceType": {
+					"$ref": "#/definitions/TargetResourceType"
+				},
+				"linkRelation": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"strategy"
+			]
+		},
+		"LinkRef": {
+			"description": "Instruction to include a link strategy, which should normally reside in a library of reusable link strategies.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/LinkStrategy"
+				},
+				{
+					"$ref": "#/definitions/_Ref"
+				}
+			],
+			"properties": {
+				"strategy": {
+					"pattern": "^reference$"
+				},
+				"_documentation": {
+					
+				},
+				"$ref": {
+					"description": "Reference to a LinkStrategy object."
+				}
+			},
+			"required": [
+				"strategy"
+			]
+		},
+		"LinkSwitch": {
+			"description": "Evaluates and selects at most one link strategy from a given sequence of 'cases'. The switch exits after processing the first applicable link strategy. A LinkStrategy that doesn't specify any conditions applies unconditionally. An unconditional LinkStrategy can serve as the 'default' case at the end of the switch case sequence.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/LinkStrategy"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"strategy": {
+					"pattern": "^switch$"
+				},
+				"_documentation": {
+					
+				},
+				"cases": {
+					"description": "Link strategies to be conditionally included.",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ConditionalLink"
+					},
+					"minItems": 1
+				}
+			},
+			"required": [
+				"strategy",
+				"cases"
+			]
+		},
+		"ConditionalLink": {
+			"description": "Applies a link strategy if the object reference matches specified conditions, or unconditionally if no conditions are specified.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/LinkStrategy"
+				}
+			],
+			"additionalProperties": false,
+			"properties": {
+				"strategy": {
+					"pattern": "^conditional$"
+				},
+				"_documentation": {
+					
+				},
+				"where": {
+					"$ref": "#/definitions/Conditions"
+				},
+				"link": {
+					"$ref": "#/definitions/LinkStrategy_Subtype"
+				}
+			},
+			"required": [
+				"strategy"
+			]
+		},
+		"TargetResourceType": {
+			"type": "string",
+			"enum": [
+				"AUTO_LINK_OBJECT_RESOURCE",
+				"AUTO_LINK_COLLECTION_RESOURCE"
+			]
+		}
+	}
 }

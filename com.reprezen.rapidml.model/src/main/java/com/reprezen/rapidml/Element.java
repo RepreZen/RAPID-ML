@@ -11,15 +11,15 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Element</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Element</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.Element#getCardinality <em>Cardinality</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Element#getCardinality
+ * <em>Cardinality</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getElement()
@@ -28,13 +28,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Element extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Cardinality</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Cardinality</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cardinality</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Cardinality</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Cardinality</em>' attribute.
 	 * @see #setCardinality(int[])
 	 * @see com.reprezen.rapidml.RapidmlPackage#getElement_Cardinality()
@@ -44,46 +45,50 @@ public interface Element extends EObject {
 	int[] getCardinality();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Element#getCardinality <em>Cardinality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cardinality</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.Element#getCardinality
+	 * <em>Cardinality</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Cardinality</em>' attribute.
 	 * @see #getCardinality()
 	 * @generated
 	 */
 	void setCardinality(int[] value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='if (getCardinality() == null || getCardinality().length != 2) {\n     return 1;\n}\nreturn getCardinality()[0];'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='if (getCardinality() == null || getCardinality().length != 2)
+	 *        {\n return 1;\n}\nreturn getCardinality()[0];'"
 	 * @generated
 	 */
 	int getMinOccurs();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='if (getCardinality() == null || getCardinality().length != 2) {\n     return 1;\n}\nreturn getCardinality()[1];'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='if (getCardinality() == null || getCardinality().length != 2)
+	 *        {\n return 1;\n}\nreturn getCardinality()[1];'"
 	 * @generated
 	 */
 	int getMaxOccurs();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
 	Structure getDataType();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (1 &lt; getMaxOccurs()) || (-1 == getMaxOccurs());'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='return (1 &lt; getMaxOccurs()) || (-1 == getMaxOccurs());'"
 	 * @generated
 	 */
 	boolean isMultiValued();

@@ -8,22 +8,22 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.rapidml.ReferenceElement;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Reference Treatment</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Reference Treatment</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceElement <em>Reference Element</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceRealization <em>Reference Realization</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ReferenceTreatment#getOwnedReferenceRealization <em>Owned Reference Realization</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceElement
+ * <em>Reference Element</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceRealization
+ * <em>Reference Realization</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceTreatment#getOwnedReferenceRealization
+ * <em>Owned Reference Realization</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getReferenceTreatment()
@@ -32,13 +32,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ReferenceTreatment extends Extensible {
 	/**
-	 * Returns the value of the '<em><b>Reference Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Reference Element</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reference Element</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Reference Element</em>' reference.
 	 * @see #setReferenceElement(com.reprezen.rapidml.ReferenceElement)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceTreatment_ReferenceElement()
@@ -48,10 +49,13 @@ public interface ReferenceTreatment extends Extensible {
 	com.reprezen.rapidml.ReferenceElement getReferenceElement();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceElement <em>Reference Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference Element</em>' reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceElement
+	 * <em>Reference Element</em>}' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Reference Element</em>' reference.
 	 * @see #getReferenceElement()
 	 * @generated
 	 */
@@ -65,6 +69,7 @@ public interface ReferenceTreatment extends Extensible {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Reference Realization</em>' reference.
 	 * @see #setReferenceRealization(ReferenceRealization)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceTreatment_ReferenceRealization()
@@ -74,24 +79,29 @@ public interface ReferenceTreatment extends Extensible {
 	ReferenceRealization getReferenceRealization();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceRealization <em>Reference Realization</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference Realization</em>' reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceTreatment#getReferenceRealization
+	 * <em>Reference Realization</em>}' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Reference Realization</em>' reference.
 	 * @see #getReferenceRealization()
 	 * @generated
 	 */
 	void setReferenceRealization(ReferenceRealization value);
 
 	/**
-	 * Returns the value of the '<em><b>Owned Reference Realization</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Owned Reference Realization</b></em>'
+	 * containment reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Reference Realization</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Owned Reference Realization</em>' containment
+	 * reference isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Reference Realization</em>' containment reference.
+	 * 
+	 * @return the value of the '<em>Owned Reference Realization</em>' containment
+	 *         reference.
 	 * @see #setOwnedReferenceRealization(ReferenceRealization)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceTreatment_OwnedReferenceRealization()
 	 * @model containment="true"
@@ -100,22 +110,26 @@ public interface ReferenceTreatment extends Extensible {
 	ReferenceRealization getOwnedReferenceRealization();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceTreatment#getOwnedReferenceRealization <em>Owned Reference Realization</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Reference Realization</em>' containment reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceTreatment#getOwnedReferenceRealization
+	 * <em>Owned Reference Realization</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Owned Reference Realization</em>'
+	 *            containment reference.
 	 * @see #getOwnedReferenceRealization()
 	 * @generated
 	 */
 	void setOwnedReferenceRealization(ReferenceRealization value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Containment hierarchy of a reference treatment includes all containing reference embeds. 
-	 * For example, for "referenceLink > Product " from 
-	 * <pre> <code>
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * Containment hierarchy of a reference treatment includes all containing
+	 * reference embeds. For example, for "referenceLink > Product " from
+	 * 
+	 * <pre>
+	 *  <code>
 	 * referenceEmbed > Orders {
 	 * 	referenceEmbed > LineItems {
 	 * 		referenceLink > Product {
@@ -123,19 +137,29 @@ public interface ReferenceTreatment extends Extensible {
 	 * 		}
 	 * 	}
 	 *  } 
-	 * </code> </pre>
+	 * </code>
+	 * </pre>
 	 * 
-	 * the embed hierarchy will consist of two reference embeds - [>Orders, >LineItems]
-	 * <!-- end-model-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='EObject container = eContainer();\nif (container instanceof ReferenceRealization) {\n    // use containers of the parent ReferenceRealization\n    container = container.eContainer();\n}\nif (container instanceof ReferenceEmbed) {\n    ReferenceEmbed parentEmbed = (ReferenceEmbed)container;\n    List&lt;ReferenceEmbed&gt; hierarchy = Lists.newArrayList(parentEmbed.getEmbedHierarchy());\n    hierarchy.add(parentEmbed);\n    return ECollections.unmodifiableEList(hierarchy);\n}\nreturn ECollections.emptyEList();'"
+	 * the embed hierarchy will consist of two reference embeds - [>Orders,
+	 * >LineItems] <!-- end-model-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='EObject container = eContainer();\nif (container instanceof
+	 *        ReferenceRealization) {\n // use containers of the parent
+	 *        ReferenceRealization\n container = container.eContainer();\n}\nif
+	 *        (container instanceof ReferenceEmbed) {\n ReferenceEmbed parentEmbed =
+	 *        (ReferenceEmbed)container;\n List&lt;ReferenceEmbed&gt; hierarchy =
+	 *        Lists.newArrayList(parentEmbed.getEmbedHierarchy());\n
+	 *        hierarchy.add(parentEmbed);\n return
+	 *        ECollections.unmodifiableEList(hierarchy);\n}\nreturn
+	 *        ECollections.emptyEList();'"
 	 * @generated
 	 */
 	EList<ReferenceEmbed> getEmbedHierarchy();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

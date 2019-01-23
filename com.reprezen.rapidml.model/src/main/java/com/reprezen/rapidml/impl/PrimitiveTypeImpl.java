@@ -16,35 +16,34 @@ import com.reprezen.rapidml.PrimitiveType;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Primitive Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Primitive Type</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class PrimitiveTypeImpl extends SimpleTypeImpl implements PrimitiveType {
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected PrimitiveTypeImpl() {
-        super();
-    }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected PrimitiveTypeImpl() {
+		super();
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected EClass eStaticClass() {
-        return RapidmlPackage.Literals.PRIMITIVE_TYPE;
-    }
-    
-    @Override
-    public PrimitiveType getPrimitiveType() {
-        return this;
-    }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return RapidmlPackage.Literals.PRIMITIVE_TYPE;
+	}
 
-} //PrimitiveTypeImpl
+	@Override
+	public PrimitiveType getPrimitiveType() {
+		return this;
+	}
+
+} // PrimitiveTypeImpl

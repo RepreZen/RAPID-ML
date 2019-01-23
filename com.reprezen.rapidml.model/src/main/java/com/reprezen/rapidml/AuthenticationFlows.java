@@ -15,19 +15,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Authentication Flows</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration
+ * '<em><b>Authentication Flows</b></em>', and utility methods for working with
+ * them. <!-- end-user-doc -->
+ * 
  * @see com.reprezen.rapidml.RapidmlPackage#getAuthenticationFlows()
  * @model
  * @generated
  */
 public enum AuthenticationFlows implements Enumerator {
 	/**
-	 * The '<em><b>IMPLICIT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>IMPLICIT</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #IMPLICIT_VALUE
 	 * @generated
 	 * @ordered
@@ -35,9 +35,9 @@ public enum AuthenticationFlows implements Enumerator {
 	IMPLICIT(0, "IMPLICIT", "Implicit"),
 
 	/**
-	 * The '<em><b>PASSWORD</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>PASSWORD</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #PASSWORD_VALUE
 	 * @generated
 	 * @ordered
@@ -45,9 +45,9 @@ public enum AuthenticationFlows implements Enumerator {
 	PASSWORD(1, "PASSWORD", "Password"),
 
 	/**
-	 * The '<em><b>APPLICATION</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>APPLICATION</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #APPLICATION_VALUE
 	 * @generated
 	 * @ordered
@@ -55,9 +55,9 @@ public enum AuthenticationFlows implements Enumerator {
 	APPLICATION(2, "APPLICATION", "Application"),
 
 	/**
-	 * The '<em><b>ACCESS CODE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>ACCESS CODE</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ACCESS_CODE_VALUE
 	 * @generated
 	 * @ordered
@@ -65,13 +65,13 @@ public enum AuthenticationFlows implements Enumerator {
 	ACCESS_CODE(3, "ACCESS_CODE", "AccessCode");
 
 	/**
-	 * The '<em><b>IMPLICIT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>IMPLICIT</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>IMPLICIT</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #IMPLICIT
 	 * @model literal="Implicit"
 	 * @generated
@@ -80,13 +80,13 @@ public enum AuthenticationFlows implements Enumerator {
 	public static final int IMPLICIT_VALUE = 0;
 
 	/**
-	 * The '<em><b>PASSWORD</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>PASSWORD</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>PASSWORD</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #PASSWORD
 	 * @model literal="Password"
 	 * @generated
@@ -95,13 +95,13 @@ public enum AuthenticationFlows implements Enumerator {
 	public static final int PASSWORD_VALUE = 1;
 
 	/**
-	 * The '<em><b>APPLICATION</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>APPLICATION</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>APPLICATION</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #APPLICATION
 	 * @model literal="Application"
 	 * @generated
@@ -110,13 +110,13 @@ public enum AuthenticationFlows implements Enumerator {
 	public static final int APPLICATION_VALUE = 2;
 
 	/**
-	 * The '<em><b>ACCESS CODE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>ACCESS CODE</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ACCESS CODE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ACCESS_CODE
 	 * @model literal="AccessCode"
 	 * @generated
@@ -125,32 +125,28 @@ public enum AuthenticationFlows implements Enumerator {
 	public static final int ACCESS_CODE_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Authentication Flows</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Authentication Flows</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final AuthenticationFlows[] VALUES_ARRAY =
-		new AuthenticationFlows[] {
-			IMPLICIT,
-			PASSWORD,
-			APPLICATION,
-			ACCESS_CODE,
-		};
+	private static final AuthenticationFlows[] VALUES_ARRAY = new AuthenticationFlows[] { IMPLICIT, PASSWORD,
+			APPLICATION, ACCESS_CODE, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Authentication Flows</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Authentication Flows</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static final List<AuthenticationFlows> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Authentication Flows</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param literal the literal.
+	 * Returns the '<em><b>Authentication Flows</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param literal
+	 *            the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
@@ -165,10 +161,11 @@ public enum AuthenticationFlows implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Authentication Flows</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name the name.
+	 * Returns the '<em><b>Authentication Flows</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param name
+	 *            the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
@@ -183,48 +180,53 @@ public enum AuthenticationFlows implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Authentication Flows</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the integer value.
+	 * Returns the '<em><b>Authentication Flows</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static AuthenticationFlows get(int value) {
 		switch (value) {
-			case IMPLICIT_VALUE: return IMPLICIT;
-			case PASSWORD_VALUE: return PASSWORD;
-			case APPLICATION_VALUE: return APPLICATION;
-			case ACCESS_CODE_VALUE: return ACCESS_CODE;
+		case IMPLICIT_VALUE:
+			return IMPLICIT;
+		case PASSWORD_VALUE:
+			return PASSWORD;
+		case APPLICATION_VALUE:
+			return APPLICATION;
+		case ACCESS_CODE_VALUE:
+			return ACCESS_CODE;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private AuthenticationFlows(int value, String name, String literal) {
@@ -234,41 +236,41 @@ public enum AuthenticationFlows implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //AuthenticationFlows
+
+} // AuthenticationFlows

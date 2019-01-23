@@ -8,18 +8,18 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Message Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Message
+ * Parameter</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.MessageParameter#getContainingMessage <em>Containing Message</em>}</li>
- *   <li>{@link com.reprezen.rapidml.MessageParameter#getHttpLocation <em>Http Location</em>}</li>
+ * <li>{@link com.reprezen.rapidml.MessageParameter#getContainingMessage
+ * <em>Containing Message</em>}</li>
+ * <li>{@link com.reprezen.rapidml.MessageParameter#getHttpLocation <em>Http
+ * Location</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getMessageParameter()
@@ -28,14 +28,16 @@ package com.reprezen.rapidml;
  */
 public interface MessageParameter extends Parameter {
 	/**
-	 * Returns the value of the '<em><b>Containing Message</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.reprezen.rapidml.TypedMessage#getParameters <em>Parameters</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Containing Message</b></em>' container
+	 * reference. It is bidirectional and its opposite is
+	 * '{@link com.reprezen.rapidml.TypedMessage#getParameters
+	 * <em>Parameters</em>}'. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Containing Message</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Containing Message</em>' container reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Containing Message</em>' container reference.
 	 * @see #setContainingMessage(TypedMessage)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getMessageParameter_ContainingMessage()
@@ -46,24 +48,30 @@ public interface MessageParameter extends Parameter {
 	TypedMessage getContainingMessage();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.MessageParameter#getContainingMessage <em>Containing Message</em>}' container reference.
-	 * <!-- begin-user-doc -->
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.MessageParameter#getContainingMessage
+	 * <em>Containing Message</em>}' container reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Message</em>' container reference.
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Containing Message</em>' container
+	 *            reference.
 	 * @see #getContainingMessage()
 	 * @generated
 	 */
 	void setContainingMessage(TypedMessage value);
 
 	/**
-	 * Returns the value of the '<em><b>Http Location</b></em>' attribute.
-	 * The literals are from the enumeration {@link com.reprezen.rapidml.HttpMessageParameterLocation}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Http Location</b></em>' attribute. The
+	 * literals are from the enumeration
+	 * {@link com.reprezen.rapidml.HttpMessageParameterLocation}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Http Location</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Http Location</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Http Location</em>' attribute.
 	 * @see com.reprezen.rapidml.HttpMessageParameterLocation
 	 * @see #setHttpLocation(HttpMessageParameterLocation)
@@ -74,10 +82,12 @@ public interface MessageParameter extends Parameter {
 	HttpMessageParameterLocation getHttpLocation();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.MessageParameter#getHttpLocation <em>Http Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Http Location</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.MessageParameter#getHttpLocation <em>Http
+	 * Location</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Http Location</em>' attribute.
 	 * @see com.reprezen.rapidml.HttpMessageParameterLocation
 	 * @see #getHttpLocation()
 	 * @generated

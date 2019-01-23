@@ -18,285 +18,295 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import com.reprezen.rapidml.CollectionRealizationLevelEnum;
 import com.reprezen.rapidml.CollectionResource;
 import com.reprezen.rapidml.LinkRelation;
+import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.ReferenceLink;
 import com.reprezen.rapidml.ResourceDefinition;
-import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Reference Link</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Reference Link</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.ReferenceLinkImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.ReferenceLinkImpl#getLinkRelation <em>Link Relation</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.ReferenceLinkImpl#getCollectionRealizationLevel <em>Collection Realization Level</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ReferenceLinkImpl#getName
+ * <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ReferenceLinkImpl#getLinkRelation
+ * <em>Link Relation</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ReferenceLinkImpl#getCollectionRealizationLevel
+ * <em>Collection Realization Level</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ReferenceLinkImpl extends ReferenceTreatmentImpl implements ReferenceLink {
-    /**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
-    /**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected String name = NAME_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
-    /**
-	 * The cached value of the '{@link #getLinkRelation() <em>Link Relation</em>}' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getLinkRelation() <em>Link Relation</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLinkRelation()
 	 * @generated
 	 * @ordered
 	 */
-    protected LinkRelation linkRelation;
+	protected LinkRelation linkRelation;
 
-    /**
-	 * The default value of the '{@link #getCollectionRealizationLevel() <em>Collection Realization Level</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getCollectionRealizationLevel()
+	 * <em>Collection Realization Level</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getCollectionRealizationLevel()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final CollectionRealizationLevelEnum COLLECTION_REALIZATION_LEVEL_EDEFAULT = null;
+	protected static final CollectionRealizationLevelEnum COLLECTION_REALIZATION_LEVEL_EDEFAULT = null;
 
-    /**
-	 * The cached value of the '{@link #getCollectionRealizationLevel() <em>Collection Realization Level</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getCollectionRealizationLevel()
+	 * <em>Collection Realization Level</em>}' attribute. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getCollectionRealizationLevel()
 	 * @generated
 	 * @ordered
 	 */
-    protected CollectionRealizationLevelEnum collectionRealizationLevel = COLLECTION_REALIZATION_LEVEL_EDEFAULT;
+	protected CollectionRealizationLevelEnum collectionRealizationLevel = COLLECTION_REALIZATION_LEVEL_EDEFAULT;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected ReferenceLinkImpl() {
+	protected ReferenceLinkImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.REFERENCE_LINK;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.REFERENCE_LINK__NAME, oldName, name));
 	}
 
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public ResourceDefinition getTargetResource() {
+		if (getReferenceRealization() != null) {
+			return getReferenceRealization().getTargetResource();
+		}
+		return null;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated NOT
-     */
-    public ResourceDefinition getTargetResource() {
-        if (getReferenceRealization() != null) {
-            return getReferenceRealization().getTargetResource();
-        }
-        return null;
-    }
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public LinkRelation getLinkRelation() {
+	public LinkRelation getLinkRelation() {
 		if (linkRelation != null && linkRelation.eIsProxy()) {
-			InternalEObject oldLinkRelation = (InternalEObject)linkRelation;
-			linkRelation = (LinkRelation)eResolveProxy(oldLinkRelation);
+			InternalEObject oldLinkRelation = (InternalEObject) linkRelation;
+			linkRelation = (LinkRelation) eResolveProxy(oldLinkRelation);
 			if (linkRelation != oldLinkRelation) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RapidmlPackage.REFERENCE_LINK__LINK_RELATION, oldLinkRelation, linkRelation));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							RapidmlPackage.REFERENCE_LINK__LINK_RELATION, oldLinkRelation, linkRelation));
 			}
 		}
 		return linkRelation;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public LinkRelation basicGetLinkRelation() {
+	public LinkRelation basicGetLinkRelation() {
 		return linkRelation;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setLinkRelation(LinkRelation newLinkRelation) {
+	public void setLinkRelation(LinkRelation newLinkRelation) {
 		LinkRelation oldLinkRelation = linkRelation;
 		linkRelation = newLinkRelation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.REFERENCE_LINK__LINK_RELATION, oldLinkRelation, linkRelation));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.REFERENCE_LINK__LINK_RELATION,
+					oldLinkRelation, linkRelation));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public CollectionRealizationLevelEnum getCollectionRealizationLevelGen() {
+	public CollectionRealizationLevelEnum getCollectionRealizationLevelGen() {
 		return collectionRealizationLevel;
 	}
-    
-    public CollectionRealizationLevelEnum getCollectionRealizationLevel() {
-        if (!eIsSet(RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL)) {
-            boolean isCollectionLevel = getReferenceElement().isMultiValued()
-                    && (getTargetResource() instanceof CollectionResource);
-            setCollectionRealizationLevel(isCollectionLevel ? CollectionRealizationLevelEnum.COLLECTION_LEVEL
-                    : CollectionRealizationLevelEnum.ITEM_LEVEL);
-        }
-        return getCollectionRealizationLevelGen();
-    }
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	public CollectionRealizationLevelEnum getCollectionRealizationLevel() {
+		if (!eIsSet(RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL)) {
+			boolean isCollectionLevel = getReferenceElement().isMultiValued()
+					&& (getTargetResource() instanceof CollectionResource);
+			setCollectionRealizationLevel(isCollectionLevel ? CollectionRealizationLevelEnum.COLLECTION_LEVEL
+					: CollectionRealizationLevelEnum.ITEM_LEVEL);
+		}
+		return getCollectionRealizationLevelGen();
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setCollectionRealizationLevel(CollectionRealizationLevelEnum newCollectionRealizationLevel) {
+	public void setCollectionRealizationLevel(CollectionRealizationLevelEnum newCollectionRealizationLevel) {
 		CollectionRealizationLevelEnum oldCollectionRealizationLevel = collectionRealizationLevel;
 		collectionRealizationLevel = newCollectionRealizationLevel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL, oldCollectionRealizationLevel, collectionRealizationLevel));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL, oldCollectionRealizationLevel,
+					collectionRealizationLevel));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.REFERENCE_LINK__NAME:
-				return getName();
-			case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
-				if (resolve) return getLinkRelation();
-				return basicGetLinkRelation();
-			case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
-				return getCollectionRealizationLevel();
+		case RapidmlPackage.REFERENCE_LINK__NAME:
+			return getName();
+		case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
+			if (resolve)
+				return getLinkRelation();
+			return basicGetLinkRelation();
+		case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
+			return getCollectionRealizationLevel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.REFERENCE_LINK__NAME:
-				setName((String)newValue);
-				return;
-			case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
-				setLinkRelation((LinkRelation)newValue);
-				return;
-			case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
-				setCollectionRealizationLevel((CollectionRealizationLevelEnum)newValue);
-				return;
+		case RapidmlPackage.REFERENCE_LINK__NAME:
+			setName((String) newValue);
+			return;
+		case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
+			setLinkRelation((LinkRelation) newValue);
+			return;
+		case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
+			setCollectionRealizationLevel((CollectionRealizationLevelEnum) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.REFERENCE_LINK__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
-				setLinkRelation((LinkRelation)null);
-				return;
-			case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
-				setCollectionRealizationLevel(COLLECTION_REALIZATION_LEVEL_EDEFAULT);
-				return;
+		case RapidmlPackage.REFERENCE_LINK__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
+			setLinkRelation((LinkRelation) null);
+			return;
+		case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
+			setCollectionRealizationLevel(COLLECTION_REALIZATION_LEVEL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.REFERENCE_LINK__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
-				return linkRelation != null;
-			case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
-				return COLLECTION_REALIZATION_LEVEL_EDEFAULT == null ? collectionRealizationLevel != null : !COLLECTION_REALIZATION_LEVEL_EDEFAULT.equals(collectionRealizationLevel);
+		case RapidmlPackage.REFERENCE_LINK__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case RapidmlPackage.REFERENCE_LINK__LINK_RELATION:
+			return linkRelation != null;
+		case RapidmlPackage.REFERENCE_LINK__COLLECTION_REALIZATION_LEVEL:
+			return COLLECTION_REALIZATION_LEVEL_EDEFAULT == null ? collectionRealizationLevel != null
+					: !COLLECTION_REALIZATION_LEVEL_EDEFAULT.equals(collectionRealizationLevel);
 		}
 		return super.eIsSet(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public String toString() {
-		if (eIsProxy()) return super.toString();
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
@@ -307,4 +317,4 @@ public class ReferenceLinkImpl extends ReferenceTreatmentImpl implements Referen
 		return result.toString();
 	}
 
-} //ReferenceLinkImpl
+} // ReferenceLinkImpl

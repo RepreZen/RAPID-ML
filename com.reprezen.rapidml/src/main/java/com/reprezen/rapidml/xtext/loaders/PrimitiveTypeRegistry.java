@@ -18,21 +18,21 @@ import com.reprezen.rapidml.PrimitiveType;
  *
  */
 public class PrimitiveTypeRegistry extends LibraryRegistry<PrimitiveType> {
-    public PrimitiveTypeRegistry() {
-        super(PrimitiveType.class, ZenLibraries.PRIMITIVE_TYPES);
-    }
+	public PrimitiveTypeRegistry() {
+		super(PrimitiveType.class, ZenLibraries.PRIMITIVE_TYPES);
+	}
 
-    @Override
-    protected Function<PrimitiveType, String> getElementId() {
-        return new Function<PrimitiveType, String>() {
+	@Override
+	protected Function<PrimitiveType, String> getElementId() {
+		return new Function<PrimitiveType, String>() {
 
-            @Override
-            public String apply(PrimitiveType element) {
-                return element.getName();
-            }
+			@Override
+			public String apply(PrimitiveType element) {
+				return element.getName();
+			}
 
-        };
+		};
 
-    }
+	}
 
 }

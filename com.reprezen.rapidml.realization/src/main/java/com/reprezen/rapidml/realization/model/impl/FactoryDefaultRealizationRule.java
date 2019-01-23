@@ -12,9 +12,9 @@ import com.fasterxml.jackson.databind.node.MissingNode;
 
 public class FactoryDefaultRealizationRule extends RealizationRuleImpl {
 
-    private FactoryDefaultRealizationRule() {
-        super(MissingNode.getInstance(), null, null);
-    }
+	private FactoryDefaultRealizationRule() {
+		super(MissingNode.getInstance(), null, null);
+	}
 
-    public static FactoryDefaultRealizationRule instance = new FactoryDefaultRealizationRule();
+	public static FactoryDefaultRealizationRule instance = new FactoryDefaultRealizationRule();
 }

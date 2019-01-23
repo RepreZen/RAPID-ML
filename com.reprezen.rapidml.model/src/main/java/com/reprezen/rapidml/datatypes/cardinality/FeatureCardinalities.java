@@ -19,38 +19,39 @@ import com.reprezen.rapidml.ReferenceElement;
  */
 public class FeatureCardinalities extends CardinalityDeserializer {
 
-    public static final CardinalityWithShortcut OPTIONAL_DEFAULT = new CardinalityWithShortcut(0, 1, "");
-    public static final CardinalityWithShortcut REQUIRED_EXCLAMATION_MARK = new CardinalityWithShortcut(1, 1, "!");
-    public static final CardinalityWithShortcut OPTIONAL_LIST_ASTERISK = new CardinalityWithShortcut(0, -1, "*");
-    // public static final CardinalityWithShortcut OPTIONAL_LIST = new CardinalityWithShortcut(0, -1, "[]");
-    public static final CardinalityWithShortcut OPTIONAL = new CardinalityWithShortcut(0, 1, "?");
-    public static final CardinalityWithShortcut REQUIRED_LIST = new CardinalityWithShortcut(1, -1, "+");
-    public static final CardinalityWithShortcut[] ALL_CARDINALITIES = { OPTIONAL_DEFAULT, OPTIONAL_LIST_ASTERISK,
-            OPTIONAL, REQUIRED_LIST, REQUIRED_EXCLAMATION_MARK };
+	public static final CardinalityWithShortcut OPTIONAL_DEFAULT = new CardinalityWithShortcut(0, 1, "");
+	public static final CardinalityWithShortcut REQUIRED_EXCLAMATION_MARK = new CardinalityWithShortcut(1, 1, "!");
+	public static final CardinalityWithShortcut OPTIONAL_LIST_ASTERISK = new CardinalityWithShortcut(0, -1, "*");
+	// public static final CardinalityWithShortcut OPTIONAL_LIST = new
+	// CardinalityWithShortcut(0, -1, "[]");
+	public static final CardinalityWithShortcut OPTIONAL = new CardinalityWithShortcut(0, 1, "?");
+	public static final CardinalityWithShortcut REQUIRED_LIST = new CardinalityWithShortcut(1, -1, "+");
+	public static final CardinalityWithShortcut[] ALL_CARDINALITIES = { OPTIONAL_DEFAULT, OPTIONAL_LIST_ASTERISK,
+			OPTIONAL, REQUIRED_LIST, REQUIRED_EXCLAMATION_MARK };
 
-    private FeatureCardinalities() {
-        super(ALL_CARDINALITIES);
-    }
+	private FeatureCardinalities() {
+		super(ALL_CARDINALITIES);
+	}
 
-    public static FeatureCardinalities getFeatureCardinalities() {
-        return new FeatureCardinalities();
-    }
+	public static FeatureCardinalities getFeatureCardinalities() {
+		return new FeatureCardinalities();
+	}
 
-    /**
-     * Gets the cardinality of the data type property.
-     *
-     * @param property
-     *            the data type property
-     * @return the cardinality of the data type property
-     */
-    public Cardinality getCardinality(Feature property) {
-        Cardinality cardinality = getCardinality(property.getMinOccurs(), property.getMaxOccurs());
-        return cardinality;
-    }
-    
-    public Cardinality getCardinality(ReferenceElement property) {
-        Cardinality cardinality = getCardinality(property.getMinOccurs(), property.getMaxOccurs());
-        return cardinality;
-    }
+	/**
+	 * Gets the cardinality of the data type property.
+	 *
+	 * @param property
+	 *            the data type property
+	 * @return the cardinality of the data type property
+	 */
+	public Cardinality getCardinality(Feature property) {
+		Cardinality cardinality = getCardinality(property.getMinOccurs(), property.getMaxOccurs());
+		return cardinality;
+	}
+
+	public Cardinality getCardinality(ReferenceElement property) {
+		Cardinality cardinality = getCardinality(property.getMinOccurs(), property.getMaxOccurs());
+		return cardinality;
+	}
 
 }

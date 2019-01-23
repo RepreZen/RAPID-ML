@@ -8,20 +8,18 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.rapidml.ReferenceElement;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Path Segment</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Path
+ * Segment</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.PathSegment#getReferenceElement <em>Reference Element</em>}</li>
+ * <li>{@link com.reprezen.rapidml.PathSegment#getReferenceElement <em>Reference
+ * Element</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getPathSegment()
@@ -30,13 +28,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface PathSegment extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Reference Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Reference Element</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reference Element</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Reference Element</em>' reference.
 	 * @see #setReferenceElement(com.reprezen.rapidml.ReferenceElement)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getPathSegment_ReferenceElement()
@@ -46,10 +45,12 @@ public interface PathSegment extends EObject {
 	com.reprezen.rapidml.ReferenceElement getReferenceElement();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.PathSegment#getReferenceElement <em>Reference Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference Element</em>' reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.PathSegment#getReferenceElement <em>Reference
+	 * Element</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Reference Element</em>' reference.
 	 * @see #getReferenceElement()
 	 * @generated
 	 */

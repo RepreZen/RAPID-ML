@@ -10,13 +10,12 @@
  */
 package com.reprezen.rapidml.impl;
 
-import com.reprezen.rapidml.Operation;
-import com.reprezen.rapidml.RapidmlPackage;
-import com.reprezen.rapidml.impl.DocumentableImpl;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import com.reprezen.rapidml.Operation;
+import com.reprezen.rapidml.RapidmlPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object

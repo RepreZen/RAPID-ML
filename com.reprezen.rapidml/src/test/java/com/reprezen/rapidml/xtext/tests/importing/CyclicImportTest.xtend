@@ -44,7 +44,7 @@ class CyclicImportTest {
 	}
 
 	@Test
-	def void testLoadingZenModelLoader() {		
+	def void testLoadingZenModelLoader() {
 		val model = loader.loadAndValidateModel(uri)
 		assertNotNull(model)
 		assertEquals(1, model.imports.size)

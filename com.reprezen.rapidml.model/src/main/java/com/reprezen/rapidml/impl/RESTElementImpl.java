@@ -25,164 +25,169 @@ import com.reprezen.rapidml.RESTElement;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>REST Element</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>REST
+ * Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.RESTElementImpl#getExtensions <em>Extensions</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.RESTElementImpl#getExtensions
+ * <em>Extensions</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class RESTElementImpl extends DocumentableImpl implements RESTElement {
-    /**
-	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExtensions()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<Extension> extensions;
+	protected EList<Extension> extensions;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected RESTElementImpl() {
+	protected RESTElementImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.REST_ELEMENT;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<Extension> getExtensions() {
+	public EList<Extension> getExtensions() {
 		if (extensions == null) {
-			extensions = new EObjectContainmentEList<Extension>(Extension.class, this, RapidmlPackage.REST_ELEMENT__EXTENSIONS);
+			extensions = new EObjectContainmentEList<Extension>(Extension.class, this,
+					RapidmlPackage.REST_ELEMENT__EXTENSIONS);
 		}
 		return extensions;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
-				return ((InternalEList<?>)getExtensions()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
+			return ((InternalEList<?>) getExtensions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
-				return getExtensions();
+		case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
+			return getExtensions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
-				getExtensions().clear();
-				getExtensions().addAll((Collection<? extends Extension>)newValue);
-				return;
+		case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
+			getExtensions().clear();
+			getExtensions().addAll((Collection<? extends Extension>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
-				getExtensions().clear();
-				return;
+		case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
+			getExtensions().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
-				return extensions != null && !extensions.isEmpty();
+		case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
+			return extensions != null && !extensions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Extensible.class) {
 			switch (derivedFeatureID) {
-				case RapidmlPackage.REST_ELEMENT__EXTENSIONS: return RapidmlPackage.EXTENSIBLE__EXTENSIONS;
-				default: return -1;
+			case RapidmlPackage.REST_ELEMENT__EXTENSIONS:
+				return RapidmlPackage.EXTENSIBLE__EXTENSIONS;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Extensible.class) {
 			switch (baseFeatureID) {
-				case RapidmlPackage.EXTENSIBLE__EXTENSIONS: return RapidmlPackage.REST_ELEMENT__EXTENSIONS;
-				default: return -1;
+			case RapidmlPackage.EXTENSIBLE__EXTENSIONS:
+				return RapidmlPackage.REST_ELEMENT__EXTENSIONS;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //RESTElementImpl
+} // RESTElementImpl

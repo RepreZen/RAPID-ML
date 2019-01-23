@@ -23,251 +23,261 @@ import com.reprezen.rapidml.URIParameter;
 import com.reprezen.rapidml.URISegmentWithParameter;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>URI Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>URI
+ * Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.URIParameterImpl#getUriSegment <em>Uri Segment</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.URIParameterImpl#getContainingURI <em>Containing URI</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.URIParameterImpl#getUriSegment <em>Uri
+ * Segment</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.URIParameterImpl#getContainingURI
+ * <em>Containing URI</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class URIParameterImpl extends ParameterImpl implements URIParameter {
-    /**
-	 * The cached value of the '{@link #getUriSegment() <em>Uri Segment</em>}' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getUriSegment() <em>Uri Segment</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUriSegment()
 	 * @generated
 	 * @ordered
 	 */
-    protected URISegmentWithParameter uriSegment;
+	protected URISegmentWithParameter uriSegment;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected URIParameterImpl() {
+	protected URIParameterImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.URI_PARAMETER;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public URISegmentWithParameter getUriSegment() {
+	public URISegmentWithParameter getUriSegment() {
 		if (uriSegment != null && uriSegment.eIsProxy()) {
-			InternalEObject oldUriSegment = (InternalEObject)uriSegment;
-			uriSegment = (URISegmentWithParameter)eResolveProxy(oldUriSegment);
+			InternalEObject oldUriSegment = (InternalEObject) uriSegment;
+			uriSegment = (URISegmentWithParameter) eResolveProxy(oldUriSegment);
 			if (uriSegment != oldUriSegment) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RapidmlPackage.URI_PARAMETER__URI_SEGMENT, oldUriSegment, uriSegment));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RapidmlPackage.URI_PARAMETER__URI_SEGMENT,
+							oldUriSegment, uriSegment));
 			}
 		}
 		return uriSegment;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public URISegmentWithParameter basicGetUriSegment() {
+	public URISegmentWithParameter basicGetUriSegment() {
 		return uriSegment;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setUriSegment(URISegmentWithParameter newUriSegment) {
+	public void setUriSegment(URISegmentWithParameter newUriSegment) {
 		URISegmentWithParameter oldUriSegment = uriSegment;
 		uriSegment = newUriSegment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.URI_PARAMETER__URI_SEGMENT, oldUriSegment, uriSegment));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.URI_PARAMETER__URI_SEGMENT,
+					oldUriSegment, uriSegment));
 	}
 
-    
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public URI getContainingURI() {
-		if (eContainerFeatureID() != RapidmlPackage.URI_PARAMETER__CONTAINING_URI) return null;
-		return (URI)eInternalContainer();
+	public URI getContainingURI() {
+		if (eContainerFeatureID() != RapidmlPackage.URI_PARAMETER__CONTAINING_URI)
+			return null;
+		return (URI) eInternalContainer();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public NotificationChain basicSetContainingURI(URI newContainingURI, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newContainingURI, RapidmlPackage.URI_PARAMETER__CONTAINING_URI, msgs);
+	public NotificationChain basicSetContainingURI(URI newContainingURI, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newContainingURI, RapidmlPackage.URI_PARAMETER__CONTAINING_URI,
+				msgs);
 		return msgs;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setContainingURI(URI newContainingURI) {
-		if (newContainingURI != eInternalContainer() || (eContainerFeatureID() != RapidmlPackage.URI_PARAMETER__CONTAINING_URI && newContainingURI != null)) {
+	public void setContainingURI(URI newContainingURI) {
+		if (newContainingURI != eInternalContainer()
+				|| (eContainerFeatureID() != RapidmlPackage.URI_PARAMETER__CONTAINING_URI
+						&& newContainingURI != null)) {
 			if (EcoreUtil.isAncestor(this, newContainingURI))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainingURI != null)
-				msgs = ((InternalEObject)newContainingURI).eInverseAdd(this, RapidmlPackage.URI__URI_PARAMETERS, URI.class, msgs);
+				msgs = ((InternalEObject) newContainingURI).eInverseAdd(this, RapidmlPackage.URI__URI_PARAMETERS,
+						URI.class, msgs);
 			msgs = basicSetContainingURI(newContainingURI, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.URI_PARAMETER__CONTAINING_URI, newContainingURI, newContainingURI));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.URI_PARAMETER__CONTAINING_URI,
+					newContainingURI, newContainingURI));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		if (uriSegment != null) {
-		    return uriSegment.getName();
+			return uriSegment.getName();
 		}
 		return name;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContainingURI((URI)otherEnd, msgs);
+		case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetContainingURI((URI) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
-				return basicSetContainingURI(null, msgs);
+		case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
+			return basicSetContainingURI(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
-				return eInternalContainer().eInverseRemove(this, RapidmlPackage.URI__URI_PARAMETERS, URI.class, msgs);
+		case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
+			return eInternalContainer().eInverseRemove(this, RapidmlPackage.URI__URI_PARAMETERS, URI.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
-				if (resolve) return getUriSegment();
-				return basicGetUriSegment();
-			case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
-				return getContainingURI();
+		case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
+			if (resolve)
+				return getUriSegment();
+			return basicGetUriSegment();
+		case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
+			return getContainingURI();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
-				setUriSegment((URISegmentWithParameter)newValue);
-				return;
-			case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
-				setContainingURI((URI)newValue);
-				return;
+		case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
+			setUriSegment((URISegmentWithParameter) newValue);
+			return;
+		case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
+			setContainingURI((URI) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
-				setUriSegment((URISegmentWithParameter)null);
-				return;
-			case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
-				setContainingURI((URI)null);
-				return;
+		case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
+			setUriSegment((URISegmentWithParameter) null);
+			return;
+		case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
+			setContainingURI((URI) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
-				return uriSegment != null;
-			case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
-				return getContainingURI() != null;
+		case RapidmlPackage.URI_PARAMETER__URI_SEGMENT:
+			return uriSegment != null;
+		case RapidmlPackage.URI_PARAMETER__CONTAINING_URI:
+			return getContainingURI() != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //URIParameterImpl
+} // URIParameterImpl

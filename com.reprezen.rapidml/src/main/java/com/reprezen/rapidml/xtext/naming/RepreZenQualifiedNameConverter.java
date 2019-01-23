@@ -17,13 +17,13 @@ import org.eclipse.xtext.naming.QualifiedName;
  */
 public class RepreZenQualifiedNameConverter extends IQualifiedNameConverter.DefaultImpl {
 
-    @Override
-    public QualifiedName toQualifiedName(String qualifiedNameAsString) {
-        QualifiedName qualifiedName = super.toQualifiedName(qualifiedNameAsString);
-        // workaround for mediaTypes with dots
-        if (qualifiedName.getSegmentCount() >= 2 && qualifiedName.getSegment(0).startsWith("application/")) { //$NON-NLS-1$
-            return QualifiedName.create(qualifiedNameAsString);
-        }
-        return qualifiedName;
-    }
+	@Override
+	public QualifiedName toQualifiedName(String qualifiedNameAsString) {
+		QualifiedName qualifiedName = super.toQualifiedName(qualifiedNameAsString);
+		// workaround for mediaTypes with dots
+		if (qualifiedName.getSegmentCount() >= 2 && qualifiedName.getSegment(0).startsWith("application/")) { //$NON-NLS-1$
+			return QualifiedName.create(qualifiedNameAsString);
+		}
+		return qualifiedName;
+	}
 }

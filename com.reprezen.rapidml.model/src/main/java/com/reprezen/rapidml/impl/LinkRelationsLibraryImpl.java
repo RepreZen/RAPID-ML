@@ -25,24 +25,26 @@ import com.reprezen.rapidml.LinkRelationsLibrary;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Link Relations Library</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Link
+ * Relations Library</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.LinkRelationsLibraryImpl#getDefinedLinkRelations <em>Defined Link Relations</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.LinkRelationsLibraryImpl#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.LinkRelationsLibraryImpl#getDefinedLinkRelations
+ * <em>Defined Link Relations</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.LinkRelationsLibraryImpl#getName
+ * <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelationsLibrary {
 	/**
-	 * The cached value of the '{@link #getDefinedLinkRelations() <em>Defined Link Relations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDefinedLinkRelations() <em>Defined Link
+	 * Relations</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getDefinedLinkRelations()
 	 * @generated
 	 * @ordered
@@ -50,9 +52,9 @@ public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelatio
 	protected EList<LinkRelation> definedLinkRelations;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -60,9 +62,9 @@ public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelatio
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -70,8 +72,8 @@ public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelatio
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LinkRelationsLibraryImpl() {
@@ -79,8 +81,8 @@ public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -89,20 +91,21 @@ public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<LinkRelation> getDefinedLinkRelations() {
 		if (definedLinkRelations == null) {
-			definedLinkRelations = new EObjectContainmentEList<LinkRelation>(LinkRelation.class, this, RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS);
+			definedLinkRelations = new EObjectContainmentEList<LinkRelation>(LinkRelation.class, this,
+					RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS);
 		}
 		return definedLinkRelations;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -110,109 +113,111 @@ public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelatio
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME, oldName,
+					name));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
-				return ((InternalEList<?>)getDefinedLinkRelations()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
+			return ((InternalEList<?>) getDefinedLinkRelations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
-				return getDefinedLinkRelations();
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
-				return getName();
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
+			return getDefinedLinkRelations();
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
-				getDefinedLinkRelations().clear();
-				getDefinedLinkRelations().addAll((Collection<? extends LinkRelation>)newValue);
-				return;
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
-				setName((String)newValue);
-				return;
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
+			getDefinedLinkRelations().clear();
+			getDefinedLinkRelations().addAll((Collection<? extends LinkRelation>) newValue);
+			return;
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
+			setName((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
-				getDefinedLinkRelations().clear();
-				return;
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
-				setName(NAME_EDEFAULT);
-				return;
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
+			getDefinedLinkRelations().clear();
+			return;
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
+			setName(NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
-				return definedLinkRelations != null && !definedLinkRelations.isEmpty();
-			case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__DEFINED_LINK_RELATIONS:
+			return definedLinkRelations != null && !definedLinkRelations.isEmpty();
+		case RapidmlPackage.LINK_RELATIONS_LIBRARY__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
@@ -221,4 +226,4 @@ public class LinkRelationsLibraryImpl extends EObjectImpl implements LinkRelatio
 		return result.toString();
 	}
 
-} //LinkRelationsLibraryImpl
+} // LinkRelationsLibraryImpl

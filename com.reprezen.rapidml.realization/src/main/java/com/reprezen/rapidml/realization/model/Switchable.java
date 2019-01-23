@@ -12,13 +12,13 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface Switchable<T extends ConditionedItem> {
-    public Collection<T> getCandidates();
+	public Collection<T> getCandidates();
 
-    default Optional<T> getNoCandidatesResult() {
-        return Optional.empty();
-    }
+	default Optional<T> getNoCandidatesResult() {
+		return Optional.empty();
+	}
 
-    default Optional<T> getNoMatchingCandidateResult() {
-        return Optional.empty();
-    }
+	default Optional<T> getNoMatchingCandidateResult() {
+		return Optional.empty();
+	}
 }

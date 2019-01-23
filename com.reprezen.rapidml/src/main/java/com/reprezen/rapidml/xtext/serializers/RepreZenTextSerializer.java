@@ -25,52 +25,52 @@ import com.reprezen.rapidml.xtext.loaders.RepreZenXtextResourceSet;
  * 
  */
 public class RepreZenTextSerializer {
-    private static final String CRLF = System.getProperty("line.separator");
+	private static final String CRLF = System.getProperty("line.separator");
 
-    @Inject
-    private ISerializer serializer;
+	@Inject
+	private ISerializer serializer;
 
-    public String serializeToDslString(ZenModel zenModel) {
-        // Xtext serializer needs both a resource with non-null URL and a resource set
-        XtextResourceSet resourceSet = new RepreZenXtextResourceSet();
-        XtextResource resource = ((XtextResource) resourceSet.createResource(URI.createURI("dummy.rapid")));
-        resource.getContents().add(zenModel);
-        // serialize
-        return serializer.serialize(zenModel);
+	public String serializeToDslString(ZenModel zenModel) {
+		// Xtext serializer needs both a resource with non-null URL and a resource set
+		XtextResourceSet resourceSet = new RepreZenXtextResourceSet();
+		XtextResource resource = ((XtextResource) resourceSet.createResource(URI.createURI("dummy.rapid")));
+		resource.getContents().add(zenModel);
+		// serialize
+		return serializer.serialize(zenModel);
 
-    }
+	}
 
-    public String serializeToDslString(ZenModel zenModel, Iterable<String> additionalComments) {
-        String zenCode = serializeToDslString(zenModel);
-        if (additionalComments.iterator().hasNext()) {
-            zenCode = insertZenModelCodeComments(zenCode, toCodeComments(additionalComments));
-        }
-        return zenCode;
-    }
+	public String serializeToDslString(ZenModel zenModel, Iterable<String> additionalComments) {
+		String zenCode = serializeToDslString(zenModel);
+		if (additionalComments.iterator().hasNext()) {
+			zenCode = insertZenModelCodeComments(zenCode, toCodeComments(additionalComments));
+		}
+		return zenCode;
+	}
 
-    public static String toCodeComments(Iterable<String> comments) {
-        StringBuilder result = new StringBuilder();
-        for (String next : comments) {
-            result.append(next).append(CRLF); // additional one
-        }
-        return result.toString();
-    }
+	public static String toCodeComments(Iterable<String> comments) {
+		StringBuilder result = new StringBuilder();
+		for (String next : comments) {
+			result.append(next).append(CRLF); // additional one
+		}
+		return result.toString();
+	}
 
-    public static String insertZenModelCodeComments(String zenCode, String codeComments) {
-        int modelStart = zenCode.indexOf("rapidModel");
-        if (modelStart < 0) {
-            throw new IllegalStateException("RAPID Model serialized without 'rapidModel': " + zenCode);
-        }
-        StringBuilder result = new StringBuilder();
-        String beforeComment = zenCode.substring(0, modelStart);
-        result.append(beforeComment);
-        if (beforeComment.length() > 0 && !beforeComment.endsWith(CRLF)) {
-            result.append(CRLF);
-        }
-        result.append("/* ").append(CRLF);
-        result.append(codeComments);
-        result.append("*/").append(CRLF);
-        result.append(zenCode.substring(modelStart));
-        return result.toString();
-    }
+	public static String insertZenModelCodeComments(String zenCode, String codeComments) {
+		int modelStart = zenCode.indexOf("rapidModel");
+		if (modelStart < 0) {
+			throw new IllegalStateException("RAPID Model serialized without 'rapidModel': " + zenCode);
+		}
+		StringBuilder result = new StringBuilder();
+		String beforeComment = zenCode.substring(0, modelStart);
+		result.append(beforeComment);
+		if (beforeComment.length() > 0 && !beforeComment.endsWith(CRLF)) {
+			result.append(CRLF);
+		}
+		result.append("/* ").append(CRLF);
+		result.append(codeComments);
+		result.append("*/").append(CRLF);
+		result.append(zenCode.substring(modelStart));
+		return result.toString();
+	}
 }

@@ -23,80 +23,82 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.URIConverter;
 
 import com.google.common.io.CharStreams;
+import com.reprezen.rapidml.DataExample;
 import com.reprezen.rapidml.Example;
 import com.reprezen.rapidml.ExternalExample;
-import com.reprezen.rapidml.InlineExample;
-import com.reprezen.rapidml.ResourceDefinition;
-import com.reprezen.rapidml.RapidmlFactory;
-import com.reprezen.rapidml.ServiceDataResource;
-import com.reprezen.rapidml.TypedMessage;
-import com.reprezen.rapidml.DataExample;
 import com.reprezen.rapidml.InlineDataExample;
+import com.reprezen.rapidml.InlineExample;
+import com.reprezen.rapidml.RapidmlFactory;
+import com.reprezen.rapidml.ResourceDefinition;
+import com.reprezen.rapidml.ServiceDataResource;
 import com.reprezen.rapidml.Structure;
+import com.reprezen.rapidml.TypedMessage;
 
 public class ExampleUtils {
-    public static EList<Example> getAllExamples(TypedMessage message) {
-        if (!message.getExamples().isEmpty()) {
-            return message.getExamples();
-        }
-        ResourceDefinition resource = message.getResourceType();
-        if (resource != null) {
-            EList<Example> resourceExamples = resource.getExamples();
-            if (!resourceExamples.isEmpty()) {
-                return resourceExamples;
-            }
-            if (resource instanceof ServiceDataResource) {
-                Structure dataType = ((ServiceDataResource) resource).getDataType();
-                List<Example> result = new ArrayList<Example>(dataType.getDataExamples().size());
-                for (DataExample dataExample : dataType.getDataExamples()) {
-                    result.add(toExample(dataExample));
-                }
-                return ECollections.asEList(result);
-            }
-        }
-        return ECollections.emptyEList();
-    }
+	public static EList<Example> getAllExamples(TypedMessage message) {
+		if (!message.getExamples().isEmpty()) {
+			return message.getExamples();
+		}
+		ResourceDefinition resource = message.getResourceType();
+		if (resource != null) {
+			EList<Example> resourceExamples = resource.getExamples();
+			if (!resourceExamples.isEmpty()) {
+				return resourceExamples;
+			}
+			if (resource instanceof ServiceDataResource) {
+				Structure dataType = ((ServiceDataResource) resource).getDataType();
+				List<Example> result = new ArrayList<Example>(dataType.getDataExamples().size());
+				for (DataExample dataExample : dataType.getDataExamples()) {
+					result.add(toExample(dataExample));
+				}
+				return ECollections.asEList(result);
+			}
+		}
+		return ECollections.emptyEList();
+	}
 
-    public static Example toExample(DataExample dataExample) {
-        if (dataExample instanceof InlineDataExample) {
-            InlineExample result = RapidmlFactory.eINSTANCE.createInlineExample();
-            result.setBody(((InlineDataExample) dataExample).getBody());
-            return result;
-        }
-        throw new IllegalStateException("External examples not implemented");
-    }
+	public static Example toExample(DataExample dataExample) {
+		if (dataExample instanceof InlineDataExample) {
+			InlineExample result = RapidmlFactory.eINSTANCE.createInlineExample();
+			result.setBody(((InlineDataExample) dataExample).getBody());
+			return result;
+		}
+		throw new IllegalStateException("External examples not implemented");
+	}
 
-    public static String getBody(ExternalExample example) {
-        String body = null;
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(getBodyStream(example)));
-            try {
-                body = CharStreams.toString(reader);
-            } finally {
-                reader.close();
-            }
-        } catch (FileNotFoundException e) {
-            // TODO
-            // RestApiPlugin.getDefault().getLog()
-            // .log(new Status(Status.ERROR, RestApiPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
-        } catch (Exception e) {
-            // RestApiPlugin.getDefault().getLog()
-            // .log(new Status(Status.ERROR, RestApiPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
-        }
-        return body;
-    }
+	public static String getBody(ExternalExample example) {
+		String body = null;
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(getBodyStream(example)));
+			try {
+				body = CharStreams.toString(reader);
+			} finally {
+				reader.close();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO
+			// RestApiPlugin.getDefault().getLog()
+			// .log(new Status(Status.ERROR, RestApiPlugin.PLUGIN_ID,
+			// e.getLocalizedMessage(), e));
+		} catch (Exception e) {
+			// RestApiPlugin.getDefault().getLog()
+			// .log(new Status(Status.ERROR, RestApiPlugin.PLUGIN_ID,
+			// e.getLocalizedMessage(), e));
+		}
+		return body;
+	}
 
-    public static InputStream getBodyStream(ExternalExample example) throws IOException {
-        URI externalExampleUri = getResolvedImportUri(example.eResource(), URI.createURI(example.getPath()));
-        URIConverter uriConverter = example.eResource().getResourceSet().getURIConverter();
-        return uriConverter.createInputStream(externalExampleUri);
-    }
+	public static InputStream getBodyStream(ExternalExample example) throws IOException {
+		URI externalExampleUri = getResolvedImportUri(example.eResource(), URI.createURI(example.getPath()));
+		URIConverter uriConverter = example.eResource().getResourceSet().getURIConverter();
+		return uriConverter.createInputStream(externalExampleUri);
+	}
 
-    private static URI getResolvedImportUri(Resource context, URI uri) {
-        URI contextURI = context.getURI();
-        if (contextURI.isHierarchical() && !contextURI.isRelative() && (uri.isRelative() && !uri.isEmpty())) {
-            uri = uri.resolve(contextURI);
-        }
-        return uri;
-    }
+	private static URI getResolvedImportUri(Resource context, URI uri) {
+		URI contextURI = context.getURI();
+		if (contextURI.isHierarchical() && !contextURI.isRelative() && (uri.isRelative() && !uri.isEmpty())) {
+			uri = uri.resolve(contextURI);
+		}
+		return uri;
+	}
 }

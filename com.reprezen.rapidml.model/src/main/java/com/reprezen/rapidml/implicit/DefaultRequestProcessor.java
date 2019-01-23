@@ -9,34 +9,34 @@
 package com.reprezen.rapidml.implicit;
 
 import com.reprezen.rapidml.Method;
-import com.reprezen.rapidml.ResourceDefinition;
 import com.reprezen.rapidml.RapidmlFactory;
+import com.reprezen.rapidml.ResourceDefinition;
 import com.reprezen.rapidml.TypedRequest;
 
 public class DefaultRequestProcessor {
 
-    public void process(Method method) {
-        if (null == method.getRequest() && needsDefaultRequest(method)) {
-            createDefaultRequest(method);
-        }
-    }
+	public void process(Method method) {
+		if (null == method.getRequest() && needsDefaultRequest(method)) {
+			createDefaultRequest(method);
+		}
+	}
 
-    protected void createDefaultRequest(Method method) {
-        TypedRequest result = RapidmlFactory.eINSTANCE.createTypedRequest();
-        switch (method.getHttpMethod()) {
-        case PUT:
-        case POST:
-        case PATCH:
-        case DELETE:
-            ResourceDefinition containingResource = (ResourceDefinition) method.eContainer();
-            result.setResourceType(containingResource);
-            break;
-        default: // do nothing;
-        }
-        method.setRequest(result);
-    }
+	protected void createDefaultRequest(Method method) {
+		TypedRequest result = RapidmlFactory.eINSTANCE.createTypedRequest();
+		switch (method.getHttpMethod()) {
+		case PUT:
+		case POST:
+		case PATCH:
+		case DELETE:
+			ResourceDefinition containingResource = (ResourceDefinition) method.eContainer();
+			result.setResourceType(containingResource);
+			break;
+		default: // do nothing;
+		}
+		method.setRequest(result);
+	}
 
-    protected boolean needsDefaultRequest(Method method) {
-        return true;
-    }
+	protected boolean needsDefaultRequest(Method method) {
+		return true;
+	}
 }

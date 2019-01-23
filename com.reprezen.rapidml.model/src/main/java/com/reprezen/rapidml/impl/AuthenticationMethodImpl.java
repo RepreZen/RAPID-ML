@@ -26,178 +26,183 @@ import com.reprezen.rapidml.SecurityScheme;
 import com.reprezen.rapidml.SecurityScope;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Authentication Method</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Authentication Method</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.AuthenticationMethodImpl#getScheme <em>Scheme</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.AuthenticationMethodImpl#getScopes <em>Scopes</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.AuthenticationMethodImpl#getScheme
+ * <em>Scheme</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.AuthenticationMethodImpl#getScopes
+ * <em>Scopes</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class AuthenticationMethodImpl extends EObjectImpl implements AuthenticationMethod {
-    /**
+	/**
 	 * The cached value of the '{@link #getScheme() <em>Scheme</em>}' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScheme()
 	 * @generated
 	 * @ordered
 	 */
-    protected SecurityScheme scheme;
+	protected SecurityScheme scheme;
 
-    /**
-	 * The cached value of the '{@link #getScopes() <em>Scopes</em>}' reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getScopes() <em>Scopes</em>}' reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScopes()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<SecurityScope> scopes;
+	protected EList<SecurityScope> scopes;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected AuthenticationMethodImpl() {
+	protected AuthenticationMethodImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.AUTHENTICATION_METHOD;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public SecurityScheme getScheme() {
+	public SecurityScheme getScheme() {
 		if (scheme != null && scheme.eIsProxy()) {
-			InternalEObject oldScheme = (InternalEObject)scheme;
-			scheme = (SecurityScheme)eResolveProxy(oldScheme);
+			InternalEObject oldScheme = (InternalEObject) scheme;
+			scheme = (SecurityScheme) eResolveProxy(oldScheme);
 			if (scheme != oldScheme) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RapidmlPackage.AUTHENTICATION_METHOD__SCHEME, oldScheme, scheme));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							RapidmlPackage.AUTHENTICATION_METHOD__SCHEME, oldScheme, scheme));
 			}
 		}
 		return scheme;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public SecurityScheme basicGetScheme() {
+	public SecurityScheme basicGetScheme() {
 		return scheme;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setScheme(SecurityScheme newScheme) {
+	public void setScheme(SecurityScheme newScheme) {
 		SecurityScheme oldScheme = scheme;
 		scheme = newScheme;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.AUTHENTICATION_METHOD__SCHEME, oldScheme, scheme));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.AUTHENTICATION_METHOD__SCHEME,
+					oldScheme, scheme));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<SecurityScope> getScopes() {
+	public EList<SecurityScope> getScopes() {
 		if (scopes == null) {
-			scopes = new EObjectResolvingEList<SecurityScope>(SecurityScope.class, this, RapidmlPackage.AUTHENTICATION_METHOD__SCOPES);
+			scopes = new EObjectResolvingEList<SecurityScope>(SecurityScope.class, this,
+					RapidmlPackage.AUTHENTICATION_METHOD__SCOPES);
 		}
 		return scopes;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
-				if (resolve) return getScheme();
-				return basicGetScheme();
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
-				return getScopes();
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
+			if (resolve)
+				return getScheme();
+			return basicGetScheme();
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
+			return getScopes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
-				setScheme((SecurityScheme)newValue);
-				return;
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
-				getScopes().clear();
-				getScopes().addAll((Collection<? extends SecurityScope>)newValue);
-				return;
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
+			setScheme((SecurityScheme) newValue);
+			return;
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
+			getScopes().clear();
+			getScopes().addAll((Collection<? extends SecurityScope>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
-				setScheme((SecurityScheme)null);
-				return;
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
-				getScopes().clear();
-				return;
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
+			setScheme((SecurityScheme) null);
+			return;
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
+			getScopes().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
-				return scheme != null;
-			case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
-				return scopes != null && !scopes.isEmpty();
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCHEME:
+			return scheme != null;
+		case RapidmlPackage.AUTHENTICATION_METHOD__SCOPES:
+			return scopes != null && !scopes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //AuthenticationMethodImpl
+} // AuthenticationMethodImpl

@@ -8,19 +8,19 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Reference Link</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Reference Link</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.ReferenceLink#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ReferenceLink#getLinkRelation <em>Link Relation</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ReferenceLink#getCollectionRealizationLevel <em>Collection Realization Level</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceLink#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceLink#getLinkRelation <em>Link
+ * Relation</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceLink#getCollectionRealizationLevel
+ * <em>Collection Realization Level</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getReferenceLink()
@@ -29,13 +29,14 @@ package com.reprezen.rapidml;
  */
 public interface ReferenceLink extends ReferenceTreatment {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceLink_Name()
@@ -45,23 +46,25 @@ public interface ReferenceLink extends ReferenceTreatment {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceLink#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceLink#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Link Relation</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Link Relation</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Link Relation</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Link Relation</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Link Relation</em>' reference.
 	 * @see #setLinkRelation(LinkRelation)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceLink_LinkRelation()
@@ -71,23 +74,26 @@ public interface ReferenceLink extends ReferenceTreatment {
 	LinkRelation getLinkRelation();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceLink#getLinkRelation <em>Link Relation</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Link Relation</em>' reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceLink#getLinkRelation <em>Link
+	 * Relation</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Link Relation</em>' reference.
 	 * @see #getLinkRelation()
 	 * @generated
 	 */
 	void setLinkRelation(LinkRelation value);
 
 	/**
-	 * Returns the value of the '<em><b>Collection Realization Level</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Collection Realization Level</b></em>'
+	 * attribute. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Collection Realization Level</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Collection Realization Level</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Collection Realization Level</em>' attribute.
 	 * @see #setCollectionRealizationLevel(CollectionRealizationLevelEnum)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceLink_CollectionRealizationLevel()
@@ -97,18 +103,22 @@ public interface ReferenceLink extends ReferenceTreatment {
 	CollectionRealizationLevelEnum getCollectionRealizationLevel();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceLink#getCollectionRealizationLevel <em>Collection Realization Level</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceLink#getCollectionRealizationLevel
+	 * <em>Collection Realization Level</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Collection Realization Level</em>' attribute.
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Collection Realization Level</em>'
+	 *            attribute.
 	 * @see #getCollectionRealizationLevel()
 	 * @generated
 	 */
 	void setCollectionRealizationLevel(CollectionRealizationLevelEnum value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

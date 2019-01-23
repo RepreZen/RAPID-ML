@@ -25,43 +25,43 @@ import com.reprezen.rapidml.ZenModel;
  */
 public class EmfRestModelLoader extends RestModelLoader {
 
-    /**
-     * Loads the model at the given location and returns it.
-     * 
-     * @param modelLocation
-     *            Location of the RESTApi metamodel.
-     * @return {@link com.reprezen.rapidml.ZenModel}
-     * @throws {@link
-     *             com.reprezen.rapidml.xtext.RestApiException}
-     */
-    @Override
-    public ZenModel load(URI modelLocation) {
-        Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
-        return doLoad(modelLocation);
-    }
+	/**
+	 * Loads the model at the given location and returns it.
+	 * 
+	 * @param modelLocation
+	 *            Location of the RESTApi metamodel.
+	 * @return {@link com.reprezen.rapidml.ZenModel}
+	 * @throws {@link
+	 *             com.reprezen.rapidml.xtext.RestApiException}
+	 */
+	@Override
+	public ZenModel load(URI modelLocation) {
+		Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
+		return doLoad(modelLocation);
+	}
 
-    /**
-     * Loads the model at the given location and returns it.
-     * 
-     * @param modelLocation
-     *            Location of the RESTApi metamodel.
-     * @return {@link com.reprezen.rapidml.ZenModel}
-     * @throws {@link
-     *             com.reprezen.rapidml.xtext.RestApiException}
-     */
-    @Override
-    public ZenModel load(String modelLocation) {
-        Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
-        return doLoad(URI.createFileURI(modelLocation));
-    }
+	/**
+	 * Loads the model at the given location and returns it.
+	 * 
+	 * @param modelLocation
+	 *            Location of the RESTApi metamodel.
+	 * @return {@link com.reprezen.rapidml.ZenModel}
+	 * @throws {@link
+	 *             com.reprezen.rapidml.xtext.RestApiException}
+	 */
+	@Override
+	public ZenModel load(String modelLocation) {
+		Preconditions.checkArgument(modelLocation != null, "The model location should not be null");
+		return doLoad(URI.createFileURI(modelLocation));
+	}
 
-    protected ZenModel doLoad(URI modelLocation) {
-        validateFile(modelLocation);
+	protected ZenModel doLoad(URI modelLocation) {
+		validateFile(modelLocation);
 
-        ResourceSet resourceSet = new ResourceSetImpl();
-        org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(modelLocation, true);
-        ZenModel model = (ZenModel) resource.getContents().get(0);
-        return model;
-    }
+		ResourceSet resourceSet = new ResourceSetImpl();
+		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.getResource(modelLocation, true);
+		ZenModel model = (ZenModel) resource.getContents().get(0);
+		return model;
+	}
 
 }

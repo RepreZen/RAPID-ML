@@ -24,24 +24,25 @@ import com.reprezen.rapidml.RapidmlPackage;
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 public class RepreZenTerminalsJavaValidator
-        extends com.reprezen.rapidml.xtext.validation.AbstractRepreZenTerminalsJavaValidator {
+		extends com.reprezen.rapidml.xtext.validation.AbstractRepreZenTerminalsJavaValidator {
 
-    @Override
-    public void register(EValidatorRegistrar registrar) {
-        super.register(registrar);
-    }
+	@Override
+	public void register(EValidatorRegistrar registrar) {
+		super.register(registrar);
+	}
 
-    @Override
-    protected List<EPackage> getEPackages() {
-        List<EPackage> result = super.getEPackages();
-        result.add(RapidmlPackage.eINSTANCE);
-        return result;
-    }
+	@Override
+	protected List<EPackage> getEPackages() {
+		List<EPackage> result = super.getEPackages();
+		result.add(RapidmlPackage.eINSTANCE);
+		return result;
+	}
 
-    // @Check
-    // public void checkGreetingStartsWithCapital(Greeting greeting) {
-    // if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-    // warning("Name should start with a capital", MyDslPackage.Literals.GREETING__NAME);
-    // }
-    // }
+	// @Check
+	// public void checkGreetingStartsWithCapital(Greeting greeting) {
+	// if (!Character.isUpperCase(greeting.getName().charAt(0))) {
+	// warning("Name should start with a capital",
+	// MyDslPackage.Literals.GREETING__NAME);
+	// }
+	// }
 }

@@ -19,11 +19,11 @@ import com.reprezen.rapidml.ZenModel;
  * @date Nov 17, 2014
  */
 public class RepreZenDeclarativeQualifiedNameProvider extends DefaultDeclarativeQualifiedNameProvider {
-    @SuppressWarnings("unused")
-    private QualifiedName qualifiedName(ZenModel model) {
-        if (!Strings.isEmpty(model.getNamespace())) {
-            return QualifiedName.create(model.getNamespace().split("\\.")).append(model.getName()); //$NON-NLS-1$
-        }
-        return QualifiedName.create(model.getName());
-    }
+	@SuppressWarnings("unused")
+	private QualifiedName qualifiedName(ZenModel model) {
+		if (!Strings.isEmpty(model.getNamespace())) {
+			return QualifiedName.create(model.getNamespace().split("\\.")).append(model.getName()); //$NON-NLS-1$
+		}
+		return QualifiedName.create(model.getName());
+	}
 }

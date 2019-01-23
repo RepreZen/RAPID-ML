@@ -18,8 +18,8 @@ import com.reprezen.rapidml.ZenModel;
 import com.reprezen.rapidml.xtext.RestApiException;
 
 /**
- * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at a given location under the EMF 'xmi' serialization
- * format.
+ * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at a given
+ * location under the EMF 'xmi' serialization format.
  * 
  * REVIEW: We should be working with streams, always, not with files.
  * 
@@ -28,24 +28,25 @@ import com.reprezen.rapidml.xtext.RestApiException;
  */
 public class EmfRestModelSerializer implements RestModelSerializer {
 
-    /**
-     * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at the given path.
-     * 
-     * @param path
-     *            Location of the RESTApi metamodel.
-     * @param model
-     *            {@link com.modelsolv.reprezen.restapi.ZenModel} to serialize.
-     */
-    @Override
-    public void serialize(String path, ZenModel model) throws RestApiException {
-        ResourceSet resourceSet = new ResourceSetImpl();
-        org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(URI.createFileURI(path));
-        resource.getContents().add(model);
-        try {
-            resource.save(null);
-        } catch (IOException e) {
-            throw new RestApiException(String.format("Could not save the ZenModel at location '%s'", path), e);
-        }
-    }
+	/**
+	 * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at the given
+	 * path.
+	 * 
+	 * @param path
+	 *            Location of the RESTApi metamodel.
+	 * @param model
+	 *            {@link com.modelsolv.reprezen.restapi.ZenModel} to serialize.
+	 */
+	@Override
+	public void serialize(String path, ZenModel model) throws RestApiException {
+		ResourceSet resourceSet = new ResourceSetImpl();
+		org.eclipse.emf.ecore.resource.Resource resource = resourceSet.createResource(URI.createFileURI(path));
+		resource.getContents().add(model);
+		try {
+			resource.save(null);
+		} catch (IOException e) {
+			throw new RestApiException(String.format("Could not save the ZenModel at location '%s'", path), e);
+		}
+	}
 
 }

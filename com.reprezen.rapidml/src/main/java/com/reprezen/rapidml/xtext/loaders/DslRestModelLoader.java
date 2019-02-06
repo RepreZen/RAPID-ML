@@ -36,7 +36,8 @@ public class DslRestModelLoader extends RestModelLoader {
 	/**
 	 * Loads the model at the given location and returns it.
 	 * 
-	 * @param modelPath Location of the RESTApi metamodel.
+	 * @param modelPath
+	 *            Location of the RESTApi metamodel.
 	 * @return {@link com.reprezen.rapidml.ZenModel}
 	 */
 	@Override
@@ -54,7 +55,8 @@ public class DslRestModelLoader extends RestModelLoader {
 	/**
 	 * Loads the model at the given location and returns it.
 	 * 
-	 * @param modelLocation Location of the RESTApi metamodel.
+	 * @param modelLocation
+	 *            Location of the RESTApi metamodel.
 	 * @return {@link com.reprezen.rapidml.ZenModel}
 	 */
 	@Override

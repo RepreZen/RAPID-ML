@@ -10,36 +10,35 @@
  */
 package com.reprezen.rapidml.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.SimpleType;
 
-import org.eclipse.emf.ecore.EClass;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Simple Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Simple
+ * Type</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public abstract class SimpleTypeImpl extends SingleValueTypeImpl implements SimpleType {
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected SimpleTypeImpl() {
-        super();
-    }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected SimpleTypeImpl() {
+		super();
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected EClass eStaticClass() {
-        return RapidmlPackage.Literals.SIMPLE_TYPE;
-    }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return RapidmlPackage.Literals.SIMPLE_TYPE;
+	}
 
-} //SimpleTypeImpl
+} // SimpleTypeImpl

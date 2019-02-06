@@ -24,13 +24,12 @@ public class RepreZenTerminalsStandaloneSetupGenerated implements ISetup {
 		register(injector);
 		return injector;
 	}
-	
+
 	public Injector createInjector() {
 		return Guice.createInjector(new com.reprezen.rapidml.xtext.RepreZenTerminalsRuntimeModule());
 	}
-	
-	public void register(Injector injector) {
 
+	public void register(Injector injector) {
 
 	}
 }

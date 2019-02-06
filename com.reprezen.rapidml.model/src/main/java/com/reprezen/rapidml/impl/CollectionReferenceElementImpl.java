@@ -16,40 +16,39 @@ import com.reprezen.rapidml.CollectionReferenceElement;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Collection Reference Element</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Collection Reference Element</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
-public class CollectionReferenceElementImpl extends com.reprezen.rapidml.impl.ReferenceElementImpl implements CollectionReferenceElement {
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+public class CollectionReferenceElementImpl extends com.reprezen.rapidml.impl.ReferenceElementImpl
+		implements CollectionReferenceElement {
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected CollectionReferenceElementImpl() {
+	protected CollectionReferenceElementImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.COLLECTION_REFERENCE_ELEMENT;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return "ObjectResourceLink";
 	}
 
-
-} //CollectionReferenceElementImpl
+} // CollectionReferenceElementImpl

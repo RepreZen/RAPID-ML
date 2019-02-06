@@ -33,103 +33,104 @@ import com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess;
  * @date Dec 23, 2014
  */
 public class RepreZenLocationInFileProvider extends DefaultLocationInFileProvider {
-    @Inject
-    private XtextDslGrammarAccess grammarAccess;
+	@Inject
+	private XtextDslGrammarAccess grammarAccess;
 
-    private Collection<Keyword> beginRules = null;
+	private Collection<Keyword> beginRules = null;
 
-    @Override
-    protected boolean isHidden(INode node) {
-        if (node.getGrammarElement() instanceof RuleCall) {
-            AbstractRule rule = ((RuleCall) node.getGrammarElement()).getRule();
-            if (rule == grammarAccess.getNLRule() || rule == grammarAccess.getBEGINRule()
-                    || rule == grammarAccess.getENDRule() || rule == grammarAccess.getJAVADOC_COMMENTRule()) {
-                return true;
-            }
-        }
-        if (node.getSemanticElement() instanceof Documentation) {
-            return true;
-        }
-        return super.isHidden(node);
-    }
+	@Override
+	protected boolean isHidden(INode node) {
+		if (node.getGrammarElement() instanceof RuleCall) {
+			AbstractRule rule = ((RuleCall) node.getGrammarElement()).getRule();
+			if (rule == grammarAccess.getNLRule() || rule == grammarAccess.getBEGINRule()
+					|| rule == grammarAccess.getENDRule() || rule == grammarAccess.getJAVADOC_COMMENTRule()) {
+				return true;
+			}
+		}
+		if (node.getSemanticElement() instanceof Documentation) {
+			return true;
+		}
+		return super.isHidden(node);
+	}
 
-    @Override
-    protected ITextRegion doGetTextRegion(EObject obj, RegionDescription query) {
-        ICompositeNode node = findNodeFor(obj);
-        boolean useBeginRule = false;
+	@Override
+	protected ITextRegion doGetTextRegion(EObject obj, RegionDescription query) {
+		ICompositeNode node = findNodeFor(obj);
+		boolean useBeginRule = false;
 
-        // use "zenModel" keyword as start rule because it contains "import" and
-        // "namespace" before required region
-        if (obj instanceof ZenModel) {
-            useBeginRule = true;
-        }
+		// use "zenModel" keyword as start rule because it contains "import" and
+		// "namespace" before required region
+		if (obj instanceof ZenModel) {
+			useBeginRule = true;
+		}
 
-        // in this case we need return region that will visible after fold and
-        // also this region will selected from
-        // outline. we try find all nodes before BEGIN rule
-        if (query == RegionDescription.SIGNIFICANT) {
-            return getTextRegionByRuleRange(node, useBeginRule, grammarAccess.getBEGINRule());
-        }
-        // return full region
-        return getTextRegionByRuleRange(node, useBeginRule, null);
-    }
+		// in this case we need return region that will visible after fold and
+		// also this region will selected from
+		// outline. we try find all nodes before BEGIN rule
+		if (query == RegionDescription.SIGNIFICANT) {
+			return getTextRegionByRuleRange(node, useBeginRule, grammarAccess.getBEGINRule());
+		}
+		// return full region
+		return getTextRegionByRuleRange(node, useBeginRule, null);
+	}
 
-    /**
-     * @param node
-     *            composite node
-     * @param beginRule
-     *            begin rule can be <code>null</code>
-     * @param endRule
-     *            end rule
-     * @return text region within begin and and rule
-     */
-    private ITextRegion getTextRegionByRuleRange(ICompositeNode node, boolean useBeginRule, EObject endRule) {
-        ITextRegion result = ITextRegion.EMPTY_REGION;
-        boolean isInRange = !useBeginRule;
-        for (INode child : node.getChildren()) {
-            EObject rule = child.getGrammarElement() instanceof RuleCall
-                    ? ((RuleCall) child.getGrammarElement()).getRule()
-                    : child.getGrammarElement();
-            if (getBeginRules().contains(rule)) {
-                isInRange = true;
-            }
-            if (rule == endRule) {
-                return result;
-            }
-            if (!isHidden(child) && isInRange) {
-                int length = getNodeLength(child);
-                if (length != 0) {
-                    result = result.merge(new TextRegionWithLineInformation(child.getOffset(), length,
-                            child.getStartLine() - 1, child.getEndLine() - 1));
-                }
-            }
-        }
-        return result;
-    }
+	/**
+	 * @param node
+	 *            composite node
+	 * @param beginRule
+	 *            begin rule can be <code>null</code>
+	 * @param endRule
+	 *            end rule
+	 * @return text region within begin and and rule
+	 */
+	private ITextRegion getTextRegionByRuleRange(ICompositeNode node, boolean useBeginRule, EObject endRule) {
+		ITextRegion result = ITextRegion.EMPTY_REGION;
+		boolean isInRange = !useBeginRule;
+		for (INode child : node.getChildren()) {
+			EObject rule = child.getGrammarElement() instanceof RuleCall
+					? ((RuleCall) child.getGrammarElement()).getRule()
+					: child.getGrammarElement();
+			if (getBeginRules().contains(rule)) {
+				isInRange = true;
+			}
+			if (rule == endRule) {
+				return result;
+			}
+			if (!isHidden(child) && isInRange) {
+				int length = getNodeLength(child);
+				if (length != 0) {
+					result = result.merge(new TextRegionWithLineInformation(child.getOffset(), length,
+							child.getStartLine() - 1, child.getEndLine() - 1));
+				}
+			}
+		}
+		return result;
+	}
 
-    private Collection<Keyword> getBeginRules() {
-        if (beginRules == null) {
-            beginRules = Lists.newArrayList(grammarAccess.getZenModelAccess().getRapidModelKeyword_4_1());
-        }
-        return beginRules;
-    }
+	private Collection<Keyword> getBeginRules() {
+		if (beginRules == null) {
+			beginRules = Lists.newArrayList(grammarAccess.getZenModelAccess().getRapidModelKeyword_4_1());
+		}
+		return beginRules;
+	}
 
-    /**
-     * Modified version of node.getLenght that exclude NL, END and BEGIN rules from calculation.
-     * 
-     * @param node
-     *            node
-     * @return node length
-     */
-    private int getNodeLength(INode node) {
-        BidiTreeIterator<INode> iter = node.getAsTreeIterable().iterator();
-        while (iter.hasPrevious()) {
-            INode prev = iter.previous();
-            if (prev instanceof ILeafNode && !isHidden(prev)) {
-                int offset = node.getOffset();
-                return prev.getTotalEndOffset() - offset;
-            }
-        }
-        return node.getTotalLength();
-    }
+	/**
+	 * Modified version of node.getLenght that exclude NL, END and BEGIN rules from
+	 * calculation.
+	 * 
+	 * @param node
+	 *            node
+	 * @return node length
+	 */
+	private int getNodeLength(INode node) {
+		BidiTreeIterator<INode> iter = node.getAsTreeIterable().iterator();
+		while (iter.hasPrevious()) {
+			INode prev = iter.previous();
+			if (prev instanceof ILeafNode && !isHidden(prev)) {
+				int offset = node.getOffset();
+				return prev.getTotalEndOffset() - offset;
+			}
+		}
+		return node.getTotalLength();
+	}
 }

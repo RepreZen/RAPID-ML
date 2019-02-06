@@ -16,30 +16,29 @@ import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.URISegmentWithParameter;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>URI Segment With Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>URI
+ * Segment With Parameter</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class URISegmentWithParameterImpl extends URISegmentImpl implements URISegmentWithParameter {
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected URISegmentWithParameterImpl() {
+	protected URISegmentWithParameterImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.URI_SEGMENT_WITH_PARAMETER;
 	}
 
-} //URISegmentWithParameterImpl
+} // URISegmentWithParameterImpl

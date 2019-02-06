@@ -24,58 +24,58 @@ import com.google.common.base.Predicate;
  */
 public class RepreZenParserUtils {
 
-    /**
-     * @param node
-     *            syntax node
-     * @param eclass
-     *            expected class of semantic element
-     * @return composite node that related to model object of the expected classes.
-     */
-    public static Optional<ICompositeNode> getNodeBySemanticClass(INode node, EClass... eclasses) {
-        INode n = node;
-        while (n != null) {
-            if (n instanceof CompositeNodeWithSemanticElement && n.getSemanticElement() != null) {
-                for (int i = 0; i < eclasses.length; i++) {
-                    if (eclasses[i].isSuperTypeOf(n.getSemanticElement().eClass())) {
-                        return Optional.fromNullable((ICompositeNode) n);
-                    }
-                }
-            }
-            n = n.getParent();
-        }
+	/**
+	 * @param node
+	 *            syntax node
+	 * @param eclass
+	 *            expected class of semantic element
+	 * @return composite node that related to model object of the expected classes.
+	 */
+	public static Optional<ICompositeNode> getNodeBySemanticClass(INode node, EClass... eclasses) {
+		INode n = node;
+		while (n != null) {
+			if (n instanceof CompositeNodeWithSemanticElement && n.getSemanticElement() != null) {
+				for (int i = 0; i < eclasses.length; i++) {
+					if (eclasses[i].isSuperTypeOf(n.getSemanticElement().eClass())) {
+						return Optional.fromNullable((ICompositeNode) n);
+					}
+				}
+			}
+			n = n.getParent();
+		}
 
-        return Optional.fromNullable((ICompositeNode) n);
-    }
+		return Optional.fromNullable((ICompositeNode) n);
+	}
 
-    /**
-     * Predicate to filter only keyword node by specified value.
-     * 
-     * @param keyword
-     *            keyword value
-     * @return predicate
-     */
-    public static Predicate<INode> matchKeyword(final String keyword) {
-        return new Predicate<INode>() {
+	/**
+	 * Predicate to filter only keyword node by specified value.
+	 * 
+	 * @param keyword
+	 *            keyword value
+	 * @return predicate
+	 */
+	public static Predicate<INode> matchKeyword(final String keyword) {
+		return new Predicate<INode>() {
 
-            @Override
-            public boolean apply(INode node) {
-                if (node.getGrammarElement() != null && node.getGrammarElement() instanceof Keyword) {
-                    return keyword.equals(((Keyword) node.getGrammarElement()).getValue());
-                }
-                return false;
-            }
+			@Override
+			public boolean apply(INode node) {
+				if (node.getGrammarElement() != null && node.getGrammarElement() instanceof Keyword) {
+					return keyword.equals(((Keyword) node.getGrammarElement()).getValue());
+				}
+				return false;
+			}
 
-        };
-    }
+		};
+	}
 
-    public static Predicate<INode> matchGrammarRule(final EObject rule) {
-        return new Predicate<INode>() {
+	public static Predicate<INode> matchGrammarRule(final EObject rule) {
+		return new Predicate<INode>() {
 
-            @Override
-            public boolean apply(INode node) {
-                return node.getGrammarElement() == rule;
-            }
+			@Override
+			public boolean apply(INode node) {
+				return node.getGrammarElement() == rule;
+			}
 
-        };
-    }
+		};
+	}
 }

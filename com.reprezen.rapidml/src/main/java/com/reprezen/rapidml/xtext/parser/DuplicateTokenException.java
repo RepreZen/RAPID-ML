@@ -13,26 +13,27 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
 
 /**
- * ANTLR Recognition exception for case when token should be only one in parent node.
+ * ANTLR Recognition exception for case when token should be only one in parent
+ * node.
  * 
  * @author Konstantin Zaitsev
  * @date Oct 29, 2014
  */
 class DuplicateTokenException extends RecognitionException {
 
-    private static final long serialVersionUID = 5068911265710240288L;
-    private Token duplicateToken;
+	private static final long serialVersionUID = 5068911265710240288L;
+	private Token duplicateToken;
 
-    public DuplicateTokenException() {
-    }
+	public DuplicateTokenException() {
+	}
 
-    public DuplicateTokenException(Token duplicateToken, IntStream input) {
-        super(input);
-        this.duplicateToken = duplicateToken;
-    }
+	public DuplicateTokenException(Token duplicateToken, IntStream input) {
+		super(input);
+		this.duplicateToken = duplicateToken;
+	}
 
-    @Override
-    public String getMessage() {
-        return "Duplicate '" + duplicateToken.getText() + "' token"; //$NON-NLS-1$//$NON-NLS-2$
-    }
+	@Override
+	public String getMessage() {
+		return "Duplicate '" + duplicateToken.getText() + "' token"; //$NON-NLS-1$//$NON-NLS-2$
+	}
 }

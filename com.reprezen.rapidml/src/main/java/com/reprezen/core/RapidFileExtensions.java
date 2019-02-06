@@ -19,49 +19,50 @@ import org.eclipse.core.resources.IResource;
  */
 public enum RapidFileExtensions {
 
-    ZEN("zen"), RAPID("rapid");
+	ZEN("zen"), RAPID("rapid");
 
-    private String extension;
+	private String extension;
 
-    private RapidFileExtensions(String extension) {
-        this.extension = extension;
-    }
+	private RapidFileExtensions(String extension) {
+		this.extension = extension;
+	}
 
-    public String getExtension() {
-        return extension;
-    }
+	public String getExtension() {
+		return extension;
+	}
 
-    /**
-     * Compares the given extension to the enumeration, in a case-insensitive way.
-     * 
-     * @param candidateExtension
-     *            Extension to check
-     */
-    public boolean extensionEquals(String candidateExtension) {
-        return this.extension.equalsIgnoreCase(candidateExtension);
-    }
+	/**
+	 * Compares the given extension to the enumeration, in a case-insensitive way.
+	 * 
+	 * @param candidateExtension
+	 *            Extension to check
+	 */
+	public boolean extensionEquals(String candidateExtension) {
+		return this.extension.equalsIgnoreCase(candidateExtension);
+	}
 
-    /**
-     * Checks whether the given extension is part of this enumeration, in a case insensitive way.
-     * 
-     * @param candidateExtension
-     *            Extension to check
-     * @return True if included else false
-     */
-    public static boolean includes(String candidateExtension) {
-        for (RapidFileExtensions extension : RapidFileExtensions.values()) {
-            if (extension.getExtension().equalsIgnoreCase(candidateExtension)) {
-                return true;
-            }
-        }
-        return false;
-    }
+	/**
+	 * Checks whether the given extension is part of this enumeration, in a case
+	 * insensitive way.
+	 * 
+	 * @param candidateExtension
+	 *            Extension to check
+	 * @return True if included else false
+	 */
+	public static boolean includes(String candidateExtension) {
+		for (RapidFileExtensions extension : RapidFileExtensions.values()) {
+			if (extension.getExtension().equalsIgnoreCase(candidateExtension)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    public static boolean isZenFile(IResource resource) {
-        return resource instanceof IFile && includes(resource.getFileExtension());
-    }
+	public static boolean isZenFile(IResource resource) {
+		return resource instanceof IFile && includes(resource.getFileExtension());
+	}
 
-    public static boolean isZenExtension(String extension) {
-        return includes(extension);
-    }
+	public static boolean isZenExtension(String extension) {
+		return includes(extension);
+	}
 }

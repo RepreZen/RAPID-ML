@@ -9,13 +9,13 @@
 package com.reprezen.rapidml.util;
 
 public class OAuth2Parameters {
-    public static final String REDIRECT_URL = "redirect_url"; //$NON-NLS-1$
+	public static final String REDIRECT_URL = "redirect_url"; //$NON-NLS-1$
 
-    public static final String ACCESS_TOKEN_URL = "access_token_url"; //$NON-NLS-1$
+	public static final String ACCESS_TOKEN_URL = "access_token_url"; //$NON-NLS-1$
 
-    public static final String REQUEST_TOKEN_URL = "request_token_url"; //$NON-NLS-1$
+	public static final String REQUEST_TOKEN_URL = "request_token_url"; //$NON-NLS-1$
 
-    public static final String TOKEN_URL = "token_url"; //$NON-NLS-1$
+	public static final String TOKEN_URL = "token_url"; //$NON-NLS-1$
 
-    public static final String AUTHORIZATION_URL = "authorization_url"; //$NON-NLS-1$
+	public static final String AUTHORIZATION_URL = "authorization_url"; //$NON-NLS-1$
 }

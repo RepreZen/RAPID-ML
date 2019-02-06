@@ -25,132 +25,133 @@ import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.WithExamples;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>With Examples</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>With
+ * Examples</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.WithExamplesImpl#getExamples <em>Examples</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.WithExamplesImpl#getExamples
+ * <em>Examples</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class WithExamplesImpl extends EObjectImpl implements WithExamples {
-    /**
-	 * The cached value of the '{@link #getExamples() <em>Examples</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getExamples() <em>Examples</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExamples()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<Example> examples;
+	protected EList<Example> examples;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected WithExamplesImpl() {
+	protected WithExamplesImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.WITH_EXAMPLES;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<Example> getExamples() {
+	public EList<Example> getExamples() {
 		if (examples == null) {
-			examples = new EObjectContainmentEList<Example>(Example.class, this, RapidmlPackage.WITH_EXAMPLES__EXAMPLES);
+			examples = new EObjectContainmentEList<Example>(Example.class, this,
+					RapidmlPackage.WITH_EXAMPLES__EXAMPLES);
 		}
 		return examples;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
-				return ((InternalEList<?>)getExamples()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
+			return ((InternalEList<?>) getExamples()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
-				return getExamples();
+		case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
+			return getExamples();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
-				getExamples().clear();
-				getExamples().addAll((Collection<? extends Example>)newValue);
-				return;
+		case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
+			getExamples().clear();
+			getExamples().addAll((Collection<? extends Example>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
-				getExamples().clear();
-				return;
+		case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
+			getExamples().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
-				return examples != null && !examples.isEmpty();
+		case RapidmlPackage.WITH_EXAMPLES__EXAMPLES:
+			return examples != null && !examples.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //WithExamplesImpl
+} // WithExamplesImpl

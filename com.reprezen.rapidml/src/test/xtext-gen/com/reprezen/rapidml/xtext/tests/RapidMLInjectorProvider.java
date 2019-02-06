@@ -13,36 +13,36 @@ import com.reprezen.rapidml.xtext.XtextDslStandaloneSetup;
 
 public class RapidMLInjectorProvider implements IInjectorProvider, IRegistryConfigurator {
 
-    protected GlobalStateMemento stateBeforeInjectorCreation;
-    protected GlobalStateMemento stateAfterInjectorCreation;
-    protected Injector injector;
+	protected GlobalStateMemento stateBeforeInjectorCreation;
+	protected GlobalStateMemento stateAfterInjectorCreation;
+	protected Injector injector;
 
-    static {
-        GlobalRegistries.initializeDefaults();
-    }
+	static {
+		GlobalRegistries.initializeDefaults();
+	}
 
-    @Override
-    public Injector getInjector() {
-        if (injector == null) {
-            stateBeforeInjectorCreation = GlobalRegistries.makeCopyOfGlobalState();
-            this.injector = internalCreateInjector();
-            stateAfterInjectorCreation = GlobalRegistries.makeCopyOfGlobalState();
-        }
-        return injector;
-    }
+	@Override
+	public Injector getInjector() {
+		if (injector == null) {
+			stateBeforeInjectorCreation = GlobalRegistries.makeCopyOfGlobalState();
+			this.injector = internalCreateInjector();
+			stateAfterInjectorCreation = GlobalRegistries.makeCopyOfGlobalState();
+		}
+		return injector;
+	}
 
-    protected Injector internalCreateInjector() {
-        return new XtextDslStandaloneSetup().createInjectorAndDoEMFRegistration();
-    }
+	protected Injector internalCreateInjector() {
+		return new XtextDslStandaloneSetup().createInjectorAndDoEMFRegistration();
+	}
 
-    @Override
-    public void restoreRegistry() {
-        stateBeforeInjectorCreation.restoreGlobalState();
-    }
+	@Override
+	public void restoreRegistry() {
+		stateBeforeInjectorCreation.restoreGlobalState();
+	}
 
-    @Override
-    public void setupRegistry() {
-        getInjector();
-        stateAfterInjectorCreation.restoreGlobalState();
-    }
+	@Override
+	public void setupRegistry() {
+		getInjector();
+		stateAfterInjectorCreation.restoreGlobalState();
+	}
 }

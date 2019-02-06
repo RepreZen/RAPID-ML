@@ -8,20 +8,20 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.rapidml.realization.model.RealizationModel;
-
 import org.eclipse.emf.ecore.EObject;
 
+import com.reprezen.rapidml.realization.model.RealizationModel;
+
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Realization Model Location</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Realization Model Location</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.RealizationModelLocation#getUri <em>Uri</em>}</li>
+ * <li>{@link com.reprezen.rapidml.RealizationModelLocation#getUri
+ * <em>Uri</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getRealizationModelLocation()
@@ -30,13 +30,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface RealizationModelLocation extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Uri</b></em>' attribute. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Uri</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Uri</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getRealizationModelLocation_Uri()
@@ -46,18 +47,20 @@ public interface RealizationModelLocation extends EObject {
 	String getUri();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.RealizationModelLocation#getUri <em>Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Uri</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.RealizationModelLocation#getUri <em>Uri</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Uri</em>' attribute.
 	 * @see #getUri()
 	 * @generated
 	 */
 	void setUri(String value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation" dataType="com.reprezen.rapidml.RealizationModel"
 	 * @generated
 	 */

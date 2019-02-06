@@ -9,20 +9,20 @@
 package com.reprezen.rapidml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Authentication Method</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Authentication Method</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.AuthenticationMethod#getScheme <em>Scheme</em>}</li>
- *   <li>{@link com.reprezen.rapidml.AuthenticationMethod#getScopes <em>Scopes</em>}</li>
+ * <li>{@link com.reprezen.rapidml.AuthenticationMethod#getScheme
+ * <em>Scheme</em>}</li>
+ * <li>{@link com.reprezen.rapidml.AuthenticationMethod#getScopes
+ * <em>Scopes</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getAuthenticationMethod()
@@ -31,13 +31,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface AuthenticationMethod extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Scheme</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Scheme</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scheme</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Scheme</em>' reference isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Scheme</em>' reference.
 	 * @see #setScheme(SecurityScheme)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getAuthenticationMethod_Scheme()
@@ -47,24 +48,27 @@ public interface AuthenticationMethod extends EObject {
 	SecurityScheme getScheme();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.AuthenticationMethod#getScheme <em>Scheme</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scheme</em>' reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.AuthenticationMethod#getScheme <em>Scheme</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Scheme</em>' reference.
 	 * @see #getScheme()
 	 * @generated
 	 */
 	void setScheme(SecurityScheme value);
 
 	/**
-	 * Returns the value of the '<em><b>Scopes</b></em>' reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.SecurityScope}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Scopes</b></em>' reference list. The list
+	 * contents are of type {@link com.reprezen.rapidml.SecurityScope}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scopes</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Scopes</em>' reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Scopes</em>' reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getAuthenticationMethod_Scopes()
 	 * @model

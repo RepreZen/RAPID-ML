@@ -9,19 +9,18 @@
 package com.reprezen.rapidml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Has Security Value</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Has
+ * Security Value</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.HasSecurityValue#getSecuredBy <em>Secured By</em>}</li>
+ * <li>{@link com.reprezen.rapidml.HasSecurityValue#getSecuredBy <em>Secured
+ * By</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getHasSecurityValue()
@@ -30,14 +29,15 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface HasSecurityValue extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Secured By</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.AuthenticationMethod}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Secured By</b></em>' containment reference
+	 * list. The list contents are of type
+	 * {@link com.reprezen.rapidml.AuthenticationMethod}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Secured By</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Secured By</em>' containment reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Secured By</em>' containment reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getHasSecurityValue_SecuredBy()
 	 * @model containment="true"

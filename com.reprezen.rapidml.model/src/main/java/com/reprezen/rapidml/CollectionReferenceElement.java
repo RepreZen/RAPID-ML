@@ -8,12 +8,9 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.rapidml.ReferenceElement;
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Collection Reference Element</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Collection Reference Element</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getCollectionReferenceElement()
@@ -22,10 +19,10 @@ import com.reprezen.rapidml.ReferenceElement;
  */
 public interface CollectionReferenceElement extends com.reprezen.rapidml.ReferenceElement {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return \"ObjectResourceLink\";'"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/GenModel
+	 *        body='return \"ObjectResourceLink\";'"
 	 * @generated
 	 */
 	String getName();

@@ -11,16 +11,16 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data Model</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Data
+ * Model</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.DataModel#getOwnedDataTypes <em>Owned Data Types</em>}</li>
- *   <li>{@link com.reprezen.rapidml.DataModel#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.DataModel#getOwnedDataTypes <em>Owned Data
+ * Types</em>}</li>
+ * <li>{@link com.reprezen.rapidml.DataModel#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getDataModel()
@@ -29,15 +29,17 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface DataModel extends Documentable, HasTitle {
 	/**
-	 * Returns the value of the '<em><b>Owned Data Types</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.DataType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Owned Data Types</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.DataType}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Data Types</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Owned Data Types</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Data Types</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Owned Data Types</em>' containment reference
+	 *         list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getDataModel_OwnedDataTypes()
 	 * @model containment="true"
 	 * @generated
@@ -45,13 +47,14 @@ public interface DataModel extends Documentable, HasTitle {
 	EList<DataType> getOwnedDataTypes();
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getDataModel_Name()
@@ -61,10 +64,11 @@ public interface DataModel extends Documentable, HasTitle {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.DataModel#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.DataModel#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */

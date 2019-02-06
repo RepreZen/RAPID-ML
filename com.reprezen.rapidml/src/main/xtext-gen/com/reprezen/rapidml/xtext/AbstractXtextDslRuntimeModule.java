@@ -23,78 +23,95 @@ public abstract class AbstractXtextDslRuntimeModule extends org.eclipse.xtext.se
 		properties = tryBindProperties(binder, "com/reprezen/rapidml/xtext/XtextDsl.properties");
 		super.configure(binder);
 	}
-	
+
 	public void configureLanguageName(Binder binder) {
-		binder.bind(String.class).annotatedWith(Names.named(Constants.LANGUAGE_NAME)).toInstance("com.reprezen.rapidml.xtext.XtextDsl");
+		binder.bind(String.class).annotatedWith(Names.named(Constants.LANGUAGE_NAME))
+				.toInstance("com.reprezen.rapidml.xtext.XtextDsl");
 	}
-	
+
 	public void configureFileExtensions(Binder binder) {
 		if (properties == null || properties.getProperty(Constants.FILE_EXTENSIONS) == null)
 			binder.bind(String.class).annotatedWith(Names.named(Constants.FILE_EXTENSIONS)).toInstance("zen,rapid");
 	}
-	
-	// contributed by org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
+
+	// contributed by
+	// org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
 	public java.lang.ClassLoader bindClassLoaderToInstance() {
 		return getClass().getClassLoader();
 	}
 
-	// contributed by org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
+	// contributed by
+	// org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
 	public Class<? extends org.eclipse.xtext.IGrammarAccess> bindIGrammarAccess() {
 		return com.reprezen.rapidml.xtext.services.XtextDslGrammarAccess.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parseTreeConstructor.ParseTreeConstructorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parseTreeConstructor.ParseTreeConstructorFragment
 	public Class<? extends org.eclipse.xtext.parsetree.reconstr.IParseTreeConstructor> bindIParseTreeConstructor() {
 		return com.reprezen.rapidml.xtext.parseTreeConstruction.XtextDslParsetreeConstructor.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.IParser> bindIParser() {
 		return com.reprezen.rapidml.xtext.parser.antlr.XtextDslParser.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.ITokenToStringConverter> bindITokenToStringConverter() {
 		return org.eclipse.xtext.parser.antlr.AntlrTokenToStringConverter.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider> bindIAntlrTokenFileProvider() {
 		return com.reprezen.rapidml.xtext.parser.antlr.XtextDslAntlrTokenFileProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.antlr.Lexer> bindLexer() {
 		return com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public com.google.inject.Provider<com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer> provideInternalXtextDslLexer() {
-		return org.eclipse.xtext.parser.antlr.LexerProvider.create(com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer.class);
+		return org.eclipse.xtext.parser.antlr.LexerProvider
+				.create(com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer.class);
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public void configureRuntimeLexer(com.google.inject.Binder binder) {
-		binder.bind(org.eclipse.xtext.parser.antlr.Lexer.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.parser.antlr.LexerBindings.RUNTIME)).to(com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer.class);
+		binder.bind(org.eclipse.xtext.parser.antlr.Lexer.class)
+				.annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.parser.antlr.LexerBindings.RUNTIME))
+				.to(com.reprezen.rapidml.xtext.parser.antlr.internal.InternalXtextDslLexer.class);
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.antlr.ITokenDefProvider> bindITokenDefProvider() {
 		return org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
+	// contributed by
+	// org.eclipse.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment
 	public Class<? extends org.eclipse.xtext.parser.antlr.IUnorderedGroupHelper> bindIUnorderedGroupHelper() {
 		return org.eclipse.xtext.parser.antlr.UnorderedGroupHelper.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.ecore2xtext.Ecore2XtextValueConverterServiceFragment
+	// contributed by
+	// org.eclipse.xtext.generator.ecore2xtext.Ecore2XtextValueConverterServiceFragment
 	public Class<? extends org.eclipse.xtext.conversion.IValueConverterService> bindIValueConverterService() {
 		return org.eclipse.xtext.common.services.Ecore2XtextTerminalConverters.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.validation.JavaValidatorFragment
-	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator> bindXtextDslJavaValidator() {
+	@org.eclipse.xtext.service.SingletonBinding(eager = true)
+	public Class<? extends com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator> bindXtextDslJavaValidator() {
 		return com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator.class;
 	}
 
@@ -105,7 +122,10 @@ public abstract class AbstractXtextDslRuntimeModule extends org.eclipse.xtext.se
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
 	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
-		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider.class);
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class)
+				.annotatedWith(com.google.inject.name.Names
+						.named(org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.NAMED_DELEGATE))
+				.to(org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider.class);
 	}
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment
@@ -140,12 +160,16 @@ public abstract class AbstractXtextDslRuntimeModule extends org.eclipse.xtext.se
 
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
 	public void configureIResourceDescriptions(com.google.inject.Binder binder) {
-		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class).to(org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions.class);
+		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class)
+				.to(org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions.class);
 	}
 
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
 	public void configureIResourceDescriptionsPersisted(com.google.inject.Binder binder) {
-		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider.PERSISTED_DESCRIPTIONS)).to(org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions.class);
+		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class)
+				.annotatedWith(com.google.inject.name.Names
+						.named(org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider.PERSISTED_DESCRIPTIONS))
+				.to(org.eclipse.xtext.resource.impl.ResourceSetBasedResourceDescriptions.class);
 	}
 
 }

@@ -16,30 +16,29 @@ import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.TemplateParameter;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Template Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Template Parameter</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class TemplateParameterImpl extends URIParameterImpl implements TemplateParameter {
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected TemplateParameterImpl() {
+	protected TemplateParameterImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.TEMPLATE_PARAMETER;
 	}
 
-} //TemplateParameterImpl
+} // TemplateParameterImpl

@@ -11,9 +11,8 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Example</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Example</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getExample()
@@ -22,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Example extends EObject {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

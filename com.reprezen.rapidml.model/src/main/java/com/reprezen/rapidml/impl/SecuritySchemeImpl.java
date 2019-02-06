@@ -34,484 +34,504 @@ import com.reprezen.rapidml.SecurityScope;
 import com.reprezen.rapidml.TypedResponse;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Security Scheme</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Security Scheme</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getExtensions <em>Extensions</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getType <em>Type</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getScopes <em>Scopes</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getSettings <em>Settings</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getErrorResponses <em>Error Responses</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getFlow <em>Flow</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getExtensions
+ * <em>Extensions</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getName
+ * <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getType
+ * <em>Type</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getScopes
+ * <em>Scopes</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getSettings
+ * <em>Settings</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getParameters
+ * <em>Parameters</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getErrorResponses
+ * <em>Error Responses</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeImpl#getFlow
+ * <em>Flow</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SecuritySchemeImpl extends DocumentableImpl implements SecurityScheme {
-    /**
-	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExtensions()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<Extension> extensions;
+	protected EList<Extension> extensions;
 
-    /**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
-    /**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected String name = NAME_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
-    /**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final AuthenticationTypes TYPE_EDEFAULT = AuthenticationTypes.BASIC;
+	protected static final AuthenticationTypes TYPE_EDEFAULT = AuthenticationTypes.BASIC;
 
-    /**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-    protected AuthenticationTypes type = TYPE_EDEFAULT;
+	protected AuthenticationTypes type = TYPE_EDEFAULT;
 
-    /**
-	 * The cached value of the '{@link #getScopes() <em>Scopes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getScopes() <em>Scopes</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getScopes()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<SecurityScope> scopes;
+	protected EList<SecurityScope> scopes;
 
-    /**
-	 * The cached value of the '{@link #getSettings() <em>Settings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getSettings() <em>Settings</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSettings()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<SecuritySchemeParameter> settings;
+	protected EList<SecuritySchemeParameter> settings;
 
-    /**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<MessageParameter> parameters;
+	protected EList<MessageParameter> parameters;
 
-    /**
-	 * The cached value of the '{@link #getErrorResponses() <em>Error Responses</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getErrorResponses() <em>Error
+	 * Responses</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getErrorResponses()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<TypedResponse> errorResponses;
+	protected EList<TypedResponse> errorResponses;
 
-    /**
-	 * The default value of the '{@link #getFlow() <em>Flow</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getFlow() <em>Flow</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFlow()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final AuthenticationFlows FLOW_EDEFAULT = AuthenticationFlows.IMPLICIT;
+	protected static final AuthenticationFlows FLOW_EDEFAULT = AuthenticationFlows.IMPLICIT;
 
-    /**
-	 * The cached value of the '{@link #getFlow() <em>Flow</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getFlow() <em>Flow</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFlow()
 	 * @generated
 	 * @ordered
 	 */
-    protected AuthenticationFlows flow = FLOW_EDEFAULT;
+	protected AuthenticationFlows flow = FLOW_EDEFAULT;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected SecuritySchemeImpl() {
+	protected SecuritySchemeImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.SECURITY_SCHEME;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<Extension> getExtensions() {
+	public EList<Extension> getExtensions() {
 		if (extensions == null) {
-			extensions = new EObjectContainmentEList<Extension>(Extension.class, this, RapidmlPackage.SECURITY_SCHEME__EXTENSIONS);
+			extensions = new EObjectContainmentEList<Extension>(Extension.class, this,
+					RapidmlPackage.SECURITY_SCHEME__EXTENSIONS);
 		}
 		return extensions;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.SECURITY_SCHEME__NAME, oldName, name));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public AuthenticationTypes getType() {
+	public AuthenticationTypes getType() {
 		return type;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setType(AuthenticationTypes newType) {
+	public void setType(AuthenticationTypes newType) {
 		AuthenticationTypes oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.SECURITY_SCHEME__TYPE, oldType, type));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<SecurityScope> getScopes() {
+	public EList<SecurityScope> getScopes() {
 		if (scopes == null) {
-			scopes = new EObjectContainmentEList<SecurityScope>(SecurityScope.class, this, RapidmlPackage.SECURITY_SCHEME__SCOPES);
+			scopes = new EObjectContainmentEList<SecurityScope>(SecurityScope.class, this,
+					RapidmlPackage.SECURITY_SCHEME__SCOPES);
 		}
 		return scopes;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<SecuritySchemeParameter> getSettings() {
+	public EList<SecuritySchemeParameter> getSettings() {
 		if (settings == null) {
-			settings = new EObjectContainmentEList<SecuritySchemeParameter>(SecuritySchemeParameter.class, this, RapidmlPackage.SECURITY_SCHEME__SETTINGS);
+			settings = new EObjectContainmentEList<SecuritySchemeParameter>(SecuritySchemeParameter.class, this,
+					RapidmlPackage.SECURITY_SCHEME__SETTINGS);
 		}
 		return settings;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<MessageParameter> getParameters() {
+	public EList<MessageParameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<MessageParameter>(MessageParameter.class, this, RapidmlPackage.SECURITY_SCHEME__PARAMETERS);
+			parameters = new EObjectContainmentEList<MessageParameter>(MessageParameter.class, this,
+					RapidmlPackage.SECURITY_SCHEME__PARAMETERS);
 		}
 		return parameters;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<TypedResponse> getErrorResponses() {
+	public EList<TypedResponse> getErrorResponses() {
 		if (errorResponses == null) {
-			errorResponses = new EObjectContainmentEList<TypedResponse>(TypedResponse.class, this, RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES);
+			errorResponses = new EObjectContainmentEList<TypedResponse>(TypedResponse.class, this,
+					RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES);
 		}
 		return errorResponses;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public AuthenticationFlows getFlow() {
+	public AuthenticationFlows getFlow() {
 		return flow;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setFlow(AuthenticationFlows newFlow) {
+	public void setFlow(AuthenticationFlows newFlow) {
 		AuthenticationFlows oldFlow = flow;
 		flow = newFlow == null ? FLOW_EDEFAULT : newFlow;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.SECURITY_SCHEME__FLOW, oldFlow, flow));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
-				return ((InternalEList<?>)getExtensions()).basicRemove(otherEnd, msgs);
-			case RapidmlPackage.SECURITY_SCHEME__SCOPES:
-				return ((InternalEList<?>)getScopes()).basicRemove(otherEnd, msgs);
-			case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
-				return ((InternalEList<?>)getSettings()).basicRemove(otherEnd, msgs);
-			case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-			case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
-				return ((InternalEList<?>)getErrorResponses()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
+			return ((InternalEList<?>) getExtensions()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.SECURITY_SCHEME__SCOPES:
+			return ((InternalEList<?>) getScopes()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
+			return ((InternalEList<?>) getSettings()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
+			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
+			return ((InternalEList<?>) getErrorResponses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
-				return getExtensions();
-			case RapidmlPackage.SECURITY_SCHEME__NAME:
-				return getName();
-			case RapidmlPackage.SECURITY_SCHEME__TYPE:
-				return getType();
-			case RapidmlPackage.SECURITY_SCHEME__SCOPES:
-				return getScopes();
-			case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
-				return getSettings();
-			case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
-				return getParameters();
-			case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
-				return getErrorResponses();
-			case RapidmlPackage.SECURITY_SCHEME__FLOW:
-				return getFlow();
+		case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
+			return getExtensions();
+		case RapidmlPackage.SECURITY_SCHEME__NAME:
+			return getName();
+		case RapidmlPackage.SECURITY_SCHEME__TYPE:
+			return getType();
+		case RapidmlPackage.SECURITY_SCHEME__SCOPES:
+			return getScopes();
+		case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
+			return getSettings();
+		case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
+			return getParameters();
+		case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
+			return getErrorResponses();
+		case RapidmlPackage.SECURITY_SCHEME__FLOW:
+			return getFlow();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
-				getExtensions().clear();
-				getExtensions().addAll((Collection<? extends Extension>)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__NAME:
-				setName((String)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__TYPE:
-				setType((AuthenticationTypes)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__SCOPES:
-				getScopes().clear();
-				getScopes().addAll((Collection<? extends SecurityScope>)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
-				getSettings().clear();
-				getSettings().addAll((Collection<? extends SecuritySchemeParameter>)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends MessageParameter>)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
-				getErrorResponses().clear();
-				getErrorResponses().addAll((Collection<? extends TypedResponse>)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__FLOW:
-				setFlow((AuthenticationFlows)newValue);
-				return;
+		case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
+			getExtensions().clear();
+			getExtensions().addAll((Collection<? extends Extension>) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__NAME:
+			setName((String) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__TYPE:
+			setType((AuthenticationTypes) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__SCOPES:
+			getScopes().clear();
+			getScopes().addAll((Collection<? extends SecurityScope>) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
+			getSettings().clear();
+			getSettings().addAll((Collection<? extends SecuritySchemeParameter>) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends MessageParameter>) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
+			getErrorResponses().clear();
+			getErrorResponses().addAll((Collection<? extends TypedResponse>) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__FLOW:
+			setFlow((AuthenticationFlows) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
-				getExtensions().clear();
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__SCOPES:
-				getScopes().clear();
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
-				getSettings().clear();
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
-				getParameters().clear();
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
-				getErrorResponses().clear();
-				return;
-			case RapidmlPackage.SECURITY_SCHEME__FLOW:
-				setFlow(FLOW_EDEFAULT);
-				return;
+		case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
+			getExtensions().clear();
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__SCOPES:
+			getScopes().clear();
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
+			getSettings().clear();
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
+			getParameters().clear();
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
+			getErrorResponses().clear();
+			return;
+		case RapidmlPackage.SECURITY_SCHEME__FLOW:
+			setFlow(FLOW_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
-				return extensions != null && !extensions.isEmpty();
-			case RapidmlPackage.SECURITY_SCHEME__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case RapidmlPackage.SECURITY_SCHEME__TYPE:
-				return type != TYPE_EDEFAULT;
-			case RapidmlPackage.SECURITY_SCHEME__SCOPES:
-				return scopes != null && !scopes.isEmpty();
-			case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
-				return settings != null && !settings.isEmpty();
-			case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
-			case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
-				return errorResponses != null && !errorResponses.isEmpty();
-			case RapidmlPackage.SECURITY_SCHEME__FLOW:
-				return flow != FLOW_EDEFAULT;
+		case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
+			return extensions != null && !extensions.isEmpty();
+		case RapidmlPackage.SECURITY_SCHEME__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case RapidmlPackage.SECURITY_SCHEME__TYPE:
+			return type != TYPE_EDEFAULT;
+		case RapidmlPackage.SECURITY_SCHEME__SCOPES:
+			return scopes != null && !scopes.isEmpty();
+		case RapidmlPackage.SECURITY_SCHEME__SETTINGS:
+			return settings != null && !settings.isEmpty();
+		case RapidmlPackage.SECURITY_SCHEME__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
+		case RapidmlPackage.SECURITY_SCHEME__ERROR_RESPONSES:
+			return errorResponses != null && !errorResponses.isEmpty();
+		case RapidmlPackage.SECURITY_SCHEME__FLOW:
+			return flow != FLOW_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Extensible.class) {
 			switch (derivedFeatureID) {
-				case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS: return RapidmlPackage.EXTENSIBLE__EXTENSIONS;
-				default: return -1;
+			case RapidmlPackage.SECURITY_SCHEME__EXTENSIONS:
+				return RapidmlPackage.EXTENSIBLE__EXTENSIONS;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == RESTElement.class) {
 			switch (derivedFeatureID) {
-				default: return -1;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Extensible.class) {
 			switch (baseFeatureID) {
-				case RapidmlPackage.EXTENSIBLE__EXTENSIONS: return RapidmlPackage.SECURITY_SCHEME__EXTENSIONS;
-				default: return -1;
+			case RapidmlPackage.EXTENSIBLE__EXTENSIONS:
+				return RapidmlPackage.SECURITY_SCHEME__EXTENSIONS;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == RESTElement.class) {
 			switch (baseFeatureID) {
-				default: return -1;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public String toString() {
-		if (eIsProxy()) return super.toString();
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
@@ -524,4 +544,4 @@ public class SecuritySchemeImpl extends DocumentableImpl implements SecuritySche
 		return result.toString();
 	}
 
-} //SecuritySchemeImpl
+} // SecuritySchemeImpl

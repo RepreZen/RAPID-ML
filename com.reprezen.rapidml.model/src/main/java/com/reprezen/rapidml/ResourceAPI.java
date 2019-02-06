@@ -8,29 +8,33 @@
  */
 package com.reprezen.rapidml;
 
-import com.reprezen.rapidml.DataModel;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Resource API</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Resource
+ * API</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getVersion <em>Version</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getBaseURI <em>Base URI</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getOwnedResourceDefinitions <em>Owned Resource Definitions</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getServiceDataModels <em>Service Data Models</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getFormats <em>Formats</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getDefinedMediaTypes <em>Defined Media Types</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getDefinedLinkRelations <em>Defined Link Relations</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getDefaultReferenceRealizations <em>Default Reference Realizations</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ResourceAPI#getAutoRealizations <em>Auto Realizations</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getVersion <em>Version</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getBaseURI <em>Base
+ * URI</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getOwnedResourceDefinitions
+ * <em>Owned Resource Definitions</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getServiceDataModels <em>Service
+ * Data Models</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getFormats <em>Formats</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getDefinedMediaTypes <em>Defined
+ * Media Types</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getDefinedLinkRelations
+ * <em>Defined Link Relations</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getDefaultReferenceRealizations
+ * <em>Default Reference Realizations</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ResourceAPI#getAutoRealizations <em>Auto
+ * Realizations</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI()
@@ -39,13 +43,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_Name()
@@ -55,23 +60,25 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ResourceAPI#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.ResourceAPI#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Version</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Version</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Version</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_Version()
@@ -81,23 +88,25 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	String getVersion();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ResourceAPI#getVersion <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Version</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.ResourceAPI#getVersion
+	 * <em>Version</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Version</em>' attribute.
 	 * @see #getVersion()
 	 * @generated
 	 */
 	void setVersion(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Base URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Base URI</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Base URI</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Base URI</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Base URI</em>' attribute.
 	 * @see #setBaseURI(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_BaseURI()
@@ -107,25 +116,29 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	String getBaseURI();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ResourceAPI#getBaseURI <em>Base URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Base URI</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.ResourceAPI#getBaseURI
+	 * <em>Base URI</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Base URI</em>' attribute.
 	 * @see #getBaseURI()
 	 * @generated
 	 */
 	void setBaseURI(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Owned Resource Definitions</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.ResourceDefinition}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Owned Resource Definitions</b></em>'
+	 * containment reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.ResourceDefinition}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Resource Definitions</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Owned Resource Definitions</em>' containment
+	 * reference list isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Resource Definitions</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Owned Resource Definitions</em>' containment
+	 *         reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_OwnedResourceDefinitions()
 	 * @model containment="true"
 	 * @generated
@@ -133,14 +146,15 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	EList<ResourceDefinition> getOwnedResourceDefinitions();
 
 	/**
-	 * Returns the value of the '<em><b>Service Data Models</b></em>' reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.DataModel}.
+	 * Returns the value of the '<em><b>Service Data Models</b></em>' reference
+	 * list. The list contents are of type {@link com.reprezen.rapidml.DataModel}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Service Data Models</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Service Data Models</em>' reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Service Data Models</em>' reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_ServiceDataModels()
 	 * @model
@@ -149,14 +163,15 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	EList<com.reprezen.rapidml.DataModel> getServiceDataModels();
 
 	/**
-	 * Returns the value of the '<em><b>Formats</b></em>' reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.MediaType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Formats</b></em>' reference list. The list
+	 * contents are of type {@link com.reprezen.rapidml.MediaType}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Formats</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Formats</em>' reference list isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Formats</em>' reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_Formats()
 	 * @model
@@ -165,15 +180,17 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	EList<MediaType> getFormats();
 
 	/**
-	 * Returns the value of the '<em><b>Defined Media Types</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.MediaType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Defined Media Types</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.MediaType}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Defined Media Types</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Defined Media Types</em>' containment reference
+	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Defined Media Types</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Defined Media Types</em>' containment reference
+	 *         list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_DefinedMediaTypes()
 	 * @model containment="true"
 	 * @generated
@@ -181,15 +198,17 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	EList<MediaType> getDefinedMediaTypes();
 
 	/**
-	 * Returns the value of the '<em><b>Defined Link Relations</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.LinkRelation}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Defined Link Relations</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.LinkRelation}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Defined Link Relations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Defined Link Relations</em>' containment reference
+	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Defined Link Relations</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Defined Link Relations</em>' containment
+	 *         reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_DefinedLinkRelations()
 	 * @model containment="true"
 	 * @generated
@@ -197,15 +216,18 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	EList<LinkRelation> getDefinedLinkRelations();
 
 	/**
-	 * Returns the value of the '<em><b>Default Reference Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.ReferenceRealization}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Default Reference Realizations</b></em>'
+	 * containment reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.ReferenceRealization}. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Default Reference Realizations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Default Reference Realizations</em>' containment
+	 * reference list isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default Reference Realizations</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Default Reference Realizations</em>'
+	 *         containment reference list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_DefaultReferenceRealizations()
 	 * @model containment="true"
 	 * @generated
@@ -213,15 +235,18 @@ public interface ResourceAPI extends RESTElement, HasSecurityValue, HasTitle {
 	EList<ReferenceRealization> getDefaultReferenceRealizations();
 
 	/**
-	 * Returns the value of the '<em><b>Auto Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.RealizationModelLocation}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Auto Realizations</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link com.reprezen.rapidml.RealizationModelLocation}. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Auto Realizations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Auto Realizations</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Auto Realizations</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Auto Realizations</em>' containment reference
+	 *         list.
 	 * @see com.reprezen.rapidml.RapidmlPackage#getResourceAPI_AutoRealizations()
 	 * @model containment="true"
 	 * @generated

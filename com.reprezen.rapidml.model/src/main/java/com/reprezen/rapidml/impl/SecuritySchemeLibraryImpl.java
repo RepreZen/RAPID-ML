@@ -26,194 +26,199 @@ import com.reprezen.rapidml.SecurityScheme;
 import com.reprezen.rapidml.SecuritySchemeLibrary;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Security Scheme Library</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Security Scheme Library</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeLibraryImpl#getSecuritySchemes <em>Security Schemes</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.SecuritySchemeLibraryImpl#getName <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeLibraryImpl#getSecuritySchemes
+ * <em>Security Schemes</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.SecuritySchemeLibraryImpl#getName
+ * <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SecuritySchemeLibraryImpl extends DocumentableImpl implements SecuritySchemeLibrary {
-    /**
-	 * The cached value of the '{@link #getSecuritySchemes() <em>Security Schemes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getSecuritySchemes() <em>Security
+	 * Schemes</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getSecuritySchemes()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<SecurityScheme> securitySchemes;
+	protected EList<SecurityScheme> securitySchemes;
 
-    /**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
-    /**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected String name = NAME_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected SecuritySchemeLibraryImpl() {
+	protected SecuritySchemeLibraryImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.SECURITY_SCHEME_LIBRARY;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<SecurityScheme> getSecuritySchemes() {
+	public EList<SecurityScheme> getSecuritySchemes() {
 		if (securitySchemes == null) {
-			securitySchemes = new EObjectContainmentEList<SecurityScheme>(SecurityScheme.class, this, RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES);
+			securitySchemes = new EObjectContainmentEList<SecurityScheme>(SecurityScheme.class, this,
+					RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES);
 		}
 		return securitySchemes;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME, oldName,
+					name));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
-				return ((InternalEList<?>)getSecuritySchemes()).basicRemove(otherEnd, msgs);
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
+			return ((InternalEList<?>) getSecuritySchemes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
-				return getSecuritySchemes();
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
-				return getName();
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
+			return getSecuritySchemes();
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
-				getSecuritySchemes().clear();
-				getSecuritySchemes().addAll((Collection<? extends SecurityScheme>)newValue);
-				return;
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
-				setName((String)newValue);
-				return;
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
+			getSecuritySchemes().clear();
+			getSecuritySchemes().addAll((Collection<? extends SecurityScheme>) newValue);
+			return;
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
+			setName((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
-				getSecuritySchemes().clear();
-				return;
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
-				setName(NAME_EDEFAULT);
-				return;
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
+			getSecuritySchemes().clear();
+			return;
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
+			setName(NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
-				return securitySchemes != null && !securitySchemes.isEmpty();
-			case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__SECURITY_SCHEMES:
+			return securitySchemes != null && !securitySchemes.isEmpty();
+		case RapidmlPackage.SECURITY_SCHEME_LIBRARY__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public String toString() {
-		if (eIsProxy()) return super.toString();
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
@@ -222,4 +227,4 @@ public class SecuritySchemeLibraryImpl extends DocumentableImpl implements Secur
 		return result.toString();
 	}
 
-} //SecuritySchemeLibraryImpl
+} // SecuritySchemeLibraryImpl

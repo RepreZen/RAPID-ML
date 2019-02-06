@@ -8,17 +8,16 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Reg Ex Constraint</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Reg Ex
+ * Constraint</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.RegExConstraint#getPattern <em>Pattern</em>}</li>
+ * <li>{@link com.reprezen.rapidml.RegExConstraint#getPattern
+ * <em>Pattern</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getRegExConstraint()
@@ -27,13 +26,14 @@ package com.reprezen.rapidml;
  */
 public interface RegExConstraint extends Constraint {
 	/**
-	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Pattern</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Pattern</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Pattern</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Pattern</em>' attribute.
 	 * @see #setPattern(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getRegExConstraint_Pattern()
@@ -43,10 +43,11 @@ public interface RegExConstraint extends Constraint {
 	String getPattern();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.RegExConstraint#getPattern <em>Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pattern</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.RegExConstraint#getPattern
+	 * <em>Pattern</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Pattern</em>' attribute.
 	 * @see #getPattern()
 	 * @generated
 	 */

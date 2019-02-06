@@ -10,21 +10,22 @@ package com.reprezen.rapidml.datatypes.cardinality;
 
 /**
  * {@link Cardinality} with an assigned shortcut.
+ * 
  * @author Tatiana Fesenko <tatiana.fesenko@modelsolv.com>
  *
  */
 public class CardinalityWithShortcut extends Cardinality {
 
-    private String shortcut;
+	private String shortcut;
 
-    CardinalityWithShortcut(int lower, int upper, String shortcut) {
-        super(lower, upper);
-        this.shortcut = shortcut;
-    }
+	CardinalityWithShortcut(int lower, int upper, String shortcut) {
+		super(lower, upper);
+		this.shortcut = shortcut;
+	}
 
-    @Override
-    public String getLabel() {
-        return shortcut;
-    }
+	@Override
+	public String getLabel() {
+		return shortcut;
+	}
 
 }

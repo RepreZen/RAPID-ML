@@ -10,38 +10,36 @@
  */
 package com.reprezen.rapidml.impl;
 
-import com.reprezen.rapidml.RapidmlPackage;
-import com.reprezen.rapidml.DataExample;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import com.reprezen.rapidml.DataExample;
+import com.reprezen.rapidml.RapidmlPackage;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Example</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Data
+ * Example</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public abstract class DataExampleImpl extends EObjectImpl implements DataExample {
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected DataExampleImpl() {
-        super();
-    }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected DataExampleImpl() {
+		super();
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected EClass eStaticClass() {
-        return RapidmlPackage.Literals.DATA_EXAMPLE;
-    }
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return RapidmlPackage.Literals.DATA_EXAMPLE;
+	}
 
-} //DataExampleImpl
+} // DataExampleImpl

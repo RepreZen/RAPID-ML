@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import com.google.common.base.Strings;
-import com.reprezen.rapidml.realization.processor.EffectiveRealization;
 import com.reprezen.rapidml.AuthenticationFlows;
 import com.reprezen.rapidml.AuthenticationMethod;
 import com.reprezen.rapidml.AuthenticationTypes;
@@ -58,6 +57,8 @@ import com.reprezen.rapidml.PrimitiveTypesLibrary;
 import com.reprezen.rapidml.PropertyRealization;
 import com.reprezen.rapidml.PropertyReference;
 import com.reprezen.rapidml.RESTElement;
+import com.reprezen.rapidml.RapidmlFactory;
+import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.RealizationModelLocation;
 import com.reprezen.rapidml.ReferenceEmbed;
 import com.reprezen.rapidml.ReferenceLink;
@@ -67,8 +68,6 @@ import com.reprezen.rapidml.ReferenceRealizationEnum;
 import com.reprezen.rapidml.ReferenceTreatment;
 import com.reprezen.rapidml.RegExConstraint;
 import com.reprezen.rapidml.ResourceAPI;
-import com.reprezen.rapidml.RapidmlFactory;
-import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.SecurityScheme;
 import com.reprezen.rapidml.SecuritySchemeLibrary;
 import com.reprezen.rapidml.SecuritySchemeParameter;
@@ -88,7 +87,7 @@ import com.reprezen.rapidml.datatypes.cardinality.Cardinality;
 import com.reprezen.rapidml.datatypes.cardinality.CardinalityDeserializer;
 import com.reprezen.rapidml.datatypes.cardinality.FeatureCardinalities;
 import com.reprezen.rapidml.datatypes.cardinality.OverrideCardinalities;
-import com.reprezen.rapidml.impl.UserDefinedTypeImpl;
+import com.reprezen.rapidml.realization.processor.EffectiveRealization;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--

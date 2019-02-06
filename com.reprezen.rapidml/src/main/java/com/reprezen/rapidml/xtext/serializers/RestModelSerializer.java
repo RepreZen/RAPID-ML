@@ -18,14 +18,15 @@ import com.reprezen.rapidml.ZenModel;
  */
 public interface RestModelSerializer {
 
-    /**
-     * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at the given path.
-     * 
-     * @param path
-     *            Location of the RESTApi metamodel.
-     * @param model
-     *            {@link com.modelsolv.reprezen.restapi.ZenModel} to serialize.
-     */
-    public void serialize(String path, ZenModel model);
+	/**
+	 * Serializes an {@link com.modelsolv.reprezen.restapi.ZenModel} at the given
+	 * path.
+	 * 
+	 * @param path
+	 *            Location of the RESTApi metamodel.
+	 * @param model
+	 *            {@link com.modelsolv.reprezen.restapi.ZenModel} to serialize.
+	 */
+	public void serialize(String path, ZenModel model);
 
 }

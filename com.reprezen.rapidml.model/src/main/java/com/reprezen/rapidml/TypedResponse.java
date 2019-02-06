@@ -8,18 +8,18 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Typed Response</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Typed
+ * Response</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.TypedResponse#getStatusCode <em>Status Code</em>}</li>
- *   <li>{@link com.reprezen.rapidml.TypedResponse#getContainingMethod <em>Containing Method</em>}</li>
+ * <li>{@link com.reprezen.rapidml.TypedResponse#getStatusCode <em>Status
+ * Code</em>}</li>
+ * <li>{@link com.reprezen.rapidml.TypedResponse#getContainingMethod
+ * <em>Containing Method</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getTypedResponse()
@@ -28,14 +28,14 @@ package com.reprezen.rapidml;
  */
 public interface TypedResponse extends TypedMessage {
 	/**
-	 * Returns the value of the '<em><b>Status Code</b></em>' attribute.
-	 * The default value is <code>"-1"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Status Code</b></em>' attribute. The default
+	 * value is <code>"-1"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Status Code</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Status Code</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Status Code</em>' attribute.
 	 * @see #setStatusCode(int)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getTypedResponse_StatusCode()
@@ -45,24 +45,28 @@ public interface TypedResponse extends TypedMessage {
 	int getStatusCode();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.TypedResponse#getStatusCode <em>Status Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status Code</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.TypedResponse#getStatusCode <em>Status
+	 * Code</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Status Code</em>' attribute.
 	 * @see #getStatusCode()
 	 * @generated
 	 */
 	void setStatusCode(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Containing Method</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.reprezen.rapidml.Method#getResponses <em>Responses</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Containing Method</b></em>' container
+	 * reference. It is bidirectional and its opposite is
+	 * '{@link com.reprezen.rapidml.Method#getResponses <em>Responses</em>}'. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Containing Method</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Containing Method</em>' container reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Containing Method</em>' container reference.
 	 * @see #setContainingMethod(Method)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getTypedResponse_ContainingMethod()
@@ -73,10 +77,14 @@ public interface TypedResponse extends TypedMessage {
 	Method getContainingMethod();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.TypedResponse#getContainingMethod <em>Containing Method</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Method</em>' container reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.TypedResponse#getContainingMethod <em>Containing
+	 * Method</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Containing Method</em>' container
+	 *            reference.
 	 * @see #getContainingMethod()
 	 * @generated
 	 */

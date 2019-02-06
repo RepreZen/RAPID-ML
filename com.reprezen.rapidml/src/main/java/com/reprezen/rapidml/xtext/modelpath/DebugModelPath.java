@@ -14,27 +14,27 @@ import com.reprezen.rapidml.xtext.modelpath.DebugModelPath.Option;
 
 public class DebugModelPath extends Debug<Option> {
 
-    public DebugModelPath() {
-        super(Option.class);
-    }
+	public DebugModelPath() {
+		super(Option.class);
+	}
 
-    @Override
-    protected String getName() {
-        return "ModelPath";
-    }
+	@Override
+	protected String getName() {
+		return "ModelPath";
+	}
 
-    @Override
-    protected ConfigVariable getDebugVar() {
-        return ConfigVariable.REPREZEN_DEBUG_MODELPATH;
-    }
+	@Override
+	protected ConfigVariable getDebugVar() {
+		return ConfigVariable.REPREZEN_DEBUG_MODELPATH;
+	}
 
-    private static DebugModelPath instance = new DebugModelPath();
+	private static DebugModelPath instance = new DebugModelPath();
 
-    public static void debug(Object... args) {
-        instance._debug(args);
-    }
+	public static void debug(Object... args) {
+		instance._debug(args);
+	}
 
-    public static enum Option {
-        RESOLUTION, MATCHING, INTERPOLATION, DEFAULT
-    }
+	public static enum Option {
+		RESOLUTION, MATCHING, INTERPOLATION, DEFAULT
+	}
 }

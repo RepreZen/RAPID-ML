@@ -8,18 +8,18 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Security Scheme Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Security
+ * Scheme Parameter</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.SecuritySchemeParameter#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.SecuritySchemeParameter#getValue <em>Value</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecuritySchemeParameter#getName
+ * <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.SecuritySchemeParameter#getValue
+ * <em>Value</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getSecuritySchemeParameter()
@@ -28,13 +28,14 @@ package com.reprezen.rapidml;
  */
 public interface SecuritySchemeParameter extends Documentable {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getSecuritySchemeParameter_Name()
@@ -44,23 +45,26 @@ public interface SecuritySchemeParameter extends Documentable {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.SecuritySchemeParameter#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.SecuritySchemeParameter#getName <em>Name</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Value</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getSecuritySchemeParameter_Value()
@@ -70,10 +74,12 @@ public interface SecuritySchemeParameter extends Documentable {
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.SecuritySchemeParameter#getValue <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.SecuritySchemeParameter#getValue
+	 * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
 	 */

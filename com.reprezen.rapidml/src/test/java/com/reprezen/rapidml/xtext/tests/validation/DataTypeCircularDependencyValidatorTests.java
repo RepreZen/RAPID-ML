@@ -25,72 +25,72 @@ import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator;
 @RunWith(XtextRunner.class)
 public class DataTypeCircularDependencyValidatorTests {
 
-    @Inject
-    private ValidatorTester<XtextDslJavaValidator> tester;
-    private RapidmlFactory factory = RapidmlFactory.eINSTANCE;
+	@Inject
+	private ValidatorTester<XtextDslJavaValidator> tester;
+	private RapidmlFactory factory = RapidmlFactory.eINSTANCE;
 
-    @Test
-    public void testSelfContainmentReference() {
-        ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
-        Structure datatype1 = reference1.getContainingDataType();
-        reference1.setType(datatype1);
+	@Test
+	public void testSelfContainmentReference() {
+		ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
+		Structure datatype1 = reference1.getContainingDataType();
+		reference1.setType(datatype1);
 
-        tester.validate(reference1).assertWarningContains("Circular");
-    }
+		tester.validate(reference1).assertWarningContains("Circular");
+	}
 
-    @Test
-    public void testTwoLevelContainmentCircularReference() {
-        ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
-        Structure datatype1 = reference1.getContainingDataType();
+	@Test
+	public void testTwoLevelContainmentCircularReference() {
+		ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
+		Structure datatype1 = reference1.getContainingDataType();
 
-        ReferenceProperty reference2 = createDataTypeWithContainmentReference("ref2");
-        Structure datatype2 = reference2.getContainingDataType();
+		ReferenceProperty reference2 = createDataTypeWithContainmentReference("ref2");
+		Structure datatype2 = reference2.getContainingDataType();
 
-        reference1.setType(datatype2);
-        reference2.setType(datatype1);
+		reference1.setType(datatype2);
+		reference2.setType(datatype1);
 
-        tester.validate(reference1).assertWarningContains("Circular");
-    }
+		tester.validate(reference1).assertWarningContains("Circular");
+	}
 
-    @Test
-    public void testThreeLevelContainmentCircularReference() {
-        ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
-        Structure datatype1 = reference1.getContainingDataType();
+	@Test
+	public void testThreeLevelContainmentCircularReference() {
+		ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
+		Structure datatype1 = reference1.getContainingDataType();
 
-        ReferenceProperty reference2 = createDataTypeWithContainmentReference("ref2");
-        Structure datatype2 = reference2.getContainingDataType();
+		ReferenceProperty reference2 = createDataTypeWithContainmentReference("ref2");
+		Structure datatype2 = reference2.getContainingDataType();
 
-        ReferenceProperty reference3 = createDataTypeWithContainmentReference("ref3");
-        Structure datatype3 = reference3.getContainingDataType();
+		ReferenceProperty reference3 = createDataTypeWithContainmentReference("ref3");
+		Structure datatype3 = reference3.getContainingDataType();
 
-        reference1.setType(datatype2);
-        reference2.setType(datatype3);
-        reference3.setType(datatype1);
+		reference1.setType(datatype2);
+		reference2.setType(datatype3);
+		reference3.setType(datatype1);
 
-        tester.validate(reference1).assertWarningContains("Circular");
-    }
+		tester.validate(reference1).assertWarningContains("Circular");
+	}
 
-    @Test
-    public void testNoContainmentCircularReference() {
-        ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
-        Structure datatype1 = reference1.getContainingDataType();
+	@Test
+	public void testNoContainmentCircularReference() {
+		ReferenceProperty reference1 = createDataTypeWithContainmentReference("ref1");
+		Structure datatype1 = reference1.getContainingDataType();
 
-        ReferenceProperty reference2 = createDataTypeWithContainmentReference("ref2");
-        Structure datatype2 = reference2.getContainingDataType();
+		ReferenceProperty reference2 = createDataTypeWithContainmentReference("ref2");
+		Structure datatype2 = reference2.getContainingDataType();
 
-        reference1.setType(datatype2);
-        // reference2.setType(datatype1);
+		reference1.setType(datatype2);
+		// reference2.setType(datatype1);
 
-        tester.validate(reference1).assertOK();
-    }
+		tester.validate(reference1).assertOK();
+	}
 
-    protected ReferenceProperty createDataTypeWithContainmentReference(String propertyName) {
-        Structure datatype1 = factory.createStructure();
-        datatype1.setName("DataType_" + propertyName);
-        ReferenceProperty reference1 = factory.createReferenceProperty();
-        datatype1.getOwnedFeatures().add(reference1);
-        reference1.setContainment(true);
-        reference1.setName(propertyName);
-        return reference1;
-    }
+	protected ReferenceProperty createDataTypeWithContainmentReference(String propertyName) {
+		Structure datatype1 = factory.createStructure();
+		datatype1.setName("DataType_" + propertyName);
+		ReferenceProperty reference1 = factory.createReferenceProperty();
+		datatype1.getOwnedFeatures().add(reference1);
+		reference1.setContainment(true);
+		reference1.setName(propertyName);
+		return reference1;
+	}
 }

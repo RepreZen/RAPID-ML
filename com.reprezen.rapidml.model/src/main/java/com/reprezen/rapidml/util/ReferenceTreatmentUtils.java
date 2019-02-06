@@ -10,41 +10,41 @@ package com.reprezen.rapidml.util;
 
 import org.eclipse.emf.ecore.EObject;
 
-import com.reprezen.rapidml.ReferenceTreatment;
-import com.reprezen.rapidml.ServiceDataResource;
-import com.reprezen.rapidml.TypedMessage;
 import com.reprezen.rapidml.Feature;
 import com.reprezen.rapidml.ReferenceElement;
+import com.reprezen.rapidml.ReferenceTreatment;
+import com.reprezen.rapidml.ServiceDataResource;
 import com.reprezen.rapidml.Structure;
+import com.reprezen.rapidml.TypedMessage;
 
 public class ReferenceTreatmentUtils {
 
-    public static Structure getContextDataType(EObject context) {
-        if (context instanceof ServiceDataResource) {
-            return ((ServiceDataResource) context).getDataType();
-        }
-        if (context instanceof TypedMessage) {
-            return ((TypedMessage) context).getActualType();
-        }
-        if (context instanceof ReferenceTreatment) {
-            return ((ReferenceTreatment) context).getReferenceElement().getDataType();
-        }
-        // not supported case
-        return null;
-    }
+	public static Structure getContextDataType(EObject context) {
+		if (context instanceof ServiceDataResource) {
+			return ((ServiceDataResource) context).getDataType();
+		}
+		if (context instanceof TypedMessage) {
+			return ((TypedMessage) context).getActualType();
+		}
+		if (context instanceof ReferenceTreatment) {
+			return ((ReferenceTreatment) context).getReferenceElement().getDataType();
+		}
+		// not supported case
+		return null;
+	}
 
-    public static boolean isFeatureIncluded(EObject context, Feature feature) {
-        if (context instanceof ServiceDataResource) {
-            return ((ServiceDataResource) context).isIncluded(feature);
-        }
-        if (context instanceof TypedMessage) {
-            return ((TypedMessage) context).isIncluded(feature);
-        }
-        return false;
-    }
+	public static boolean isFeatureIncluded(EObject context, Feature feature) {
+		if (context instanceof ServiceDataResource) {
+			return ((ServiceDataResource) context).isIncluded(feature);
+		}
+		if (context instanceof TypedMessage) {
+			return ((TypedMessage) context).isIncluded(feature);
+		}
+		return false;
+	}
 
-    public static String getLabel(ReferenceElement referenceElement) {
-        return ">" + referenceElement.getName();
-    }
+	public static String getLabel(ReferenceElement referenceElement) {
+		return ">" + referenceElement.getName();
+	}
 
 }

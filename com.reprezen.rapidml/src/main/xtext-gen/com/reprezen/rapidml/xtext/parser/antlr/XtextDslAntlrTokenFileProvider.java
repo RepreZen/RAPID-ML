@@ -7,10 +7,11 @@ import java.io.InputStream;
 import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class XtextDslAntlrTokenFileProvider implements IAntlrTokenFileProvider {
-	
+
 	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
-    	return classLoader.getResourceAsStream("com/reprezen/rapidml/xtext/parser/antlr/internal/InternalXtextDsl.tokens");
+		return classLoader
+				.getResourceAsStream("com/reprezen/rapidml/xtext/parser/antlr/internal/InternalXtextDsl.tokens");
 	}
 }

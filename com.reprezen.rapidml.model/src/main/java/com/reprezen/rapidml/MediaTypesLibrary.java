@@ -9,19 +9,18 @@
 package com.reprezen.rapidml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Media Types Library</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Media
+ * Types Library</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.MediaTypesLibrary#getMediaTypes <em>Media Types</em>}</li>
+ * <li>{@link com.reprezen.rapidml.MediaTypesLibrary#getMediaTypes <em>Media
+ * Types</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getMediaTypesLibrary()
@@ -30,14 +29,15 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MediaTypesLibrary extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Media Types</b></em>' containment reference list.
-	 * The list contents are of type {@link com.reprezen.rapidml.MediaType}.
+	 * Returns the value of the '<em><b>Media Types</b></em>' containment reference
+	 * list. The list contents are of type {@link com.reprezen.rapidml.MediaType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Media Types</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Media Types</em>' containment reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Media Types</em>' containment reference list.
 	 * @see #isSetMediaTypes()
 	 * @see #unsetMediaTypes()
@@ -48,9 +48,11 @@ public interface MediaTypesLibrary extends EObject {
 	EList<MediaType> getMediaTypes();
 
 	/**
-	 * Unsets the value of the '{@link com.reprezen.rapidml.MediaTypesLibrary#getMediaTypes <em>Media Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Unsets the value of the
+	 * '{@link com.reprezen.rapidml.MediaTypesLibrary#getMediaTypes <em>Media
+	 * Types</em>}' containment reference list. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #isSetMediaTypes()
 	 * @see #getMediaTypes()
 	 * @generated
@@ -58,10 +60,13 @@ public interface MediaTypesLibrary extends EObject {
 	void unsetMediaTypes();
 
 	/**
-	 * Returns whether the value of the '{@link com.reprezen.rapidml.MediaTypesLibrary#getMediaTypes <em>Media Types</em>}' containment reference list is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Media Types</em>' containment reference list is set.
+	 * Returns whether the value of the
+	 * '{@link com.reprezen.rapidml.MediaTypesLibrary#getMediaTypes <em>Media
+	 * Types</em>}' containment reference list is set. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return whether the value of the '<em>Media Types</em>' containment reference
+	 *         list is set.
 	 * @see #unsetMediaTypes()
 	 * @see #getMediaTypes()
 	 * @generated

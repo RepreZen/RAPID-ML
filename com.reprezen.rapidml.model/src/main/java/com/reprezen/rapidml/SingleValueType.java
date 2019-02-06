@@ -8,11 +8,9 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Single Value Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Single
+ * Value Type</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getSingleValueType()
@@ -21,8 +19,8 @@ package com.reprezen.rapidml;
  */
 public interface SingleValueType extends DataType {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

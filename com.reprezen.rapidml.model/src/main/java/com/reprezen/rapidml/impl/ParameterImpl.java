@@ -22,423 +22,439 @@ import com.reprezen.rapidml.RapidmlPackage;
 import com.reprezen.rapidml.SourceReference;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.ParameterImpl#isRequired <em>Required</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getDefault <em>Default</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getFixed <em>Fixed</em>}</li>
- *   <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getSourceReference <em>Source Reference</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getName
+ * <em>Name</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ParameterImpl#isRequired
+ * <em>Required</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getDefault
+ * <em>Default</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getFixed
+ * <em>Fixed</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ParameterImpl#getSourceReference
+ * <em>Source Reference</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class ParameterImpl extends RESTElementImpl implements Parameter {
-    /**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
-    /**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected String name = NAME_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
-    /**
+	/**
 	 * The default value of the '{@link #isRequired() <em>Required</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isRequired()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final boolean REQUIRED_EDEFAULT = false;
+	protected static final boolean REQUIRED_EDEFAULT = false;
 
-    /**
+	/**
 	 * The cached value of the '{@link #isRequired() <em>Required</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isRequired()
 	 * @generated
 	 * @ordered
 	 */
-    protected boolean required = REQUIRED_EDEFAULT;
+	protected boolean required = REQUIRED_EDEFAULT;
 
-    /**
+	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDefault()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String DEFAULT_EDEFAULT = null;
+	protected static final String DEFAULT_EDEFAULT = null;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDefault()
 	 * @generated
 	 * @ordered
 	 */
-    protected String default_ = DEFAULT_EDEFAULT;
+	protected String default_ = DEFAULT_EDEFAULT;
 
-    /**
-	 * The default value of the '{@link #getFixed() <em>Fixed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getFixed() <em>Fixed</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFixed()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String FIXED_EDEFAULT = null;
+	protected static final String FIXED_EDEFAULT = null;
 
-    /**
-	 * The cached value of the '{@link #getFixed() <em>Fixed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getFixed() <em>Fixed</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFixed()
 	 * @generated
 	 * @ordered
 	 */
-    protected String fixed = FIXED_EDEFAULT;
+	protected String fixed = FIXED_EDEFAULT;
 
-    /**
-	 * The cached value of the '{@link #getSourceReference() <em>Source Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getSourceReference() <em>Source
+	 * Reference</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getSourceReference()
 	 * @generated
 	 * @ordered
 	 */
-    protected SourceReference sourceReference;
+	protected SourceReference sourceReference;
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected ParameterImpl() {
+	protected ParameterImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.PARAMETER;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__NAME, oldName, name));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public boolean isRequired() {
+	public boolean isRequired() {
 		return required;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setRequired(boolean newRequired) {
+	public void setRequired(boolean newRequired) {
 		boolean oldRequired = required;
 		required = newRequired;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__REQUIRED, oldRequired, required));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__REQUIRED, oldRequired,
+					required));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getDefault() {
+	public String getDefault() {
 		return default_;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setDefault(String newDefault) {
+	public void setDefault(String newDefault) {
 		String oldDefault = default_;
 		default_ = newDefault;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__DEFAULT, oldDefault, default_));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__DEFAULT, oldDefault,
+					default_));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getFixed() {
+	public String getFixed() {
 		return fixed;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setFixed(String newFixed) {
+	public void setFixed(String newFixed) {
 		String oldFixed = fixed;
 		fixed = newFixed;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__FIXED, oldFixed, fixed));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public SourceReference getSourceReference() {
+	public SourceReference getSourceReference() {
 		return sourceReference;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public NotificationChain basicSetSourceReference(SourceReference newSourceReference, NotificationChain msgs) {
+	public NotificationChain basicSetSourceReference(SourceReference newSourceReference, NotificationChain msgs) {
 		SourceReference oldSourceReference = sourceReference;
 		sourceReference = newSourceReference;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__SOURCE_REFERENCE, oldSourceReference, newSourceReference);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					RapidmlPackage.PARAMETER__SOURCE_REFERENCE, oldSourceReference, newSourceReference);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setSourceReference(SourceReference newSourceReference) {
+	public void setSourceReference(SourceReference newSourceReference) {
 		if (newSourceReference != sourceReference) {
 			NotificationChain msgs = null;
 			if (sourceReference != null)
-				msgs = ((InternalEObject)sourceReference).eInverseRemove(this, RapidmlPackage.SOURCE_REFERENCE__CONTAINING_PARAMETER, SourceReference.class, msgs);
+				msgs = ((InternalEObject) sourceReference).eInverseRemove(this,
+						RapidmlPackage.SOURCE_REFERENCE__CONTAINING_PARAMETER, SourceReference.class, msgs);
 			if (newSourceReference != null)
-				msgs = ((InternalEObject)newSourceReference).eInverseAdd(this, RapidmlPackage.SOURCE_REFERENCE__CONTAINING_PARAMETER, SourceReference.class, msgs);
+				msgs = ((InternalEObject) newSourceReference).eInverseAdd(this,
+						RapidmlPackage.SOURCE_REFERENCE__CONTAINING_PARAMETER, SourceReference.class, msgs);
 			msgs = basicSetSourceReference(newSourceReference, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__SOURCE_REFERENCE, newSourceReference, newSourceReference));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PARAMETER__SOURCE_REFERENCE,
+					newSourceReference, newSourceReference));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public com.reprezen.rapidml.SingleValueType getType() {
 		return getSourceReference().getType();
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public com.reprezen.rapidml.PrimitiveType getPrimitiveType() {
+	public com.reprezen.rapidml.PrimitiveType getPrimitiveType() {
 		return getType().getPrimitiveType();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public EList<com.reprezen.rapidml.Constraint> getConstraints() {
+	public EList<com.reprezen.rapidml.Constraint> getConstraints() {
 		return getSourceReference().getConstraints();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
-				if (sourceReference != null)
-					msgs = ((InternalEObject)sourceReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RapidmlPackage.PARAMETER__SOURCE_REFERENCE, null, msgs);
-				return basicSetSourceReference((SourceReference)otherEnd, msgs);
+		case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
+			if (sourceReference != null)
+				msgs = ((InternalEObject) sourceReference).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - RapidmlPackage.PARAMETER__SOURCE_REFERENCE, null, msgs);
+			return basicSetSourceReference((SourceReference) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
-				return basicSetSourceReference(null, msgs);
+		case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
+			return basicSetSourceReference(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.PARAMETER__NAME:
-				return getName();
-			case RapidmlPackage.PARAMETER__REQUIRED:
-				return isRequired();
-			case RapidmlPackage.PARAMETER__DEFAULT:
-				return getDefault();
-			case RapidmlPackage.PARAMETER__FIXED:
-				return getFixed();
-			case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
-				return getSourceReference();
+		case RapidmlPackage.PARAMETER__NAME:
+			return getName();
+		case RapidmlPackage.PARAMETER__REQUIRED:
+			return isRequired();
+		case RapidmlPackage.PARAMETER__DEFAULT:
+			return getDefault();
+		case RapidmlPackage.PARAMETER__FIXED:
+			return getFixed();
+		case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
+			return getSourceReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.PARAMETER__NAME:
-				setName((String)newValue);
-				return;
-			case RapidmlPackage.PARAMETER__REQUIRED:
-				setRequired((Boolean)newValue);
-				return;
-			case RapidmlPackage.PARAMETER__DEFAULT:
-				setDefault((String)newValue);
-				return;
-			case RapidmlPackage.PARAMETER__FIXED:
-				setFixed((String)newValue);
-				return;
-			case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
-				setSourceReference((SourceReference)newValue);
-				return;
+		case RapidmlPackage.PARAMETER__NAME:
+			setName((String) newValue);
+			return;
+		case RapidmlPackage.PARAMETER__REQUIRED:
+			setRequired((Boolean) newValue);
+			return;
+		case RapidmlPackage.PARAMETER__DEFAULT:
+			setDefault((String) newValue);
+			return;
+		case RapidmlPackage.PARAMETER__FIXED:
+			setFixed((String) newValue);
+			return;
+		case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
+			setSourceReference((SourceReference) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.PARAMETER__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case RapidmlPackage.PARAMETER__REQUIRED:
-				setRequired(REQUIRED_EDEFAULT);
-				return;
-			case RapidmlPackage.PARAMETER__DEFAULT:
-				setDefault(DEFAULT_EDEFAULT);
-				return;
-			case RapidmlPackage.PARAMETER__FIXED:
-				setFixed(FIXED_EDEFAULT);
-				return;
-			case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
-				setSourceReference((SourceReference)null);
-				return;
+		case RapidmlPackage.PARAMETER__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case RapidmlPackage.PARAMETER__REQUIRED:
+			setRequired(REQUIRED_EDEFAULT);
+			return;
+		case RapidmlPackage.PARAMETER__DEFAULT:
+			setDefault(DEFAULT_EDEFAULT);
+			return;
+		case RapidmlPackage.PARAMETER__FIXED:
+			setFixed(FIXED_EDEFAULT);
+			return;
+		case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
+			setSourceReference((SourceReference) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.PARAMETER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case RapidmlPackage.PARAMETER__REQUIRED:
-				return required != REQUIRED_EDEFAULT;
-			case RapidmlPackage.PARAMETER__DEFAULT:
-				return DEFAULT_EDEFAULT == null ? default_ != null : !DEFAULT_EDEFAULT.equals(default_);
-			case RapidmlPackage.PARAMETER__FIXED:
-				return FIXED_EDEFAULT == null ? fixed != null : !FIXED_EDEFAULT.equals(fixed);
-			case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
-				return sourceReference != null;
+		case RapidmlPackage.PARAMETER__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case RapidmlPackage.PARAMETER__REQUIRED:
+			return required != REQUIRED_EDEFAULT;
+		case RapidmlPackage.PARAMETER__DEFAULT:
+			return DEFAULT_EDEFAULT == null ? default_ != null : !DEFAULT_EDEFAULT.equals(default_);
+		case RapidmlPackage.PARAMETER__FIXED:
+			return FIXED_EDEFAULT == null ? fixed != null : !FIXED_EDEFAULT.equals(fixed);
+		case RapidmlPackage.PARAMETER__SOURCE_REFERENCE:
+			return sourceReference != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public String toString() {
-		if (eIsProxy()) return super.toString();
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
@@ -453,4 +469,4 @@ public abstract class ParameterImpl extends RESTElementImpl implements Parameter
 		return result.toString();
 	}
 
-} //ParameterImpl
+} // ParameterImpl

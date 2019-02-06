@@ -20,30 +20,30 @@ import org.eclipse.xtext.util.Strings;
  */
 public class RepreZenImportNormalizer extends ImportNormalizer {
 
-    /** Alias for namespace. */
-    private QualifiedName alias;
+	/** Alias for namespace. */
+	private QualifiedName alias;
 
-    public RepreZenImportNormalizer(String alias, QualifiedName importedNamespace) {
-        super(importedNamespace, true, false);
-        this.alias = Strings.isEmpty(alias) ? QualifiedName.EMPTY : QualifiedName.create(alias);
-    }
+	public RepreZenImportNormalizer(String alias, QualifiedName importedNamespace) {
+		super(importedNamespace, true, false);
+		this.alias = Strings.isEmpty(alias) ? QualifiedName.EMPTY : QualifiedName.create(alias);
+	}
 
-    @Override
-    public QualifiedName deresolve(QualifiedName fullyQualifiedName) {
-        if (fullyQualifiedName.startsWith(getImportedNamespacePrefix())) {
-            int segmentCount = getImportedNamespacePrefix().getSegmentCount();
-            return alias.append(fullyQualifiedName.skipFirst(segmentCount));
-        }
-        return null;
-    }
+	@Override
+	public QualifiedName deresolve(QualifiedName fullyQualifiedName) {
+		if (fullyQualifiedName.startsWith(getImportedNamespacePrefix())) {
+			int segmentCount = getImportedNamespacePrefix().getSegmentCount();
+			return alias.append(fullyQualifiedName.skipFirst(segmentCount));
+		}
+		return null;
+	}
 
-    @Override
-    public QualifiedName resolve(QualifiedName relativeName) {
-        QualifiedName prefix = getImportedNamespacePrefix();
+	@Override
+	public QualifiedName resolve(QualifiedName relativeName) {
+		QualifiedName prefix = getImportedNamespacePrefix();
 
-        if (relativeName.getSegmentCount() > 1 && !alias.isEmpty() && relativeName.startsWith(alias)) {
-            relativeName = relativeName.skipFirst(1);
-        }
-        return prefix.append(relativeName);
-    }
+		if (relativeName.getSegmentCount() > 1 && !alias.isEmpty() && relativeName.startsWith(alias)) {
+			relativeName = relativeName.skipFirst(1);
+		}
+		return prefix.append(relativeName);
+	}
 }

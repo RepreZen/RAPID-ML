@@ -21,60 +21,61 @@ import java.util.regex.Pattern;
  */
 public class CardinalityDeserializer {
 
-    private final List<CardinalityWithShortcut> shortcuts;
-    private final Pattern cardinalityPattern = Pattern.compile("\\[(\\d+)\\.\\.(\\d+|\\*)\\]");
+	private final List<CardinalityWithShortcut> shortcuts;
+	private final Pattern cardinalityPattern = Pattern.compile("\\[(\\d+)\\.\\.(\\d+|\\*)\\]");
 
-    /**
-     * Instantiates a new cardinality deserializer.
-     * 
-     * @param cardinalitiesWithShortcuts
-     *            supported shortcuts
-     */
-    public CardinalityDeserializer(CardinalityWithShortcut[] cardinalitiesWithShortcuts) {
-        this.shortcuts = Arrays.asList(cardinalitiesWithShortcuts);
-    }
+	/**
+	 * Instantiates a new cardinality deserializer.
+	 * 
+	 * @param cardinalitiesWithShortcuts
+	 *            supported shortcuts
+	 */
+	public CardinalityDeserializer(CardinalityWithShortcut[] cardinalitiesWithShortcuts) {
+		this.shortcuts = Arrays.asList(cardinalitiesWithShortcuts);
+	}
 
-    /**
-     * Parses the string and creates the corresponding cardinality. Shortcuts are respected.
-     * 
-     * @param cardinalityString
-     *            the cardinality string
-     * @return the cardinality
-     */
-    public Cardinality getCardinality(String cardinalityString) {
-        // uses a shortcut
-        for (CardinalityWithShortcut next : shortcuts) {
-            if (next.getLabel().equals(cardinalityString)) {
-                return next;
-            }
-        }
-        // uses an expanded notation
-        Matcher matcher = cardinalityPattern.matcher(cardinalityString);
-        if (!matcher.find()) {
-            throw new RuntimeException("Unsupported cardinality: " + cardinalityString);
-        }
-        String lowerBound = matcher.group(1);
-        String upperBound = matcher.group(2);
-        return new Cardinality(lowerBound, upperBound);
+	/**
+	 * Parses the string and creates the corresponding cardinality. Shortcuts are
+	 * respected.
+	 * 
+	 * @param cardinalityString
+	 *            the cardinality string
+	 * @return the cardinality
+	 */
+	public Cardinality getCardinality(String cardinalityString) {
+		// uses a shortcut
+		for (CardinalityWithShortcut next : shortcuts) {
+			if (next.getLabel().equals(cardinalityString)) {
+				return next;
+			}
+		}
+		// uses an expanded notation
+		Matcher matcher = cardinalityPattern.matcher(cardinalityString);
+		if (!matcher.find()) {
+			throw new RuntimeException("Unsupported cardinality: " + cardinalityString);
+		}
+		String lowerBound = matcher.group(1);
+		String upperBound = matcher.group(2);
+		return new Cardinality(lowerBound, upperBound);
 
-    }
+	}
 
-    /**
-     * Gets the cardinality.
-     * 
-     * @param lower
-     *            the lower bound
-     * @param upper
-     *            the upper bound
-     * @return the cardinality
-     */
-    public Cardinality getCardinality(int lower, int upper) {
-        for (CardinalityWithShortcut next : shortcuts) {
-            if (next.equalValues(lower, upper)) {
-                return next;
-            }
-        }
-        return new Cardinality(lower, upper);
-    }
+	/**
+	 * Gets the cardinality.
+	 * 
+	 * @param lower
+	 *            the lower bound
+	 * @param upper
+	 *            the upper bound
+	 * @return the cardinality
+	 */
+	public Cardinality getCardinality(int lower, int upper) {
+		for (CardinalityWithShortcut next : shortcuts) {
+			if (next.equalValues(lower, upper)) {
+				return next;
+			}
+		}
+		return new Cardinality(lower, upper);
+	}
 
 }

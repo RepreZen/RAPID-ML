@@ -16,42 +16,43 @@ package com.reprezen.core;
  */
 public enum XmiFileExtensions {
 
-    XMI("xmi");
+	XMI("xmi");
 
-    private String extension;
+	private String extension;
 
-    private XmiFileExtensions(String extension) {
-        this.extension = extension;
-    }
+	private XmiFileExtensions(String extension) {
+		this.extension = extension;
+	}
 
-    public String getExtension() {
-        return extension;
-    }
+	public String getExtension() {
+		return extension;
+	}
 
-    /**
-     * Compares the given extension to the enumeration, in a case-insensitive way.
-     * 
-     * @param candidateExtension
-     *            Extension to check
-     */
-    public boolean extensionEquals(String candidateExtension) {
-        return this.extension.equalsIgnoreCase(candidateExtension);
-    }
+	/**
+	 * Compares the given extension to the enumeration, in a case-insensitive way.
+	 * 
+	 * @param candidateExtension
+	 *            Extension to check
+	 */
+	public boolean extensionEquals(String candidateExtension) {
+		return this.extension.equalsIgnoreCase(candidateExtension);
+	}
 
-    /**
-     * Checks whether the given extension is part of this enumeration, in a case insensitive way.
-     * 
-     * @param candidateExtension
-     *            Extension to check
-     * @return True if included else false
-     */
-    public static boolean includes(String candidateExtension) {
-        for (XmiFileExtensions extension : XmiFileExtensions.values()) {
-            if (extension.getExtension().equalsIgnoreCase(candidateExtension)) {
-                return true;
-            }
-        }
-        return false;
-    }
+	/**
+	 * Checks whether the given extension is part of this enumeration, in a case
+	 * insensitive way.
+	 * 
+	 * @param candidateExtension
+	 *            Extension to check
+	 * @return True if included else false
+	 */
+	public static boolean includes(String candidateExtension) {
+		for (XmiFileExtensions extension : XmiFileExtensions.values()) {
+			if (extension.getExtension().equalsIgnoreCase(candidateExtension)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

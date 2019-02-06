@@ -29,55 +29,55 @@ import com.reprezen.rapidml.PropertyRealization;
  */
 public class OverrideCardinalities extends CardinalityDeserializer {
 
-    private static final CardinalityWithShortcut[] OVERRIDE_CARDINALITIES = { OPTIONAL_LIST_ASTERISK, OPTIONAL,
-            REQUIRED_LIST, REQUIRED_EXCLAMATION_MARK };
+	private static final CardinalityWithShortcut[] OVERRIDE_CARDINALITIES = { OPTIONAL_LIST_ASTERISK, OPTIONAL,
+			REQUIRED_LIST, REQUIRED_EXCLAMATION_MARK };
 
-    private final Multimap<Cardinality, Cardinality> cardinalityOverrides = ImmutableSetMultimap
-            .<Cardinality, Cardinality> builder() //
-            .put(OPTIONAL_DEFAULT, REQUIRED_EXCLAMATION_MARK) // override for OPTIONAL
-            .put(OPTIONAL, REQUIRED_EXCLAMATION_MARK) // override for OPTIONAL
-            .put(REQUIRED_LIST, REQUIRED_EXCLAMATION_MARK) // override for REQUIRE
-            .put(OPTIONAL_LIST_ASTERISK, REQUIRED_LIST) // override for OPTIONAL LIST
-            .put(OPTIONAL_LIST_ASTERISK, REQUIRED_EXCLAMATION_MARK) //
-            .put(OPTIONAL_LIST_ASTERISK, OPTIONAL).build();
+	private final Multimap<Cardinality, Cardinality> cardinalityOverrides = ImmutableSetMultimap
+			.<Cardinality, Cardinality>builder() //
+			.put(OPTIONAL_DEFAULT, REQUIRED_EXCLAMATION_MARK) // override for OPTIONAL
+			.put(OPTIONAL, REQUIRED_EXCLAMATION_MARK) // override for OPTIONAL
+			.put(REQUIRED_LIST, REQUIRED_EXCLAMATION_MARK) // override for REQUIRE
+			.put(OPTIONAL_LIST_ASTERISK, REQUIRED_LIST) // override for OPTIONAL LIST
+			.put(OPTIONAL_LIST_ASTERISK, REQUIRED_EXCLAMATION_MARK) //
+			.put(OPTIONAL_LIST_ASTERISK, OPTIONAL).build();
 
-    public static OverrideCardinalities getOverrideCardinalities() {
-        return new OverrideCardinalities();
-    }
+	public static OverrideCardinalities getOverrideCardinalities() {
+		return new OverrideCardinalities();
+	}
 
-    private OverrideCardinalities() {
-        super(OVERRIDE_CARDINALITIES);
-    }
+	private OverrideCardinalities() {
+		super(OVERRIDE_CARDINALITIES);
+	}
 
-    /**
-     * Gets the cardinality of the included property.
-     * 
-     * @param includedProperty
-     *            the included property
-     * @return the cardinality of the included property
-     */
-    public Cardinality getCardinality(PropertyRealization includedProperty) {
-        Cardinality cardinality = getCardinality(includedProperty.getMinOccurs(), includedProperty.getMaxOccurs());
-        return cardinality;
-    }
+	/**
+	 * Gets the cardinality of the included property.
+	 * 
+	 * @param includedProperty
+	 *            the included property
+	 * @return the cardinality of the included property
+	 */
+	public Cardinality getCardinality(PropertyRealization includedProperty) {
+		Cardinality cardinality = getCardinality(includedProperty.getMinOccurs(), includedProperty.getMaxOccurs());
+		return cardinality;
+	}
 
-    /**
-     * Gets the allowed override for the given included property.
-     * 
-     * @param includedProperty
-     *            the included property
-     * @return the allowed cardinality overrides
-     */
-    public Collection<Cardinality> getAllowedOverride(PropertyRealization includedProperty) {
-        Feature baseProperty = includedProperty.getBaseProperty();
-        return getAllowedOverride(baseProperty);
-    }
+	/**
+	 * Gets the allowed override for the given included property.
+	 * 
+	 * @param includedProperty
+	 *            the included property
+	 * @return the allowed cardinality overrides
+	 */
+	public Collection<Cardinality> getAllowedOverride(PropertyRealization includedProperty) {
+		Feature baseProperty = includedProperty.getBaseProperty();
+		return getAllowedOverride(baseProperty);
+	}
 
-    protected Collection<Cardinality> getAllowedOverride(Feature baseProperty) {
-        Cardinality baseCardinality = FeatureCardinalities.getFeatureCardinalities().getCardinality(baseProperty);
-        // MultiSet returns an empty collection if the key is not used in the table
-        Collection<Cardinality> result = cardinalityOverrides.get(baseCardinality);
-        return result;
-    }
+	protected Collection<Cardinality> getAllowedOverride(Feature baseProperty) {
+		Cardinality baseCardinality = FeatureCardinalities.getFeatureCardinalities().getCardinality(baseProperty);
+		// MultiSet returns an empty collection if the key is not used in the table
+		Collection<Cardinality> result = cardinalityOverrides.get(baseCardinality);
+		return result;
+	}
 
 }

@@ -10,11 +10,12 @@
 package com.reprezen.rapidml.xtext;
 
 /**
- * Initialization support for running Xtext languages without equinox extension registry
+ * Initialization support for running Xtext languages without equinox extension
+ * registry
  */
 public class RepreZenTerminalsStandaloneSetup extends RepreZenTerminalsStandaloneSetupGenerated {
 
-    public static void doSetup() {
-        new RepreZenTerminalsStandaloneSetup().createInjectorAndDoEMFRegistration();
-    }
+	public static void doSetup() {
+		new RepreZenTerminalsStandaloneSetup().createInjectorAndDoEMFRegistration();
+	}
 }

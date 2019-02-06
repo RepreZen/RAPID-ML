@@ -15,17 +15,17 @@ import com.reprezen.rapidml.LinkRelation;
 import com.reprezen.rapidml.RapidmlFactory;
 
 public class LinkRelationsRegistry {
-    private final Map<String, LinkRelation> linkRelationRegistry = Maps.newHashMap();
+	private final Map<String, LinkRelation> linkRelationRegistry = Maps.newHashMap();
 
-    public LinkRelation getLinkRelation(String linkRelationName) {
-        if (linkRelationRegistry.containsKey(linkRelationName)) {
-            return linkRelationRegistry.get(linkRelationName);
-        }
+	public LinkRelation getLinkRelation(String linkRelationName) {
+		if (linkRelationRegistry.containsKey(linkRelationName)) {
+			return linkRelationRegistry.get(linkRelationName);
+		}
 
-        LinkRelation linkRelation = RapidmlFactory.eINSTANCE.createLinkRelation();
-        linkRelation.setName(linkRelationName);
-        linkRelationRegistry.put(linkRelationName, linkRelation);
+		LinkRelation linkRelation = RapidmlFactory.eINSTANCE.createLinkRelation();
+		linkRelation.setName(linkRelationName);
+		linkRelationRegistry.put(linkRelationName, linkRelation);
 
-        return linkRelation;
-    }
+		return linkRelation;
+	}
 }

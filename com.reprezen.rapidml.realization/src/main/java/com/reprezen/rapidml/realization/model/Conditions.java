@@ -1,37 +1,36 @@
 package com.reprezen.rapidml.realization.model;
 
 import javax.annotation.Generated;
-import com.reprezen.rapidml.realization.model.Base;
 
 public interface Conditions extends Base {
 
-    // AutoLinkableToObjectResource
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    Boolean getAutoLinkableToObjectResource();
+	// AutoLinkableToObjectResource
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	Boolean getAutoLinkableToObjectResource();
 
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    boolean isAutoLinkableToObjectResource();
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	boolean isAutoLinkableToObjectResource();
 
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    void setAutoLinkableToObjectResource(Boolean autoLinkableToObjectResource);
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	void setAutoLinkableToObjectResource(Boolean autoLinkableToObjectResource);
 
-    // AutoLinkableToCollectionResource
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    Boolean getAutoLinkableToCollectionResource();
+	// AutoLinkableToCollectionResource
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	Boolean getAutoLinkableToCollectionResource();
 
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    boolean isAutoLinkableToCollectionResource();
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	boolean isAutoLinkableToCollectionResource();
 
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    void setAutoLinkableToCollectionResource(Boolean autoLinkableToCollectionResource);
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	void setAutoLinkableToCollectionResource(Boolean autoLinkableToCollectionResource);
 
-    // HasKeys
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    Boolean getHasKeys();
+	// HasKeys
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	Boolean getHasKeys();
 
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    boolean hasKeys();
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	boolean hasKeys();
 
-    @Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
-    void setHasKeys(Boolean hasKeys);
+	@Generated("com.reprezen.jsonoverlay.gen.CodeGenerator")
+	void setHasKeys(Boolean hasKeys);
 }

@@ -11,15 +11,14 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Has Title</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Has
+ * Title</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.HasTitle#getTitle <em>Title</em>}</li>
+ * <li>{@link com.reprezen.rapidml.HasTitle#getTitle <em>Title</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getHasTitle()
@@ -28,13 +27,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface HasTitle extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Title</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Title</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getHasTitle_Title()
@@ -44,10 +44,11 @@ public interface HasTitle extends EObject {
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.HasTitle#getTitle <em>Title</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Title</em>' attribute.
+	 * Sets the value of the '{@link com.reprezen.rapidml.HasTitle#getTitle
+	 * <em>Title</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Title</em>' attribute.
 	 * @see #getTitle()
 	 * @generated
 	 */

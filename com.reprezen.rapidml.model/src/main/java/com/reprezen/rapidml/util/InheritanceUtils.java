@@ -18,22 +18,23 @@ import com.reprezen.rapidml.Structure;
 
 public class InheritanceUtils {
 
-    public static Collection<Feature> getInheritedFeatures(Structure structure) {
-        Set<Feature> result = Sets.newLinkedHashSet();
-        for (Inheritable supertype : structure.getAllSupertypes()) {
-            if (supertype instanceof Structure) {
-                result.addAll(((Structure) supertype).getOwnedFeatures());
-            }
-        }
-        return result;
-    }
+	public static Collection<Feature> getInheritedFeatures(Structure structure) {
+		Set<Feature> result = Sets.newLinkedHashSet();
+		for (Inheritable supertype : structure.getAllSupertypes()) {
+			if (supertype instanceof Structure) {
+				result.addAll(((Structure) supertype).getOwnedFeatures());
+			}
+		}
+		return result;
+	}
 
-    public static boolean sameOrOverrides(Feature feature1, Feature feature2) {
-        // TODO add a stricter condition
-        // But it's OK for now as
-        // 1. this method is called only when feature1 and feature2 belong to the same data type hierarchy.
-        // 2. Names are unique within a structure
-        return feature1 == feature2 || feature1.getName().equals(feature2.getName());
-    }
+	public static boolean sameOrOverrides(Feature feature1, Feature feature2) {
+		// TODO add a stricter condition
+		// But it's OK for now as
+		// 1. this method is called only when feature1 and feature2 belong to the same
+		// data type hierarchy.
+		// 2. Names are unique within a structure
+		return feature1 == feature2 || feature1.getName().equals(feature2.getName());
+	}
 
 }

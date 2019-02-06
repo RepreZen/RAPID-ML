@@ -8,19 +8,20 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Reference Realization</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Reference Realization</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.ReferenceRealization#getTargetResource <em>Target Resource</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ReferenceRealization#getRealizationType <em>Realization Type</em>}</li>
- *   <li>{@link com.reprezen.rapidml.ReferenceRealization#isMultiValued <em>Multi Valued</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceRealization#getTargetResource
+ * <em>Target Resource</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceRealization#getRealizationType
+ * <em>Realization Type</em>}</li>
+ * <li>{@link com.reprezen.rapidml.ReferenceRealization#isMultiValued <em>Multi
+ * Valued</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getReferenceRealization()
@@ -29,13 +30,14 @@ package com.reprezen.rapidml;
  */
 public interface ReferenceRealization extends RealizationContainer {
 	/**
-	 * Returns the value of the '<em><b>Target Resource</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Target Resource</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target Resource</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Target Resource</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Target Resource</em>' reference.
 	 * @see #setTargetResource(ResourceDefinition)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceRealization_TargetResource()
@@ -45,24 +47,29 @@ public interface ReferenceRealization extends RealizationContainer {
 	ResourceDefinition getTargetResource();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceRealization#getTargetResource <em>Target Resource</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Resource</em>' reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceRealization#getTargetResource
+	 * <em>Target Resource</em>}' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Target Resource</em>' reference.
 	 * @see #getTargetResource()
 	 * @generated
 	 */
 	void setTargetResource(ResourceDefinition value);
 
 	/**
-	 * Returns the value of the '<em><b>Realization Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link com.reprezen.rapidml.ReferenceRealizationEnum}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Realization Type</b></em>' attribute. The
+	 * literals are from the enumeration
+	 * {@link com.reprezen.rapidml.ReferenceRealizationEnum}. <!-- begin-user-doc
+	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Realization Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Realization Type</em>' attribute.
 	 * @see com.reprezen.rapidml.ReferenceRealizationEnum
 	 * @see #setRealizationType(ReferenceRealizationEnum)
@@ -73,10 +80,13 @@ public interface ReferenceRealization extends RealizationContainer {
 	ReferenceRealizationEnum getRealizationType();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceRealization#getRealizationType <em>Realization Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Realization Type</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceRealization#getRealizationType
+	 * <em>Realization Type</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Realization Type</em>' attribute.
 	 * @see com.reprezen.rapidml.ReferenceRealizationEnum
 	 * @see #getRealizationType()
 	 * @generated
@@ -84,14 +94,14 @@ public interface ReferenceRealization extends RealizationContainer {
 	void setRealizationType(ReferenceRealizationEnum value);
 
 	/**
-	 * Returns the value of the '<em><b>Multi Valued</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Multi Valued</b></em>' attribute. The
+	 * default value is <code>"false"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Multi Valued</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Multi Valued</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Multi Valued</em>' attribute.
 	 * @see #setMultiValued(boolean)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getReferenceRealization_MultiValued()
@@ -101,18 +111,20 @@ public interface ReferenceRealization extends RealizationContainer {
 	boolean isMultiValued();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.ReferenceRealization#isMultiValued <em>Multi Valued</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Multi Valued</em>' attribute.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.ReferenceRealization#isMultiValued <em>Multi
+	 * Valued</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Multi Valued</em>' attribute.
 	 * @see #isMultiValued()
 	 * @generated
 	 */
 	void setMultiValued(boolean value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

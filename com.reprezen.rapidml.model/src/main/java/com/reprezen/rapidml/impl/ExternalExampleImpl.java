@@ -25,136 +25,150 @@ import com.reprezen.rapidml.util.ExampleUtils;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.ExternalExampleImpl#getPath <em>Path</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.ExternalExampleImpl#getPath
+ * <em>Path</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ExternalExampleImpl extends ExampleImpl implements ExternalExample {
-    /**
-	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	/**
+	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPath()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String PATH_EDEFAULT = null;
+	protected static final String PATH_EDEFAULT = null;
 
-    /**
-	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPath()
 	 * @generated
 	 * @ordered
 	 */
-    protected String path = PATH_EDEFAULT;
+	protected String path = PATH_EDEFAULT;
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected ExternalExampleImpl() {
+	protected ExternalExampleImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.EXTERNAL_EXAMPLE;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getPath() {
+	public String getPath() {
 		return path;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public void setPath(String newPath) {
+	public void setPath(String newPath) {
 		String oldPath = path;
 		path = newPath;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.EXTERNAL_EXAMPLE__PATH, oldPath, path));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.EXTERNAL_EXAMPLE__PATH, oldPath,
+					path));
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public String getBody() {
+	public String getBody() {
 		return ExampleUtils.getBody(this);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
-				return getPath();
+		case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
+			return getPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
-				setPath((String)newValue);
-				return;
+		case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
+			setPath((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
-				setPath(PATH_EDEFAULT);
-				return;
+		case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
+			setPath(PATH_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
-				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+		case RapidmlPackage.EXTERNAL_EXAMPLE__PATH:
+			return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 		}
 		return super.eIsSet(featureID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public String toString() {
-		if (eIsProxy()) return super.toString();
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (path: ");
@@ -162,7 +176,5 @@ public class ExternalExampleImpl extends ExampleImpl implements ExternalExample 
 		result.append(')');
 		return result.toString();
 	}
-
-
 
 } // ExternalExampleImpl

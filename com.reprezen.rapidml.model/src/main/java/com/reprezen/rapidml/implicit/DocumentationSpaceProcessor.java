@@ -14,25 +14,25 @@ import com.google.common.base.Strings;
 import com.reprezen.rapidml.Documentation;
 
 public class DocumentationSpaceProcessor {
-    public final Pattern pattern = Pattern.compile("\\s+$", Pattern.MULTILINE);
+	public final Pattern pattern = Pattern.compile("\\s+$", Pattern.MULTILINE);
 
-    public void process(final Documentation documentation) {
-        String doc = documentation.getText();
-        if (Strings.isNullOrEmpty(doc)) {
-            return;
-        }
-        doc = process(doc);
-        documentation.setText(doc);
-    }
+	public void process(final Documentation documentation) {
+		String doc = documentation.getText();
+		if (Strings.isNullOrEmpty(doc)) {
+			return;
+		}
+		doc = process(doc);
+		documentation.setText(doc);
+	}
 
-    public String process(String doc) {
-        doc = doc.trim();
-        doc = doc.replaceAll("\r\n", "\n");
-        doc = removeTrailingSpaces(doc);
-        return doc;
-    }
+	public String process(String doc) {
+		doc = doc.trim();
+		doc = doc.replaceAll("\r\n", "\n");
+		doc = removeTrailingSpaces(doc);
+		return doc;
+	}
 
-    public String removeTrailingSpaces(String doc) {
-        return pattern.matcher(doc).replaceAll("");
-    }
+	public String removeTrailingSpaces(String doc) {
+		return pattern.matcher(doc).replaceAll("");
+	}
 }

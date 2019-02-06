@@ -11,15 +11,15 @@ package com.reprezen.rapidml;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Documentable</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Documentable</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.Documentable#getDocumentation <em>Documentation</em>}</li>
+ * <li>{@link com.reprezen.rapidml.Documentable#getDocumentation
+ * <em>Documentation</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getDocumentable()
@@ -28,13 +28,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Documentable extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Documentation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Documentation</b></em>' containment
+	 * reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Documentation</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Documentation</em>' containment reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Documentation</em>' containment reference.
 	 * @see #setDocumentation(Documentation)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getDocumentable_Documentation()
@@ -44,10 +45,14 @@ public interface Documentable extends EObject {
 	Documentation getDocumentation();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.Documentable#getDocumentation <em>Documentation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Documentation</em>' containment reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.Documentable#getDocumentation
+	 * <em>Documentation</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Documentation</em>' containment
+	 *            reference.
 	 * @see #getDocumentation()
 	 * @generated
 	 */

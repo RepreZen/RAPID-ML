@@ -20,142 +20,146 @@ import com.reprezen.rapidml.PathSegment;
 import com.reprezen.rapidml.RapidmlPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Path Segment</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Path
+ * Segment</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.impl.PathSegmentImpl#getReferenceElement <em>Reference Element</em>}</li>
+ * <li>{@link com.reprezen.rapidml.impl.PathSegmentImpl#getReferenceElement
+ * <em>Reference Element</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class PathSegmentImpl extends EObjectImpl implements PathSegment {
-    /**
-	 * The cached value of the '{@link #getReferenceElement() <em>Reference Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * The cached value of the '{@link #getReferenceElement() <em>Reference
+	 * Element</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getReferenceElement()
 	 * @generated
 	 * @ordered
 	 */
-    protected com.reprezen.rapidml.ReferenceElement referenceElement;
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	protected com.reprezen.rapidml.ReferenceElement referenceElement;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    protected PathSegmentImpl() {
+	protected PathSegmentImpl() {
 		super();
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RapidmlPackage.Literals.PATH_SEGMENT;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public com.reprezen.rapidml.ReferenceElement getReferenceElement() {
+	public com.reprezen.rapidml.ReferenceElement getReferenceElement() {
 		if (referenceElement != null && referenceElement.eIsProxy()) {
-			InternalEObject oldReferenceElement = (InternalEObject)referenceElement;
-			referenceElement = (com.reprezen.rapidml.ReferenceElement)eResolveProxy(oldReferenceElement);
+			InternalEObject oldReferenceElement = (InternalEObject) referenceElement;
+			referenceElement = (com.reprezen.rapidml.ReferenceElement) eResolveProxy(oldReferenceElement);
 			if (referenceElement != oldReferenceElement) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT, oldReferenceElement, referenceElement));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT, oldReferenceElement, referenceElement));
 			}
 		}
 		return referenceElement;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    public com.reprezen.rapidml.ReferenceElement basicGetReferenceElement() {
+	public com.reprezen.rapidml.ReferenceElement basicGetReferenceElement() {
 		return referenceElement;
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setReferenceElement(com.reprezen.rapidml.ReferenceElement newReferenceElement) {
 		com.reprezen.rapidml.ReferenceElement oldReferenceElement = referenceElement;
 		referenceElement = newReferenceElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT, oldReferenceElement, referenceElement));
+			eNotify(new ENotificationImpl(this, Notification.SET, RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT,
+					oldReferenceElement, referenceElement));
 	}
 
-				/**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
-				if (resolve) return getReferenceElement();
-				return basicGetReferenceElement();
+		case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
+			if (resolve)
+				return getReferenceElement();
+			return basicGetReferenceElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
-				setReferenceElement((com.reprezen.rapidml.ReferenceElement)newValue);
-				return;
+		case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
+			setReferenceElement((com.reprezen.rapidml.ReferenceElement) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
-				setReferenceElement((com.reprezen.rapidml.ReferenceElement)null);
-				return;
+		case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
+			setReferenceElement((com.reprezen.rapidml.ReferenceElement) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
-				return referenceElement != null;
+		case RapidmlPackage.PATH_SEGMENT__REFERENCE_ELEMENT:
+			return referenceElement != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //PathSegmentImpl
+} // PathSegmentImpl

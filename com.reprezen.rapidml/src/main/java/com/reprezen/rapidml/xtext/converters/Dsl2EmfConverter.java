@@ -34,54 +34,54 @@ import com.reprezen.rapidml.xtext.serializers.EmfRestModelSerializer;
  */
 public class Dsl2EmfConverter {
 
-    private final String modelFile;
-    private final String modelPath;
+	private final String modelFile;
+	private final String modelPath;
 
-    public Dsl2EmfConverter(String modelFile) throws IOException {
-        Preconditions.checkArgument(modelFile != null, "The model path should not be null");
-        Preconditions.checkArgument(RapidFileExtensions.isZenExtension(getFileExtension(modelFile)),
-                "The model path should end with the 'rest' extension.");
+	public Dsl2EmfConverter(String modelFile) throws IOException {
+		Preconditions.checkArgument(modelFile != null, "The model path should not be null");
+		Preconditions.checkArgument(RapidFileExtensions.isZenExtension(getFileExtension(modelFile)),
+				"The model path should end with the 'rest' extension.");
 
-        RestModelLoader.validateFile(modelFile);
+		RestModelLoader.validateFile(modelFile);
 
-        this.modelFile = modelFile;
-        this.modelPath = getDirectory(modelFile);
+		this.modelFile = modelFile;
+		this.modelPath = getDirectory(modelFile);
 
-        // EPackage Initialization
-        RapidmlPackage.eINSTANCE.eClass();
-        new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri(modelPath);
-    }
+		// EPackage Initialization
+		RapidmlPackage.eINSTANCE.eClass();
+		new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri(modelPath);
+	}
 
-    public void dslToEmf(String outputDirectory) throws IOException {
-        Preconditions.checkArgument(outputDirectory != null, "The output directory should not be null.");
-        if (!Paths.get(outputDirectory).toFile().exists()) {
-            throw new RuntimeException(format("The directory '%s' does not exist.", outputDirectory));
-        }
+	public void dslToEmf(String outputDirectory) throws IOException {
+		Preconditions.checkArgument(outputDirectory != null, "The output directory should not be null.");
+		if (!Paths.get(outputDirectory).toFile().exists()) {
+			throw new RuntimeException(format("The directory '%s' does not exist.", outputDirectory));
+		}
 
-        ZenModel model = loadDslModel(this.modelFile);
-        String dslFilePath = new File(outputDirectory, getEmfFilename(this.modelFile)).getPath();
-        saveEmfModel(dslFilePath, model);
-    }
+		ZenModel model = loadDslModel(this.modelFile);
+		String dslFilePath = new File(outputDirectory, getEmfFilename(this.modelFile)).getPath();
+		saveEmfModel(dslFilePath, model);
+	}
 
-    private String getEmfFilename(String dslFilename) {
-        return FilenameUtils.getBaseName(dslFilename) + ".xmi";
-    }
+	private String getEmfFilename(String dslFilename) {
+		return FilenameUtils.getBaseName(dslFilename) + ".xmi";
+	}
 
-    private String getFileExtension(String filename) {
-        return FilenameUtils.getExtension(filename);
-    }
+	private String getFileExtension(String filename) {
+		return FilenameUtils.getExtension(filename);
+	}
 
-    private String getDirectory(String modelPath) {
-        return new File(modelPath).getParent();
-    }
+	private String getDirectory(String modelPath) {
+		return new File(modelPath).getParent();
+	}
 
-    private ZenModel loadDslModel(String path) {
-        URI uri = URI.createFileURI(path);
-        return new DslRestModelLoader(new RepreZenXtextResourceSet()).load(uri);
-    }
+	private ZenModel loadDslModel(String path) {
+		URI uri = URI.createFileURI(path);
+		return new DslRestModelLoader(new RepreZenXtextResourceSet()).load(uri);
+	}
 
-    private void saveEmfModel(String path, ZenModel model) throws IOException {
-        new EmfRestModelSerializer().serialize(path, model);
-    }
+	private void saveEmfModel(String path, ZenModel model) throws IOException {
+		new EmfRestModelSerializer().serialize(path, model);
+	}
 
 }

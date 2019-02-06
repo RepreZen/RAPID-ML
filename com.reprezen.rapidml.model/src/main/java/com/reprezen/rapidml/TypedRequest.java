@@ -8,17 +8,16 @@
  */
 package com.reprezen.rapidml;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Typed Request</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Typed
+ * Request</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.reprezen.rapidml.TypedRequest#getContainingMethod <em>Containing Method</em>}</li>
+ * <li>{@link com.reprezen.rapidml.TypedRequest#getContainingMethod
+ * <em>Containing Method</em>}</li>
  * </ul>
  *
  * @see com.reprezen.rapidml.RapidmlPackage#getTypedRequest()
@@ -27,14 +26,16 @@ package com.reprezen.rapidml;
  */
 public interface TypedRequest extends TypedMessage {
 	/**
-	 * Returns the value of the '<em><b>Containing Method</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.reprezen.rapidml.Method#getRequest <em>Request</em>}'.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Containing Method</b></em>' container
+	 * reference. It is bidirectional and its opposite is
+	 * '{@link com.reprezen.rapidml.Method#getRequest <em>Request</em>}'. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Containing Method</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Containing Method</em>' container reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Containing Method</em>' container reference.
 	 * @see #setContainingMethod(Method)
 	 * @see com.reprezen.rapidml.RapidmlPackage#getTypedRequest_ContainingMethod()
@@ -45,10 +46,14 @@ public interface TypedRequest extends TypedMessage {
 	Method getContainingMethod();
 
 	/**
-	 * Sets the value of the '{@link com.reprezen.rapidml.TypedRequest#getContainingMethod <em>Containing Method</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Containing Method</em>' container reference.
+	 * Sets the value of the
+	 * '{@link com.reprezen.rapidml.TypedRequest#getContainingMethod <em>Containing
+	 * Method</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Containing Method</em>' container
+	 *            reference.
 	 * @see #getContainingMethod()
 	 * @generated
 	 */

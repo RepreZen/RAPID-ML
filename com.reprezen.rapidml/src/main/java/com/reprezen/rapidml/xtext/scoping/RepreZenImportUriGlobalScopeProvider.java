@@ -60,172 +60,174 @@ import com.reprezen.rapidml.xtext.nls.Messages;
  */
 public class RepreZenImportUriGlobalScopeProvider extends AbstractGlobalScopeProvider {
 
-    @Inject
-    private ImportUriResolver importResolver;
+	@Inject
+	private ImportUriResolver importResolver;
 
-    @Inject
-    private Provider<LoadOnDemandResourceDescriptions> loadOnDemandDescriptions;
+	@Inject
+	private Provider<LoadOnDemandResourceDescriptions> loadOnDemandDescriptions;
 
-    @Inject
-    private IResourceScopeCache cache;
+	@Inject
+	private IResourceScopeCache cache;
 
-    @Inject
-    private IResourceServiceProvider.Registry serviceProviderRegistry;
+	@Inject
+	private IResourceServiceProvider.Registry serviceProviderRegistry;
 
-    private ModelPath getModelPath() {
-        return ImportResolver.getActiveModelPath();
-    }
+	private ModelPath getModelPath() {
+		return ImportResolver.getActiveModelPath();
+	}
 
-    public ImportUriResolver getImportUriResolver() {
-        return importResolver;
-    }
+	public ImportUriResolver getImportUriResolver() {
+		return importResolver;
+	}
 
-    public void setImportResolver(ImportUriResolver importResolver) {
-        this.importResolver = importResolver;
-    }
+	public void setImportResolver(ImportUriResolver importResolver) {
+		this.importResolver = importResolver;
+	}
 
-    public void setCache(IResourceScopeCache cache) {
-        this.cache = cache;
-    }
+	public void setCache(IResourceScopeCache cache) {
+		this.cache = cache;
+	}
 
-    public IResourceDescriptions getResourceDescriptions(Resource resource, Collection<URI> importUris) {
-        IResourceDescriptions result = getResourceDescriptions(resource);
-        LoadOnDemandResourceDescriptions demandResourceDescriptions = loadOnDemandDescriptions.get();
-        demandResourceDescriptions.initialize(result, importUris, resource);
-        return demandResourceDescriptions;
-    }
+	public IResourceDescriptions getResourceDescriptions(Resource resource, Collection<URI> importUris) {
+		IResourceDescriptions result = getResourceDescriptions(resource);
+		LoadOnDemandResourceDescriptions demandResourceDescriptions = loadOnDemandDescriptions.get();
+		demandResourceDescriptions.initialize(result, importUris, resource);
+		return demandResourceDescriptions;
+	}
 
-    @Override
-    protected IScope getScope(Resource resource, boolean ignoreCase, EClass type,
-            Predicate<IEObjectDescription> filter) {
-        final LinkedHashSet<URI> uniqueImportURIs = getImportedUris(resource);
-        IResourceDescriptions descriptions = getResourceDescriptions(resource, uniqueImportURIs);
-        List<URI> urisAsList = Lists.newArrayList(uniqueImportURIs);
-        Collections.reverse(urisAsList);
-        IScope scope = IScope.NULLSCOPE;
-        for (URI uri : urisAsList) {
-            scope = createLazyResourceScope(resource, scope, uri, descriptions, type, filter, ignoreCase);
-        }
-        return scope;
-    }
+	@Override
+	protected IScope getScope(Resource resource, boolean ignoreCase, EClass type,
+			Predicate<IEObjectDescription> filter) {
+		final LinkedHashSet<URI> uniqueImportURIs = getImportedUris(resource);
+		IResourceDescriptions descriptions = getResourceDescriptions(resource, uniqueImportURIs);
+		List<URI> urisAsList = Lists.newArrayList(uniqueImportURIs);
+		Collections.reverse(urisAsList);
+		IScope scope = IScope.NULLSCOPE;
+		for (URI uri : urisAsList) {
+			scope = createLazyResourceScope(resource, scope, uri, descriptions, type, filter, ignoreCase);
+		}
+		return scope;
+	}
 
-    protected LinkedHashSet<URI> getImportedUris(final Resource resource) {
-        return cache.get(ImportUriGlobalScopeProvider.class.getName(), resource, new Provider<LinkedHashSet<URI>>() {
-            @Override
-            public LinkedHashSet<URI> get() {
-                TreeIterator<EObject> iterator = resource.getAllContents();
-                final LinkedHashSet<URI> uniqueImportURIs = new LinkedHashSet<URI>(10);
-                while (iterator.hasNext()) {
-                    EObject object = iterator.next();
-                    if (object instanceof ImportDeclaration) {
-                        ImportDeclaration importDeclaration = (ImportDeclaration) object;
-                        processImportDeclaration(importDeclaration, resource, uniqueImportURIs);
-                    }
-                }
-                return uniqueImportURIs;
-            }
-        });
-    }
+	protected LinkedHashSet<URI> getImportedUris(final Resource resource) {
+		return cache.get(ImportUriGlobalScopeProvider.class.getName(), resource, new Provider<LinkedHashSet<URI>>() {
+			@Override
+			public LinkedHashSet<URI> get() {
+				TreeIterator<EObject> iterator = resource.getAllContents();
+				final LinkedHashSet<URI> uniqueImportURIs = new LinkedHashSet<URI>(10);
+				while (iterator.hasNext()) {
+					EObject object = iterator.next();
+					if (object instanceof ImportDeclaration) {
+						ImportDeclaration importDeclaration = (ImportDeclaration) object;
+						processImportDeclaration(importDeclaration, resource, uniqueImportURIs);
+					}
+				}
+				return uniqueImportURIs;
+			}
+		});
+	}
 
-    private void processImportDeclaration(ImportDeclaration importDeclaration, final Resource resource,
-            HashSet<URI> uniqueImportURIs) {
-        String importUriString = importDeclaration.getImportURI();
-        if (Strings.isEmpty(importUriString)) {
-            return;
-        }
-        try {
-            URI containerUri = resource.getURI();
-            String fqModelName = importDeclaration.getImportedNamespace();
-            ModelPath modelPath = getModelPath();
-            ImportResolver importResolver = new ImportResolver(modelPath, containerUri, fqModelName, importUriString);
-            // TODO This should silently ignore failing URL proposals and only add an error if all of them fail
-            for (URI nextResolvedUri : importResolver.resolve()) {
-                debug(RESOLUTION, ":Proposed URI: " + nextResolvedUri.toString());
-                Resource importedResource = getResource(resource, nextResolvedUri);
+	private void processImportDeclaration(ImportDeclaration importDeclaration, final Resource resource,
+			HashSet<URI> uniqueImportURIs) {
+		String importUriString = importDeclaration.getImportURI();
+		if (Strings.isEmpty(importUriString)) {
+			return;
+		}
+		try {
+			URI containerUri = resource.getURI();
+			String fqModelName = importDeclaration.getImportedNamespace();
+			ModelPath modelPath = getModelPath();
+			ImportResolver importResolver = new ImportResolver(modelPath, containerUri, fqModelName, importUriString);
+			// TODO This should silently ignore failing URL proposals and only add an error
+			// if all of them fail
+			for (URI nextResolvedUri : importResolver.resolve()) {
+				debug(RESOLUTION, ":Proposed URI: " + nextResolvedUri.toString());
+				Resource importedResource = getResource(resource, nextResolvedUri);
 
-                if (importedResource instanceof XtextResource) {
-                    XtextResource xResource = (XtextResource) importedResource;
-                    if (xResource.getErrors().isEmpty()) {
-                        debug(RESOLUTION, DEFAULT, ":Import resolved to " + nextResolvedUri.toString(), "Model Path=",
-                                modelPath, "FQ Model Name=", fqModelName, "Container=", containerUri, "Import URI=",
-                                importUriString);
-                        importDeclaration.setImportedModel((ZenModel) xResource.getContents().get(0));
-                        uniqueImportURIs.add(nextResolvedUri);
-                    } else {
-                        String msg = NLS.bind(Messages.RepreZenImportUriGlobalScopeProvider_importModelSyntaxError,
-                                importedResource.getURI());
-                        debug(RESOLUTION, ":Failed resolution for URI " + nextResolvedUri.toString(), "Reason=", msg);
-                        addError(resource, importDeclaration, msg);
-                    }
-                } else {
-                    String msg = NLS.bind(Messages.RepreZenImportUriGlobalScopeProvider_importIncorrectFormat,
-                            importUriString);
-                    debug(RESOLUTION, ":Failed resolution fro URI " + nextResolvedUri.toString(), "Reason=", msg);
-                    addError(resource, importDeclaration, msg);
-                }
-            }
-        } catch (IllegalArgumentException e) {
-            // TODO ignore
-            return;
-        }
-    }
+				if (importedResource instanceof XtextResource) {
+					XtextResource xResource = (XtextResource) importedResource;
+					if (xResource.getErrors().isEmpty()) {
+						debug(RESOLUTION, DEFAULT, ":Import resolved to " + nextResolvedUri.toString(), "Model Path=",
+								modelPath, "FQ Model Name=", fqModelName, "Container=", containerUri, "Import URI=",
+								importUriString);
+						importDeclaration.setImportedModel((ZenModel) xResource.getContents().get(0));
+						uniqueImportURIs.add(nextResolvedUri);
+					} else {
+						String msg = NLS.bind(Messages.RepreZenImportUriGlobalScopeProvider_importModelSyntaxError,
+								importedResource.getURI());
+						debug(RESOLUTION, ":Failed resolution for URI " + nextResolvedUri.toString(), "Reason=", msg);
+						addError(resource, importDeclaration, msg);
+					}
+				} else {
+					String msg = NLS.bind(Messages.RepreZenImportUriGlobalScopeProvider_importIncorrectFormat,
+							importUriString);
+					debug(RESOLUTION, ":Failed resolution fro URI " + nextResolvedUri.toString(), "Reason=", msg);
+					addError(resource, importDeclaration, msg);
+				}
+			}
+		} catch (IllegalArgumentException e) {
+			// TODO ignore
+			return;
+		}
+	}
 
-    private Resource getResource(Resource context, URI newURI) {
-        try {
-            return context.getResourceSet().getResource(newURI, true);
-        } catch (RuntimeException e) { // thrown by org.eclipse.emf.ecore.resource.ResourceSet#getResource(URI, boolean)
-            // log.trace("Cannot load resource: " + newURI, e);
-        }
-        return null;
-    }
+	private Resource getResource(Resource context, URI newURI) {
+		try {
+			return context.getResourceSet().getResource(newURI, true);
+		} catch (RuntimeException e) { // thrown by org.eclipse.emf.ecore.resource.ResourceSet#getResource(URI,
+										// boolean)
+			// log.trace("Cannot load resource: " + newURI, e);
+		}
+		return null;
+	}
 
-    protected IScope createLazyResourceScope(Resource resource, IScope parent, final URI uri,
-            final IResourceDescriptions descriptions, EClass type, final Predicate<IEObjectDescription> filter,
-            boolean ignoreCase) {
+	protected IScope createLazyResourceScope(Resource resource, IScope parent, final URI uri,
+			final IResourceDescriptions descriptions, EClass type, final Predicate<IEObjectDescription> filter,
+			boolean ignoreCase) {
 
-        IResourceDescription description = null;
-        try {
-            description = descriptions.getResourceDescription(uri);
-        } catch (IllegalStateException ex) {
-            Resource res = EcoreUtil2.getResource(resource, uri.toString());
-            if (res != null) {
-                // fallback for ZEN resource description in case of shorten url
-                IResourceServiceProvider serviceProvider = serviceProviderRegistry.getResourceServiceProvider(uri,
-                        ZEN_CONTENT_TYPE);
-                if (serviceProvider != null) {
-                    Manager descriptionManager = serviceProvider.getResourceDescriptionManager();
-                    if (descriptionManager != null) {
-                        description = descriptionManager.getResourceDescription(res);
-                    }
-                }
-            }
-            if (description == null) {
-                throw ex;
-            }
-        }
-        return SelectableBasedScope.createScope(parent, description, filter, type, ignoreCase);
-    }
+		IResourceDescription description = null;
+		try {
+			description = descriptions.getResourceDescription(uri);
+		} catch (IllegalStateException ex) {
+			Resource res = EcoreUtil2.getResource(resource, uri.toString());
+			if (res != null) {
+				// fallback for ZEN resource description in case of shorten url
+				IResourceServiceProvider serviceProvider = serviceProviderRegistry.getResourceServiceProvider(uri,
+						ZEN_CONTENT_TYPE);
+				if (serviceProvider != null) {
+					Manager descriptionManager = serviceProvider.getResourceDescriptionManager();
+					if (descriptionManager != null) {
+						description = descriptionManager.getResourceDescription(res);
+					}
+				}
+			}
+			if (description == null) {
+				throw ex;
+			}
+		}
+		return SelectableBasedScope.createScope(parent, description, filter, type, ignoreCase);
+	}
 
-    public void setLoadOnDemandDescriptions(Provider<LoadOnDemandResourceDescriptions> loadOnDemandDescriptions) {
-        this.loadOnDemandDescriptions = loadOnDemandDescriptions;
-    }
+	public void setLoadOnDemandDescriptions(Provider<LoadOnDemandResourceDescriptions> loadOnDemandDescriptions) {
+		this.loadOnDemandDescriptions = loadOnDemandDescriptions;
+	}
 
-    public Provider<LoadOnDemandResourceDescriptions> getLoadOnDemandDescriptions() {
-        return loadOnDemandDescriptions;
-    }
+	public Provider<LoadOnDemandResourceDescriptions> getLoadOnDemandDescriptions() {
+		return loadOnDemandDescriptions;
+	}
 
-    /**
-     * Added error indication to import declaration URI
-     * 
-     * @param resource
-     *            zen model
-     * @param importDeclaration
-     *            import declaration statement
-     * @param message
-     *            error message
-     */
-    private void addError(Resource resource, EObject importDeclaration, String message) {
-        resource.getErrors().add(new EObjectDiagnosticImpl(Severity.ERROR, "", //$NON-NLS-1$
-                message, importDeclaration, RapidmlPackage.Literals.IMPORT_DECLARATION__IMPORT_URI, -1, null));
-    }
+	/**
+	 * Added error indication to import declaration URI
+	 * 
+	 * @param resource
+	 *            zen model
+	 * @param importDeclaration
+	 *            import declaration statement
+	 * @param message
+	 *            error message
+	 */
+	private void addError(Resource resource, EObject importDeclaration, String message) {
+		resource.getErrors().add(new EObjectDiagnosticImpl(Severity.ERROR, "", //$NON-NLS-1$
+				message, importDeclaration, RapidmlPackage.Literals.IMPORT_DECLARATION__IMPORT_URI, -1, null));
+	}
 }

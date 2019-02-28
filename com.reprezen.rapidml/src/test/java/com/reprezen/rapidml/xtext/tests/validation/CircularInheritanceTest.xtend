@@ -11,23 +11,22 @@ package com.reprezen.rapidml.xtext.tests.validation
 import com.google.inject.Inject
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
-import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
-import org.eclipse.emf.common.util.Diagnostic
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
+import org.eclipse.xtext.diagnostics.Severity
 
 @InjectWith(typeof(RapidMLInjectorProvider))
 @RunWith(typeof(XtextRunner))
 class CircularInheritanceTest {
 
 	@Inject ParseHelper<ZenModel> parser
-	@Inject ValidatorTester<XtextDslJavaValidator> tester;
+	@Inject extension ValidationTestHelper
 
 	@Test
 	def void test_Error_OnExtendsItself() {
@@ -43,15 +42,22 @@ rapidModel Inheritance
 			prop2 : string 
 		'''
 		val model = parser.parse(modelText)
-		val diagnostics = tester.validate(model)
+		val diagnostics = model.validate
 
-		assertNotEquals(Diagnostic::OK, diagnostics.diagnostic.severity)
+//		assertNotEquals(Diagnostic::OK, diagnostics.diagnostic.severity)
+//
+//		for (d : diagnostics.diagnostic.children) {
+//			assertEquals("Circular inheritance, please check that the supertype hierarchy does not contain loops",
+//				d.message)
+//			assertEquals(Diagnostic.ERROR, d.severity);
+//		}
 
-		for (d : diagnostics.diagnostic.children) {
+		diagnostics.forEach [ e |
 			assertEquals("Circular inheritance, please check that the supertype hierarchy does not contain loops",
-				d.message)
-			assertEquals(Diagnostic.ERROR, d.severity);
-		}
+				e.message)
+			assertEquals(Severity.ERROR, e.severity)
+		]
+		
 	}
 
 	@Test
@@ -71,15 +77,17 @@ rapidModel Inheritance
 			prop3 : string 
 		'''
 		val model = parser.parse(modelText)
-		val diagnostics = tester.validate(model)
+		val diagnostics = model.validate()
 
-		assertNotEquals(Diagnostic::OK, diagnostics.diagnostic.severity)
+//		diagnostics.forEach [ e |
+//			assertNotEquals(Severity::OK, e.severity)
+//		]
 
-		for (d : diagnostics.diagnostic.children) {
+		diagnostics.forEach [ e |
 			assertEquals("Circular inheritance, please check that the supertype hierarchy does not contain loops",
-				d.message)
-			assertEquals(Diagnostic.ERROR, d.severity);
-		}
+				e.message)
+			assertEquals(Severity.ERROR, e.severity)
+		]
 	}
 
 	@Test
@@ -99,15 +107,21 @@ rapidModel Inheritance
 			prop3 : string 
 		'''
 		val model = parser.parse(modelText)
-		val diagnostics = tester.validate(model)
+		val diagnostics = validate(model)
 
-		assertNotEquals(Diagnostic::OK, diagnostics.diagnostic.severity)
+//		assertNotEquals(Diagnostic::OK, diagnostics.diagnostic.severity)
 
-		for (d : diagnostics.diagnostic.children) {
+//		for (d : diagnostics.diagnostic.children) {
+//			assertEquals("Circular inheritance, please check that the supertype hierarchy does not contain loops",
+//				d.message)
+//			assertEquals(Diagnostic.ERROR, d.severity);
+//		}
+		
+		diagnostics.forEach [ e |
 			assertEquals("Circular inheritance, please check that the supertype hierarchy does not contain loops",
-				d.message)
-			assertEquals(Diagnostic.ERROR, d.severity);
-		}
+				e.message)
+			assertEquals(Severity.ERROR, e.severity)
+		]
 	}
 
 }

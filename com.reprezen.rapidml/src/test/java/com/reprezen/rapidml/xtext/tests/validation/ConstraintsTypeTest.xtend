@@ -9,25 +9,19 @@
 package com.reprezen.rapidml.xtext.tests.validation
 
 import com.google.inject.Inject
-import com.reprezen.rapidml.ZenModel
-import com.reprezen.rapidml.xtext.loaders.RepreZenXtextResourceSet
 import com.reprezen.rapidml.xtext.nls.Messages
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
-import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.AssertableDiagnostics
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import com.reprezen.rapidml.xtext.tests.util.ValidatorHelper
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @InjectWith(typeof(RapidMLInjectorProvider))
 @RunWith(typeof(XtextRunner))
 class ConstraintsTypeTest {
-	@Inject ParseHelper<ZenModel> parser;
-	@Inject private ValidatorTester<XtextDslJavaValidator> tester;
+
+	@Inject extension ValidatorHelper
 
 	@Test
 	def void testUserDataType_ValueRangeForStringError() {
@@ -131,8 +125,8 @@ class ConstraintsTypeTest {
 					simpleType String2Type defined as String1Type
 		'''.assertError(Messages::XtextDslJavaValidator_constraintsPrimitiveType)
 	}
-	
-		@Test
+
+	@Test
 	def void testUserDataType_ValueRangeOK() {
 		'''
 			rapidModel MyModel
@@ -151,18 +145,5 @@ class ConstraintsTypeTest {
 						valueRange from '1' to maximum '10'
 		'''.assertOK
 	}
-	
-	def assertError(CharSequence model, String error) {
-		val ResourceSet rset = new RepreZenXtextResourceSet();
-		val rapidModel = parser.parse(model, rset)
-		val diag = tester.validate(rapidModel)
-		diag.assertAny(AssertableDiagnostics::errorMsg(error))
-	}
-	
-	def assertOK(CharSequence model) {
-		val ResourceSet rset = new RepreZenXtextResourceSet();
-		val rapidModel = parser.parse(model, rset)
-		val diag = tester.validate(rapidModel)
-		diag.assertOK
-	}
+
 }

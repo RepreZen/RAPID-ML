@@ -9,16 +9,14 @@
 package com.reprezen.rapidml.xtext.tests
 
 import com.reprezen.rapidml.ConstrainableType
+import com.reprezen.rapidml.RapidmlPackage
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.implicit.ZenModelNormalizer
-import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
-import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
 import javax.inject.Inject
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.AssertableDiagnostics
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -59,7 +57,7 @@ rapidModel ConstraintsCycles
 	}
 
 	@Inject extension ZenModelUtils
-	@Inject ValidatorTester<XtextDslJavaValidator> tester;
+	@Inject extension ValidationTestHelper
 
 	@Test
 	def void testCycleConstraintsError() {
@@ -72,7 +70,8 @@ rapidModel ConstraintsCycles
 			findFirst[e|e.name == "StringLenType"] as ConstrainableType
 		assertNull(type.constrainableParent)
 
-		tester.validate(model).assertAny(
-			AssertableDiagnostics.errorMsg("Circular reference in base type: StringLenType"))
+		model.assertError(RapidmlPackage.Literals.DATA_TYPE, null, "Circular reference in base type: StringLenType")
+//		tester.validate(model).assertAny(
+//			AssertableDiagnostics.errorMsg("Circular reference in base type: StringLenType"))
 	}
 }

@@ -9,20 +9,16 @@
 package com.reprezen.rapidml.xtext.tests
 
 import com.google.common.io.Resources
-import com.google.inject.Inject
 import com.reprezen.rapidml.RapidmlPackage
 import com.reprezen.rapidml.ZenModel
-import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
-import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.stream.Collectors
 import org.eclipse.emf.common.util.Diagnostic
 import org.eclipse.emf.common.util.URI
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.eclipse.xtext.junit4.validation.ValidatorTester
 import org.eclipse.xtext.resource.XtextResourceSet
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -37,7 +33,6 @@ class LoadSamplesTest {
 
 	val static public XTEXT_RESOURCES_FOLDER = Resources.getResource(LoadSamplesTest, "/dsl")
 
-	@Inject ValidatorTester<XtextDslJavaValidator> tester
 	extension ValidationTestHelper = new ValidationTestHelper
 
 	@Parameters(name="{index}: {0}")
@@ -69,7 +64,7 @@ class LoadSamplesTest {
 		}
 		assertNoErrors(model)
 
-		val result = tester.validate(model).allDiagnostics.filter[e|e.severity == Diagnostic::ERROR].toList
+		val result = model.validate().filter[e|e.severity == Diagnostic::ERROR].toList
 
 		if (result.size != 0) {
 			fail(result.head.toString)

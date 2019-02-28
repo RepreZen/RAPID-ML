@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright © 2013, 2016 Modelsolv, Inc.
  * All Rights Reserved.
- *
+ * 
  * NOTICE: All information contained herein is, and remains the property
  * of ModelSolv, Inc. See the file license.html in the root directory of
  * this project for further information.
@@ -13,12 +13,12 @@ import com.reprezen.rapidml.ServiceDataResource
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
 import com.reprezen.rapidml.xtext.tests.ZenModelUtils
+import com.reprezen.rapidml.xtext.tests.util.AssertableDiagnostics
+import com.reprezen.rapidml.xtext.tests.util.ValidatorTester
 import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.AssertableDiagnostics
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -31,7 +31,7 @@ class IncorrectElementOrderTest {
 	@Inject ParseHelper<ZenModel> parser
 	@Inject extension ValidatorTester<XtextDslJavaValidator> tester
 	@Inject extension ZenModelUtils
-	
+
 	def String textualModel(String resource) {
 		'''
 			rapidModel TaxBlaster
@@ -45,11 +45,11 @@ class IncorrectElementOrderTest {
 					structure Person
 		'''
 	}
-	
+
 	def tripleQuotes() {
 		"'''"
 	}
-	
+
 	def String getIncorrectCollectionResource() {
 		'''
 			collectionResource TaxFilingCollection type TaxFiling
@@ -68,7 +68,7 @@ class IncorrectElementOrderTest {
 					application/xml, application/atom+xml
 		'''
 	}
-	
+
 	def String getIncorrectObjectResource() {
 		'''
 			objectResource TaxFilingObject type TaxFiling
@@ -86,7 +86,7 @@ class IncorrectElementOrderTest {
 					application/xml
 		'''
 	}
-	
+
 	def String getCorrectObjectResource() {
 		'''
 			objectResource TaxFilingObject type TaxFiling
@@ -105,7 +105,7 @@ class IncorrectElementOrderTest {
 				example «tripleQuotes» «tripleQuotes»
 		'''
 	}
-	
+
 	def String getCorrectCollectionResource() {
 		'''
 			collectionResource TaxFilingCollection type TaxFiling
@@ -152,8 +152,8 @@ class IncorrectElementOrderTest {
 				example «tripleQuotes» «tripleQuotes»
 		'''
 	}
-	
-		def String getCorrectObjectResourceExample() {
+
+	def String getCorrectObjectResourceExample() {
 		'''
 			objectResource TaxFilingObject type TaxFiling
 				URI index
@@ -176,43 +176,37 @@ class IncorrectElementOrderTest {
 				example «tripleQuotes» «tripleQuotes»
 		'''
 	}
-	
+
 	@Test
 	def void testCollectionResource() {
 		val resource = loadModelAndGetResource("TaxFilingCollection", incorrectCollectionResource)
-		
+
 		val diagnostics = tester.validate(resource)
 		diagnostics.assertDiagnosticsCount(8)
 		diagnostics.assertAny(AssertableDiagnostics.warningMsg("collectionParam"),
-			AssertableDiagnostics.warningMsg("only"),	
-			AssertableDiagnostics.warningMsg("referenceEmbed"),
-			AssertableDiagnostics.warningMsg("referenceLink"),	
-			AssertableDiagnostics.warningMsg("method"),
-			AssertableDiagnostics.warningMsg("mediaTypes"),
-			AssertableDiagnostics.warningMsg("linkDescriptor"),
+			AssertableDiagnostics.warningMsg("only"), AssertableDiagnostics.warningMsg("referenceEmbed"),
+			AssertableDiagnostics.warningMsg("referenceLink"), AssertableDiagnostics.warningMsg("method"),
+			AssertableDiagnostics.warningMsg("mediaTypes"), AssertableDiagnostics.warningMsg("linkDescriptor"),
 			AssertableDiagnostics.warningMsg("example"))
 	}
-	
+
 	@Test
 	def void testCollectionResourceCorrectOrder() {
 		val resource = loadModelAndGetResource("TaxFilingCollection", correctCollectionResource)
 		tester.validate(resource).assertOK
 	}
-	
+
 	@Test
 	def void testObjectResource() {
-		val resource = loadModelAndGetResource("TaxFilingObject", incorrectObjectResource)		
+		val resource = loadModelAndGetResource("TaxFilingObject", incorrectObjectResource)
 		val diagnostics = tester.validate(resource)
-		diagnostics.assertDiagnosticsCount(7)		
-		diagnostics.assertAny(AssertableDiagnostics.warningMsg("linkDescriptor"),	
-			AssertableDiagnostics.warningMsg("method"),
-			AssertableDiagnostics.warningMsg("referenceLink"),
-			AssertableDiagnostics.warningMsg("referenceEmbed"),
-			AssertableDiagnostics.warningMsg("only"),
-			AssertableDiagnostics.warningMsg("example"),
-			AssertableDiagnostics.warningMsg("mediaTypes"))
+		diagnostics.assertDiagnosticsCount(7)
+		diagnostics.assertAny(AssertableDiagnostics.warningMsg("linkDescriptor"),
+			AssertableDiagnostics.warningMsg("method"), AssertableDiagnostics.warningMsg("referenceLink"),
+			AssertableDiagnostics.warningMsg("referenceEmbed"), AssertableDiagnostics.warningMsg("only"),
+			AssertableDiagnostics.warningMsg("example"), AssertableDiagnostics.warningMsg("mediaTypes"))
 	}
-	
+
 	@Test
 	def void testObjectResourceCorrectOrder() {
 		val resource = loadModelAndGetResource("TaxFilingObject", correctObjectResource)
@@ -230,7 +224,7 @@ class IncorrectElementOrderTest {
 		val resource = loadModelAndGetResource("TaxFilingCollection", correctCollectionResourceExamples)
 		tester.validate(resource).assertOK
 	}
-	
+
 	def ServiceDataResource loadModelAndGetResource(String resourceName, String resource) {
 		val model = parser.parse(textualModel(resource))
 		val dataResource = model.firstResourceAPI.firstResourceDefinition as ServiceDataResource

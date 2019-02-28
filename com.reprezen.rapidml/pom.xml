@@ -205,12 +205,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.junit4</artifactId>
+			<artifactId>org.eclipse.xtext.testing</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xbase.junit</artifactId>
+			<artifactId>org.eclipse.xtext.xbase.testing</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -219,17 +219,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xtext</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.reprezen.rapidml</groupId>
-			<artifactId>com.reprezen.rapidml.model</artifactId>		
+			<artifactId>com.reprezen.rapidml.model</artifactId>
 		</dependency>
 	</dependencies>
 </project>

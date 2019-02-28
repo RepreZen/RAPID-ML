@@ -10,14 +10,12 @@ package com.reprezen.rapidml.xtext.tests.validation
 
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
-import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
 import java.util.List
 import javax.inject.Inject
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.eclipse.xtext.validation.Issue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,6 +28,9 @@ import static org.junit.Assert.*
 @InjectWith(typeof(RapidMLInjectorProvider))
 @RunWith(typeof(XtextRunner))
 class DuplicateElementsValidatorTests {
+
+	@Inject ParseHelper<ZenModel> parser
+	@Inject extension ValidationTestHelper
 
 	def String textualModel(String input) {
 		'''rapidModel TestMediaTypes
@@ -78,10 +79,6 @@ example «tripleQuotes» «tripleQuotes»
 «input»''')
 	}
 
-	@Inject ParseHelper<ZenModel> parser
-	@Inject private ValidatorTester<XtextDslJavaValidator> tester;
-	@Inject extension ValidationTestHelper
-	
 	@Test
 	def void testMediaTypes() {
 		assertEquals(0, getErrors(textualModel("mediaTypes\n\ttext/xml")).length);
@@ -125,7 +122,7 @@ excluding
 	prop1''';
 		// we use "ValidatorTester<XtextDslJavaValidator>" instead of ValidationTestHelper 
 		// because it incorrect register validator in case of synthetic model
-		val errors = tester.validate(parser.parse(textualModel(entry))).diagnostic.children
+		val errors = validate(parser.parse(textualModel(entry)))
 		assertEquals(2, errors.size)
 		assertEquals(
 			"The property 'prop1' is referenced in the list of included properties, and in the list of " +

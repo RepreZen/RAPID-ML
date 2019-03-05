@@ -15,8 +15,6 @@ Workflow {
 		platformUri = "${runtimeProject}/.."
 		registerGeneratedEPackage = "org.eclipse.xsd.XSDPackage"
 		registerGeneratedEPackage = "com.reprezen.rapidml.RapidmlPackage"
-		//	registerGenModelFile = "platform:/resource/org.eclipse.xsd/model/XSD.genmodel"
-		//	registerGenModelFile = "platform:/resource/RestApiMetamodel/metamodels/RestAPI.genmodel"
 	}
 
 	component = DirectoryCleaner {
@@ -25,10 +23,6 @@ Workflow {
 
 	component = DirectoryCleaner {
 		directory = "${runtimeProject}.ui/src-gen"
-	}
-
-	component = DirectoryCleaner {
-		directory = "${runtimeProject}.tests/src-gen"
 	}
 
 	component = Generator {

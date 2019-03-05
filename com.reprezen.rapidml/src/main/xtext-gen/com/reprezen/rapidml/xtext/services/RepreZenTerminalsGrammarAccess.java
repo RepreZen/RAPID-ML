@@ -16,7 +16,9 @@ import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 
 @Singleton
 public class RepreZenTerminalsGrammarAccess extends AbstractGrammarElementFinder {
-
+	
+	
+	
 	private final TerminalRule tRAW_STRING;
 	private final TerminalRule tJAVADOC_COMMENT;
 	private final TerminalRule tML_COMMENT;
@@ -28,39 +30,29 @@ public class RepreZenTerminalsGrammarAccess extends AbstractGrammarElementFinder
 	private final TerminalRule tWS;
 	private final TerminalRule tRICH_TEXT;
 	private final TerminalRule tIN_RICH_STRING;
-
+	
 	private final Grammar grammar;
 
 	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
-	public RepreZenTerminalsGrammarAccess(GrammarProvider grammarProvider, TerminalsGrammarAccess gaTerminals) {
+	public RepreZenTerminalsGrammarAccess(GrammarProvider grammarProvider,
+		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
-		this.tRAW_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.RAW_STRING");
-		this.tJAVADOC_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.JAVADOC_COMMENT");
-		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.ML_COMMENT");
-		this.tML_COMMENT_NL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.ML_COMMENT_NL");
-		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.SL_COMMENT");
-		this.tNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.NL");
-		this.tBEGIN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.BEGIN");
-		this.tEND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.END");
-		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.WS");
-		this.tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.RICH_TEXT");
-		this.tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(),
-				"com.reprezen.rapidml.xtext.RepreZenTerminals.IN_RICH_STRING");
+		this.tRAW_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.RAW_STRING");
+		this.tJAVADOC_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.JAVADOC_COMMENT");
+		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.ML_COMMENT");
+		this.tML_COMMENT_NL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.ML_COMMENT_NL");
+		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.SL_COMMENT");
+		this.tNL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.NL");
+		this.tBEGIN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.BEGIN");
+		this.tEND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.END");
+		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.WS");
+		this.tRICH_TEXT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.RICH_TEXT");
+		this.tIN_RICH_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.reprezen.rapidml.xtext.RepreZenTerminals.IN_RICH_STRING");
 	}
-
+	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
 		Grammar grammar = grammarProvider.getGrammar(this);
 		while (grammar != null) {
@@ -76,104 +68,106 @@ public class RepreZenTerminalsGrammarAccess extends AbstractGrammarElementFinder
 		}
 		return grammar;
 	}
-
+	
 	@Override
 	public Grammar getGrammar() {
 		return grammar;
 	}
+	
 
 	public TerminalsGrammarAccess getTerminalsGrammarAccess() {
 		return gaTerminals;
 	}
 
-	// terminal RAW_STRING:
-	// "r" ('"' !'"'* '"' | "'" !"'"* "'");
+	
+	//terminal RAW_STRING:
+	//	"r" ('"' !'"'* '"' | "'" !"'"* "'");
 	public TerminalRule getRAW_STRINGRule() {
 		return tRAW_STRING;
-	}
+	} 
 
-	// terminal JAVADOC_COMMENT:
-	// '/ **'->'* /';
+	//terminal JAVADOC_COMMENT:
+	//	'/ **'->'* /';
 	public TerminalRule getJAVADOC_COMMENTRule() {
 		return tJAVADOC_COMMENT;
-	}
+	} 
 
-	// terminal ML_COMMENT:
-	// '/ * '->'* /';
+	//terminal ML_COMMENT:
+	//	'/ * '->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return tML_COMMENT;
-	}
+	} 
 
-	// terminal ML_COMMENT_NL:
-	// '/ *\n'->'* /';
+	//terminal ML_COMMENT_NL:
+	//	'/ *\n'->'* /';
 	public TerminalRule getML_COMMENT_NLRule() {
 		return tML_COMMENT_NL;
-	}
+	} 
 
-	// terminal SL_COMMENT:
-	// '//' !('\n' | '\r')*;
+	//terminal SL_COMMENT:
+	//	'//' !('\n' | '\r')*;
 	public TerminalRule getSL_COMMENTRule() {
 		return tSL_COMMENT;
-	}
+	} 
 
-	// terminal NL:
-	// ('\r'? '\n')+ '\t'*;
+	//terminal NL:
+	//	('\r'? '\n')+ '\t'*;
 	public TerminalRule getNLRule() {
 		return tNL;
-	}
+	} 
 
-	// terminal BEGIN:
-	// '┌';
+	//terminal BEGIN:
+	//	'┌';
 	public TerminalRule getBEGINRule() {
 		return tBEGIN;
-	}
+	} 
 
-	// terminal END:
-	// '┐';
+	//terminal END:
+	//	'┐';
 	public TerminalRule getENDRule() {
 		return tEND;
-	}
+	} 
 
-	// terminal WS:
-	// ' ' | '\t'+;
+	//terminal WS:
+	//	' ' | '\t'+;
 	public TerminalRule getWSRule() {
 		return tWS;
-	}
+	} 
 
-	// terminal RICH_TEXT:
-	// "'''" IN_RICH_STRING* "'''";
+	//terminal RICH_TEXT:
+	//	"'''" IN_RICH_STRING* "'''";
 	public TerminalRule getRICH_TEXTRule() {
 		return tRICH_TEXT;
-	}
+	} 
 
-	// terminal fragment IN_RICH_STRING:
-	// "''" !('«' | "'") | "'" !('«' | "'") | !('«' | "'");
+	//terminal fragment IN_RICH_STRING:
+	//	"''" !('«' | "'") | "'" !('«' | "'") | !('«' | "'");
 	public TerminalRule getIN_RICH_STRINGRule() {
 		return tIN_RICH_STRING;
-	}
+	} 
 
-	// terminal ID:
-	// '^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+	//terminal ID:
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
-	}
+	} 
 
-	// terminal INT returns ecore::EInt:
-	// '0'..'9'+;
+	//terminal INT returns ecore::EInt:
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
-	}
+	} 
 
-	// terminal STRING:
-	// '"' ('\\' . | !('\\' | '"'))* '"' |
-	// "'" ('\\' . | !('\\' | "'"))* "'";
+	//terminal STRING:
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
-	}
+	} 
 
-	// terminal ANY_OTHER:
-	// .;
+	//terminal ANY_OTHER:
+	//	.;
 	public TerminalRule getANY_OTHERRule() {
 		return gaTerminals.getANY_OTHERRule();
-	}
+	} 
 }

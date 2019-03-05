@@ -218,11 +218,6 @@
 			<artifactId>org.eclipse.xtext.xbase</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>com.reprezen.rapidml</groupId>
 			<artifactId>com.reprezen.rapidml.model</artifactId>
 		</dependency>

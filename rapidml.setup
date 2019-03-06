@@ -5,11 +5,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:maven="http://www.eclipse.org/oomph/setup/maven/1.0"
+    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
+    xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
     name="RAPID-ML"
     label="RAPID-ML">
   <setupTask
@@ -575,22 +578,61 @@
       <requirement
           name="org.eclipse.sdk.feature.group"/>
       <requirement
+          name="org.eclipse.emf.sdk.feature.group"
+          versionRange="[2.13.0,2.14.0)"/>
+      <requirement
+          name="org.eclipse.xtext.sdk.feature.group"
+          versionRange="[2.9.2,2.10.0)"/>
+      <requirement
+          name="org.eclipse.xtend.sdk.feature.group"
+          versionRange="[2.9.2,2.10.0)"
+          filter=""/>
+      <requirement
+          name="com.fasterxml.jackson.core.jackson-core"
+          versionRange="[2.6.2,2.7.0)"/>
+      <requirement
+          name="com.fasterxml.jackson.core.jackson-annotations"
+          versionRange="[2.6.2,2.7.0)"/>
+      <requirement
+          name="com.fasterxml.jackson.core.jackson-databind"
+          versionRange="[2.6.2,2.7.0)"/>
+      <requirement
+          name="com.reprezen.jsonoverlay"
+          versionRange="[4.0.0,5.0.0)"/>
+      <requirement
           name="*"/>
-      <repositoryList
-          name="Photon">
-        <repository
-            url="http://download.eclipse.org/releases/photon"/>
-      </repositoryList>
       <repositoryList
           name="Oxygen">
         <repository
             url="http://download.eclipse.org/releases/oxygen"/>
+        <repository
+            url="http://products.reprezen.com/kaizen/openapi-parser/updates/4.0.3/"/>
+        <repository
+            url="http://download.eclipse.org/tools/orbit/downloads/drops/R20170516192513/repository"/>
+        <repository
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
       </repositoryList>
     </targlet>
   </setupTask>
   <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
+    <workingSet
+        name="rapidml">
+      <predicate
+          xsi:type="predicates:ImportedPredicate"/>
+    </workingSet>
     <description>The dynamic working sets for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="maven:MavenImportTask">
+    <sourceLocator
+        rootFolder="${git.clone.RAPID-ML.location}"
+        locateNestedProjects="true"/>
+  </setupTask>
+  <setupTask
+      xsi:type="projects:ProjectsImportTask">
+    <sourceLocator
+        rootFolder="${git.clone.RAPID-ML.location}/com.reprezen.rapidml.generator"/>
   </setupTask>
   <stream name="master"
       label="Master">

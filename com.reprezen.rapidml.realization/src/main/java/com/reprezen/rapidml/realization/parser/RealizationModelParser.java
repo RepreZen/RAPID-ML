@@ -16,8 +16,6 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
@@ -132,7 +130,7 @@ public class RealizationModelParser {
 		}
 
 		private static String joinMessages(List<String> messages) {
-			return StringUtils.join(messages, "\n");
+			return String.join("\n", messages);
 		}
 
 	}

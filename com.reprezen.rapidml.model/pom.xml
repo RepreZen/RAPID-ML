@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.reprezen.rapidml</groupId>
 		<artifactId>com.reprezen.rapidml.parent</artifactId>
-		<version>0.0.10-SNAPSHOT</version>
+		<version>0.0.10-ZEN-4707-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>

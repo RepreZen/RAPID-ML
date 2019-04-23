@@ -7,7 +7,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.reprezen.rapidml</groupId>
 	<artifactId>com.reprezen.rapidml.parent</artifactId>
-	<version>0.0.10-ZEN-4770-SNAPSHOT</version>
+	<version>0.0.10-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>RAPID-ML</name>
 	<description>Parser and Model for RAPID-ML modeling language</description>
@@ -311,12 +311,12 @@
 			<dependency>
 				<groupId>com.reprezen.rapidml</groupId>
 				<artifactId>com.reprezen.rapidml.model</artifactId>
-				<version>0.0.10-ZEN-4770-SNAPSHOT</version>
+				<version>0.0.10-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.reprezen.rapidml</groupId>
 				<artifactId>com.reprezen.rapidml.realization</artifactId>
-				<version>0.0.10-ZEN-4770-SNAPSHOT</version>
+				<version>0.0.10-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.xtend</groupId>

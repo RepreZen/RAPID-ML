@@ -10,14 +10,8 @@ package com.reprezen.core.debug;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -140,10 +134,10 @@ public abstract class Debug<OptClass extends Enum<OptClass>> {
 			getThrowable((Throwable) obj);
 		} else if (obj.getClass().isArray()) {
 			List<String> elts = getCollection(Arrays.asList(obj));
-			output = StringUtils.join(elts, ", \n");
+			output = String.join(", \n", elts);
 		} else if (obj instanceof Collection<?>) {
 			List<String> elts = getCollection(obj);
-			output = StringUtils.join(elts, ", \n");
+			output = String.join(", \n", elts);
 		} else {
 			output = String.valueOf(obj);
 		}
@@ -165,7 +159,7 @@ public abstract class Debug<OptClass extends Enum<OptClass>> {
 	}
 
 	private String indent(int n) {
-		return StringUtils.repeat(' ', n);
+		return String.join("", Collections.nCopies(n, " "));
 	}
 
 	private static String getYaml(Object obj) {

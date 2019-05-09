@@ -13,4 +13,5 @@ Require-Bundle: org.eclipse.xtext.generator;bundle-version="2.9.1",
  com.reprezen.rapidml.model;bundle-version="1.0.0",
  com.reprezen.rapidml.realization;bundle-version="1.0.0",
  org.eclipse.xsd;bundle-version="2.13.0"
-Import-Package: org.apache.log4j
+Import-Package: org.apache.commons.logging;version="1.1.1",
+ org.apache.log4j

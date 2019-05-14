@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.reprezen.rapidml.generator
+Bundle-SymbolicName: com.reprezen.rapidml.generator;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: ModelSolv, Inc.
+Automatic-Module-Name: com.reprezen.rapidml.generator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.xtext.generator;bundle-version="2.9.1",
+ org.eclipse.xtext.xtext.generator;bundle-version="2.9.1",
+ org.eclipse.emf.mwe2.launch;bundle-version="2.10.0",
+ com.reprezen.rapidml;bundle-version="1.0.0",
+ com.reprezen.rapidml.model;bundle-version="1.0.0",
+ com.reprezen.rapidml.realization;bundle-version="1.0.0",
+ org.eclipse.xsd;bundle-version="2.13.0"
+Import-Package: org.apache.commons.logging;version="1.1.1",
+ org.apache.log4j

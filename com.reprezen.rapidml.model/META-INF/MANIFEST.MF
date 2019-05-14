@@ -1,24 +1,25 @@
 Manifest-Version: 1.0
-Bundle-Description: Parser and Model for RAPID-ML modeling language
 Bundle-ManifestVersion: 2
 Bundle-Name: com.reprezen.rapidml.model
 Bundle-SymbolicName: com.reprezen.rapidml.model;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Import-Package: com.google.common.base,
- com.google.common.collect,
- com.google.common.io,
- com.reprezen.jsonoverlay
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: ModelSolv, Inc.
 Export-Package: com.reprezen.rapidml,
  com.reprezen.rapidml.datatypes.cardinality,
  com.reprezen.rapidml.datatypes.util,
  com.reprezen.rapidml.impl,
  com.reprezen.rapidml.implicit,
  com.reprezen.rapidml.realization.processor,
- com.reprezen.rapidml.util
+ com.reprezen.rapidml.util,
+ reprezen.org.eclipse.xtext
 Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  com.reprezen.rapidml.realization;bundle-version="1.0.0";visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: com.reprezen.rapidml.model
-Bundle-Vendor: ModelSolv, Inc.
+Bundle-Description: Parser and Model for RAPID-ML modeling language
+Import-Package: com.google.common.base,
+  com.google.common.collect,
+  com.google.common.io,
+  com.reprezen.jsonoverlay

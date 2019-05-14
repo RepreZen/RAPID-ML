@@ -12,13 +12,12 @@ import com.google.common.io.Resources
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
 import com.reprezen.rapidml.xtext.tests.ZenModelUtils
-import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
+import com.reprezen.rapidml.xtext.tests.util.ValidatorHelper
 import javax.inject.Inject
 import org.eclipse.emf.common.util.URI
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -41,18 +40,18 @@ class ImportDeclarationValidatorTests {
 					
 				dataModel MyDataModel
 					structure Type
-				   '''
+				  '''
 	}
 
 	@Inject ParseHelper<ZenModel> parser
-	@Inject ValidatorTester<XtextDslJavaValidator> tester;
+	@Inject extension ValidatorHelper
 
 	@Test
 	def void testAliasUnique_happyPath() {
 		val model1 = loadModelAndNormalize(textualModel( //
 		importLine("com.modelsolv.reprezen.ModelA.DataModelA", "import/ModelA.rapid", "imp1"), //
 		importLine("com.modelsolv.reprezen.ModelB.DataModelB", "import/ModelB.rapid", "imp2")))
-		tester.validate(model1).assertOK()
+		validate(model1).assertOK()
 	}
 
 	@Test
@@ -60,7 +59,7 @@ class ImportDeclarationValidatorTests {
 		val model2 = parser.parse(textualModel( //
 		importLine("com.modelsolv.reprezen.ModelA.DataModelA", "import/ModelA.rapid", "imp1"), //
 		importLine("com.modelsolv.reprezen.ModelB.DataModelB", "import/ModelB.rapid", "imp1")))
-		tester.validate(model2).assertErrorContains("Duplicate alias imp1")
+		validate(model2).assertErrorContains("Duplicate alias imp1")
 	}
 
 	@Test
@@ -70,13 +69,13 @@ class ImportDeclarationValidatorTests {
 	}
 
 	def validate(String input, String input2) {
-		tester.validate(parser.parse(textualModel(input, input2)))
+		validate(parser.parse(textualModel(input, input2)))
 	}
 
-	val static public String XTEXT_RESOURCES_FOLDER = Resources.getResource(ImportDeclarationValidatorTests, "/dsl/").file
+	val static public String XTEXT_RESOURCES_FOLDER = Resources.getResource(ImportDeclarationValidatorTests, "/dsl/").
+		file
 
-	def String importLine(String what, String file,
-		String alias) {
+	def String importLine(String what, String file, String alias) {
 		'''
 			import «what» from "«URI::createFileURI(XTEXT_RESOURCES_FOLDER + file)»"«IF null != alias» as «alias»«ENDIF»
 		'''

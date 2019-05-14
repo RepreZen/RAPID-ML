@@ -12,29 +12,27 @@ import com.reprezen.rapidml.xtext.services.RepreZenTerminalsGrammarAccess;
 import com.google.inject.Inject;
 
 @SuppressWarnings("all")
-public class RepreZenTerminalsParsetreeConstructor
-		extends org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor {
-
+public class RepreZenTerminalsParsetreeConstructor extends org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor {
+		
 	@Inject
 	private RepreZenTerminalsGrammarAccess grammarAccess;
-
+	
 	@Override
 	protected AbstractToken getRootToken(IEObjectConsumer inst) {
-		return new ThisRootNode(inst);
+		return new ThisRootNode(inst);	
 	}
-
-	protected class ThisRootNode extends RootToken {
-		public ThisRootNode(IEObjectConsumer inst) {
-			super(inst);
-		}
-
-		@Override
-		public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-			switch (index) {
-			default:
-				return null;
-			}
-		}
+	
+protected class ThisRootNode extends RootToken {
+	public ThisRootNode(IEObjectConsumer inst) {
+		super(inst);
 	}
-
+	
+	@Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return null;
+		}	
+	}	
+}
+	
 }

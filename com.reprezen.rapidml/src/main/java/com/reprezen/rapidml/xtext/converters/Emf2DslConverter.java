@@ -49,7 +49,7 @@ public class Emf2DslConverter {
 
 		// EPackage Initialization
 		RapidmlPackage.eINSTANCE.eClass();
-		new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri(modelPath);
+		// new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri(modelPath);
 	}
 
 	public void emfToDsl(String outputDirectory) throws IOException {

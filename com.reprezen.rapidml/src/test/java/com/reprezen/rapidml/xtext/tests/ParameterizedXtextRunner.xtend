@@ -1,6 +1,6 @@
 package com.reprezen.rapidml.xtext.tests
 
-import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.runners.parameterized.TestWithParameters
 import org.junit.runners.model.InitializationError
 import java.util.List

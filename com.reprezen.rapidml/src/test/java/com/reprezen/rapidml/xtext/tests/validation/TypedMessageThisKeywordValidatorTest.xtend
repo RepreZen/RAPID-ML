@@ -10,12 +10,11 @@ package com.reprezen.rapidml.xtext.tests.validation
 
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
-import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
+import com.reprezen.rapidml.xtext.tests.util.ValidatorHelper
 import javax.inject.Inject
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -24,7 +23,7 @@ import org.junit.runner.RunWith
 class TypedMessageThisKeywordValidatorTest {
 
 	@Inject ParseHelper<ZenModel> parser
-	@Inject ValidatorTester<XtextDslJavaValidator> tester;
+	@Inject extension ValidatorHelper
 
 	@Test
 	def void testValidUsageOnRequestAndResponse() {
@@ -306,7 +305,7 @@ class TypedMessageThisKeywordValidatorTest {
 
 	def validate(String content) {
 		val model = parser.parse(content)
-		tester.validate(model)
+		validate(model)
 	}
 
 	def assertOK(String content) {

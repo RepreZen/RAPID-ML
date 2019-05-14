@@ -4,9 +4,9 @@ import com.google.common.io.Resources
 import com.google.inject.Inject
 import java.nio.charset.Charset
 import org.eclipse.emf.common.util.URI
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ResourceHelper
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ResourceHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 

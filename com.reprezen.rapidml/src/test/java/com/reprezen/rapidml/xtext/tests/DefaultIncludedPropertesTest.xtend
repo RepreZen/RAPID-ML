@@ -12,8 +12,8 @@ import com.google.inject.Inject
 import com.reprezen.rapidml.ServiceDataResource
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 

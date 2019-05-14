@@ -13,12 +13,12 @@ import com.reprezen.rapidml.Feature
 import com.reprezen.rapidml.PrimitiveProperty
 import com.reprezen.rapidml.ZenModel
 import com.reprezen.rapidml.xtext.tests.RapidMLInjectorProvider
+import com.reprezen.rapidml.xtext.tests.util.ValidatorTester
 import com.reprezen.rapidml.xtext.validation.XtextDslJavaValidator
 import org.eclipse.emf.common.util.Diagnostic
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidatorTester
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -257,5 +257,5 @@ rapidModel TaxBlaster
 
 		diagnostics.assertOK
 	}
-	
+
 }

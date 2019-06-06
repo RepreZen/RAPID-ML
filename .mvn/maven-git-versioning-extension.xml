@@ -4,13 +4,15 @@
         <pattern>master</pattern>
         <versionFormat>${version}</versionFormat>
     </branch>
+    <!-- Local build will use the acutal branch name -->
     <branch>
         <pattern><![CDATA[task/(?<task>.+)]]></pattern>
         <versionFormat>${version.release}-${task}-SNAPSHOT</versionFormat>
     </branch>
+    <!-- Handle Pull Requests naming convention used in TC Build -->
     <branch>
-        <pattern><![CDATA[(?<name>.+)/head]]></pattern>
-        <versionFormat>${version.release}-${name}-SNAPSHOT</versionFormat>
+        <pattern><![CDATA[(?<pull>.+)/head]]></pattern>
+        <versionFormat>${version.release}-PR-${pull}-SNAPSHOT</versionFormat>
     </branch>
     <tag>
         <pattern><![CDATA[v(?<tagVersion>[0-9].*)]]></pattern>

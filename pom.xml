@@ -59,6 +59,13 @@
 		<tag>HEAD</tag>
 	</scm>
 	<build>
+		<extensions>
+			<extension>
+				<groupId>me.qoomon</groupId>
+				<artifactId>maven-git-versioning-extension</artifactId>
+				<version>4.2.3</version>
+			</extension>
+		</extensions>
 		<pluginManagement>
 			<plugins>
 				<plugin>

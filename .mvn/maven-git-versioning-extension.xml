@@ -8,6 +8,10 @@
         <pattern><![CDATA[task/(?<task>.+)]]></pattern>
         <versionFormat>${version.release}-${task}-SNAPSHOT</versionFormat>
     </branch>
+    <branch>
+        <pattern><![CDATA[(?<name>.+)/head]]></pattern>
+        <versionFormat>${version.release}-${name}-SNAPSHOT</versionFormat>
+    </branch>
     <tag>
         <pattern><![CDATA[v(?<tagVersion>[0-9].*)]]></pattern>
         <versionFormat>${tagVersion}</versionFormat>

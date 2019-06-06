@@ -12,7 +12,4 @@
         <pattern><![CDATA[v(?<tagVersion>[0-9].*)]]></pattern>
         <versionFormat>${tagVersion}</versionFormat>
     </tag>
-    <commit>
-        <versionFormat>${commit.short}</versionFormat>
-    </commit>
 </gitVersioning>

@@ -9,11 +9,6 @@
         <pattern><![CDATA[task/(?<task>.+)]]></pattern>
         <versionFormat>${version.release}-${task}-SNAPSHOT</versionFormat>
     </branch>
-    <!-- Handle Pull Requests naming convention used in TC Build -->
-    <branch>
-        <pattern><![CDATA[(?<pull>.+)/head]]></pattern>
-        <versionFormat>${version.release}-PR-${pull}-SNAPSHOT</versionFormat>
-    </branch>
     <tag>
         <pattern><![CDATA[v(?<tagVersion>[0-9].*)]]></pattern>
         <versionFormat>${tagVersion}</versionFormat>

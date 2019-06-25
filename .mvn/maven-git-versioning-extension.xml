@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gitVersioning>
+    <branch>
+        <pattern>master</pattern>
+        <versionFormat>${version}</versionFormat>
+    </branch>
+    <!-- Local build will use the acutal branch name -->
+    <branch>
+        <pattern><![CDATA[task/(?<task>.+)]]></pattern>
+        <versionFormat>${version.release}-${task}-SNAPSHOT</versionFormat>
+    </branch>
+    <tag>
+        <pattern><![CDATA[v(?<tagVersion>[0-9].*)]]></pattern>
+        <versionFormat>${tagVersion}</versionFormat>
+    </tag>
+</gitVersioning>

@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<!-- Copyright (c) 2018 ModelSolv, Inc. and others. All rights reserved. 
-		This program and the accompanying materials are made available under the 
-		terms of the Eclipse Public License v1.0 which accompanies this distribution, 
-		and is available at http://www.eclipse.org/legal/epl-v10.html Contributors: 
+	<!-- Copyright (c) 2018 ModelSolv, Inc. and others. All rights reserved.
+		This program and the accompanying materials are made available under the
+		terms of the Eclipse Public License v1.0 which accompanies this distribution,
+		and is available at http://www.eclipse.org/legal/epl-v10.html Contributors:
 		ModelSolv, Inc. - initial API and implementation and/or initial documentation -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.reprezen.rapidml</groupId>
@@ -16,6 +16,7 @@
 	<properties>
 		<xtextVersion>2.12.0</xtextVersion>
 		<emfVersion>2.15.0</emfVersion>
+		<json-overlay-version>4.0.3</json-overlay-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -104,7 +105,7 @@
 					<artifactId>maven-jar-plugin</artifactId>
 					<configuration>
 						<archive>
-							<!-- This actually causes the manifest file to be computed properly, 
+							<!-- This actually causes the manifest file to be computed properly,
 								but mysteriously, it breaks the build of cmr.reprezen.rapidml project. -->
 							<!-- <manifestFile>${project.basedir}/META-INF/MANIFEST.MF</manifestFile> -->
 						</archive>
@@ -120,7 +121,7 @@
 				<configuration>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<!-- We don't use release:perform - deployment is done in TeamCity. 
+					<!-- We don't use release:perform - deployment is done in TeamCity.
 						This just makes an errant perform operation harmless -->
 					<goals>clean</goals>
 				</configuration>
@@ -254,25 +255,13 @@
 			</repositories>
 		</profile>
 	</profiles>
-	<dependencies>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>21.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.eclipse.equinox</groupId>
-					<artifactId>org.eclipse.equinox.common</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>21.0</version>
+			</dependency>
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>org.eclipse.xtext</artifactId>
@@ -357,12 +346,17 @@
 			<dependency>
 				<groupId>com.reprezen.jsonoverlay</groupId>
 				<artifactId>jsonoverlay</artifactId>
-				<version>4.0.3</version>
+				<version>${json-overlay-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
+				<artifactId>org.eclipse.core.resources</artifactId>
+				<version>3.13.400</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
